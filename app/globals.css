@@ -1,0 +1,102 @@
+@import "tailwindcss";
+
+@font-face {
+  font-family: "BlauerNue";
+  src: url("/fonts/Blauer-Nue-Semibold.otf") format("opentype");
+  font-weight: 600 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Rubik";
+  src: url("/fonts/Rubik-Regular.ttf") format("truetype");
+  font-weight: 400 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+:root {
+  --background: #070913;          /* خلفية الموقع بالكامل (تم ضبطها لتطابق لون Portfolio) - عدلها من هنا تتغير في كامل الموقع */
+  --foreground: #ffffff;
+
+  /* ==========================================================================
+     Brand Identity Theme Variables (عدل الألوان من هنا من مكان واحد)
+     ========================================================================== */
+  --brand-primary: #b85d38;       /* اللون الأساسي: لون الخلفية الطيني/البرتقالي الدافئ */
+  --brand-accent: #00c8ff;        /* اللون التفاعلي والتمييز: السيان/الأزرق المضيء */
+  --brand-accent-glow: rgba(0, 200, 255, 0.4);
+  --brand-dark: #070913;          /* اللون الداكن الموحد للخلفيات */
+  --brand-card-bg: #141414;       /* خلفية الكروت والإطارات */
+  --brand-card-border: rgba(255, 255, 255, 0.14);
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-brand-primary: var(--brand-primary);
+  --color-brand-accent: var(--brand-accent);
+  --color-brand-dark: var(--brand-dark);
+  --color-brand-card: var(--brand-card-bg);
+  --font-sans: "BlauerNue", var(--font-geist-sans), Arial, sans-serif;
+  --font-display: "BlauerNue", Arial, sans-serif;
+  --font-body: "Rubik", Arial, sans-serif;
+}
+
+/* Global Selection Style: Unified brand accent across all text on all pages */
+::selection {
+  background-color: var(--brand-accent);
+  color: #000000;
+}
+
+::-moz-selection {
+  background-color: var(--brand-accent);
+  color: #000000;
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-sans);
+  overflow-x: clip;
+  margin: 0;
+  padding: 0;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Modal menu staggered item fade */
+@keyframes slideUpFade {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.story-img-container {
+  @apply relative md:h-dvh h-[85vh] w-full;
+}
+
+.story-img-mask {
+  @apply absolute left-0 top-0 size-full overflow-hidden md:top-[-5%] md:size-4/5;
+  clip-path: polygon(4% 0, 83% 21%, 100% 73%, 0% 100%);
+}
+
+.story-img-content {
+  @apply absolute inset-0 size-full overflow-hidden opacity-100;
+  transform: translate3d(0, 0, 0) rotateX(0) rotateY(0) rotateZ(0) scale(1);
+}
+
+.animated-title {
+  @apply flex flex-col gap-1 text-2xl uppercase leading-[.85] text-white sm:px-16 md:text-[3rem] lg:text-[4.5rem];
+}
+
+.animated-word {
+  @apply font-black opacity-0;
+  transform: translate3d(10px, 51px, -60px) rotateY(60deg) rotateX(-40deg);
+  transform-origin: 50% 50% -150px !important;
+  will-change: opacity, transform;
+}
