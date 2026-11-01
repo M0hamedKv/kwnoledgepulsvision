@@ -21,7 +21,7 @@ export default function JoinUsPage() {
       <PageHero
         theme="cyan"
         eyebrow={{
-          tag: "[ CAREERS // JOIN THE STUDIO ]",
+          tag: "CAREERS / JOIN THE STUDIO",
           subtitle: "OPEN APPLICATIONS • CAIRO & REMOTE",
           statusColor: "#00c8ff",
         }}

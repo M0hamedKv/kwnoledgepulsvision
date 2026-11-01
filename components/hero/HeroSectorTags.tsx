@@ -26,3 +26,4 @@ export const HeroSectorTags: React.FC<HeroSectorTagsProps> = ({
     </div>
   );
 };
+

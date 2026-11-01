@@ -70,7 +70,7 @@ export const ALL_SERVICES: ServiceDetailItem[] = [
     accentColor: "#00c8ff",
     badge: "SALES GALLERY TECH",
     status: "active",
-    coverVideo: "https://res.cloudinary.com/hxytmocg/video/upload/v1793204898/Diva.mp4",
+    coverVideo: "https://res.cloudinary.com/hxytmocg/video/upload/v1793558191/MVI_8622.mov",
     mediaCountLabel: "10 INTERACTIVE REELS",
     gallery: [
       {
@@ -843,7 +843,7 @@ export const ALL_SERVICES: ServiceDetailItem[] = [
     accentColor: "#b85d38",
     badge: "SPATIAL ATELIER",
     status: "active",
-    coverImage: "/design/INTERIOR/apartment/apartment/2_View02.jpg",
+    coverImage: "https://res.cloudinary.com/hxytmocg/image/upload/v1793521335/2_View02.webp",
     mediaCountLabel: "146 8K RENDERS",
     gallery: [],
     deliverables: [

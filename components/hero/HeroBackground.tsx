@@ -8,8 +8,8 @@ import { HeroBackgroundProps } from "./types";
  */
 export const HeroBackground: React.FC<HeroBackgroundProps> = ({
   imageUrl = "/hero-bg.webp",
-  videoUrl = "/Hero/close to building.mp4",
-  alt = "KV STUDIO Cape Town Office",
+  videoUrl = "https://res.cloudinary.com/hxytmocg/video/upload/v1793529386/close_to_building.mp4",
+  alt = "KV Studio Architectural Visualization",
   priority = true,
 }) => {
   return (

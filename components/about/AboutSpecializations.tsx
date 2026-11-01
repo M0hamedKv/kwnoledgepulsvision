@@ -111,7 +111,7 @@ export const AboutSpecializations: React.FC = () => {
             <div className="flex items-center gap-3">
               <span className="w-2.5 h-2.5 rounded-full bg-[#00c8ff] animate-pulse" />
               <span className="font-mono text-xs sm:text-sm font-bold uppercase tracking-[0.24em] text-[#00c8ff]">
-                [ 02 // MULTIDISCIPLINARY PRACTICE ]
+                02 / MULTIDISCIPLINARY PRACTICE
               </span>
             </div>
 

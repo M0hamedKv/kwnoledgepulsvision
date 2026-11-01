@@ -20,24 +20,19 @@ export default function ServicesPage() {
       <ServicesHero />
 
       {/* DISCIPLINE 1: INTERACTIVE SOLUTION (5 SERVICES) */}
-      <section
-        id="interactive-solutions"
-        className="w-full py-20 sm:py-28 px-6 sm:px-12 md:px-16 lg:px-20 border-b border-white/10 relative scroll-mt-28"
-      >
+      <section id="interactive-solutions"
+        className="w-full py-20 sm:py-28 px-6 sm:px-12 md:px-16 lg:px-20 border-b border-white/10 relative scroll-mt-28">
         <div className="max-w-7xl mx-auto flex flex-col gap-12">
           {/* Discipline Category Header */}
           <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-6 pb-6 border-b border-white/10">
             <div>
               <span className="font-mono text-xs uppercase tracking-[0.24em] text-[#00c8ff] font-bold">
-                [ 01 // INTERACTIVE PRACTICE ]
+                01 / INTERACTIVE PRACTICE
               </span>
               <h2 className="font-['BlauerNue',sans-serif] text-4xl sm:text-6xl md:text-7xl font-black uppercase tracking-tight text-white mt-3">
                 INTERACTIVE SOLUTION
               </h2>
             </div>
-            <p className="font-['Rubik',sans-serif] text-white/60 text-sm max-w-md leading-relaxed">
-              Real-time spatial engines, kinetic web architectures, and immersive interactive presentations that elevate architectural projects into sensory digital experiences.
-            </p>
           </div>
 
           {/* 5 Interactive Services Animated Grid */}
@@ -59,15 +54,12 @@ export default function ServicesPage() {
           <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-6 pb-6 border-b border-white/10">
             <div>
               <span className="font-mono text-xs uppercase tracking-[0.24em] text-[#b85d38] font-bold">
-                [ 02 // ARCHITECTURAL & ENGINEERING ATELIER ]
+                02 / ARCHITECTURAL ATELIER
               </span>
               <h2 className="font-['BlauerNue',sans-serif] text-4xl sm:text-6xl md:text-7xl font-black uppercase tracking-tight text-white mt-3">
                 DESIGN
               </h2>
             </div>
-            <p className="font-['Rubik',sans-serif] text-white/60 text-sm max-w-md leading-relaxed">
-              We orchestrate rigorous technical engineering and bespoke spatial design systems, establishing uncompromised precision from parametric modeling to on-site digital fabrication.
-            </p>
           </div>
 
           {/* 3 Design Services Animated Grid */}
@@ -83,23 +75,19 @@ export default function ServicesPage() {
       <section className="w-full py-24 sm:py-32 px-6 sm:px-12 md:px-16 lg:px-20 bg-background relative overflow-hidden">
         <div className="max-w-5xl mx-auto flex flex-col items-center text-center gap-6 relative z-10">
           <span className="font-mono text-xs uppercase tracking-[0.24em] text-[#00c8ff] font-bold">
-            [ START AN ARCHITECTURAL COMMISSION ]
+            COMMISSION YOUR PROJECT
           </span>
 
           <h2 className="font-['BlauerNue',sans-serif] text-4xl sm:text-6xl md:text-7xl font-black uppercase tracking-tight text-white leading-tight">
             SHAPE YOUR NEXT LANDMARK WITH KV STUDIO
           </h2>
 
-          <p className="font-['Rubik',sans-serif] text-white/60 text-sm sm:text-base max-w-2xl leading-relaxed">
-            Whether you require an interactive 4K iMaquette for an upcoming sales pavilion, high-efficiency MEP engineering, or a bespoke digital flagship, our team is ready.
-          </p>
-
           <div className="flex flex-col sm:flex-row items-center gap-4 mt-6">
             <Link
               href="/Contact"
               className="px-8 py-4 bg-[#00c8ff] text-black font-['BlauerNue',sans-serif] font-black text-sm uppercase tracking-widest hover:bg-white transition-colors"
             >
-              DISCUSS YOUR PROJECT REQUIREMENTS
+              DISCUSS YOUR PROJECT
             </Link>
 
             <Link

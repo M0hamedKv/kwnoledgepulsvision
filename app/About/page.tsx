@@ -16,7 +16,7 @@ export default function AboutPage() {
       <PageHero
         theme="cyan"
         eyebrow={{
-          tag: "[ ABOUT // KNOWLEDGE PLUS VISION ]",
+          tag: "ABOUT / KNOWLEDGE PLUS VISION",
           subtitle: "CREATIVE ARCHITECTURE & VISUALIZATION",
           statusColor: "#00c8ff",
         }}

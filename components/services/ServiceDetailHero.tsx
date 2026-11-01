@@ -150,7 +150,7 @@ export const ServiceDetailHero: React.FC<ServiceDetailHeroProps> = ({ service })
     >
       {/* 1. Ambient Dynamic Glow */}
       <div
-        className="sd-glow absolute -top-40 right-1/4 w-[600px] h-[600px] rounded-full blur-[160px] pointer-events-none will-change-transform"
+        className="sd-glow absolute -top-40 right-1/4 w-150 h-150 rounded-full blur-[160px] pointer-events-none will-change-transform"
         style={{ backgroundColor: service.accentColor }}
         aria-hidden="true"
       />
@@ -218,13 +218,9 @@ export const ServiceDetailHero: React.FC<ServiceDetailHeroProps> = ({ service })
         </div>
 
         {/* 4. Animated Laser Divider */}
-        <div
-          className="sd-laser w-full h-px bg-white/15 origin-left"
-          style={{
-            backgroundImage: `linear-gradient(90deg, ${service.accentColor}, transparent 60%)`,
-          }}
-          aria-hidden="true"
-        />
+        <div className="sd-laser w-full h-px bg-white/15 origin-left"
+          style={{ backgroundImage: `linear-gradient(90deg, ${service.accentColor}, transparent 60%)`}}
+          aria-hidden="true" />
 
         {/* 5. Two-Column Split: Narrative Manifesto & Live Media Preview */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-start pt-2">
@@ -232,18 +228,29 @@ export const ServiceDetailHero: React.FC<ServiceDetailHeroProps> = ({ service })
           {/* Left Column: Manifesto & Narrative */}
           <div className="lg:col-span-7 flex flex-col gap-6">
             <div className="sd-manifesto flex flex-col gap-4">
-              <p className="font-['Rubik',sans-serif] text-white/80 text-base sm:text-lg leading-relaxed font-normal">
+              <p className="font-['BlauerNue',sans-serif] text-white/90 text-lg sm:text-xl font-bold uppercase tracking-wide">
                 {service.subtitle}
               </p>
 
-              <blockquote
-                className="p-5 sm:p-6 rounded-2xl bg-white/[0.03] border-l-4 border border-white/10 backdrop-blur-md"
-                style={{ borderLeftColor: service.accentColor }}
-              >
-                <p className="font-['Rubik',sans-serif] text-white/60 text-sm sm:text-base leading-relaxed italic">
-                  &ldquo;{service.manifesto}&rdquo;
-                </p>
-              </blockquote>
+              {/* High-Tech Architectural Telemetry Spec Grid */}
+              <div className="grid grid-cols-2 sm:grid-cols-4 gap-2 pt-1 font-mono text-[10px] uppercase">
+                <div className="p-3 rounded-xl bg-white/3 border border-white/10 flex flex-col gap-1">
+                  <span className="text-white/40">PIPELINE</span>
+                  <span className="text-white font-bold" style={{ color: service.accentColor }}>RAYTRACED</span>
+                </div>
+                <div className="p-3 rounded-xl bg-white/3 border border-white/10 flex flex-col gap-1">
+                  <span className="text-white/40">ENGINE</span>
+                  <span className="text-white font-bold">UNREAL 5.4</span>
+                </div>
+                <div className="p-3 rounded-xl bg-white/3 border border-white/10 flex flex-col gap-1">
+                  <span className="text-white/40">RESOLUTION</span>
+                  <span className="text-white font-bold">4K UHD</span>
+                </div>
+                <div className="p-3 rounded-xl bg-white/3 border border-white/10 flex flex-col gap-1">
+                  <span className="text-white/40">ARCHIVE</span>
+                  <span className="text-white font-bold" style={{ color: service.accentColor }}>{service.mediaCountLabel}</span>
+                </div>
+              </div>
             </div>
 
             {/* Tags Pills */}
@@ -290,7 +297,7 @@ export const ServiceDetailHero: React.FC<ServiceDetailHeroProps> = ({ service })
                   ref={videoCardRef}
                   onMouseMove={handleMouseMove}
                   onMouseLeave={handleMouseLeave}
-                  className="relative w-full aspect-[16/10] sm:aspect-[4/3] rounded-2xl overflow-hidden border border-white/20 bg-black shadow-[0_25px_60px_rgba(0,0,0,0.9)] cursor-pointer group will-change-transform"
+                  className="relative w-full aspect-16/10 sm:aspect-4/3 rounded-2xl overflow-hidden border border-white/20 bg-black shadow-[0_25px_60px_rgba(0,0,0,0.9)] cursor-pointer group will-change-transform"
                   style={{
                     transformStyle: "preserve-3d",
                     borderColor: `${service.accentColor}55`,
@@ -307,7 +314,7 @@ export const ServiceDetailHero: React.FC<ServiceDetailHeroProps> = ({ service })
                   />
 
                   {/* Gradient Lighting */}
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-transparent to-black/30 pointer-events-none" />
+                  <div className="absolute inset-0 bg-linear-to-t from-black/85 via-transparent to-black/30 pointer-events-none" />
 
                   {/* Top Floating Badge */}
                   <div className="absolute top-3 left-3 right-3 flex items-center justify-between pointer-events-none z-10">
@@ -352,14 +359,14 @@ export const ServiceDetailHero: React.FC<ServiceDetailHeroProps> = ({ service })
                   ref={videoCardRef}
                   onMouseMove={handleMouseMove}
                   onMouseLeave={handleMouseLeave}
-                  className="relative w-full aspect-[16/10] sm:aspect-[4/3] rounded-2xl overflow-hidden border border-white/20 bg-black shadow-[0_25px_60px_rgba(0,0,0,0.9)] cursor-pointer group will-change-transform"
+                  className="relative w-full aspect-16/10 sm:aspect-4/3 rounded-2xl overflow-hidden border border-white/20 bg-black shadow-[0_25px_60px_rgba(0,0,0,0.9)] cursor-pointer group will-change-transform"
                 >
                   <img
                     src={service.coverImage}
                     alt={service.title}
                     className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-transparent to-black/30 pointer-events-none" />
+                  <div className="absolute inset-0 bg-linear-to-t from-black/85 via-transparent to-black/30 pointer-events-none" />
                 </div>
               </div>
             ) : null}

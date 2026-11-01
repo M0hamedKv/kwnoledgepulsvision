@@ -4,43 +4,91 @@ import React, { useEffect, useRef } from "react";
 import Link from "next/link";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { ServicesSectionProps, DisciplineItem } from "./types";
-import { ArrowRightIcon, ArrowUpRightIcon } from "@/svgs";
+import { ServicesSectionProps } from "./types";
+import { ArrowUpRightIcon } from "@/svgs";
 
-const DEFAULT_DISCIPLINES: DisciplineItem[] = [
+interface CinematicShowcaseItem {
+  id: string;
+  number: string;
+  tag: string;
+  title: string;
+  badge: string;
+  video: string;
+  accentColor: string;
+  href: string;
+  isWide?: boolean;
+}
+
+const CINEMATIC_SHOWCASES: CinematicShowcaseItem[] = [
   {
-    id: "interactive-solution",
+    id: "imaquette-flagship",
     number: "01",
-    tag: "INTERACTIVE SOLUTION",
-    title: "INTERACTIVE SOLUTION",
-    video: "https://res.cloudinary.com/hxytmocg/video/upload/v1793204898/Diva.mp4",
-    videoTitle: "iMaquette Real-Time Scale Model",
-    videoBadge: "INTERACTIVE SYSTEM",
+    tag: "INTERACTIVE PROPTECH",
+    title: "IMAQUETTE REAL-TIME SCALE MODEL",
+    badge: "UNREAL ENGINE 5.4 • 60 FPS",
+    video: "https://res.cloudinary.com/hxytmocg/video/upload/v1793558191/MVI_8622.mov",
     accentColor: "#00c8ff",
-    ctaText: "EXPLORE INTERACTIVE",
-    ctaHref: "/services#interactive-solutions",
-    subServices: [],
+    href: "/services/imaquette",
+    isWide: true,
   },
   {
-    id: "design",
+    id: "night-spine",
     number: "02",
-    tag: "DESIGN DISCIPLINE",
-    title: "DESIGN",
+    tag: "ARCHITECTURAL CINEMA",
+    title: "NIGHT ILLUMINATION MASTER FILM",
+    badge: "4K RAYTRACED CINEMA",
+    video: "https://res.cloudinary.com/hxytmocg/video/upload/v1793216262/NIGHT_SPINE.mp4",
+    accentColor: "#ff9000",
+    href: "/services/animation",
+    isWide: false,
+  },
+  {
+    id: "spatial-interior",
+    number: "03",
+    tag: "SPATIAL ATELIER",
+    title: "LUXURY INTERIOR ARCHITECTURE",
+    badge: "143 SIGNATURE RENDERS",
     video: "https://res.cloudinary.com/hxytmocg/video/upload/v1793214871/reception.mp4",
-    videoTitle: "Spatial Interior Architecture",
-    videoBadge: "SPATIAL ATELIER",
     accentColor: "#b85d38",
-    ctaText: "EXPLORE DESIGN",
-    ctaHref: "/services#design-discipline",
-    subServices: [],
+    href: "/services/interior",
+    isWide: false,
+  },
+  {
+    id: "spine-cam",
+    number: "04",
+    tag: "ARCHITECTURAL CINEMA",
+    title: "ANAMORPHIC CAMERA FLYTHROUGH",
+    badge: "60 FPS CINEMATIC GLIDE",
+    video: "https://res.cloudinary.com/hxytmocg/video/upload/v1793208993/CAM_03_SPINE.mp4",
+    accentColor: "#a855f7",
+    href: "/services/animation",
+    isWide: false,
+  },
+  {
+    id: "drone-orbit",
+    number: "05",
+    tag: "INTERACTIVE PROPTECH",
+    title: "VIRTUAL DRONE ORBIT MODE",
+    badge: "360° GEOSPATIAL NAVIGATION",
+    video: "https://res.cloudinary.com/hxytmocg/video/upload/v1793206972/DroneMode.mp4",
+    accentColor: "#00c8ff",
+    href: "/services/imaquette",
+    isWide: false,
+  },
+  {
+    id: "realtime-sim",
+    number: "06",
+    tag: "INTERACTIVE SIMULATION",
+    title: "REAL-TIME VEHICLE DRIVE-THROUGH",
+    badge: "PHYSICS & SPATIAL ENGINE",
+    video: "https://res.cloudinary.com/hxytmocg/video/upload/v1793207922/Car_gameplay.mp4",
+    accentColor: "#10b981",
+    href: "/services/imaquette",
+    isWide: true,
   },
 ];
 
-// ─── 3D Story-style Interactive Video Card ────────────────────────────────────
-const Discipline3DCard: React.FC<{
-  discipline: DisciplineItem;
-  accentColor: string;
-}> = ({ discipline, accentColor }) => {
+const VisualPortalCard: React.FC<{ item: CinematicShowcaseItem }> = ({ item }) => {
   const cardRef = useRef<HTMLDivElement>(null);
   const glareRef = useRef<HTMLDivElement>(null);
 
@@ -53,16 +101,15 @@ const Discipline3DCard: React.FC<{
     const centerX = rect.width / 2;
     const centerY = rect.height / 2;
 
-    // Organic 3D wave tilt (Instant Story-style physics)
-    const rotateX = ((y - centerY) / centerY) * -11;
-    const rotateY = ((x - centerX) / centerX) * 11;
+    const rotateX = ((y - centerY) / centerY) * -8;
+    const rotateY = ((x - centerX) / centerX) * 8;
 
     gsap.to(cardRef.current, {
-      duration: 0.18,
+      duration: 0.2,
       rotateX,
       rotateY,
-      scale: 1.025,
-      transformPerspective: 900,
+      scale: 1.02,
+      transformPerspective: 1000,
       transformStyle: "preserve-3d",
       ease: "power1.out",
       overwrite: "auto",
@@ -71,7 +118,7 @@ const Discipline3DCard: React.FC<{
     if (glareRef.current) {
       const px = (x / rect.width) * 100;
       const py = (y / rect.height) * 100;
-      glareRef.current.style.background = `radial-gradient(circle at ${px}% ${py}%, rgba(255,255,255,0.2) 0%, transparent 60%)`;
+      glareRef.current.style.background = `radial-gradient(circle at ${px}% ${py}%, rgba(255,255,255,0.22) 0%, transparent 60%)`;
       glareRef.current.style.opacity = "1";
     }
   };
@@ -79,7 +126,7 @@ const Discipline3DCard: React.FC<{
   const handleMouseLeave = () => {
     if (!cardRef.current) return;
     gsap.to(cardRef.current, {
-      duration: 0.45,
+      duration: 0.5,
       rotateX: 0,
       rotateY: 0,
       scale: 1,
@@ -94,128 +141,98 @@ const Discipline3DCard: React.FC<{
 
   return (
     <div
-      className="discipline-card h-full flex flex-col relative select-none"
+      className={`visual-portal-wrapper h-full flex flex-col select-none ${
+        item.isWide ? "lg:col-span-2" : "lg:col-span-1"
+      }`}
       style={{ perspective: "1000px" }}
     >
-      <Link
-        href={discipline.ctaHref || "/services"}
-        className="group flex flex-col h-full flex-1 relative"
-      >
+      <Link href={item.href} className="group relative flex flex-col h-full flex-1">
         <div
           ref={cardRef}
           onMouseMove={handleMouseMove}
           onMouseLeave={handleMouseLeave}
-          className="relative flex flex-col justify-between h-full flex-1 p-6 sm:p-8 lg:p-10 rounded-3xl bg-[#090c15] border border-white/10 hover:border-(--accent) shadow-[0_20px_60px_rgba(0,0,0,0.85)] hover:shadow-[0_25px_60px_rgba(0,0,0,0.95)] will-change-transform cursor-pointer overflow-hidden"
+          className="relative w-full h-95 sm:h-110 lg:h-120 rounded-3xl overflow-hidden bg-black border border-white/10 hover:border-(--accent) shadow-[0_25px_60px_rgba(0,0,0,0.85)] will-change-transform cursor-pointer transition-colors duration-300"
           style={
             {
-              "--accent": `${accentColor}88`,
+              "--accent": `${item.accentColor}99`,
               transformStyle: "preserve-3d",
-              transformPerspective: 900,
             } as React.CSSProperties
           }
         >
-          {/* Ambient background glow */}
-          <div
-            className="absolute -top-24 -right-24 w-72 h-72 rounded-full blur-[120px] pointer-events-none opacity-20 group-hover:opacity-35 transition-opacity duration-500"
-            style={{ backgroundColor: accentColor }}
+          {/* 100% Full-Bleed 4K Video Background */}
+          <video
+            src={item.video}
+            autoPlay
+            loop
+            muted
+            playsInline
+            preload="metadata"
+            className="absolute inset-0 w-full h-full object-cover group-hover:scale-106 transition-transform duration-700 ease-out opacity-85 group-hover:opacity-100 pointer-events-none"
           />
 
-          {/* Card Header: Number & Tag */}
-          <div className="flex items-center justify-between pb-6 border-b border-white/10 relative z-10 pointer-events-none">
-            <div className="flex items-center gap-3">
+          {/* Cinematic Vignette */}
+          <div className="absolute inset-0 bg-linear-to-t from-black/95 via-black/25 to-black/40 pointer-events-none" />
+
+          {/* Dynamic Specular 3D Glare */}
+          <div
+            ref={glareRef}
+            className="absolute inset-0 pointer-events-none transition-opacity duration-200 opacity-0 z-10"
+          />
+
+          {/* Top Floating HUD Badges */}
+          <div className="absolute top-5 left-5 right-5 flex items-center justify-between z-20 pointer-events-none">
+            <div className="flex items-center gap-2 px-3 py-1.5 rounded-full bg-black/70 backdrop-blur-md border border-white/15">
               <span
-                className="w-2.5 h-2.5 rounded-full animate-pulse"
-                style={{ backgroundColor: accentColor }}
+                className="w-2 h-2 rounded-full animate-pulse"
+                style={{ backgroundColor: item.accentColor }}
               />
               <span
-                className="font-mono text-xs sm:text-sm font-bold uppercase tracking-[0.22em]"
-                style={{ color: accentColor }}
+                className="font-mono text-[11px] font-bold uppercase tracking-wider"
+                style={{ color: item.accentColor }}
               >
-                /{discipline.number} // {discipline.tag}
+                {item.number} / {item.tag}
               </span>
             </div>
-            <span className="font-mono text-[10px] text-white/40 uppercase tracking-widest hidden sm:inline-block">
-              EXPLORE ↗
-            </span>
+
+            <div className="px-3 py-1.5 rounded-full bg-black/70 backdrop-blur-md border border-white/10 font-mono text-[10px] text-white/80 uppercase tracking-widest hidden sm:flex items-center gap-1.5">
+              <span>{item.badge}</span>
+            </div>
           </div>
 
-          {/* Card Main Headline — Unified Height to Guarantee Equal Alignment */}
-          <div className="py-5 sm:py-6 relative z-10 pointer-events-none min-h-18 sm:min-h-22 flex items-center">
-            <h3
-              className="font-['BlauerNue',sans-serif] text-3xl sm:text-4xl lg:text-5xl font-black uppercase tracking-tight text-white transition-colors duration-300 leading-none group-hover:text-(--accent)"
-              style={{ "--accent": accentColor } as React.CSSProperties}
-            >
-              {discipline.title}
-            </h3>
-          </div>
-
-          {/* 3D Video Screen */}
-          <div className="relative w-full aspect-16/10 sm:aspect-video rounded-2xl overflow-hidden border border-white/15 bg-black my-2 z-20 shadow-inner">
-            <video
-              src={discipline.video}
-              autoPlay
-              loop
-              muted
-              playsInline
-              preload="auto"
-              className="w-full h-full object-cover pointer-events-none opacity-90 group-hover:opacity-100 transition-opacity duration-300"
-            />
-
-            {/* Cinematic Vignette */}
-            <div className="absolute inset-0 bg-linear-to-t from-black/85 via-transparent to-black/30 pointer-events-none" />
-
-            {/* Dynamic Specular 3D Glare */}
+          {/* Center Cinematic Play Glow (appears on hover) */}
+          <div className="absolute inset-0 flex items-center justify-center pointer-events-none z-20">
             <div
-              ref={glareRef}
-              className="absolute inset-0 pointer-events-none transition-opacity duration-200 opacity-0 z-10"
-            />
-
-            {/* Top HUD Badges */}
-            <div className="absolute top-3 left-3 right-3 flex items-center justify-between pointer-events-none z-20">
-              <span
-                className="px-2.5 py-1 rounded-full bg-black/80 backdrop-blur-md border font-mono text-[10px] font-bold uppercase tracking-wider flex items-center gap-1.5 shadow-sm"
-                style={{ color: accentColor, borderColor: `${accentColor}55` }}
-              >
-                <span
-                  className="w-1.5 h-1.5 rounded-full animate-pulse"
-                  style={{ backgroundColor: accentColor }}
-                />
-                {discipline.videoBadge}
-              </span>
-              <span className="font-mono text-[9px] text-white/70 uppercase tracking-widest bg-black/70 px-2.5 py-1 rounded-full backdrop-blur-xs border border-white/10 flex items-center gap-1">
-                <span>3D REEL</span>
-                <span style={{ color: accentColor }}>✦</span>
-              </span>
-            </div>
-
-            {/* Bottom HUD Title Bar */}
-            <div className="absolute bottom-3 left-3 right-3 flex items-center justify-between pointer-events-none z-20">
-              <span className="font-['BlauerNue',sans-serif] text-sm sm:text-base font-bold uppercase text-white tracking-wide truncate max-w-[80%] drop-shadow-md">
-                {discipline.videoTitle}
-              </span>
-              <span
-                className="px-3 py-1 rounded-full bg-black/80 backdrop-blur-xs border border-white/20 font-mono text-[10px] font-bold uppercase tracking-wider flex items-center gap-1 group-hover:scale-105 transition-transform"
-                style={{ color: accentColor }}
-              >
-                <span>OPEN</span>
-                <span>↗</span>
-              </span>
-            </div>
-          </div>
-
-          {/* Card Bottom: Minimal Action Link Locked to Baseline */}
-          <div className="pt-6 mt-auto border-t border-white/10 flex items-center justify-between relative z-10 pointer-events-none">
-            <span className="font-mono text-xs uppercase tracking-widest text-white/50 group-hover:text-white transition-colors">
-              DISCOVER {discipline.title}
-            </span>
-            <span
-              className="font-mono text-xs font-bold uppercase tracking-wider flex items-center gap-2 group-hover:translate-x-1 transition-all duration-300"
-              style={{ color: accentColor }}
+              className="w-16 h-16 rounded-full bg-black/60 backdrop-blur-md border border-white/20 flex items-center justify-center text-white text-lg scale-75 opacity-0 group-hover:scale-100 group-hover:opacity-100 transition-all duration-300 shadow-2xl"
+              style={{ borderColor: item.accentColor }}
             >
-              <span>{discipline.ctaText || "VIEW DISCIPLINE"}</span>
-              <ArrowRightIcon className="w-4 h-4 stroke-current" />
-            </span>
+              <span style={{ color: item.accentColor }}>▶</span>
+            </div>
           </div>
+
+          {/* Bottom Floating Architectural Title Bar */}
+          <div className="absolute bottom-6 left-6 right-6 flex items-end justify-between z-20 pointer-events-none">
+            <div className="flex flex-col gap-1 max-w-[85%]">
+              <h3 className="font-['BlauerNue',sans-serif] text-2xl sm:text-3xl lg:text-4xl font-black uppercase text-white tracking-tight leading-tight drop-shadow-md group-hover:text-(--accent) transition-colors">
+                {item.title}
+              </h3>
+            </div>
+
+            <div
+              className="px-3.5 py-2 rounded-xl bg-black/80 backdrop-blur-md border border-white/20 font-mono text-xs font-bold uppercase tracking-wider text-white group-hover:scale-105 transition-all flex items-center gap-1 shrink-0"
+              style={{ color: item.accentColor }}
+            >
+              <span>EXPLORE</span>
+              <span>↗</span>
+            </div>
+          </div>
+
+          {/* Bottom Neon Accent Highlight Line */}
+          <div
+            className="absolute bottom-0 left-0 w-full h-1 opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-30"
+            style={{
+              background: `linear-gradient(90deg, transparent, ${item.accentColor}, transparent)`,
+            }}
+          />
         </div>
       </Link>
     </div>
@@ -224,15 +241,9 @@ const Discipline3DCard: React.FC<{
 
 export const ServicesSection: React.FC<ServicesSectionProps> = ({
   headlineMain = "SERVICES",
-  manifesto = "Two integrated practices delivering real-time interactive solutions and advanced architectural design.",
-  disciplines = DEFAULT_DISCIPLINES,
-  services,
 }) => {
-  const activeDisciplines = disciplines || services || DEFAULT_DISCIPLINES;
-
   const sectionRef = useRef<HTMLElement>(null);
   const headerRef = useRef<HTMLDivElement>(null);
-  const lineRef = useRef<HTMLDivElement>(null);
   const cardsContainerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -241,18 +252,16 @@ export const ServicesSection: React.FC<ServicesSectionProps> = ({
     gsap.registerPlugin(ScrollTrigger);
 
     const ctx = gsap.context(() => {
-      // 1. Header elements: silky smooth rise upwards with fade
       if (headerRef.current) {
         gsap.fromTo(
           headerRef.current.children,
-          { y: 35, opacity: 0 },
+          { y: 30, opacity: 0 },
           {
             y: 0,
             opacity: 1,
-            duration: 0.9,
+            duration: 0.8,
             stagger: 0.08,
             ease: "power2.out",
-            force3D: true,
             scrollTrigger: {
               trigger: headerRef.current,
               start: "top 88%",
@@ -262,41 +271,17 @@ export const ServicesSection: React.FC<ServicesSectionProps> = ({
         );
       }
 
-      // 2. Hairline rule expansion from the left
-      if (lineRef.current) {
-        gsap.fromTo(
-          lineRef.current,
-          { scaleX: 0 },
-          {
-            scaleX: 1,
-            duration: 1.0,
-            ease: "power2.out",
-            force3D: true,
-            scrollTrigger: {
-              trigger: lineRef.current,
-              start: "top 88%",
-              once: true,
-            },
-          }
-        );
-      }
-
-      // 3. The 3D Video Cards: Silky smooth vertical rise upwards with fade (Zero choppiness, zero jitter)
-      const cards = cardsContainerRef.current?.querySelectorAll<HTMLElement>(".discipline-card");
+      const cards = cardsContainerRef.current?.querySelectorAll<HTMLElement>(".visual-portal-wrapper");
       if (cards && cards.length > 0) {
         gsap.fromTo(
           cards,
-          {
-            y: 65,
-            opacity: 0,
-          },
+          { y: 50, opacity: 0 },
           {
             y: 0,
             opacity: 1,
-            duration: 1.0,
-            stagger: 0.16,
+            duration: 0.9,
+            stagger: 0.12,
             ease: "power2.out",
-            force3D: true,
             scrollTrigger: {
               trigger: cardsContainerRef.current,
               start: "top 85%",
@@ -307,7 +292,6 @@ export const ServicesSection: React.FC<ServicesSectionProps> = ({
       }
     }, sectionRef);
 
-    // Refresh ScrollTrigger coordinates to guarantee sync after ShowcaseSection
     const refreshTimer = setTimeout(() => {
       ScrollTrigger.refresh();
     }, 200);
@@ -326,56 +310,41 @@ export const ServicesSection: React.FC<ServicesSectionProps> = ({
       className="relative z-50 w-full min-h-screen bg-background text-white pt-24 sm:pt-32 pb-28 sm:pb-36 px-6 sm:px-12 md:px-16 lg:px-20 overflow-hidden border-t border-white/10"
     >
       <div className="max-w-7xl mx-auto flex flex-col gap-10 sm:gap-14 relative z-10">
-        {/* Editorial Studio Header */}
+        {/* Minimal High-Impact Architectural Header */}
         <div
           ref={headerRef}
-          className="flex flex-col md:flex-row md:items-end justify-between gap-6"
+          className="flex flex-col md:flex-row md:items-end justify-between gap-6 pb-4 border-b border-white/10"
         >
-          <div className="flex flex-col gap-3 max-w-2xl">
-            <h2 className="font-['BlauerNue',sans-serif] text-4xl sm:text-6xl md:text-7xl font-black uppercase tracking-tight leading-none text-white">
+          <div className="flex flex-col gap-2">
+            <span className="font-mono text-xs uppercase tracking-[0.24em] text-[#00c8ff] font-bold">
+              02 / CREATIVE DISCIPLINES
+            </span>
+            <h2 className="font-['BlauerNue',sans-serif] text-5xl sm:text-7xl md:text-8xl font-black uppercase tracking-tight leading-none text-white">
               {headlineMain}
             </h2>
-            <p className="font-['Rubik',sans-serif] text-white/60 text-sm sm:text-base leading-relaxed pt-1">
-              {manifesto}
-            </p>
           </div>
 
           <Link
             href="/services"
-            className="group inline-flex items-center gap-2 font-mono text-xs uppercase tracking-widest text-white/60 hover:text-[#00c8ff] transition-colors duration-300 pb-1 self-start md:self-end"
+            className="group inline-flex items-center gap-2 font-mono text-xs uppercase tracking-widest text-white/60 hover:text-[#00c8ff] transition-colors self-start md:self-end pb-1"
           >
-            <span>[ VIEW ALL SERVICES ]</span>
-            <ArrowUpRightIcon className="w-3.5 h-3.5 text-white/40 group-hover:text-[#00c8ff] group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all duration-300" />
+            <span>VIEW ALL SERVICES</span>
+            <ArrowUpRightIcon className="w-4 h-4 text-white/40 group-hover:text-[#00c8ff] group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all" />
           </Link>
         </div>
 
-        {/* Animated Hairline Rule */}
-        <div
-          ref={lineRef}
-          className="w-full h-px bg-white/10 origin-left"
-          aria-hidden="true"
-        />
-
-        {/* The Two Disciplines 3D Video Showcases */}
+        {/* 6 Full-Bleed 3D Cinema Portals Grid */}
         <div
           ref={cardsContainerRef}
-          className="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-10 lg:gap-12 items-stretch"
+          className="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-10 items-stretch"
         >
-          {activeDisciplines.map((discipline) => {
-            const accentColor =
-              discipline.accentColor ||
-              (discipline.id === "interactive-solution" ? "#00c8ff" : "#b85d38");
-
-            return (
-              <Discipline3DCard
-                key={discipline.id}
-                discipline={discipline}
-                accentColor={accentColor}
-              />
-            );
-          })}
+          {CINEMATIC_SHOWCASES.map((item) => (
+            <VisualPortalCard key={item.id} item={item} />
+          ))}
         </div>
       </div>
     </section>
   );
 };
+
+export default ServicesSection;

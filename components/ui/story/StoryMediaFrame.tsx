@@ -134,12 +134,12 @@ export const StoryMediaFrame: React.FC<StoryMediaFrameProps> = ({
             />
           ) : (
             <div className="size-full bg-black/60 flex items-center justify-center font-mono text-xs text-white/40">
-              [ NO MEDIA ATTACHED ]
+              NO MEDIA ATTACHED
             </div>
           )}
 
           {/* Subtle cinematic gradient overlay */}
-          <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-black/20 pointer-events-none" />
+          <div className="absolute inset-0 bg-linear-to-t from-black/70 via-transparent to-black/20 pointer-events-none" />
 
           {/* Center Hover Action Indicator */}
           <div className="absolute inset-0 flex items-center justify-center pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity duration-300">

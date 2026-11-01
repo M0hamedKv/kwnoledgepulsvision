@@ -51,7 +51,7 @@ export const AboutStory: React.FC = () => {
           <div className="flex items-center gap-3">
             <span className="w-2.5 h-2.5 rounded-full bg-[#00c8ff] animate-pulse" />
             <span className="font-mono text-xs sm:text-sm font-bold uppercase tracking-[0.24em] text-[#00c8ff]">
-              [ 01 // OUR STORY ]
+              01 / OUR STORY
             </span>
           </div>
 
@@ -70,7 +70,7 @@ export const AboutStory: React.FC = () => {
               </p>
 
               {/* Highlight Quote */}
-              <div className="p-6 sm:p-8 rounded-xl bg-white/[0.03] border-l-4 border-[#00c8ff] border border-white/10 backdrop-blur-md">
+              <div className="p-6 sm:p-8 rounded-xl bg-white/3 border-l-4 border-[#00c8ff] border backdrop-blur-md">
                 <p className="font-['BlauerNue',sans-serif] text-lg sm:text-2xl font-bold uppercase tracking-wide text-white leading-snug">
                   &ldquo;Driven by innovation, guided by design, and powered by technology, Knowledge Plus Vision is not just a visualization studio – it’s a partner in shaping the future of spaces.&rdquo;
                 </p>

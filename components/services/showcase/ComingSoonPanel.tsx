@@ -40,7 +40,7 @@ export const ComingSoonPanel: React.FC<ComingSoonPanelProps> = ({ accentColor, t
         className="font-mono text-xs sm:text-sm font-bold uppercase tracking-[0.25em]"
         style={{ color: accentColor }}
       >
-        [ MEDIA ARCHIVE STATUS ]
+        PRODUCTION ARCHIVE
       </span>
       <h3 className="font-['BlauerNue',sans-serif] text-4xl sm:text-6xl font-black uppercase tracking-tight text-white">
         COMING SOON

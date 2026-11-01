@@ -9,27 +9,27 @@ import { ShowcaseSectionProps, ShowcaseItem } from "./types";
 const DEFAULT_ITEMS: ShowcaseItem[] = [
   {
     id: "hero-vid-1",
-    video: "/Hero/close to building.mp4",
+    video: "https://res.cloudinary.com/hxytmocg/video/upload/v1793529386/close_to_building.mp4",
     alt: "Architectural Exterior Facade Perspective",
   },
   {
     id: "hero-vid-2",
-    video: "/Hero/street 2.mp4",
+    video: "https://res.cloudinary.com/hxytmocg/video/upload/v1793538889/street_2.mp4",
     alt: "Urban Streetscape & Compound Promenade",
   },
   {
     id: "hero-vid-3",
-    video: "/Hero/CAM-PADEL_Interactive LightMix_FINALmp4.mp4",
+    video: "https://res.cloudinary.com/hxytmocg/video/upload/v1793529065/CAM-PADEL_Interactive_LightMix_FINALmp4.mp4",
     alt: "Structural Glass Padel Pavilion",
   },
   {
     id: "hero-vid-4",
-    video: "/Hero/track night.mp4",
+    video: "https://res.cloudinary.com/hxytmocg/video/upload/v1793538438/track_night.mp4",
     alt: "Night Atmospheric Illumination Master Track",
   },
   {
     id: "hero-vid-5",
-    video: "/Hero/Untitled-5.mp4",
+    video: "https://res.cloudinary.com/hxytmocg/video/upload/v1793537718/Untitled-5.mp4",
     alt: "Cinematic Modern Architectural Visualization",
   },
 ];
@@ -259,12 +259,12 @@ export const ShowcaseSection: React.FC<ShowcaseSectionProps> = ({
             style={{
               width: "280px",
               height: "280px",
-              maxWidth: "85vw",
-              maxHeight: "85vh",
+              maxWidth: "100vw",
+              maxHeight: "100vh",
               opacity: 0,
               zIndex: 30 + index,
             }}
-            className="showcase-card absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 will-change-[width,height,opacity] pointer-events-none rounded-none overflow-hidden shadow-[0_30px_90px_rgba(0,0,0,0.7)] bg-black"
+            className="showcase-card absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 will-change-[width,height,opacity] pointer-events-none rounded-none overflow-hidden shadow-[0_30px_90px_rgba(0,0,0,0.85)] bg-black"
           >
             {item.video ? (
               <video

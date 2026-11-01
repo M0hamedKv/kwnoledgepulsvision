@@ -1,14 +1,17 @@
-export interface SectorItem {
-  id: string;
-  label: string;
-  href?: string;
-}
-
 export interface MenuItem {
   id: string;
   label: string;
   href: string;
   isActive?: boolean;
+}
+
+export interface SectorItem {
+  id: string;
+  label: string;
+}
+
+export interface HeroSectorTagsProps {
+  sectors: SectorItem[];
 }
 
 export interface HeroSectionProps {
@@ -20,8 +23,8 @@ export interface HeroSectionProps {
   headlineFirst?: string;
   headlineMiddle?: string;
   headlineLast?: string;
-  sectors?: SectorItem[];
   menuItems?: MenuItem[];
+  sectors?: SectorItem[];
   onSectorSelect?: (sectorId: string) => void;
 }
 
@@ -30,12 +33,6 @@ export interface HeroBackgroundProps {
   videoUrl?: string;
   alt?: string;
   priority?: boolean;
-}
-
-export interface HeroSectorTagsProps {
-  sectors: SectorItem[];
-  activeSectorId?: string;
-  onSelectSector?: (id: string) => void;
 }
 
 export interface HeroTaglineProps {

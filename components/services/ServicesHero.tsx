@@ -8,7 +8,7 @@ export const ServicesHero: React.FC = () => {
     <PageHero
       theme="dual"
       eyebrow={{
-        tag: "[ 02 // ARCHITECTURAL & INTERACTIVE DISCIPLINES ]",
+        tag: "ARCHITECTURAL & INTERACTIVE DISCIPLINES",
         statusColor: "#00c8ff",
       }}
       metaBadge={{
@@ -25,18 +25,18 @@ export const ServicesHero: React.FC = () => {
         text: "TWO INTEGRATED WORLDS.",
         mutedText: "EIGHT SPECIALIZED DISCIPLINES.",
       }}
-      description="We operate at the convergence of cutting-edge digital spatial technology and rigorous physical architectural engineering. Each service has a dedicated design philosophy, custom tooling, and bespoke delivery pipeline."
+      description="Real-time interactive proptech solutions and spatial architectural design."
       anchors={[
         {
           label: "INTERACTIVE SOLUTION (5)",
           targetId: "interactive-solutions",
-          number: "01 //",
+          number: "01 /",
           accentColor: "#00c8ff",
         },
         {
           label: "DESIGN (3)",
           targetId: "design-discipline",
-          number: "02 //",
+          number: "02 /",
           accentColor: "#b85d38",
         },
       ]}

@@ -4,10 +4,8 @@ import React, { useEffect, useRef } from "react";
 import gsap from "gsap";
 import { HeroSectionProps } from "./types";
 import { HeroBackground } from "./HeroBackground";
-import { HeroSectorTags } from "./HeroSectorTags";
 import { HeroTagline } from "./HeroTagline";
 import { HeroHeadline } from "./HeroHeadline";
-import { DEFAULT_SECTORS } from "@/constant";
 
 /**
  * HeroSection
@@ -16,12 +14,11 @@ import { DEFAULT_SECTORS } from "@/constant";
  * 1. Black curtain covers the entire section.
  * 2. HeroHeadline reveals letter-by-letter on the black curtain (each line progressively slower).
  * 3. Curtain wipes / collapses towards the left edge to reveal the background image.
- * 4. As the curtain sweeps left, HeroSectorTags, and HeroTagline are pulled in dynamically.
+ * 4. As the curtain sweeps left, and HeroTagline are pulled in dynamically.
  */
 export const HeroSection: React.FC<HeroSectionProps> = ({
   backgroundImageUrl = "/hero-bg.webp",
-  backgroundVideoUrl = "/Hero/close to building.mp4",
-  sectors = DEFAULT_SECTORS,
+  backgroundVideoUrl = "https://res.cloudinary.com/hxytmocg/video/upload/v1793529386/close_to_building.mp4",
 }) => {
 
   const sectionRef = useRef<HTMLElement>(null);
@@ -42,7 +39,6 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
 
       // Target elements
       const navbar = sectionRef.current?.querySelector("header");
-      const sectorItems = sectionRef.current?.querySelectorAll(".sector-item");
       const sectorLine = sectionRef.current?.querySelector(".sector-pointer-line line");
 
       const tagline1 = sectionRef.current?.querySelector(".tagline-line-1");
@@ -56,7 +52,6 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
 
       // Navbar is visible from the very start on the black intro curtain
       if (navbar) gsap.set(navbar, { opacity: 1, y: 0 });
-      if (sectorItems) gsap.set(sectorItems, { opacity: 0, x: 260, filter: "blur(6px)" });
       if (tagline1) gsap.set(tagline1, { opacity: 0, x: 280, filter: "blur(6px)" });
       if (tagline2) gsap.set(tagline2, { opacity: 0, x: 340, filter: "blur(8px)" });
 
@@ -135,26 +130,6 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
         ease: "power4.inOut",
       });
 
-      // --- PHASE 4: As the curtain collapses left, top elements are pulled into position! ---
-      // 1. Sector Tags on Left (each line progressively slower)
-      if (sectorItems && sectorItems.length >= 3) {
-        masterTl.to(
-          sectorItems[0],
-          { opacity: 1, x: 0, filter: "blur(0px)", duration: 0.85, ease: "power3.out" },
-          "-=1.1"
-        );
-        masterTl.to(
-          sectorItems[1],
-          { opacity: 1, x: 0, filter: "blur(0px)", duration: 1.05, ease: "power3.out" },
-          "-=0.9"
-        );
-        masterTl.to(
-          sectorItems[2],
-          { opacity: 1, x: 0, filter: "blur(0px)", duration: 1.25, ease: "power3.out" },
-          "-=0.9"
-        );
-      }
-
       // Draw sector pointer line
       if (sectorLine) {
         masterTl.to(
@@ -195,45 +170,35 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
     }, sectionRef);
 
     return () => ctx.revert();
-  }, [ sectors]);
+  }, [ ]);
 
   return (
-    <section
-      ref={sectionRef}
+    <section ref={sectionRef}
       className="relative w-full h-dvh flex flex-col justify-between overflow-hidden text-white"
     >
       {/* 1. Cinematic Background Visual Layer (z-0) */}
-      <HeroBackground
-        imageUrl={backgroundImageUrl}
-        videoUrl={backgroundVideoUrl}
-      />
+      <HeroBackground imageUrl={backgroundImageUrl} videoUrl={backgroundVideoUrl} />
 
       {/* 2. Intro Black Curtain (z-10, covers entire screen initially, then sweeps left) */}
-      <div
-        ref={curtainRef}
-        className="absolute inset-0 bg-background z-10 origin-left will-change-transform pointer-events-none"
-      />
+      <div ref={curtainRef}
+        className="absolute inset-0 bg-background z-10 origin-left will-change-transform pointer-events-none" />
 
       {/* 3. Top Spacing Placeholder for Unified Global Navbar */}
       <div className="w-full pt-8 sm:pt-12 pb-4 px-6 sm:px-12 md:px-16 lg:px-20 h-20 sm:h-24 pointer-events-none" />
 
       {/* 4. Middle Content Section: Sectors on Left, Tagline on Right (z-20) */}
       <div className="w-full px-6 sm:px-12 md:px-16 lg:px-20 flex flex-col sm:flex-row sm:items-start justify-between gap-6 z-20">
-        {/* Left Sectors Tagging */}
-        <HeroSectorTags sectors={sectors} />
 
         {/* Right Value Proposition Statement */}
         <HeroTagline
-          text={"WE BROKER, VALUE AND TRACK COMMERCIAL"}
-          highlightText={"ACROSS CAPE TOWN."}
+          text={"CRAFTING IMMERSIVE DIGITAL REALITIES"}
+          highlightText={"KNOWLEDGE + VISION."}
         />
       </div>
 
       {/* 5. Bottom Giant Headline Section (z-20, sits above the curtain to appear first) */}
       <div className="w-full px-6 sm:px-12 md:px-16 lg:px-20 pb-4 sm:pb-6 md:pb-8 z-20">
-        <HeroHeadline
-          line={"KNOWLEGEPLUSVISION"}
-        />
+        <HeroHeadline line={"KNOWLEGEPLUSVISION"} />
       </div>
     </section>
   );

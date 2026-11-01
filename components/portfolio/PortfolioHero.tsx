@@ -8,7 +8,7 @@ export const PortfolioHero: React.FC = () => {
     <PageHero
       theme="cyan"
       eyebrow={{
-        tag: "[ PORTFOLIO // 3D PROPTECH SHOWCASE ]",
+        tag: "PORTFOLIO / 3D PROPTECH SHOWCASE",
         subtitle: "KV-GRADE KINETIC ARCHITECTURE",
         statusColor: "#00c8ff",
       }}

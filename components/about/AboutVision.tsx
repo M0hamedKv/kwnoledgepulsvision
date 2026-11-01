@@ -15,7 +15,7 @@ export const AboutVision: React.FC = () => {
           <div className="flex items-center gap-3">
             <span className="w-2.5 h-2.5 rounded-full bg-[#00c8ff] animate-pulse" />
             <span className="font-mono text-xs sm:text-sm font-bold uppercase tracking-[0.24em] text-[#00c8ff]">
-              [ 02 // OUR VISION ]
+              02 / OUR VISION
             </span>
           </div>
 
@@ -38,11 +38,11 @@ export const AboutVision: React.FC = () => {
                 </span>
 
                 <h3 className="font-['BlauerNue',sans-serif] text-2xl sm:text-3xl md:text-4xl font-extrabold uppercase tracking-tight text-white leading-snug">
-                  We are dedicated to delivering exceptional modern architectural solutions that not only meet but exceed our clients&apos; expectations.
+                  SETTING NEW BENCHMARKS IN REAL-TIME ARCHITECTURAL VISUALIZATION.
                 </h3>
 
-                <p className="font-['Rubik',sans-serif] text-base sm:text-lg text-white/75 leading-relaxed font-normal">
-                  Our passion for design excellence and customer satisfaction motivates us to push boundaries and set new benchmarks in the architectural industry.
+                <p className="font-mono text-xs sm:text-sm text-white/70 uppercase tracking-widest">
+                  PRECISION ENGINEERING • IMMERSIVE SPATIAL ENGINES • UNCOMPROMISED AESTHETICS
                 </p>
 
                 <div className="pt-4 flex flex-wrap items-center gap-4 sm:gap-6 border-t border-white/10 text-xs font-mono text-white/40">

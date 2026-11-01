@@ -23,7 +23,7 @@ export default function ContactPage() {
       <PageHero
         theme="cyan"
         eyebrow={{
-          tag: "[ CONTACT // GET IN TOUCH ]",
+          tag: "CONTACT / GET IN TOUCH",
           subtitle: "GLOBAL COMMISSIONS & INQUIRIES",
           statusColor: "#00c8ff",
         }}

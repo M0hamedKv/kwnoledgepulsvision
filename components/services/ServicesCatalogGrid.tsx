@@ -78,9 +78,9 @@ const ServiceCard3D: React.FC<{
           }
         >
           {/* 1. VISUAL MEDIA HEADER CONTAINER */}
-          <div className="relative w-full aspect-[16/10] bg-[#070913] overflow-hidden border-b border-white/10 flex items-center justify-center">
+          <div className="relative w-full aspect-16/10 bg-[#070913] overflow-hidden border-b border-white/10 flex items-center justify-center">
             {service.status === "coming-soon" ? (
-              <div className="relative w-full h-full flex flex-col items-center justify-center p-6 text-center overflow-hidden bg-gradient-to-b from-white/[0.04] to-black/60">
+              <div className="relative w-full h-full flex flex-col items-center justify-center p-6 text-center overflow-hidden bg-linear-to-b from-white/4 to-black/60">
                 {/* Glow */}
                 <div
                   className="absolute inset-0 opacity-15 blur-[60px] pointer-events-none"
@@ -107,7 +107,7 @@ const ServiceCard3D: React.FC<{
                     className="font-mono text-[10px] font-bold uppercase tracking-[0.25em]"
                     style={{ color: service.accentColor }}
                   >
-                    [ ARCHIVE IN PREPARATION ]
+                    COMING SOON
                   </span>
                   <span className="font-['BlauerNue',sans-serif] text-base font-black uppercase text-white/90 tracking-wider">
                     COMING SOON
@@ -157,7 +157,7 @@ const ServiceCard3D: React.FC<{
                 )}
 
                 {/* Cinematic Vignette Overlay */}
-                <div className="absolute inset-0 bg-gradient-to-t from-[#0e111a] via-transparent to-black/50 pointer-events-none" />
+                <div className="absolute inset-0 bg-linear-to-t from-[#0e111a] via-transparent to-black/50 pointer-events-none" />
 
                 {/* Top Floating Badges */}
                 <div className="absolute top-3.5 left-3.5 right-3.5 flex items-center justify-between z-10 pointer-events-none">
@@ -197,13 +197,13 @@ const ServiceCard3D: React.FC<{
           <div className="p-6 sm:p-7 flex flex-col justify-between flex-1 gap-6 relative z-10">
             <div className="flex flex-col gap-3">
               <h3
-                className="font-['BlauerNue',sans-serif] text-2xl sm:text-3xl font-black uppercase text-white transition-colors leading-tight group-hover:text-[var(--accent)]"
+                className="font-['BlauerNue',sans-serif] text-2xl sm:text-3xl font-black uppercase text-white transition-colors leading-tight group-hover:text-(--accent)"
                 style={{ "--accent": accentColor } as React.CSSProperties}
               >
                 {service.title}
               </h3>
 
-              <p className="font-['Rubik',sans-serif] text-white/70 text-xs sm:text-sm leading-relaxed line-clamp-2">
+              <p className="font-mono text-[11px] text-white/60 uppercase tracking-wider truncate">
                 {service.subtitle}
               </p>
 
@@ -222,7 +222,7 @@ const ServiceCard3D: React.FC<{
 
             {/* Bottom Action Footer */}
             <div
-              className="pt-4 border-t border-white/10 flex items-center justify-between font-mono text-xs font-bold uppercase tracking-wider text-white/80 transition-colors group-hover:text-[var(--accent)]"
+              className="pt-4 border-t border-white/10 flex items-center justify-between font-mono text-xs font-bold uppercase tracking-wider text-white/80 transition-colors group-hover:text-(--accent)"
               style={{ "--accent": accentColor } as React.CSSProperties}
             >
               <span>EXPLORE PRODUCTION</span>

@@ -229,20 +229,16 @@ export const PortfolioItem: React.FC<PortfolioItemProps> = ({
             {item.description}
           </p>
 
-          {/* Verified Feature Checklist */}
-          <div className="flex flex-col gap-2.5 pt-1">
+          {/* High-Tech Telemetry Pills */}
+          <div className="flex flex-wrap gap-2 pt-1">
             {item.highlights.map((highlight, idx) => (
-              <div
+              <span
                 key={idx}
-                className="portfolio-highlight flex items-start gap-3 text-sm text-white/85 will-change-transform"
+                className="portfolio-highlight px-3 py-1.5 rounded-lg bg-white/5 border border-white/10 font-mono text-[11px] font-bold text-[#00c8ff] uppercase tracking-wider will-change-transform flex items-center gap-1.5"
               >
-                <span className="shrink-0 w-4 h-4 rounded-full bg-[#00c8ff]/15 border border-[#00c8ff]/40 flex items-center justify-center text-[#00c8ff] text-[10px] font-bold mt-0.5 select-none">
-                  ✓
-                </span>
-                <span className="font-['Rubik',sans-serif] font-normal leading-snug">
-                  {highlight}
-                </span>
-              </div>
+                <span className="w-1.5 h-1.5 rounded-full bg-[#00c8ff] animate-pulse" />
+                {highlight}
+              </span>
             ))}
           </div>
         </div>

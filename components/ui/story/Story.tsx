@@ -38,7 +38,7 @@ export function Story({
     >
       {/* Background ambient radial glow */}
       <div
-        className={`absolute top-1/2 -translate-y-1/2 w-[700px] h-[700px] rounded-full blur-[240px] pointer-events-none opacity-15 ${
+        className={`absolute top-1/2 -translate-y-1/2 w-175 h-175 rounded-full blur-[240px] pointer-events-none opacity-15 ${
           isReversed ? "right-[5%]" : "left-[5%]"
         }`}
         style={{ backgroundColor: accentColor }}

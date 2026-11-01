@@ -1,15 +1,8 @@
-import { MenuItem, SectorItem } from "@/components/hero";
-
-export const DEFAULT_SECTORS: SectorItem[] = [
-  { id: "retail", label: "RETAIL" },
-  { id: "industrial", label: "INDUSTRIAL" },
-  { id: "office", label: "OFFICE" },
-];
+import { MenuItem } from "@/components/hero";
 
 export const DEFAULT_MENU_ITEMS: MenuItem[] = [
   { id: "home", label: "HOME", href: "/" },
   { id: "portfolio", label: "PORTFOLIO", href: "/portfolio" },
-  // { id: "work", label: "OUR WORK", href: "/portfolio" },
   { id: "services", label: "SERVICES", href: "/services" },
   { id: "about", label: "ABOUT US", href: "/About" },
   { id: "join", label: "JOIN US", href: "/JoinUs" },
@@ -49,4 +42,3 @@ export const STUDIO_SOCIAL_LINKS: SocialLinkItem[] = [
     description: "Corporate & Professional Network",
   },
 ];
-

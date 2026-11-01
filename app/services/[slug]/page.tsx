@@ -1,4 +1,3 @@
-import React from "react";
 import { Metadata } from "next";
 import { notFound } from "next/navigation";
 import Link from "next/link";
@@ -45,8 +44,6 @@ export default async function ServiceDetailPage({ params }: ServiceDetailPagePro
   const prevService = getServiceBySlug(service.prevSlug);
   const nextService = getServiceBySlug(service.nextSlug);
 
-
-
   return (
     <main className="w-full min-h-screen bg-background text-white selection:bg-[#00c8ff] selection:text-black">
       {/* 1. Kinetic Master Hero with Dynamic Typography & 3D Live Media Preview */}
@@ -59,18 +56,14 @@ export default async function ServiceDetailPage({ params }: ServiceDetailPagePro
       <section className="w-full py-20 sm:py-28 px-6 sm:px-12 md:px-16 lg:px-20 relative overflow-hidden bg-background">
         <div className="max-w-5xl mx-auto flex flex-col items-center text-center gap-6 relative z-10">
           <span className="font-mono text-xs uppercase tracking-[0.24em] text-[#00c8ff] font-bold">
-            [ READY TO DEPLOY {service.title}? ]
+            COMMISSION {service.title}
           </span>
 
           <h2 className="font-['BlauerNue',sans-serif] text-4xl sm:text-6xl md:text-7xl font-black uppercase tracking-tight text-white leading-tight">
             {service.ctaHeading}
           </h2>
 
-          <p className="font-['Rubik',sans-serif] text-white/60 text-sm sm:text-base max-w-2xl leading-relaxed">
-            {service.ctaSubtext}
-          </p>
-
-          <div className="flex flex-col sm:flex-row items-center gap-4 mt-4">
+          <div className="flex flex-col sm:flex-row items-center gap-4 mt-2">
             <Link
               href={`/Contact?service=${service.slug}`}
               className="px-8 py-4 bg-[#00c8ff] text-black font-['BlauerNue',sans-serif] font-black text-sm uppercase tracking-widest hover:bg-white transition-colors"
@@ -110,7 +103,7 @@ export default async function ServiceDetailPage({ params }: ServiceDetailPagePro
             href="/services"
             className="font-mono text-xs uppercase tracking-widest text-[#00c8ff] hover:underline"
           >
-            [ VIEW SERVICES DIRECTORY ]
+            VIEW ALL SERVICES
           </Link>
 
           {nextService ? (
