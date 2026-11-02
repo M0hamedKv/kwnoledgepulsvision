@@ -9,8 +9,6 @@ export const DEFAULT_MENU_ITEMS: MenuItem[] = [
   { id: "contact", label: "GET IN TOUCH", href: "/Contact" },
 ];
 
-export * from "./theme";
-
 export interface SocialLinkItem {
   id: "instagram" | "facebook" | "linkedin";
   label: string;

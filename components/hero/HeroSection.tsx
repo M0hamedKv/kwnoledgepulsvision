@@ -341,7 +341,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
       {/* 2. Intro Black Curtain (z-10, covers entire section initially, then sweeps left) */}
       <div
         ref={curtainRef}
-        className="absolute inset-0 bg-background z-10 origin-left will-change-transform pointer-events-none"
+        className="absolute inset-0 bg-black z-10 origin-left will-change-transform pointer-events-none"
       />
 
       {/* 3. Dead-Center Loader: Company Name + Minimalist Loading Bar (z-25) */}
@@ -349,8 +349,13 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
         ref={loaderRef}
         className="absolute inset-0 z-25 flex flex-col items-center justify-center text-center px-6 pointer-events-none select-none"
       >
-        {/* Ambient atmospheric cyan glow */}
-        <div className="absolute w-80 sm:w-96 h-80 sm:h-96 rounded-full bg-[#00c8ff]/[0.035] blur-[140px] pointer-events-none" />
+        {/* Ambient atmospheric true blue glow */}
+        <div
+          className="absolute w-[320px] sm:w-[420px] h-[320px] sm:h-[420px] rounded-full pointer-events-none blur-[70px] sm:blur-[90px]"
+          style={{
+            background: "radial-gradient(circle, rgba(0, 85, 255, 0.35) 0%, rgba(0, 60, 220, 0.15) 50%, transparent 70%)",
+          }}
+        />
 
         {/* Company Name with letter-by-letter reveal animation */}
         <h1 className="relative z-10 flex items-center font-['BlauerNue',sans-serif] font-black text-2xl sm:text-3xl md:text-4xl lg:text-[42px] tracking-[0.32em] sm:tracking-[0.38em] text-white uppercase drop-shadow-[0_2px_24px_rgba(255,255,255,0.22)] select-none ml-[0.35em]">

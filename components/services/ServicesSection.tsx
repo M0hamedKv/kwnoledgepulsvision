@@ -38,7 +38,7 @@ const CINEMATIC_SHOWCASES: CinematicShowcaseItem[] = [
     title: "NIGHT ILLUMINATION MASTER FILM",
     badge: "4K RAYTRACED CINEMA",
     video: "https://res.cloudinary.com/hxytmocg/video/upload/v1793216262/NIGHT_SPINE.mp4",
-    accentColor: "#ff9000",
+    accentColor: "#0070f3",
     href: "/services/animation",
     isWide: false,
   },
@@ -49,7 +49,7 @@ const CINEMATIC_SHOWCASES: CinematicShowcaseItem[] = [
     title: "LUXURY INTERIOR ARCHITECTURE",
     badge: "143 SIGNATURE RENDERS",
     video: "https://res.cloudinary.com/hxytmocg/video/upload/v1793214871/reception.mp4",
-    accentColor: "#b85d38",
+    accentColor: "#00c8ff",
     href: "/services/interior",
     isWide: false,
   },
@@ -60,7 +60,7 @@ const CINEMATIC_SHOWCASES: CinematicShowcaseItem[] = [
     title: "ANAMORPHIC CAMERA FLYTHROUGH",
     badge: "60 FPS CINEMATIC GLIDE",
     video: "https://res.cloudinary.com/hxytmocg/video/upload/v1793208993/CAM_03_SPINE.mp4",
-    accentColor: "#a855f7",
+    accentColor: "#0055ff",
     href: "/services/animation",
     isWide: false,
   },
@@ -82,7 +82,7 @@ const CINEMATIC_SHOWCASES: CinematicShowcaseItem[] = [
     title: "REAL-TIME VEHICLE DRIVE-THROUGH",
     badge: "PHYSICS & SPATIAL ENGINE",
     video: "https://res.cloudinary.com/hxytmocg/video/upload/v1793207922/Car_gameplay.mp4",
-    accentColor: "#10b981",
+    accentColor: "#0070f3",
     href: "/services/imaquette",
     isWide: true,
   },
@@ -307,7 +307,7 @@ export const ServicesSection: React.FC<ServicesSectionProps> = ({
       ref={sectionRef}
       id="services"
       aria-label="Services Section: Interactive Solution and Design"
-      className="relative z-50 w-full min-h-screen bg-background text-white pt-24 sm:pt-32 pb-28 sm:pb-36 px-6 sm:px-12 md:px-16 lg:px-20 overflow-hidden border-t border-white/10"
+      className="relative z-50 w-full min-h-screen bg-transparent text-white pt-24 sm:pt-32 pb-28 sm:pb-36 px-6 sm:px-12 md:px-16 lg:px-20 overflow-hidden border-t border-white/10"
     >
       <div className="max-w-7xl mx-auto flex flex-col gap-10 sm:gap-14 relative z-10">
         {/* Minimal High-Impact Architectural Header */}

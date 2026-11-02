@@ -117,7 +117,7 @@ export const ServiceMediaShowcase: React.FC<ServiceMediaShowcaseProps> = ({ serv
       <section
         ref={sectionRef}
         id="demonstration"
-        className="relative w-full overflow-hidden bg-background"
+        className="relative w-full overflow-hidden bg-transparent"
       >
         <ImaquetteShowcase
           service={service}
@@ -145,11 +145,6 @@ export const ServiceMediaShowcase: React.FC<ServiceMediaShowcaseProps> = ({ serv
       id="demonstration"
       className="relative w-full py-16 sm:py-24 px-6 sm:px-12 md:px-16 lg:px-20 overflow-hidden"
     >
-      {/* Background ambient radial glow */}
-      <div
-        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[700px] rounded-full blur-[220px] pointer-events-none opacity-10"
-        style={{ backgroundColor: service.accentColor }}
-      />
 
       <div className="max-w-7xl mx-auto flex flex-col gap-14 relative z-10">
         {/* A. Coming Soon Panel */}

@@ -37,7 +37,7 @@ export const ServicesHero: React.FC = () => {
           label: "DESIGN (3)",
           targetId: "design-discipline",
           number: "02 /",
-          accentColor: "#b85d38",
+          accentColor: "#00c8ff",
         },
       ]}
     />

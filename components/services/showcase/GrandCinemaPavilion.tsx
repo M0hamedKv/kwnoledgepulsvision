@@ -64,7 +64,7 @@ export const GrandCinemaPavilion: React.FC<GrandCinemaPavilionProps> = ({
         ref={cardRef}
         onMouseMove={handleMouseMove}
         onMouseLeave={handleMouseLeave}
-        className="group relative rounded-3xl overflow-hidden border border-white/15 bg-[#090c15] shadow-[0_30px_90px_rgba(0,0,0,0.85)] flex flex-col will-change-transform"
+        className="group relative rounded-3xl overflow-hidden border border-white/15 bg-black/90 backdrop-blur-xl shadow-[0_30px_90px_rgba(0,0,0,0.85)] flex flex-col will-change-transform"
         style={{
           transformStyle: "preserve-3d",
           borderColor: `${accentColor}44`,

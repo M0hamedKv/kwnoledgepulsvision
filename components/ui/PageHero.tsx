@@ -194,10 +194,8 @@ export const PageHero: React.FC<PageHeroProps> = ({
 
   const accentHex =
     eyebrow.statusColor ||
-    (theme === "cyan" || theme === "lime"
+    (theme === "cyan" || theme === "lime" || theme === "terracotta"
       ? "#00c8ff"
-      : theme === "terracotta"
-      ? "#b85d38"
       : "#ffffff");
 
   return (
@@ -205,46 +203,23 @@ export const PageHero: React.FC<PageHeroProps> = ({
       ref={heroRef}
       className={`relative w-full pt-32 sm:pt-40 md:pt-44 pb-14 sm:pb-20 px-6 sm:px-12 md:px-16 lg:px-20 border-b border-white/10 overflow-hidden ${className}`}
     >
-      {/* ================= ATMOSPHERIC GLOWS ================= */}
-      {(theme === "cyan" || theme === "lime") && (
-        <div className="page-hero-glow absolute inset-0 bg-[radial-gradient(ellipse_80%_60%_at_50%_-15%,rgba(0,200,255,0.08),rgba(0,0,0,0))] pointer-events-none" />
-      )}
-      {theme === "terracotta" && (
-        <div className="page-hero-glow absolute inset-0 bg-[radial-gradient(ellipse_80%_60%_at_50%_-15%,rgba(184,93,56,0.1),rgba(0,0,0,0))] pointer-events-none" />
-      )}
-      {theme === "dual" && (
-        <>
-          <div
-            className="page-hero-glow absolute -top-32 left-1/4 w-125 h-125 rounded-full bg-[#b85d38]/12 blur-[130px] pointer-events-none will-change-transform"
-            aria-hidden="true"
-          />
-          <div
-            className="page-hero-glow absolute top-1/3 right-10 w-112.5 h-112.5 rounded-full bg-[#00c8ff]/8 blur-[140px] pointer-events-none will-change-transform"
-            aria-hidden="true"
-          />
-        </>
-      )}
-      {theme === "white" && (
-        <div className="page-hero-glow absolute inset-0 bg-[radial-gradient(ellipse_80%_60%_at_50%_-15%,rgba(255,255,255,0.04),rgba(0,0,0,0))] pointer-events-none" />
-      )}
-
       {/* Blueprint Grid Overlay */}
-      <div
+      {/* <div
         className="page-hero-grid absolute inset-0 pointer-events-none"
         style={{
           backgroundImage:
             "linear-gradient(rgba(255,255,255,0.2) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.2) 1px, transparent 1px)",
           backgroundSize: "64px 64px",
         }}
-      />
+      /> */}
 
       {/* Blueprint Laser Sweep Line */}
-      <div
+      {/* <div
         className="page-hero-laser absolute top-0 left-0 right-0 h-px origin-left pointer-events-none"
         style={{
           background: `linear-gradient(90deg, transparent, ${accentHex}, transparent)`,
         }}
-      />
+      /> */}
 
       <div className="max-w-7xl mx-auto flex flex-col gap-6 relative z-10">
         {/* ================= TOP STATUS & EYEBROW ROW ================= */}
@@ -278,7 +253,7 @@ export const PageHero: React.FC<PageHeroProps> = ({
               <span className="flex items-center gap-2 px-3 py-1 rounded bg-black/50 border border-white/10 backdrop-blur-md">
                 <span
                   className={`w-1.5 h-1.5 rounded-full animate-pulse ${
-                    metaBadge.dotColor || "bg-emerald-400"
+                    metaBadge.dotColor || "bg-[#00c8ff]"
                   }`}
                 />
                 <span className="text-white/80 font-bold">

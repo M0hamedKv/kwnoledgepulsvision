@@ -146,15 +146,8 @@ export const ServiceDetailHero: React.FC<ServiceDetailHeroProps> = ({ service })
   return (
     <section
       ref={containerRef}
-      className="relative w-full pt-28 sm:pt-36 pb-16 px-6 sm:px-12 md:px-16 lg:px-20 border-b border-white/10 overflow-hidden bg-background"
+      className="relative w-full pt-28 sm:pt-36 pb-16 px-6 sm:px-12 md:px-16 lg:px-20 border-b border-white/10 overflow-hidden bg-transparent"
     >
-      
-      {/* 1. Ambient Dynamic Glow */}
-      <div
-        className="sd-glow absolute -top-40 right-1/4 w-150 h-150 rounded-full blur-[160px] pointer-events-none will-change-transform"
-        style={{ backgroundColor: service.accentColor }}
-        aria-hidden="true"
-      />
 
       {/* Blueprint Grid Atmosphere */}
       <div

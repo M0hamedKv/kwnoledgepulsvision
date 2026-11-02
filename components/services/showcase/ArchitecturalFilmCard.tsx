@@ -18,7 +18,7 @@ export const ArchitecturalFilmCard: React.FC<ArchitecturalFilmCardProps> = ({
   return (
     <div
       onClick={onOpenTheater}
-      className="sm-feature-card group relative rounded-2xl overflow-hidden border border-white/10 hover:border-[var(--accent)] bg-[#090c15] transition-all duration-500 shadow-[0_20px_50px_rgba(0,0,0,0.6)] hover:shadow-[0_25px_60px_rgba(0,200,255,0.18)] hover:-translate-y-1.5 cursor-pointer flex flex-col will-change-transform"
+      className="sm-feature-card group relative rounded-2xl overflow-hidden border border-white/10 hover:border-[var(--accent)] bg-black/85 backdrop-blur-md transition-all duration-500 shadow-[0_20px_50px_rgba(0,0,0,0.6)] hover:shadow-[0_25px_60px_rgba(0,200,255,0.18)] hover:-translate-y-1.5 cursor-pointer flex flex-col will-change-transform"
       style={{ "--accent": accentColor } as React.CSSProperties}
     >
       {/* 16:9 Cinema Viewport */}

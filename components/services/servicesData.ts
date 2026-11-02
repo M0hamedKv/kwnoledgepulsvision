@@ -236,7 +236,7 @@ export const ALL_SERVICES: ServiceDetailItem[] = [
     subtitle: "Ultra-fast bespoke digital platforms, WebGL 3D web applications, and choreographed kinetic experiences.",
     manifesto:
       "We design and code digital flagships for architectural studios, property conglomerates, and luxury brands. Combining Next.js 16, React 19, choreographed GSAP kinetic motion, and WebGL shaders, we build digital spaces as meticulously crafted as high-end architecture.",
-    accentColor: "#b85d38",
+    accentColor: "#00c8ff",
     badge: "CREATIVE ENGINEERING",
     status: "coming-soon",
     mediaCountLabel: "COMING SOON",
@@ -572,7 +572,7 @@ export const ALL_SERVICES: ServiceDetailItem[] = [
     subtitle: "Spatial computing, uncompromised 1:1 scale immersion, and interactive material customization.",
     manifesto:
       "Renderings allow clients to look at architecture; Virtual Reality places them inside it. By harnessing cutting-edge spatial computing, we allow developers, investors, and homeowners to walk through spaces, test materials, and experience ceiling heights before construction.",
-    accentColor: "#b85d38",
+    accentColor: "#00c8ff",
     badge: "SPATIAL COMPUTING",
     status: "coming-soon",
     mediaCountLabel: "COMING SOON",
@@ -706,7 +706,7 @@ export const ALL_SERVICES: ServiceDetailItem[] = [
     subtitle: "LOD 300-500 digital twin authoring, automated clash detection, and construction coordination.",
     manifesto:
       "BIM is the single source of truth that turns ambitious architectural designs into error-free construction realities. We author, audit, and coordinate multi-disciplinary models up to LOD 500, resolving costly clashes in the computer rather than on the job site.",
-    accentColor: "#b85d38",
+    accentColor: "#00c8ff",
     badge: "DIGITAL TWIN & COORDINATION",
     status: "coming-soon",
     mediaCountLabel: "COMING SOON",
@@ -840,7 +840,7 @@ export const ALL_SERVICES: ServiceDetailItem[] = [
     subtitle: "Custom millwork, tactile material palettes, spatial zoning, and intimate lighting atmospheres.",
     manifesto:
       "Interior architecture is where the human touch meets built space. We design bespoke interiors that evoke warmth, prestige, and quiet luxury. From custom architectural millwork and rare stone selection to tailored acoustic environments, every detail is considered.",
-    accentColor: "#b85d38",
+    accentColor: "#00c8ff",
     badge: "SPATIAL ATELIER",
     status: "active",
     coverImage: "https://res.cloudinary.com/hxytmocg/image/upload/v1793521335/2_View02.webp",

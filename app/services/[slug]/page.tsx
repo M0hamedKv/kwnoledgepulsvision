@@ -45,7 +45,7 @@ export default async function ServiceDetailPage({ params }: ServiceDetailPagePro
   const nextService = getServiceBySlug(service.nextSlug);
 
   return (
-    <main className="w-full min-h-screen bg-background text-white selection:bg-[#00c8ff] selection:text-black">
+    <main className="w-full min-h-screen bg-transparent text-white selection:bg-[#00c8ff] selection:text-black">
       {/* 1. Kinetic Master Hero with Dynamic Typography & 3D Live Media Preview */}
       <ServiceDetailHero service={service} />
 
@@ -53,7 +53,7 @@ export default async function ServiceDetailPage({ params }: ServiceDetailPagePro
       <ServiceMediaShowcase service={service} />
       
       {/* DEDICATED PROPOSAL INQUIRY CTA */}
-      <section className="w-full py-20 sm:py-28 px-6 sm:px-12 md:px-16 lg:px-20 relative overflow-hidden bg-background">
+      <section className="w-full py-20 sm:py-28 px-6 sm:px-12 md:px-16 lg:px-20 relative overflow-hidden bg-transparent">
         <div className="max-w-5xl mx-auto flex flex-col items-center text-center gap-6 relative z-10">
           <span className="font-mono text-xs uppercase tracking-[0.24em] text-[#00c8ff] font-bold">
             COMMISSION {service.title}
@@ -82,7 +82,7 @@ export default async function ServiceDetailPage({ params }: ServiceDetailPagePro
       </section>
 
       {/* ADJACENT SERVICES NAVIGATION */}
-      <nav aria-label="Adjacent Services Navigation" className="w-full py-8 px-6 sm:px-12 md:px-16 lg:px-20 bg-background border-b border-white/10">
+      <nav aria-label="Adjacent Services Navigation" className="w-full py-8 px-6 sm:px-12 md:px-16 lg:px-20 bg-transparent border-b border-white/10">
         <div className="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-6">
           {prevService ? (
             <Link

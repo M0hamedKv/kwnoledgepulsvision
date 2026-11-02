@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useEffect, useState } from "react";
+import React from "react";
 import Link from "next/link";
 import { DEFAULT_MENU_ITEMS, STUDIO_SOCIAL_LINKS } from "@/constant";
 import {
@@ -8,7 +8,6 @@ import {
   FacebookIcon,
   LinkedInIcon,
   ArrowUpRightIcon,
-  ArrowRightIcon,
 } from "@/svgs";
 
 export const Footer: React.FC = () => {
@@ -23,18 +22,8 @@ export const Footer: React.FC = () => {
     <footer
       role="contentinfo"
       aria-label="KV Studio Footer"
-      className="relative z-40 w-full bg-background text-white overflow-hidden"
+      className="relative z-40 w-full bg-transparent text-white overflow-hidden"
     >
-      {/* Ambient luxury light orbs */}
-      <div
-        className="absolute top-0 right-1/4 w-96 h-96 rounded-full bg-[#00c8ff]/5 blur-[140px] pointer-events-none"
-        aria-hidden="true"
-      />
-      <div
-        className="absolute bottom-0 left-10 w-80 h-80 rounded-full bg-[#b85d38]/10 blur-[130px] pointer-events-none"
-        aria-hidden="true"
-      />
-
       {/* 2. MAIN 4-COLUMN FOOTER GRID */}
       <div className="relative z-10 border-b border-white/10">
         <div className="max-w-7xl mx-auto px-6 sm:px-12 md:px-16 lg:px-20 py-16 sm:py-20">

@@ -33,7 +33,7 @@ const SPECIALIZATIONS: SpecializationItem[] = [
     tag: "CURATED EXPERIENCES",
     description:
       "Crafting bespoke spatial atmospheres for high-end hospitality, penthouses, and executive sales galleries with custom millwork and material harmony.",
-    accentColor: "#b85d38",
+    accentColor: "#0070f3",
     deliverables: [
       "Material & Spec Curation",
       "Custom Joinery & Lighting Fixtures",
@@ -47,7 +47,7 @@ const SPECIALIZATIONS: SpecializationItem[] = [
     tag: "BIOPHILIC CONTEXT",
     description:
       "Integrating outdoor environments with the built structure. Sustainable botanical planning, hardscaping, reflecting pools, and private botanical courtyards.",
-    accentColor: "#34d399",
+    accentColor: "#00c8ff",
     deliverables: [
       "Site Grading & Hardscape Detailing",
       "Microclimate & Sun-Shade Modeling",
@@ -61,7 +61,7 @@ const SPECIALIZATIONS: SpecializationItem[] = [
     tag: "RAY-TRACED PHOTOREALISM",
     description:
       "CGI artistry meets optical precision. We produce hyper-realistic 3D architectural stills, emotive daylight studies, and 8K cinematic walkthrough films.",
-    accentColor: "#00c8ff",
+    accentColor: "#0055ff",
     deliverables: [
       "Photorealistic 8K Renders",
       "Day-to-Night Circadian Studies",
@@ -75,7 +75,7 @@ const SPECIALIZATIONS: SpecializationItem[] = [
     tag: "LUMEN PRECISION",
     description:
       "Sculpting space with light. We calculate photometric distributions, exterior facade illumination, and subtle circadian interior atmospheres.",
-    accentColor: "#fbbf24",
+    accentColor: "#00c8ff",
     deliverables: [
       "Dialux & Photometric Simulations",
       "Facade Illuminance Schemes",
@@ -89,7 +89,7 @@ const SPECIALIZATIONS: SpecializationItem[] = [
     tag: "REAL-TIME PROPTECH",
     description:
       "Transforming static presentations into live digital flagships. 3D orbital masterplans, real-time CRM inventory synchronization, and web showroom kiosks.",
-    accentColor: "#a855f7",
+    accentColor: "#0070f3",
     deliverables: [
       "WebGL 3D Compound Navigators",
       "Live CRM Inventory Sync",
@@ -102,7 +102,7 @@ export const AboutSpecializations: React.FC = () => {
   return (
     <section
       id="specializations"
-      className="relative w-full py-20 sm:py-28 md:py-32 px-6 sm:px-12 md:px-16 lg:px-20 border-b border-white/10 bg-[#080808] scroll-mt-28"
+      className="relative w-full py-20 sm:py-28 md:py-32 px-6 sm:px-12 md:px-16 lg:px-20 border-b border-white/10 bg-transparent scroll-mt-28"
     >
       <div className="max-w-7xl mx-auto flex flex-col gap-16 lg:gap-20">
         {/* Section Header */}
@@ -130,7 +130,7 @@ export const AboutSpecializations: React.FC = () => {
           {SPECIALIZATIONS.map((item) => (
             <div
               key={item.id}
-              className="group relative flex flex-col justify-between bg-[#101010] hover:bg-[#141414] border border-white/10 hover:border-white/30 transition-all duration-300 p-8 sm:p-9 overflow-hidden shadow-[0_15px_40px_rgba(0,0,0,0.6)]"
+              className="group relative flex flex-col justify-between bg-black/75 hover:bg-black/95 backdrop-blur-md border border-white/10 hover:border-white/30 transition-all duration-300 p-8 sm:p-9 overflow-hidden shadow-[0_15px_40px_rgba(0,0,0,0.6)]"
               style={{
                 borderTopColor: `${item.accentColor}80`,
                 borderTopWidth: "2px",

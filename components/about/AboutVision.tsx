@@ -7,7 +7,7 @@ export const AboutVision: React.FC = () => {
   return (
     <section
       id="our-vision"
-      className="relative w-full py-20 sm:py-28 px-6 sm:px-12 md:px-16 lg:px-20 border-b border-white/10 bg-background scroll-mt-28"
+      className="relative w-full py-20 sm:py-28 px-6 sm:px-12 md:px-16 lg:px-20 border-b border-white/10 bg-transparent scroll-mt-28"
     >
       <div className="max-w-7xl mx-auto flex flex-col gap-12 lg:gap-16">
         {/* Section Header */}
@@ -29,9 +29,6 @@ export const AboutVision: React.FC = () => {
           {/* Left Column: Vision Statement */}
           <div className="lg:col-span-7 flex flex-col gap-8">
             <div className="relative p-8 sm:p-12 rounded-2xl bg-white/3 border border-white/10 backdrop-blur-xl overflow-hidden shadow-[0_20px_50px_rgba(0,0,0,0.8)]">
-              {/* Subtle Ambient Light Orb */}
-              <div className="absolute -top-20 -right-20 w-80 h-80 rounded-full bg-[#00c8ff]/10 blur-[120px] pointer-events-none" />
-
               <div className="flex flex-col gap-6 relative z-10">
                 <span className="text-4xl sm:text-5xl text-[#00c8ff] font-serif leading-none select-none">
                   &ldquo;
@@ -58,7 +55,7 @@ export const AboutVision: React.FC = () => {
 
           {/* Right Column: High-Impact Visual Image */}
           <div className="lg:col-span-5 flex justify-center">
-            <div className="relative w-full max-w-md h-96 sm:h-115 rounded-2xl overflow-hidden border border-white/15 bg-[#0c0c0c] shadow-[0_25px_60px_rgba(0,0,0,0.9)] group select-none">
+            <div className="relative w-full max-w-md h-96 sm:h-115 rounded-2xl overflow-hidden border border-white/15 bg-black/90 shadow-[0_25px_60px_rgba(0,0,0,0.9)] group select-none">
               <Image
                 src="/showcase-3.jpg"
                 alt="KV Studio Architectural Vision"

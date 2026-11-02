@@ -16,7 +16,7 @@ export const PortfolioHero: React.FC = () => {
         primaryText: "KV ARCHITECTURE",
         secondaryText: "SYS: LIVE",
         metricText: "FPS: 60 REAL-TIME",
-        dotColor: "bg-emerald-400",
+        dotColor: "bg-[#00c8ff]",
       }}
       headline={{
         line1: "INTERACTIVE",

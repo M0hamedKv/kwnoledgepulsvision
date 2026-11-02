@@ -218,11 +218,16 @@ export const IntroPreloader: React.FC<IntroPreloaderProps> = ({
   return (
     <div
       ref={overlayRef}
-      className="fixed inset-0 z-[10000] flex flex-col items-center justify-center bg-background pointer-events-auto select-none overflow-hidden will-change-transform"
+      className="fixed inset-0 z-[10000] flex flex-col items-center justify-center bg-black pointer-events-auto select-none overflow-hidden will-change-transform"
       aria-hidden={isFinished}
     >
       {/* Subtle architectural atmosphere ambient blur */}
-      <div className="absolute w-80 sm:w-96 h-80 sm:h-96 rounded-full bg-[#00c8ff]/[0.035] blur-[140px] pointer-events-none" />
+      <div
+        className="absolute w-[320px] sm:w-[420px] h-[320px] sm:h-[420px] rounded-full pointer-events-none blur-[70px] sm:blur-[90px]"
+        style={{
+          background: "radial-gradient(circle, rgba(0, 85, 255, 0.35) 0%, rgba(0, 60, 220, 0.15) 50%, transparent 70%)",
+        }}
+      />
 
       {/* Dead-Center Content: Company Name + Minimalist Loading Bar */}
       <div

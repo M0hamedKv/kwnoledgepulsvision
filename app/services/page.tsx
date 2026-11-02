@@ -15,7 +15,7 @@ export default function ServicesPage() {
   const designServices = allServices.filter((s) => s.disciplineSlug === "design");
 
   return (
-    <main className="w-full min-h-screen bg-background text-white selection:bg-[#00c8ff] selection:text-black">
+    <main className="w-full min-h-screen bg-transparent text-white selection:bg-[#00c8ff] selection:text-black">
       {/* Animated Services Hero Section */}
       <ServicesHero />
 
@@ -47,13 +47,13 @@ export default function ServicesPage() {
       {/* DISCIPLINE 2: DESIGN (3 SERVICES) */}
       <section
         id="design-discipline"
-        className="w-full py-20 sm:py-28 px-6 sm:px-12 md:px-16 lg:px-20 border-b border-white/10 relative bg-background scroll-mt-28"
+        className="w-full py-20 sm:py-28 px-6 sm:px-12 md:px-16 lg:px-20 border-b border-white/10 relative bg-transparent scroll-mt-28"
       >
         <div className="max-w-7xl mx-auto flex flex-col gap-12">
           {/* Discipline Category Header */}
           <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-6 pb-6 border-b border-white/10">
             <div>
-              <span className="font-mono text-xs uppercase tracking-[0.24em] text-[#b85d38] font-bold">
+              <span className="font-mono text-xs uppercase tracking-[0.24em] text-[#00c8ff] font-bold">
                 02 / ARCHITECTURAL ATELIER
               </span>
               <h2 className="font-['BlauerNue',sans-serif] text-4xl sm:text-6xl md:text-7xl font-black uppercase tracking-tight text-white mt-3">
@@ -65,14 +65,14 @@ export default function ServicesPage() {
           {/* 3 Design Services Animated Grid */}
           <ServicesCatalogGrid
             services={designServices}
-            accentColor="#b85d38"
+            accentColor="#00c8ff"
             gridCols="3"
           />
         </div>
       </section>
 
       {/* MASTER CONSULTATION CTA */}
-      <section className="w-full py-24 sm:py-32 px-6 sm:px-12 md:px-16 lg:px-20 bg-background relative overflow-hidden">
+      <section className="w-full py-24 sm:py-32 px-6 sm:px-12 md:px-16 lg:px-20 relative overflow-hidden">
         <div className="max-w-5xl mx-auto flex flex-col items-center text-center gap-6 relative z-10">
           <span className="font-mono text-xs uppercase tracking-[0.24em] text-[#00c8ff] font-bold">
             COMMISSION YOUR PROJECT

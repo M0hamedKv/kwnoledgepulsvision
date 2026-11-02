@@ -3,10 +3,7 @@ import Link from "next/link";
 
 export const AboutCta: React.FC = () => {
   return (
-    <section className="relative w-full py-24 sm:py-32 px-6 sm:px-12 md:px-16 lg:px-20 border-b border-white/10 bg-black overflow-hidden">
-      {/* Background Ambient Radial Glow */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-150 h-150 bg-[#00c8ff]/5 rounded-full blur-[180px] pointer-events-none" />
-
+    <section className="relative w-full py-24 sm:py-32 px-6 sm:px-12 md:px-16 lg:px-20 border-b border-white/10 bg-transparent overflow-hidden">
       <div className="max-w-5xl mx-auto flex flex-col items-center text-center gap-8 relative z-10">
         <span className="font-mono text-xs font-bold uppercase tracking-[0.25em] text-[#00c8ff] px-3.5 py-1.5 bg-[#00c8ff]/10 border border-[#00c8ff]/30 shadow-[0_0_15px_rgba(0,200,255,0.15)]">
           COMMISSIONS & PARTNERSHIPS

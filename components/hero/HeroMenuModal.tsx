@@ -169,7 +169,7 @@ export const HeroMenuModal: React.FC<HeroMenuModalProps> = ({
       role="dialog"
       aria-modal="true"
       aria-label="Site Navigation"
-      className={`fixed inset-0 z-90 flex flex-col justify-between bg-background text-white select-none overflow-y-auto pt-28 sm:pt-36 pb-8 transition-transform duration-700 ease-[cubic-bezier(0.76,0,0.24,1)] will-change-transform ${
+      className={`fixed inset-0 z-90 flex flex-col justify-between bg-black/95 backdrop-blur-3xl text-white select-none overflow-y-auto pt-28 sm:pt-36 pb-8 transition-transform duration-700 ease-[cubic-bezier(0.76,0,0.24,1)] will-change-transform ${
         isOpen ? "translate-y-0 pointer-events-auto" : "-translate-y-full pointer-events-none"
       }`}
     >

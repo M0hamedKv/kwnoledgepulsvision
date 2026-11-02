@@ -95,7 +95,7 @@ export const AboutStory: React.FC = () => {
               ref={cardRef}
               onMouseMove={handleMouseMove}
               onMouseLeave={handleMouseLeave}
-              className="relative w-full max-w-md h-105 sm:h-120 rounded-2xl overflow-hidden border border-white/20 bg-[#0c0c0c] shadow-[0_25px_60px_rgba(0,0,0,0.9)] cursor-pointer group will-change-transform select-none"
+              className="relative w-full max-w-md h-105 sm:h-120 rounded-2xl overflow-hidden border border-white/20 bg-black/90 shadow-[0_25px_60px_rgba(0,0,0,0.9)] cursor-pointer group will-change-transform select-none"
               style={{ transformStyle: "preserve-3d" }}
             >
               {/* Background Showcase Render */}

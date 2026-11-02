@@ -17,7 +17,7 @@ const DISCIPLINES = [
 
 export default function JoinUsPage() {
   return (
-    <main className="relative min-h-screen bg-black text-white selection:bg-[#00c8ff] selection:text-black">
+    <main className="relative min-h-screen bg-transparent text-white selection:bg-[#00c8ff] selection:text-black">
       <PageHero
         theme="cyan"
         eyebrow={{
@@ -29,7 +29,7 @@ export default function JoinUsPage() {
           primaryText: "TALENT NETWORK",
           secondaryText: "ACCEPTING PORTFOLIOS",
           metricText: "CAIRO // REMOTE",
-          dotColor: "bg-emerald-400",
+          dotColor: "bg-[#00c8ff]",
         }}
         headline={{
           line1: "BUILD THE",

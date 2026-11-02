@@ -64,7 +64,7 @@ export const Navbar: React.FC = () => {
           isVisible ? "translate-y-0" : "-translate-y-full pointer-events-none"
         } ${
           isScrolled || isMenuOpen
-            ? "bg-background backdrop-blur-2xl  py-4 sm:py-5"
+            ? "bg-black/80 backdrop-blur-2xl border-b border-white/10 py-4 sm:py-5"
             : "bg-transparent py-6 sm:py-8"
         }`}
       >

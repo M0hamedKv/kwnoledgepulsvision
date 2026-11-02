@@ -17,18 +17,18 @@
 }
 
 :root {
-  --background: #070913;          /* خلفية الموقع بالكامل (تم ضبطها لتطابق لون Portfolio) - عدلها من هنا تتغير في كامل الموقع */
+  --background: #000000;          /* خلفية سوداء نقية وفاخرة في كامل الموقع */
   --foreground: #ffffff;
 
   /* ==========================================================================
-     Brand Identity Theme Variables (عدل الألوان من هنا من مكان واحد)
+     Brand Identity Theme Variables
      ========================================================================== */
-  --brand-primary: #b85d38;       /* اللون الأساسي: لون الخلفية الطيني/البرتقالي الدافئ */
+  --brand-primary: #00c8ff;       /* اللون الأساسي الموحد: سيان براند KV Studio */
   --brand-accent: #00c8ff;        /* اللون التفاعلي والتمييز: السيان/الأزرق المضيء */
   --brand-accent-glow: rgba(0, 200, 255, 0.4);
-  --brand-dark: #070913;          /* اللون الداكن الموحد للخلفيات */
-  --brand-card-bg: #141414;       /* خلفية الكروت والإطارات */
-  --brand-card-border: rgba(255, 255, 255, 0.14);
+  --brand-dark: #000000;          /* اللون الداكن الموحد للخلفيات */
+  --brand-card-bg: rgba(0, 0, 0, 0.75); /* خلفية الكروت الزجاجية */
+  --brand-card-border: rgba(255, 255, 255, 0.12);
 }
 
 @theme inline {
@@ -54,8 +54,18 @@
   color: #000000;
 }
 
+html {
+  background-color: #000000;
+  color-scheme: dark;
+}
+
 body {
-  background: var(--background);
+  background-color: #000000;
+  background-image:
+    radial-gradient(circle 350px at 98% 2%, rgba(0, 85, 255, 0.24) 0%, transparent 70%),
+    radial-gradient(circle 350px at 2% 98%, rgba(0, 85, 255, 0.24) 0%, transparent 70%);
+  background-attachment: fixed;
+  background-repeat: no-repeat;
   color: var(--foreground);
   font-family: var(--font-sans);
   overflow-x: clip;

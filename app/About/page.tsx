@@ -1,4 +1,3 @@
-import React from "react";
 import type { Metadata } from "next";
 import { PageHero } from "@/components/ui/PageHero";
 import { AboutStory, AboutVision } from "@/components/about";
@@ -11,7 +10,7 @@ export const metadata: Metadata = {
 
 export default function AboutPage() {
   return (
-    <main className="relative min-h-screen bg-background text-white selection:bg-[#00c8ff] selection:text-black">
+    <main className="relative min-h-screen bg-transparent text-white selection:bg-[#00c8ff] selection:text-black">
       {/* 1. Grand Cinematic Page Hero */}
       <PageHero
         theme="cyan"

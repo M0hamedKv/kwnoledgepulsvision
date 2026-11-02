@@ -15,11 +15,7 @@ export const metadata: Metadata = {
 
 export default function PortfolioPage() {
   return (
-    <main className="w-full bg-background text-white selection:bg-[#00c8ff] selection:text-black overflow-hidden relative">
-      {/* Ambient background atmosphere matching the KV blueprint in screenshot */}
-      <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-250 h-250 bg-[#00c8ff]/[0.035] rounded-full blur-[200px] pointer-events-none" />
-      <div className="absolute bottom-1/4 right-0 w-150 h-150 bg-purple-600/3 rounded-full blur-[180px] pointer-events-none" />
-
+    <main className="w-full bg-transparent text-white selection:bg-[#00c8ff] selection:text-black overflow-hidden relative">
       {/* 1. Portfolio Hero Section */}
       <PortfolioHero />
 
@@ -35,7 +31,7 @@ export default function PortfolioPage() {
       </section>
 
       {/* 3. Bottom Call To Action Banner */}
-      <section className="relative w-full py-20 sm:py-28 px-6 sm:px-12 md:px-16 lg:px-20 border-t border-white/10 bg-background">
+      <section className="relative w-full py-20 sm:py-28 px-6 sm:px-12 md:px-16 lg:px-20 border-t border-white/10 bg-transparent">
         <div className="max-w-4xl mx-auto flex flex-col items-center text-center gap-6">
           <span className="font-mono text-xs font-bold uppercase tracking-[0.25em] text-[#00c8ff] px-3.5 py-1.5 bg-[#00c8ff]/10 border border-[#00c8ff]/30">
             NEXT GENERATION PROPTECH

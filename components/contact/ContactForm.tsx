@@ -96,7 +96,7 @@ export const ContactForm: React.FC = () => {
     <form
       onSubmit={handleSubmit}
       noValidate
-      className="flex flex-col gap-5 p-6 sm:p-8 rounded-2xl bg-zinc-950/80 border border-white/10 backdrop-blur-md shadow-2xl"
+      className="flex flex-col gap-5 p-6 sm:p-8 rounded-2xl bg-black/80 border border-white/10 backdrop-blur-md shadow-2xl"
     >
       {/* Name Field */}
       <div className="flex flex-col gap-2">

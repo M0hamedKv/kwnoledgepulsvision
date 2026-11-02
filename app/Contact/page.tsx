@@ -18,7 +18,7 @@ export const metadata: Metadata = {
 
 export default function ContactPage() {
   return (
-    <main className="relative min-h-screen bg-background text-white selection:bg-[#00c8ff] selection:text-black">
+    <main className="relative min-h-screen bg-transparent text-white selection:bg-[#00c8ff] selection:text-black">
       {/* Unified Kinetic Page Hero */}
       <PageHero
         theme="cyan"
@@ -31,7 +31,7 @@ export default function ContactPage() {
           primaryText: "STUDIO ATELIER",
           secondaryText: "OPEN FOR COMMISSIONS",
           metricText: "NEW CAIRO // CAPE TOWN",
-          dotColor: "bg-emerald-400",
+          dotColor: "bg-[#00c8ff]",
         }}
         headline={{
           line1: "LET’S WORK",

@@ -34,16 +34,8 @@ export function Story({
   return (
     <section
       id={id || `story-${index !== undefined ? index + 1 : "default"}`}
-      className={`min-h-screen w-full bg-background text-white relative overflow-hidden py-16 sm:py-24 border-b border-white/5 select-none ${className}`}
+      className={`min-h-screen w-full bg-transparent text-white relative overflow-hidden py-16 sm:py-24 border-b border-white/5 select-none ${className}`}
     >
-      {/* Background ambient radial glow */}
-      <div
-        className={`absolute top-1/2 -translate-y-1/2 w-175 h-175 rounded-full blur-[240px] pointer-events-none opacity-15 ${
-          isReversed ? "right-[5%]" : "left-[5%]"
-        }`}
-        style={{ backgroundColor: accentColor }}
-      />
-
       <div className="flex size-full flex-col items-center relative z-10 px-4 sm:px-8">
         {/* Top HUD Metadata Pill — Alternates with the direction of the text */}
         <StoryTopHud
@@ -57,8 +49,7 @@ export function Story({
         />
 
         {/* Kinetic 3D Animated Title */}
-        <AnimatedTitle
-          title={displayTitle}
+        <AnimatedTitle title={displayTitle}
           clasContainer="mt-2 pointer-events-none mix-blend-difference z-20 relative text-center"
         />
 

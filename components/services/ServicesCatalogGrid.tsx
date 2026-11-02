@@ -68,7 +68,7 @@ const ServiceCard3D: React.FC<{
           ref={cardRef}
           onMouseMove={handleMouseMove}
           onMouseLeave={handleMouseLeave}
-          className="relative flex flex-col justify-between h-full flex-1 bg-[#0e111a] hover:bg-[#131726] border border-white/10 rounded-2xl overflow-hidden shadow-[0_20px_50px_rgba(0,0,0,0.6)] will-change-transform cursor-pointer"
+          className="relative flex flex-col justify-between h-full flex-1 bg-black/80 hover:bg-black/95 backdrop-blur-md border border-white/10 rounded-2xl overflow-hidden shadow-[0_20px_50px_rgba(0,0,0,0.6)] will-change-transform cursor-pointer"
           style={
             {
               transformStyle: "preserve-3d",
@@ -78,7 +78,7 @@ const ServiceCard3D: React.FC<{
           }
         >
           {/* 1. VISUAL MEDIA HEADER CONTAINER */}
-          <div className="relative w-full aspect-16/10 bg-[#070913] overflow-hidden border-b border-white/10 flex items-center justify-center">
+          <div className="relative w-full aspect-16/10 bg-black overflow-hidden border-b border-white/10 flex items-center justify-center">
             {service.status === "coming-soon" ? (
               <div className="relative w-full h-full flex flex-col items-center justify-center p-6 text-center overflow-hidden bg-linear-to-b from-white/4 to-black/60">
                 {/* Glow */}
@@ -123,7 +123,7 @@ const ServiceCard3D: React.FC<{
                     /{service.number}
                   </span>
                   <span className="px-2.5 py-1 rounded-lg bg-black/80 backdrop-blur-md border border-white/15 font-mono text-[10px] font-bold uppercase tracking-wider shadow-sm flex items-center gap-1.5 text-white/80">
-                    <span className="w-1.5 h-1.5 rounded-full bg-amber-400 animate-pulse" />
+                    <span className="w-1.5 h-1.5 rounded-full bg-[#00c8ff] animate-pulse" />
                     COMING SOON
                   </span>
                 </div>
@@ -157,7 +157,7 @@ const ServiceCard3D: React.FC<{
                 )}
 
                 {/* Cinematic Vignette Overlay */}
-                <div className="absolute inset-0 bg-linear-to-t from-[#0e111a] via-transparent to-black/50 pointer-events-none" />
+                <div className="absolute inset-0 bg-linear-to-t from-black/90 via-transparent to-black/50 pointer-events-none" />
 
                 {/* Top Floating Badges */}
                 <div className="absolute top-3.5 left-3.5 right-3.5 flex items-center justify-between z-10 pointer-events-none">

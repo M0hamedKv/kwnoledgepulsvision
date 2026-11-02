@@ -210,7 +210,7 @@ export const JoinForm: React.FC = () => {
     <form
       onSubmit={handleSubmit}
       noValidate
-      className="flex flex-col gap-5 p-6 sm:p-8 rounded-2xl bg-zinc-950/80 border border-white/10 backdrop-blur-md shadow-2xl"
+      className="flex flex-col gap-5 p-6 sm:p-8 rounded-2xl bg-black/80 border border-white/10 backdrop-blur-md shadow-2xl"
     >
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
         <TextField

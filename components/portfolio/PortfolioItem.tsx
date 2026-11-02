@@ -252,7 +252,7 @@ export const PortfolioItem: React.FC<PortfolioItemProps> = ({
           {/* Sleek reduced height container (lg:h-[315px] for cinematic widescreen ratio) */}
           <div
             ref={expandBoxRef}
-            className="relative h-52.5 sm:h-62.5 md:h-71.25 lg:h-78.75 rounded-2xl sm:rounded-3xl overflow-hidden border border-white/15 shadow-[0_20px_60px_rgba(0,0,0,0.85)] bg-[#0c1020]"
+            className="relative h-52.5 sm:h-62.5 md:h-71.25 lg:h-78.75 rounded-2xl sm:rounded-3xl overflow-hidden border border-white/15 shadow-[0_20px_60px_rgba(0,0,0,0.85)] bg-black/80"
           >
             {/* Inner Media anchored adjacent to text, expanding outward */}
             <div

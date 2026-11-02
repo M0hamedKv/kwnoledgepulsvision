@@ -4,7 +4,7 @@ import { ServicesSection } from "@/components/services";
 
 export default function Home() {
   return (
-    <main className="w-full bg-background">
+    <main className="w-full bg-transparent">
       <ShowcaseSection>
         <HeroSection />
       </ShowcaseSection>
