@@ -26,6 +26,7 @@ export interface HeroSectionProps {
   menuItems?: MenuItem[];
   sectors?: SectorItem[];
   onSectorSelect?: (sectorId: string) => void;
+  introComplete?: boolean;
 }
 
 export interface HeroBackgroundProps {
