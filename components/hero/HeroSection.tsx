@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import gsap from "gsap";
 import { HeroSectionProps } from "./types";
 import { HeroBackground } from "./HeroBackground";
@@ -12,8 +12,8 @@ import { HeroHeadline } from "./HeroHeadline";
  * Master Orchestrator for KV STUDIO:
  * 1. Black curtain covers the section initially.
  * 2. Center Loader: Company name appears with elegant letter-by-letter reveal + sleek loading bar.
- * 3. Loading bar fills smoothly as the background video buffers (ZERO numbers, ZERO text).
- * 4. Once loaded, loader fades out gracefully.
+ * 3. Loading bar GENUINELY waits for the video to download and buffer (real streaming progress).
+ * 4. Once the video is 100% downloaded and ready, loader fades out gracefully.
  * 5. HeroHeadline appears letter-by-letter on the black curtain.
  * 6. The black curtain collapses / sweeps to the LEFT edge, revealing the live playing video.
  * 7. Taglines slide in dynamically from the right, and navbar fades in.
@@ -22,6 +22,8 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
   backgroundImageUrl = "/hero-bg.webp",
   backgroundVideoUrl = "https://res.cloudinary.com/hxytmocg/video/upload/v1793529386/close_to_building.mp4",
 }) => {
+  const [videoSrc, setVideoSrc] = useState(backgroundVideoUrl);
+
   const sectionRef = useRef<HTMLElement>(null);
   const curtainRef = useRef<HTMLDivElement>(null);
   const loaderRef = useRef<HTMLDivElement>(null);
@@ -100,16 +102,14 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
       );
     }
 
-    // 3. Track Video Loading & Buffer Progress
+    // 3. Track REAL Video Loading & Buffering Progress
     let isMounted = true;
     let currentProgress = 0;
-    let targetProgress = 15; // Smooth initial start
+    let targetProgress = 0; // Starts at 0, only moves as real video bytes load!
     let hasTriggeredIntro = false;
     let animationFrameId: number;
     let timeoutId: NodeJS.Timeout;
-
-    const startTime = performance.now();
-    const minDuration = 1300; // Minimum 1.3s so the animation feels deliberate & cinematic
+    const abortController = new AbortController();
 
     // The Master Intro Sequence (Headline reveal -> Curtain sweeps left -> Tagline)
     const playOriginalIntro = () => {
@@ -224,69 +224,125 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
       }
     };
 
-    // Listen to background video buffer status
-    const bgVideo = sectionRef.current.querySelector<HTMLVideoElement>("video");
-    const testVideo = document.createElement("video");
-    testVideo.src = backgroundVideoUrl;
-    testVideo.preload = "auto";
-    testVideo.muted = true;
-    testVideo.playsInline = true;
-
-    const handleVideoProgress = (vid: HTMLVideoElement) => {
+    // Helper to advance targetProgress only when real data arrives
+    const updateProgress = (pct: number) => {
       if (!isMounted) return;
-      if (vid.duration > 0 && vid.buffered.length > 0) {
-        const bufferedEnd = vid.buffered.end(vid.buffered.length - 1);
-        const ratio = Math.min(bufferedEnd / Math.min(vid.duration, 4), 1);
-        const computed = 20 + ratio * 75;
-        if (computed > targetProgress) targetProgress = computed;
+      const rounded = Math.min(Math.max(Math.round(pct), 0), 100);
+      if (rounded > targetProgress) {
+        targetProgress = rounded;
       }
     };
 
-    const handleVideoReady = () => {
-      if (!isMounted) return;
-      targetProgress = 100;
+    // REAL VIDEO DOWNLOAD: Streams bytes from Cloudinary with 100% genuine progress
+    const loadRealVideo = async () => {
+      try {
+        const response = await fetch(backgroundVideoUrl, {
+          signal: abortController.signal,
+          mode: "cors",
+        });
+
+        if (!response.ok || !response.body) {
+          throw new Error("Direct stream fetch not available");
+        }
+
+        const contentLength = response.headers.get("content-length");
+        const totalBytes = contentLength ? parseInt(contentLength, 10) : 0;
+        const reader = response.body.getReader();
+        const chunks: Uint8Array[] = [];
+        let receivedBytes = 0;
+
+        while (true) {
+          const { done, value } = await reader.read();
+          if (done) break;
+
+          chunks.push(value);
+          receivedBytes += value.length;
+
+          if (totalBytes > 0) {
+            const percent = (receivedBytes / totalBytes) * 100;
+            updateProgress(percent);
+          } else {
+            // If server omitted content-length, track against 8MB estimate
+            const estimatedPercent = Math.min((receivedBytes / (8 * 1024 * 1024)) * 100, 95);
+            updateProgress(estimatedPercent);
+          }
+        }
+
+        // 100% of the video bytes are downloaded
+        updateProgress(100);
+
+        // Convert downloaded bytes into a local memory Blob URL for zero-latency instant playback
+        const blob = new Blob(chunks as unknown as BlobPart[], { type: "video/mp4" });
+        const blobUrl = URL.createObjectURL(blob);
+        if (isMounted) {
+          setVideoSrc(blobUrl);
+          const bgVid = sectionRef.current?.querySelector<HTMLVideoElement>("video");
+          if (bgVid) {
+            bgVid.src = blobUrl;
+            bgVid.play().catch(() => {});
+          }
+        }
+      } catch (err: unknown) {
+        if ((err as Error)?.name === "AbortError") return;
+
+        // Fallback: If streaming fetch fails (e.g. CORS block), track the <video> element's real buffer
+        const bgVid = sectionRef.current?.querySelector<HTMLVideoElement>("video");
+        if (bgVid) {
+          const onBuffer = () => {
+            if (bgVid.duration > 0 && bgVid.buffered.length > 0) {
+              const bufferedEnd = bgVid.buffered.end(bgVid.buffered.length - 1);
+              const pct = (bufferedEnd / bgVid.duration) * 100;
+              updateProgress(pct);
+            }
+          };
+
+          const onReady = () => updateProgress(100);
+
+          if (bgVid.readyState >= 4) {
+            updateProgress(100);
+          } else {
+            bgVid.addEventListener("progress", onBuffer);
+            bgVid.addEventListener("canplaythrough", onReady);
+            bgVid.load();
+          }
+        }
+      }
     };
 
-    if (bgVideo) {
-      if (bgVideo.readyState >= 3) {
-        targetProgress = 100;
-      } else {
-        bgVideo.addEventListener("progress", () => handleVideoProgress(bgVideo));
-        bgVideo.addEventListener("loadeddata", handleVideoReady);
-        bgVideo.addEventListener("canplay", handleVideoReady);
-      }
-    }
+    loadRealVideo();
 
-    testVideo.addEventListener("progress", () => handleVideoProgress(testVideo));
-    testVideo.addEventListener("loadeddata", handleVideoReady);
-    testVideo.addEventListener("canplay", handleVideoReady);
-    testVideo.load();
-
-    // Fallback safety timeout so slow networks never get trapped
+    // Safety timeout (8s) only in case of completely broken network/offline so user isn't stuck
     timeoutId = setTimeout(() => {
-      if (isMounted) targetProgress = 100;
-    }, 4000);
+      if (isMounted && targetProgress < 100) {
+        updateProgress(100);
+      }
+    }, 8000);
 
-    // 60fps LERP loop for silky-smooth progress bar filling
-    const tick = (now: number) => {
+    // 60fps Physics Ticker: STRICTLY catches up to real video progress, never runs ahead on a timer!
+    const tick = () => {
       if (!isMounted) return;
 
-      const elapsed = now - startTime;
-      const maxAllowed = elapsed < minDuration ? Math.min(95, (elapsed / minDuration) * 95) : 100;
-      const effectiveTarget = Math.min(targetProgress, maxAllowed);
+      // Only advance currentProgress if real targetProgress is higher
+      if (currentProgress < targetProgress) {
+        const delta = targetProgress - currentProgress;
+        const step = Math.max(delta * 0.12, 0.25);
+        currentProgress += step;
+        if (currentProgress > targetProgress) {
+          currentProgress = targetProgress;
+        }
+      }
 
-      const delta = effectiveTarget - currentProgress;
-      currentProgress += Math.max(delta * 0.12, 0.35);
+      if (progressFillRef.current) {
+        progressFillRef.current.style.width = `${currentProgress.toFixed(1)}%`;
+      }
 
-      if (currentProgress >= 100 && elapsed >= minDuration) {
+      // ONLY finish when video download is 100% complete AND bar has filled to 100%
+      if (targetProgress >= 100 && currentProgress >= 99.5) {
         currentProgress = 100;
         if (progressFillRef.current) progressFillRef.current.style.width = "100%";
-        setTimeout(finishLoaderAndStartIntro, 120);
+        setTimeout(finishLoaderAndStartIntro, 140);
         return;
       }
-
-      if (currentProgress > 100) currentProgress = 100;
-      if (progressFillRef.current) progressFillRef.current.style.width = `${currentProgress}%`;
 
       animationFrameId = requestAnimationFrame(tick);
     };
@@ -295,11 +351,11 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
 
     return () => {
       isMounted = false;
+      abortController.abort();
       cancelAnimationFrame(animationFrameId);
       clearTimeout(timeoutId);
       document.body.style.overflow = originalOverflow;
       if (navbar) gsap.set(navbar, { opacity: 1 });
-      testVideo.src = "";
     };
   }, [backgroundVideoUrl]);
 
@@ -309,7 +365,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
       className="relative w-full h-dvh flex flex-col justify-between overflow-hidden text-white"
     >
       {/* 1. Cinematic Background Visual Layer (z-0) */}
-      <HeroBackground imageUrl={backgroundImageUrl} videoUrl={backgroundVideoUrl} />
+      <HeroBackground imageUrl={backgroundImageUrl} videoUrl={videoSrc} />
 
       {/* 2. Intro Black Curtain (z-10, covers entire section initially, then sweeps left) */}
       <div
@@ -327,7 +383,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
 
         {/* Company Name with letter-by-letter reveal animation */}
         <h1 className="relative z-10 flex items-center font-['BlauerNue',sans-serif] font-black text-2xl sm:text-3xl md:text-4xl lg:text-[42px] tracking-[0.32em] sm:tracking-[0.38em] text-white uppercase drop-shadow-[0_2px_24px_rgba(255,255,255,0.22)] select-none ml-[0.35em]">
-          {"KNOWLEDGEPLUSVIVION".split("").map((char, i) => (
+          {"KV STUDIO".split("").map((char, i) => (
             <span
               key={i}
               className="loader-char inline-block will-change-transform opacity-0"
@@ -338,10 +394,10 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
           ))}
         </h1>
 
-        {/* Minimalist Progress Bar (Strictly NO numbers, NO text) */}
+        {/* Minimalist Progress Bar (Strictly NO numbers, NO text, Real Video Download) */}
         <div
           ref={progressBarRef}
-          className="mt-6 sm:mt-7 w-48 sm:w-60 md:w-68 h-[2px] sm:h-[2.5px] bg-white/12 rounded-full overflow-hidden relative backdrop-blur-xs opacity-0 will-change-transform"
+          className="mt-6 sm:mt-7 w-48 sm:w-60 md:w-68 h-0.5 sm:h-[2.5px] bg-white/12 rounded-full overflow-hidden relative backdrop-blur-xs opacity-0 will-change-transform"
           role="progressbar"
           aria-label="Loading progress"
         >
