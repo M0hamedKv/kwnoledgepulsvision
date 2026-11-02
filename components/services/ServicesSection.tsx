@@ -307,7 +307,7 @@ export const ServicesSection: React.FC<ServicesSectionProps> = ({
       ref={sectionRef}
       id="services"
       aria-label="Services Section: Interactive Solution and Design"
-      className="relative z-50 w-full min-h-screen bg-transparent text-white pt-24 sm:pt-32 pb-28 sm:pb-36 px-6 sm:px-12 md:px-16 lg:px-20 overflow-hidden border-t border-white/10"
+      className="relative z-50 w-full min-h-screen bg-background text-white pt-24 sm:pt-32 pb-28 sm:pb-36 px-6 sm:px-12 md:px-16 lg:px-20 overflow-hidden border-t border-white/10"
     >
       <div className="max-w-7xl mx-auto flex flex-col gap-10 sm:gap-14 relative z-10">
         {/* Minimal High-Impact Architectural Header */}
