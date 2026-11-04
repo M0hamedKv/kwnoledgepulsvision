@@ -90,10 +90,7 @@ export default function ServicesPage() {
               DISCUSS YOUR PROJECT
             </Link>
 
-            <Link
-              href="/"
-              className="px-8 py-4 border border-white/15 text-white font-mono text-xs uppercase tracking-widest hover:border-white/40 transition-colors"
-            >
+            <Link href="/" className="px-8 py-4 border border-white/15 text-white font-mono text-xs uppercase tracking-widest hover:border-white/40 transition-colors" >
               BACK TO HOME
             </Link>
           </div>

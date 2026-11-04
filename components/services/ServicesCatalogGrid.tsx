@@ -61,10 +61,7 @@ const ServiceCard3D: React.FC<{
       className="catalog-card-wrapper w-full flex flex-col select-none will-change-[clip-path]"
       style={{ perspective: "1000px" }}
     >
-      <Link
-        href={`/services/${service.slug}`}
-        className="group relative block w-full h-[460px] sm:h-[540px] lg:h-[620px] rounded-3xl overflow-hidden bg-black border border-white/10 hover:border-white/30 shadow-[0_20px_50px_rgba(0,0,0,0.85)] transition-colors duration-500 cursor-pointer"
-      >
+      <Link href={`/services/${service.slug}`} className="group relative block w-full h-115 sm:h-135 lg:h-155 rounded-3xl overflow-hidden bg-black border border-white/10 hover:border-white/30 shadow-[0_20px_50px_rgba(0,0,0,0.85)] transition-colors duration-500 cursor-pointer">
         <div
           ref={cardRef}
           onMouseMove={handleMouseMove}
@@ -93,7 +90,7 @@ const ServiceCard3D: React.FC<{
           )}
 
           {/* 2. Hover Reveal Overlay: Only appears on hover to display the service name */}
-          <div className="absolute inset-0 z-20 flex flex-col items-center justify-center p-6 sm:p-10 text-center opacity-0 group-hover:opacity-100 transition-all duration-500 bg-black/50 backdrop-blur-[4px] pointer-events-none">
+          <div className="absolute inset-0 z-20 flex flex-col items-center justify-center p-6 sm:p-10 text-center opacity-0 group-hover:opacity-100 transition-all duration-500 bg-black/50 backdrop-blur-xs pointer-events-none">
             <div className="flex flex-col items-center gap-3 transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
               <span className="font-['BlauerNue',sans-serif] text-3xl sm:text-4xl lg:text-5xl font-black uppercase tracking-tight text-white drop-shadow-[0_4px_30px_rgba(0,0,0,0.95)]">
                 {service.title}

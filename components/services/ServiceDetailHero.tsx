@@ -143,6 +143,144 @@ export const ServiceDetailHero: React.FC<ServiceDetailHeroProps> = ({ service })
 
   const titleLetters = service.title.split("");
 
+  // =========================================================================
+  // DEDICATED FULL-BLEED 4K VIDEO HERO FOR ANIMATION
+  // =========================================================================
+  if (service.slug === "animation") {
+    const animationVideo =
+      service.coverVideo ||
+      "https://res.cloudinary.com/hxytmocg/video/upload/v1793216262/NIGHT_SPINE.mp4";
+
+    return (
+      <section
+        ref={containerRef}
+        className="relative w-full min-h-screen flex flex-col justify-between pt-32 sm:pt-36 pb-12 sm:pb-16 px-6 sm:px-12 md:px-16 lg:px-20 overflow-hidden border-b border-white/10"
+      >
+        {/* 1. 100% Full-Bleed 4K Background Playing Video */}
+        <div className="absolute inset-0 z-0 pointer-events-none select-none overflow-hidden">
+          <video
+            src={animationVideo}
+            autoPlay
+            loop
+            muted
+            playsInline
+            preload="auto"
+            className="w-full h-full object-cover scale-102"
+          />
+          {/* Cinematic Contrast Overlays */}
+          <div className="absolute inset-0 bg-black/45" />
+          <div className="absolute inset-x-0 top-0 h-48 bg-linear-to-b from-black/85 via-black/40 to-transparent" />
+          <div className="absolute inset-x-0 bottom-0 h-72 bg-linear-to-t from-black via-black/60 to-transparent" />
+        </div>
+
+        {/* 2. Top Eyebrow Badges */}
+        <div className="sd-eyebrow flex items-center justify-between flex-wrap gap-4 relative z-10">
+          <div className="flex items-center gap-3">
+            <span
+              className="w-2.5 h-2.5 rounded-full animate-pulse"
+              style={{ backgroundColor: service.accentColor }}
+            />
+            <span
+              className="font-mono text-xs sm:text-sm font-bold uppercase tracking-[0.24em]"
+              style={{ color: service.accentColor }}
+            >
+              /{service.number} // {service.disciplineTag}
+            </span>
+          </div>
+
+          <div className="flex items-center gap-2 font-mono text-[11px] text-white/70 uppercase tracking-widest">
+            <span className="px-3 py-1 rounded-full bg-black/60 backdrop-blur-md border border-white/15">
+              {service.badge}
+            </span>
+            <span
+              className="px-3 py-1 rounded-full border font-bold bg-black/60 backdrop-blur-md"
+              style={{
+                color: service.accentColor,
+                borderColor: `${service.accentColor}50`,
+              }}
+            >
+              {service.mediaCountLabel}
+            </span>
+          </div>
+        </div>
+
+        {/* 3. Central Cinematic Typography & CTAs */}
+        <div className="relative z-10 max-w-5xl flex flex-col gap-6 my-auto pt-8 pb-8">
+          <h1 className="font-['BlauerNue',sans-serif] text-6xl sm:text-8xl md:text-9xl lg:text-[10rem] font-black uppercase tracking-tight leading-[0.85] text-white flex flex-wrap overflow-hidden select-none drop-shadow-[0_8px_40px_rgba(0,0,0,0.95)]">
+            {titleLetters.map((char, i) => (
+              <span
+                key={i}
+                className="sd-title-char inline-block will-change-transform"
+              >
+                {char === " " ? "\u00A0" : char}
+              </span>
+            ))}
+          </h1>
+
+          <p className="sd-headline font-['BlauerNue',sans-serif] text-xl sm:text-2xl md:text-3xl font-bold uppercase tracking-wide text-white/95 max-w-4xl drop-shadow-[0_4px_20px_rgba(0,0,0,0.8)]">
+            {service.heroHeadline}
+          </p>
+
+          <p className="sd-manifesto font-['Rubik',sans-serif] text-white/80 text-sm sm:text-base md:text-lg max-w-3xl leading-relaxed drop-shadow-[0_2px_10px_rgba(0,0,0,0.8)]">
+            {service.subtitle}
+          </p>
+
+          {/* Architectural Telemetry Spec Pills */}
+          <div className="sd-manifesto flex flex-wrap items-center gap-2 sm:gap-3 font-mono text-xs uppercase pt-1">
+            <span className="px-3 py-1.5 rounded-xl bg-black/60 backdrop-blur-md border border-white/15 text-white flex items-center gap-2">
+              <span className="w-1.5 h-1.5 rounded-full bg-[#00c8ff]" />
+              UNREAL ENGINE 5.4
+            </span>
+            <span className="px-3 py-1.5 rounded-xl bg-black/60 backdrop-blur-md border border-white/15 text-white">
+              60 FPS REAL-TIME
+            </span>
+            <span className="px-3 py-1.5 rounded-xl bg-black/60 backdrop-blur-md border border-white/15 text-white">
+              4K / 8K RAYTRACED
+            </span>
+            <span className="px-3 py-1.5 rounded-xl bg-black/60 backdrop-blur-md border border-white/15 text-white">
+              PHOTOMETRIC LIGHTING
+            </span>
+          </div>
+
+          {/* CTAs */}
+          <div className="sd-cta flex flex-wrap items-center gap-4 pt-3">
+            <Link
+              href={`/Contact?service=${service.slug}`}
+              className="inline-flex items-center gap-3 px-8 py-4 rounded-xl text-black font-['BlauerNue',sans-serif] font-black text-xs sm:text-sm uppercase tracking-widest hover:bg-white hover:shadow-[0_0_30px_rgba(0,200,255,0.4)] transition-all duration-300 shadow-2xl"
+              style={{ backgroundColor: service.accentColor }}
+            >
+              <span>COMMISSION {service.title}</span>
+              <ArrowRightIcon className="w-4 h-4 stroke-current transform transition-transform duration-300 group-hover:translate-x-1" />
+            </Link>
+
+            <a
+              href="#demonstration"
+              className="inline-flex items-center gap-2 font-mono text-xs uppercase tracking-widest text-white/90 hover:text-white px-6 py-4 rounded-xl bg-black/60 backdrop-blur-md border border-white/20 hover:border-white/40 transition-colors shadow-2xl"
+            >
+              <span>WATCH ALL 20 CINEMA REELS</span>
+              <ArrowDownIcon className="w-3.5 h-3.5" />
+            </a>
+          </div>
+        </div>
+
+        {/* 4. Bottom Footer Bar */}
+        <div className="relative z-10 flex items-center justify-between border-t border-white/10 pt-4 text-xs font-mono text-white/60">
+          <span className="flex items-center gap-2 uppercase tracking-widest">
+            <span className="w-1.5 h-1.5 rounded-full bg-red-500 animate-pulse" />
+            4K ARCHITECTURAL CINEMA REEL
+          </span>
+          <a
+            href="#demonstration"
+            className="hover:text-white transition-colors uppercase tracking-widest flex items-center gap-1.5"
+          >
+            <span>SCROLL TO CINEMA GALLERY</span>
+            <span>↓</span>
+          </a>
+        </div>
+      </section>
+    );
+  }
+
   return (
     <section
       ref={containerRef}

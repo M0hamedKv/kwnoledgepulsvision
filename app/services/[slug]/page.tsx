@@ -1,9 +1,14 @@
 import { Metadata } from "next";
 import { notFound } from "next/navigation";
-import Link from "next/link";
 import { getServiceBySlug, getAllServices } from "@/components/services/servicesData";
-import { ArrowRightIcon, ArrowLeftIcon } from "@/svgs";
-import { ServiceMediaShowcase, ServiceDetailHero } from "@/components/services";
+import {
+  AnimationPage,
+  ImaquettePage,
+  WebdevelopmentPage,
+  BimPage,
+  MepPage,
+  InteriorPage,
+} from "@/components/services/pages";
 
 interface ServiceDetailPageProps {
   params: Promise<{ slug: string }>;
@@ -44,84 +49,69 @@ export default async function ServiceDetailPage({ params }: ServiceDetailPagePro
   const prevService = getServiceBySlug(service.prevSlug);
   const nextService = getServiceBySlug(service.nextSlug);
 
-  return (
-    <main className="w-full min-h-screen bg-transparent text-white selection:bg-[#00c8ff] selection:text-black">
-      {/* 1. Kinetic Master Hero with Dynamic Typography & 3D Live Media Preview */}
-      <ServiceDetailHero service={service} />
+  // Each service has its own completely separate, dedicated design and layout
+  switch (service.slug) {
+    case "animation":
+      return (
+        <AnimationPage
+          service={service}
+          prevService={prevService}
+          nextService={nextService}
+        />
+      );
 
-      {/* 2. Immersive Media & Interactive Production Showcase */}
-      <ServiceMediaShowcase service={service} />
-      
-      {/* DEDICATED PROPOSAL INQUIRY CTA */}
-      <section className="w-full py-20 sm:py-28 px-6 sm:px-12 md:px-16 lg:px-20 relative overflow-hidden bg-transparent">
-        <div className="max-w-5xl mx-auto flex flex-col items-center text-center gap-6 relative z-10">
-          <span className="font-mono text-xs uppercase tracking-[0.24em] text-[#00c8ff] font-bold">
-            COMMISSION {service.title}
-          </span>
+    case "imaquette":
+      return (
+        <ImaquettePage
+          service={service}
+          prevService={prevService}
+          nextService={nextService}
+        />
+      );
 
-          <h2 className="font-['BlauerNue',sans-serif] text-4xl sm:text-6xl md:text-7xl font-black uppercase tracking-tight text-white leading-tight">
-            {service.ctaHeading}
-          </h2>
+    case "webdevelopment":
+      return (
+        <WebdevelopmentPage
+          service={service}
+          prevService={prevService}
+          nextService={nextService}
+        />
+      );
 
-          <div className="flex flex-col sm:flex-row items-center gap-4 mt-2">
-            <Link
-              href={`/Contact?service=${service.slug}`}
-              className="px-8 py-4 bg-[#00c8ff] text-black font-['BlauerNue',sans-serif] font-black text-sm uppercase tracking-widest hover:bg-white transition-colors"
-            >
-              REQUEST A CUSTOM PROPOSAL
-            </Link>
+    case "bim":
+      return (
+        <BimPage
+          service={service}
+          prevService={prevService}
+          nextService={nextService}
+        />
+      );
 
-            <Link
-              href="/services"
-              className="px-8 py-4 border border-white/15 text-white font-mono text-xs uppercase tracking-widest hover:border-white/40 transition-colors"
-            >
-              BROWSE ALL SERVICES
-            </Link>
-          </div>
-        </div>
-      </section>
+    case "mep":
+      return (
+        <MepPage
+          service={service}
+          prevService={prevService}
+          nextService={nextService}
+        />
+      );
 
-      {/* ADJACENT SERVICES NAVIGATION */}
-      <nav aria-label="Adjacent Services Navigation" className="w-full py-8 px-6 sm:px-12 md:px-16 lg:px-20 bg-transparent border-b border-white/10">
-        <div className="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-6">
-          {prevService ? (
-            <Link
-              href={`/services/${prevService.slug}`}
-              className="group flex items-center gap-3 text-white/60 hover:text-white transition-colors"
-            >
-              <ArrowLeftIcon className="w-4 h-4 stroke-current text-[#00c8ff]" />
-              <div className="text-left font-mono text-xs">
-                <span className="block text-white/30 text-[10px]">PREVIOUS SERVICE</span>
-                <span className="font-bold uppercase tracking-wider">{prevService.title}</span>
-              </div>
-            </Link>
-          ) : (
-            <div />
-          )}
+    case "interior":
+      return (
+        <InteriorPage
+          service={service}
+          prevService={prevService}
+          nextService={nextService}
+        />
+      );
 
-          <Link
-            href="/services"
-            className="font-mono text-xs uppercase tracking-widest text-[#00c8ff] hover:underline"
-          >
-            VIEW ALL SERVICES
-          </Link>
-
-          {nextService ? (
-            <Link
-              href={`/services/${nextService.slug}`}
-              className="group flex items-center gap-3 text-white/60 hover:text-white transition-colors"
-            >
-              <div className="text-right font-mono text-xs">
-                <span className="block text-white/30 text-[10px]">NEXT SERVICE</span>
-                <span className="font-bold uppercase tracking-wider">{nextService.title}</span>
-              </div>
-              <ArrowRightIcon className="w-4 h-4 stroke-current text-[#00c8ff]" />
-            </Link>
-          ) : (
-            <div />
-          )}
-        </div>
-      </nav>
-    </main>
-  );
+    default:
+      return (
+        <AnimationPage
+          service={service}
+          prevService={prevService}
+          nextService={nextService}
+        />
+      );
+  }
 }
