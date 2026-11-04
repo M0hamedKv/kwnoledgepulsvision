@@ -231,7 +231,7 @@ export const ALL_SERVICES: ServiceDetailItem[] = [
     discipline: "INTERACTIVE SOLUTION",
     disciplineSlug: "interactive-solution",
     disciplineTag: "DIGITAL EXPERIENCES & 3D SYSTEMS",
-    title: "WEBDEVELOPMENT",
+    title: "WEB DEVELOPMENT",
     heroHeadline: "ARCHITECTURAL DIGITAL SPACES ENGINEERED FOR THE WEB",
     subtitle: "Ultra-fast bespoke digital platforms, WebGL 3D web applications, and choreographed kinetic experiences.",
     manifesto:

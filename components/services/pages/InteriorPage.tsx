@@ -1,173 +1,162 @@
 "use client";
 
-import React, { useState } from "react";
+import React from "react";
 import Link from "next/link";
 import { ServiceDetailItem } from "../servicesData";
 import { INTERIOR_PROJECTS } from "../interiorData";
-import { InteriorProjectSection, Lightbox, LightboxItem } from "../showcase";
-import { ArrowRightIcon, ArrowDownIcon, ArrowLeftIcon } from "@/svgs";
+import { ArrowRightIcon, ArrowLeftIcon } from "@/svgs";
 
 interface InteriorPageProps {
-  service: ServiceDetailItem;
+  service?: ServiceDetailItem;
   prevService?: ServiceDetailItem;
   nextService?: ServiceDetailItem;
 }
+
+// Asymmetric row pairings: each row has 2 cards of equal vertical height filling 100%
+const PROJECT_PAIRS = [
+  { firstWidth: "w-full md:w-[42%]", secondWidth: "w-full md:w-[58%]" },
+  { firstWidth: "w-full md:w-[60%]", secondWidth: "w-full md:w-[40%]" },
+  { firstWidth: "w-full md:w-[38%]", secondWidth: "w-full md:w-[62%]" },
+  { firstWidth: "w-full md:w-[46%]", secondWidth: "w-full md:w-[54%]" },
+];
 
 export const InteriorPage: React.FC<InteriorPageProps> = ({
   service,
   prevService,
   nextService,
 }) => {
-  const [lightboxState, setLightboxState] = useState<{
-    items: LightboxItem[];
-    index: number;
-  } | null>(null);
-
-  const handleOpenLightbox = (items: LightboxItem[], index: number = 0) => {
-    setLightboxState({ items, index });
-  };
-
-  const handleNextLightbox = () => {
-    setLightboxState((prev) => {
-      if (!prev || prev.items.length <= 1) return prev;
-      return {
-        ...prev,
-        index: (prev.index + 1) % prev.items.length,
-      };
-    });
-  };
-
-  const handlePrevLightbox = () => {
-    setLightboxState((prev) => {
-      if (!prev || prev.items.length <= 1) return prev;
-      return {
-        ...prev,
-        index: (prev.index - 1 + prev.items.length) % prev.items.length,
-      };
-    });
-  };
-
   return (
     <div className="w-full min-h-screen bg-black text-white selection:bg-[#00c8ff] selection:text-black">
       {/* =====================================================================
-          1. INTERIOR ATELIER HERO
+          1. CLEAN EDITORIAL HERO — ZERO ROUNDED CORNERS, ZERO CLUTTER
           ===================================================================== */}
-      <section className="relative w-full min-h-[85vh] flex flex-col justify-between pt-32 sm:pt-36 pb-12 sm:pb-16 px-6 sm:px-12 md:px-16 lg:px-20 overflow-hidden border-b border-white/10">
-        <div className="relative z-10 max-w-7xl mx-auto w-full flex flex-col lg:flex-row lg:items-center justify-between gap-12 my-auto">
-          {/* Typography & Manifesto */}
-          <div className="flex flex-col gap-6 max-w-2xl">
-            <div className="flex items-center gap-3">
-              <span className="w-2.5 h-2.5 rounded-full bg-[#00c8ff] animate-pulse" />
-              <span className="font-mono text-xs sm:text-sm font-bold uppercase tracking-[0.24em] text-[#00c8ff]">
-                /06 // ARCHITECTURAL ATELIER
-              </span>
-            </div>
-
-            <h1 className="font-['BlauerNue',sans-serif] text-5xl sm:text-7xl md:text-8xl lg:text-9xl font-black uppercase tracking-tight leading-[0.9] text-white">
+      <section className="relative w-full pt-36 sm:pt-44 pb-12 sm:pb-16 px-6 sm:px-12 md:px-16 lg:px-20 border-b border-white/10 overflow-hidden bg-black">
+        <div className="max-w-[1700px] mx-auto flex flex-col md:flex-row md:items-end justify-between gap-8">
+          <div>
+            <span className="font-mono text-xs uppercase tracking-[0.24em] text-[#00c8ff] font-bold">
+              06 // ARCHITECTURAL ATELIER
+            </span>
+            <h1 className="font-['BlauerNue',sans-serif] text-6xl sm:text-8xl md:text-9xl lg:text-[10rem] font-black uppercase tracking-tight leading-[0.85] text-white mt-3 select-none drop-shadow-[0_8px_40px_rgba(0,0,0,0.95)]">
               INTERIOR
             </h1>
-
-            <p className="font-['BlauerNue',sans-serif] text-xl sm:text-2xl font-bold uppercase tracking-wide text-white/95">
-              HAUTE ARCHITECTURAL INTERIORS & TACTILE MATERIAL ATELIER
-            </p>
-
-            <p className="font-['Rubik',sans-serif] text-white/80 text-sm sm:text-base leading-relaxed">
-              We orchestrate bespoke spatial interiors for luxury estates, corporate headquarters, and high-end hospitality flagships. Sculptural stone, bespoke joinery, and custom photometric lighting narratives.
-            </p>
-
-            {/* Atelier Badges */}
-            <div className="flex flex-wrap items-center gap-2 font-mono text-xs uppercase pt-2">
-              <span className="px-3 py-1.5 rounded-xl bg-white/5 border border-white/15 text-white">
-                BESPOKE JOINERY
-              </span>
-              <span className="px-3 py-1.5 rounded-xl bg-white/5 border border-white/15 text-white">
-                TACTILE STONE & MARBLE
-              </span>
-              <span className="px-3 py-1.5 rounded-xl bg-white/5 border border-white/15 text-white">
-                PHOTOMETRIC LIGHTING
-              </span>
-            </div>
-
-            {/* CTAs */}
-            <div className="flex flex-wrap items-center gap-4 pt-4">
-              <Link
-                href="/Contact?service=interior"
-                className="inline-flex items-center gap-3 px-8 py-4 rounded-xl bg-[#00c8ff] text-black font-['BlauerNue',sans-serif] font-black text-xs sm:text-sm uppercase tracking-widest hover:bg-white transition-all shadow-2xl"
-              >
-                <span>COMMISSION INTERIOR ATELIER</span>
-                <ArrowRightIcon className="w-4 h-4 stroke-current" />
-              </Link>
-
-              <a
-                href="#interior-projects"
-                className="inline-flex items-center gap-2 font-mono text-xs uppercase tracking-widest text-white/90 hover:text-white px-6 py-4 rounded-xl bg-white/5 border border-white/20 hover:border-white/40 transition-colors"
-              >
-                <span>EXPLORE CURATED PROJECTS</span>
-                <ArrowDownIcon className="w-3.5 h-3.5" />
-              </a>
-            </div>
           </div>
 
-          {/* Right Video Showcase */}
-          <div className="w-full lg:max-w-lg aspect-16/10 rounded-3xl overflow-hidden border border-white/20 bg-black shadow-[0_30px_90px_rgba(0,0,0,0.9)] relative group">
-            <video
-              src="https://res.cloudinary.com/hxytmocg/video/upload/v1793214871/reception.mp4"
-              autoPlay
-              loop
-              muted
-              playsInline
-              preload="metadata"
-              className="w-full h-full object-cover"
-            />
-            <div className="absolute inset-0 bg-linear-to-t from-black/80 via-transparent to-transparent pointer-events-none" />
-            <div className="absolute bottom-4 left-4 right-4 flex items-center justify-between font-mono text-xs text-white/80">
-              <span className="text-[#00c8ff] font-bold">RECEPTION ATELIER</span>
-              <span>CINEMATIC INTERIOR</span>
-            </div>
+          <div className="flex flex-col items-start md:items-end gap-3">
+            <span className="font-mono text-xs text-white/50 uppercase tracking-widest">
+              [ 08 CURATED PROJECTS // 143 RENDERS ]
+            </span>
+            <a
+              href="#projects-grid"
+              className="font-mono text-xs text-[#00c8ff] uppercase tracking-[0.2em] hover:text-white transition-colors flex items-center gap-1.5"
+            >
+              <span>EXPLORE EXHIBITION</span>
+              <span>↓</span>
+            </a>
           </div>
         </div>
       </section>
 
       {/* =====================================================================
-          2. PROJECT-BY-PROJECT MASONRY GALLERIES
+          2. ASYMMETRIC EDITORIAL GRID (EQUAL VERTICAL HEIGHTS, SHARP EDGES)
+             - ZERO text on images by default
+             - ZERO rounded corners (rounded-none)
+             - Only on hover: smooth color transition + Project Name ONLY
+             - Matching vertical height in each row, 100% full coverage
           ===================================================================== */}
-      <section id="interior-projects" className="w-full py-20 px-6 sm:px-12 md:px-16 lg:px-20 relative bg-black">
-        <div className="max-w-7xl mx-auto flex flex-col gap-16">
-          {INTERIOR_PROJECTS.map((project) => (
-            <InteriorProjectSection
-              key={project.id}
-              project={project}
-              accentColor="#00c8ff"
-              onOpenLightbox={handleOpenLightbox}
-            />
-          ))}
+      <section id="projects-grid" className="w-full py-10 sm:py-16 px-4 sm:px-8 md:px-12 lg:px-16 bg-black">
+        <div className="max-w-[1700px] mx-auto flex flex-col gap-4 sm:gap-5 md:gap-6">
+          {PROJECT_PAIRS.map((pair, rowIndex) => {
+            const firstProject = INTERIOR_PROJECTS[rowIndex * 2];
+            const secondProject = INTERIOR_PROJECTS[rowIndex * 2 + 1];
+
+            return (
+              <div
+                key={rowIndex}
+                className="w-full flex flex-col md:flex-row gap-4 sm:gap-5 md:gap-6"
+              >
+                {/* First Project in Row */}
+                {firstProject && (
+                  <div
+                    className={`${pair.firstWidth} h-[340px] sm:h-[440px] lg:h-[540px] rounded-none overflow-hidden relative group border border-white/10 hover:border-white/35 transition-colors bg-black`}
+                  >
+                    <Link
+                      href={`/services/interior/${firstProject.id}`}
+                      className="block w-full h-full relative cursor-pointer"
+                    >
+                      {/* Image fills 100% vertically and horizontally */}
+                      <img
+                        src={firstProject.coverImage}
+                        alt={firstProject.title}
+                        loading="lazy"
+                        className="w-full h-full object-cover rounded-none transition-all duration-700 ease-out grayscale contrast-[1.05] brightness-[0.88] group-hover:grayscale-0 group-hover:brightness-100 group-hover:scale-104 pointer-events-none"
+                      />
+
+                      {/* Minimal Hover Overlay — ONLY Project Name Appears */}
+                      <div className="absolute inset-0 bg-black/45 backdrop-blur-[2px] opacity-0 group-hover:opacity-100 transition-all duration-400 flex items-center justify-center p-6 text-center pointer-events-none z-10">
+                        <span className="font-['BlauerNue',sans-serif] text-2xl sm:text-4xl md:text-5xl font-black uppercase tracking-tight text-white drop-shadow-[0_4px_30px_rgba(0,0,0,0.95)] transform translate-y-3 group-hover:translate-y-0 transition-transform duration-400">
+                          {firstProject.title}
+                        </span>
+                      </div>
+                    </Link>
+                  </div>
+                )}
+
+                {/* Second Project in Row — EXACT matching vertical height */}
+                {secondProject && (
+                  <div
+                    className={`${pair.secondWidth} h-[340px] sm:h-[440px] lg:h-[540px] rounded-none overflow-hidden relative group border border-white/10 hover:border-white/35 transition-colors bg-black`}
+                  >
+                    <Link
+                      href={`/services/interior/${secondProject.id}`}
+                      className="block w-full h-full relative cursor-pointer"
+                    >
+                      {/* Image fills 100% vertically and horizontally */}
+                      <img
+                        src={secondProject.coverImage}
+                        alt={secondProject.title}
+                        loading="lazy"
+                        className="w-full h-full object-cover rounded-none transition-all duration-700 ease-out grayscale contrast-[1.05] brightness-[0.88] group-hover:grayscale-0 group-hover:brightness-100 group-hover:scale-104 pointer-events-none"
+                      />
+
+                      {/* Minimal Hover Overlay — ONLY Project Name Appears */}
+                      <div className="absolute inset-0 bg-black/45 backdrop-blur-[2px] opacity-0 group-hover:opacity-100 transition-all duration-400 flex items-center justify-center p-6 text-center pointer-events-none z-10">
+                        <span className="font-['BlauerNue',sans-serif] text-2xl sm:text-4xl md:text-5xl font-black uppercase tracking-tight text-white drop-shadow-[0_4px_30px_rgba(0,0,0,0.95)] transform translate-y-3 group-hover:translate-y-0 transition-transform duration-400">
+                          {secondProject.title}
+                        </span>
+                      </div>
+                    </Link>
+                  </div>
+                )}
+              </div>
+            );
+          })}
         </div>
       </section>
 
       {/* =====================================================================
-          3. COMMISSION CTA
+          3. CLEAN COMMISSION CTA — ZERO ROUNDED CORNERS
           ===================================================================== */}
-      <section className="w-full py-24 sm:py-32 px-6 sm:px-12 md:px-16 lg:px-20 border-t border-white/10 relative overflow-hidden bg-black">
-        <div className="max-w-5xl mx-auto flex flex-col items-center text-center gap-6 relative z-10">
+      <section className="w-full py-20 sm:py-28 px-6 sm:px-12 md:px-16 lg:px-20 border-t border-white/10 relative overflow-hidden bg-black text-center">
+        <div className="max-w-4xl mx-auto flex flex-col items-center gap-6 relative z-10">
           <span className="font-mono text-xs uppercase tracking-[0.24em] text-[#00c8ff] font-bold">
-            COMMISSION INTERIOR
+            INTERIOR COMMISSIONS
           </span>
 
           <h2 className="font-['BlauerNue',sans-serif] text-4xl sm:text-6xl md:text-7xl font-black uppercase tracking-tight text-white leading-tight">
-            SHAPE EXCEPTIONAL SPACES WITH OUR INTERIOR ATELIER
+            COMMISSION AN INTERIOR ATELIER PROJECT
           </h2>
 
-          <div className="flex flex-col sm:flex-row items-center gap-4 mt-4">
+          <div className="flex flex-col sm:flex-row items-center gap-4 mt-2">
             <Link
               href="/Contact?service=interior"
-              className="px-8 py-4 bg-[#00c8ff] text-black font-['BlauerNue',sans-serif] font-black text-sm uppercase tracking-widest hover:bg-white transition-colors"
+              className="px-10 py-5 bg-[#00c8ff] text-black font-['BlauerNue',sans-serif] font-black text-sm uppercase tracking-widest hover:bg-white transition-colors rounded-none shadow-2xl"
             >
-              REQUEST INTERIOR CONSULTATION
+              REQUEST INTERIOR PROPOSAL
             </Link>
 
             <Link
               href="/services"
-              className="px-8 py-4 border border-white/15 text-white font-mono text-xs uppercase tracking-widest hover:border-white/40 transition-colors"
+              className="px-8 py-5 border border-white/20 text-white font-mono text-xs uppercase tracking-widest hover:border-white/40 transition-colors rounded-none"
             >
               BROWSE ALL SERVICES
             </Link>
@@ -176,10 +165,10 @@ export const InteriorPage: React.FC<InteriorPageProps> = ({
       </section>
 
       {/* =====================================================================
-          4. NAVIGATION
+          4. ADJACENT NAVIGATION
           ===================================================================== */}
       <nav aria-label="Adjacent Services Navigation" className="w-full py-8 px-6 sm:px-12 md:px-16 lg:px-20 border-t border-white/10">
-        <div className="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-6">
+        <div className="max-w-[1700px] mx-auto flex flex-col sm:flex-row items-center justify-between gap-6">
           {prevService ? (
             <Link
               href={`/services/${prevService.slug}`}
@@ -199,7 +188,7 @@ export const InteriorPage: React.FC<InteriorPageProps> = ({
             href="/services"
             className="font-mono text-xs text-white/40 hover:text-[#00c8ff] uppercase tracking-widest transition-colors"
           >
-            ALL SERVICES CATALOG [06]
+            SERVICES CATALOG [06]
           </Link>
 
           {nextService ? (
@@ -218,18 +207,6 @@ export const InteriorPage: React.FC<InteriorPageProps> = ({
           )}
         </div>
       </nav>
-
-      {/* Lightbox Modal */}
-      {lightboxState && (
-        <Lightbox
-          items={lightboxState.items}
-          currentIndex={lightboxState.index}
-          onClose={() => setLightboxState(null)}
-          onNext={handleNextLightbox}
-          onPrev={handlePrevLightbox}
-        />
-      )}
     </div>
   );
 };
-

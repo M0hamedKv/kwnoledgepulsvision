@@ -33,9 +33,11 @@ export async function generateMetadata({ params }: ServiceDetailPageProps): Prom
 
 export async function generateStaticParams() {
   const services = getAllServices();
-  return services.map((s) => ({
-    slug: s.slug,
-  }));
+  return services
+    .filter((s) => s.slug !== "interior")
+    .map((s) => ({
+      slug: s.slug,
+    }));
 }
 
 export default async function ServiceDetailPage({ params }: ServiceDetailPageProps) {

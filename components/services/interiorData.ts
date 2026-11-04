@@ -233,3 +233,11 @@ export const INTERIOR_PROJECTS: InteriorProject[] = [
     ],
   },
 ];
+
+export function getInteriorProjectById(id: string): InteriorProject | undefined {
+  return INTERIOR_PROJECTS.find((p) => p.id.toLowerCase() === id.toLowerCase());
+}
+
+export function getAllInteriorProjects(): InteriorProject[] {
+  return INTERIOR_PROJECTS;
+}
