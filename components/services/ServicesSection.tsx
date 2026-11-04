@@ -89,17 +89,9 @@ const DualPortalCard: React.FC<{ item: DualShowcaseItem }> = ({ item }) => {
 
           {/* Minimal Hover Overlay - ONLY appears on hover with the service name */}
           <div className="absolute inset-0 bg-black/45 backdrop-blur-[3px] opacity-0 group-hover:opacity-100 transition-all duration-500 flex flex-col items-center justify-center p-6 sm:p-10 text-center pointer-events-none z-20">
-            <div className="flex flex-col items-center gap-3 transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
-              <span className="font-['BlauerNue',sans-serif] text-3xl sm:text-5xl md:text-6xl font-black uppercase tracking-tight text-white drop-shadow-[0_4px_30px_rgba(0,0,0,0.9)]">
-                {item.title}
-              </span>
-              <span
-                className="font-mono text-xs uppercase tracking-[0.25em] font-bold"
-                style={{ color: item.accentColor }}
-              >
-                EXPLORE DISCIPLINE ↗
-              </span>
-            </div>
+            <span className="font-['BlauerNue',sans-serif] text-3xl sm:text-5xl md:text-6xl font-black uppercase tracking-tight text-white drop-shadow-[0_4px_30px_rgba(0,0,0,0.9)] transform translate-y-3 group-hover:translate-y-0 transition-transform duration-500">
+              {item.title}
+            </span>
           </div>
         </div>
       </Link>

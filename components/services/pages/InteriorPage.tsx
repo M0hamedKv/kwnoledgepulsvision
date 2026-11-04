@@ -77,7 +77,7 @@ export const InteriorPage: React.FC<InteriorPageProps> = ({
                 {/* First Project in Row */}
                 {firstProject && (
                   <div
-                    className={`${pair.firstWidth} h-[340px] sm:h-[440px] lg:h-[540px] rounded-none overflow-hidden relative group border border-white/10 hover:border-white/35 transition-colors bg-black`}
+                    className={`${pair.firstWidth} h-85 sm:h-110 lg:h-135 rounded-none overflow-hidden relative group border border-white/10 hover:border-white/35 transition-colors bg-black`}
                   >
                     <Link
                       href={`/services/interior/${firstProject.id}`}
@@ -104,7 +104,7 @@ export const InteriorPage: React.FC<InteriorPageProps> = ({
                 {/* Second Project in Row — EXACT matching vertical height */}
                 {secondProject && (
                   <div
-                    className={`${pair.secondWidth} h-[340px] sm:h-[440px] lg:h-[540px] rounded-none overflow-hidden relative group border border-white/10 hover:border-white/35 transition-colors bg-black`}
+                    className={`${pair.secondWidth} h-85 sm:h-110 lg:h-135 rounded-none overflow-hidden relative group border border-white/10 hover:border-white/35 transition-colors bg-black`}
                   >
                     <Link
                       href={`/services/interior/${secondProject.id}`}

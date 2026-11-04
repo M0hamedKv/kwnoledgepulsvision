@@ -55,33 +55,13 @@ export const AnimationShowcase: React.FC<AnimationShowcaseProps> = ({
             />
 
             {/* Gradient Lighting */}
-            <div className="absolute inset-0 bg-linear-to-t from-black/95 via-black/30 to-transparent pointer-events-none" />
-
-            {/* Top Bar */}
-            <div className="absolute top-4 left-4 right-4 flex items-center justify-between pointer-events-none">
-              <span className="px-3 py-1 rounded-lg bg-black/80 backdrop-blur-md border border-white/15 font-mono text-xs text-[#00c8ff] font-bold uppercase tracking-wider">
-                {premiereFilm.badge}
-              </span>
-              <span className="px-3 py-1 rounded-lg bg-black/80 backdrop-blur-md border border-white/15 font-mono text-[10px] text-white/70 uppercase">
-                FLAGSHIP CINEMA
-              </span>
-            </div>
+            <div className="absolute inset-0 bg-linear-to-t from-black/80 via-transparent to-transparent pointer-events-none" />
 
             {/* Bottom Content HUD */}
-            <div className="absolute bottom-0 left-0 w-full p-6 sm:p-8 flex flex-col sm:flex-row sm:items-end justify-between gap-4">
-              <div className="flex flex-col gap-1.5 max-w-2xl">
-                <span className="font-mono text-xs text-[#00c8ff] font-bold uppercase tracking-widest">
-                  {premiereFilm.category}
-                </span>
-                <h3 className="font-['BlauerNue',sans-serif] text-xl sm:text-3xl font-black uppercase tracking-tight text-white">
-                  {premiereFilm.title}
-                </h3>
-                {premiereFilm.description && (
-                  <p className="font-['Rubik',sans-serif] text-xs sm:text-sm text-white/75 line-clamp-2 max-w-xl">
-                    {premiereFilm.description}
-                  </p>
-                )}
-              </div>
+            <div className="absolute bottom-0 left-0 w-full p-6 sm:p-8 flex items-end justify-between gap-4">
+              <h3 className="font-['BlauerNue',sans-serif] text-xl sm:text-3xl font-black uppercase tracking-tight text-white">
+                {premiereFilm.title}
+              </h3>
 
               <div
                 className="flex items-center gap-3 shrink-0"
@@ -90,19 +70,10 @@ export const AnimationShowcase: React.FC<AnimationShowcaseProps> = ({
                 <button
                   type="button"
                   onClick={() => setPremiereMuted(!premiereMuted)}
-                  className="px-4 py-2.5 rounded-xl bg-white/10 hover:bg-[#00c8ff] hover:text-black text-white font-mono text-xs uppercase tracking-wider backdrop-blur-md border border-white/15 transition-all cursor-pointer flex items-center gap-2"
+                  className="px-4 py-2.5 rounded-none bg-white/10 hover:bg-[#00c8ff] hover:text-black text-white font-mono text-xs uppercase tracking-wider backdrop-blur-md border border-white/15 transition-all cursor-pointer flex items-center gap-2"
                 >
                   <span>{premiereMuted ? "UNMUTE" : "MUTE"}</span>
                   <span>{premiereMuted ? "🔇" : "🔊"}</span>
-                </button>
-
-                <button
-                  type="button"
-                  onClick={() => onOpenTheater(0)}
-                  className="px-4 py-2.5 rounded-xl bg-white text-black font-mono text-xs font-bold uppercase tracking-wider hover:bg-[#00c8ff] transition-all cursor-pointer flex items-center gap-1.5"
-                >
-                  <span>FULLSCREEN THEATER</span>
-                  <span>⛶</span>
                 </button>
               </div>
             </div>

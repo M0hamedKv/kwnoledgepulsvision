@@ -44,45 +44,7 @@ export const InteriorProjectDetailPage: React.FC<InteriorProjectDetailPageProps>
   return (
     <div className="w-full min-h-screen bg-black text-white selection:bg-[#00c8ff] selection:text-black">
       {/* =====================================================================
-          1. TOP FLOATING NAVIGATION BAR
-          ===================================================================== */}
-      <header className="fixed top-0 left-0 right-0 z-40 bg-black/80 backdrop-blur-xl border-b border-white/10 px-6 sm:px-12 py-4">
-        <div className="max-w-[1600px] mx-auto flex items-center justify-between gap-4">
-          <Link
-            href="/services/interior"
-            className="group flex items-center gap-2.5 font-mono text-xs uppercase tracking-widest text-white/70 hover:text-white transition-colors"
-          >
-            <ArrowLeftIcon className="w-3.5 h-3.5 stroke-current transform transition-transform group-hover:-translate-x-1 text-[#00c8ff]" />
-            <span>ALL INTERIOR PROJECTS</span>
-          </Link>
-
-          <div className="hidden md:flex items-center gap-3">
-            <span className="w-2 h-2 rounded-full bg-[#00c8ff] animate-pulse" />
-            <span className="font-['BlauerNue',sans-serif] text-sm font-bold uppercase tracking-wider text-white">
-              {project.title}
-            </span>
-            <span className="font-mono text-xs text-white/40">//</span>
-            <span className="font-mono text-xs text-[#00c8ff] font-bold uppercase tracking-wider">
-              {project.typology}
-            </span>
-          </div>
-
-          <div className="flex items-center gap-3">
-            <span className="px-3 py-1 rounded-full bg-white/5 border border-white/15 font-mono text-[11px] text-white/70 uppercase">
-              {project.badge}
-            </span>
-            <Link
-              href={`/Contact?service=interior&project=${project.id}`}
-              className="hidden sm:inline-flex px-4 py-2 rounded-xl bg-[#00c8ff] text-black font-['BlauerNue',sans-serif] font-bold text-xs uppercase tracking-wider hover:bg-white transition-colors"
-            >
-              COMMISSION ↗
-            </Link>
-          </div>
-        </div>
-      </header>
-
-      {/* =====================================================================
-          2. PROJECT CINEMATIC HERO
+          1. PROJECT CINEMATIC HERO (With In-Flow Breadcrumb, No Fixed Nav Conflict)
           ===================================================================== */}
       <section className="relative w-full min-h-[75vh] sm:min-h-[85vh] flex flex-col justify-end pt-36 pb-12 sm:pb-16 px-6 sm:px-12 md:px-16 lg:px-20 overflow-hidden border-b border-white/10">
         {/* Full-bleed cover background */}
@@ -97,8 +59,19 @@ export const InteriorProjectDetailPage: React.FC<InteriorProjectDetailPageProps>
 
         {/* Hero Title and Info */}
         <div className="relative z-10 max-w-5xl flex flex-col gap-4">
+          {/* In-flow back link */}
+          <div>
+            <Link
+              href="/services/interior"
+              className="group inline-flex items-center gap-2 font-mono text-xs uppercase tracking-widest text-white/70 hover:text-[#00c8ff] transition-colors"
+            >
+              <ArrowLeftIcon className="w-3.5 h-3.5 stroke-current transform transition-transform group-hover:-translate-x-1 text-[#00c8ff]" />
+              <span>ALL INTERIOR PROJECTS</span>
+            </Link>
+          </div>
+
           <div className="flex items-center gap-3">
-            <span className="px-3 py-1 rounded-full bg-black/60 backdrop-blur-md border border-[#00c8ff]/40 font-mono text-xs text-[#00c8ff] font-bold uppercase tracking-wider">
+            <span className="px-3 py-1 rounded-none bg-black/60 backdrop-blur-md border border-[#00c8ff]/40 font-mono text-xs text-[#00c8ff] font-bold uppercase tracking-wider">
               {project.typology}
             </span>
             <span className="font-mono text-xs text-white/60 uppercase tracking-widest">
@@ -221,7 +194,7 @@ export const InteriorProjectDetailPage: React.FC<InteriorProjectDetailPageProps>
               href={`/services/interior/${prevProject.id}`}
               className="group flex items-center gap-4 text-white/70 hover:text-white transition-colors"
             >
-              <div className="w-12 h-12 rounded-xl border border-white/15 bg-white/5 flex items-center justify-center text-[#00c8ff] group-hover:border-[#00c8ff] transition-colors">
+              <div className="w-12 h-12 rounded-none border border-white/15 bg-white/5 flex items-center justify-center text-[#00c8ff] group-hover:border-[#00c8ff] transition-colors">
                 <ArrowLeftIcon className="w-4 h-4 stroke-current transform transition-transform group-hover:-translate-x-1" />
               </div>
               <div className="text-left font-mono">
@@ -237,7 +210,7 @@ export const InteriorProjectDetailPage: React.FC<InteriorProjectDetailPageProps>
 
           <Link
             href="/services/interior"
-            className="px-6 py-3 rounded-xl border border-white/15 text-white font-mono text-xs uppercase tracking-widest hover:border-[#00c8ff] hover:text-[#00c8ff] transition-colors"
+            className="px-6 py-3 rounded-none border border-white/15 text-white font-mono text-xs uppercase tracking-widest hover:border-[#00c8ff] hover:text-[#00c8ff] transition-colors"
           >
             VIEW ALL 8 PROJECTS
           </Link>
@@ -253,7 +226,7 @@ export const InteriorProjectDetailPage: React.FC<InteriorProjectDetailPageProps>
                   {nextProject.title}
                 </span>
               </div>
-              <div className="w-12 h-12 rounded-xl border border-white/15 bg-white/5 flex items-center justify-center text-[#00c8ff] group-hover:border-[#00c8ff] transition-colors">
+              <div className="w-12 h-12 rounded-none border border-white/15 bg-white/5 flex items-center justify-center text-[#00c8ff] group-hover:border-[#00c8ff] transition-colors">
                 <ArrowRightIcon className="w-4 h-4 stroke-current transform transition-transform group-hover:translate-x-1" />
               </div>
             </Link>

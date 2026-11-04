@@ -19,7 +19,6 @@ export const AnimationPage: React.FC<AnimationPageProps> = ({
 }) => {
   const videoRef = useRef<HTMLVideoElement>(null);
   const [activeCategory, setActiveCategory] = useState<string>("ALL");
-  const [premiereMuted, setPremiereMuted] = useState<boolean>(true);
   const [lightboxState, setLightboxState] = useState<{
     items: LightboxItem[];
     index: number;
@@ -39,7 +38,6 @@ export const AnimationPage: React.FC<AnimationPageProps> = ({
 
   // Filter video reels
   const videoReels = service.gallery.filter((g) => g.type === "video");
-  const premiereReel = videoReels[0] || null;
 
   const categories = [
     "ALL",
@@ -68,7 +66,7 @@ export const AnimationPage: React.FC<AnimationPageProps> = ({
   return (
     <div className="w-full min-h-screen bg-black text-white selection:bg-[#00c8ff] selection:text-black">
       {/* =====================================================================
-          1. FULL-BLEED 4K PLAYING VIDEO HERO — DISPLAY ONLY, NO TEXT CLUTTER
+          1. FULL-BLEED 4K VIDEO HERO — PURE VIDEO, ZERO TEXT CLUTTER
           ===================================================================== */}
       <section className="relative w-full min-h-screen flex flex-col justify-between pt-32 pb-12 px-6 sm:px-12 md:px-16 lg:px-20 overflow-hidden border-b border-white/10">
         {/* Full-bleed background video filling 100% of the Hero viewport */}
@@ -83,7 +81,6 @@ export const AnimationPage: React.FC<AnimationPageProps> = ({
             preload="auto"
             className="w-full h-full object-cover scale-102"
           />
-          {/* Subtle cinematic overlays for visual contrast */}
           <div className="absolute inset-0 bg-black/35" />
           <div className="absolute inset-x-0 top-0 h-40 bg-linear-to-b from-black/80 to-transparent" />
           <div className="absolute inset-x-0 bottom-0 h-48 bg-linear-to-t from-black to-transparent" />
@@ -111,17 +108,21 @@ export const AnimationPage: React.FC<AnimationPageProps> = ({
       </section>
 
       {/* =====================================================================
-          2. PURE VISUAL SHOWCASE — 20 ARCHITECTURAL CINEMA REELS
+          2. PURE VIDEO EXHIBITION — ZERO PLAY ICONS, ZERO CLUTTER
+             - Pure video display on every card
+             - Sharp edges (rounded-none)
+             - Only on hover: gentle overlay with title ONLY
+             - Zero play buttons, zero badges, zero text by default
           ===================================================================== */}
-      <section id="cinema-reels" className="w-full py-16 sm:py-24 px-6 sm:px-12 md:px-16 lg:px-20 relative bg-black">
-        <div className="max-w-7xl mx-auto flex flex-col gap-10">
+      <section id="cinema-reels" className="w-full py-12 sm:py-20 px-4 sm:px-8 md:px-12 lg:px-16 relative bg-black">
+        <div className="max-w-[1700px] mx-auto flex flex-col gap-8">
           {/* Category Filter Tabs */}
           <div className="flex flex-wrap items-center justify-center sm:justify-start gap-2 pb-6 border-b border-white/10">
             {categories.map((cat: any) => (
               <button
                 key={cat}
                 onClick={() => setActiveCategory(cat)}
-                className={`px-5 py-2.5 rounded-full font-mono text-xs uppercase tracking-wider transition-all cursor-pointer ${
+                className={`px-5 py-2.5 rounded-none font-mono text-xs uppercase tracking-wider transition-all cursor-pointer ${
                   activeCategory === cat
                     ? "bg-[#00c8ff] text-black font-bold shadow-[0_0_20px_rgba(0,200,255,0.4)]"
                     : "bg-white/5 text-white/70 hover:text-white hover:bg-white/10 border border-white/10"
@@ -132,88 +133,29 @@ export const AnimationPage: React.FC<AnimationPageProps> = ({
             ))}
           </div>
 
-          {/* Premiere Flagship Reel (Featured Top) — Video-First, Zero Paragraphs */}
-          {premiereReel && activeCategory === "ALL" && (
-            <div
-              className="relative w-full aspect-21/9 bg-black border border-white/15 rounded-3xl overflow-hidden shadow-[0_30px_90px_rgba(0,0,0,0.85)] group cursor-pointer"
-              onClick={() => handleOpenLightbox(0)}
-            >
-              <video
-                src={premiereReel.url}
-                autoPlay
-                loop
-                muted={premiereMuted}
-                playsInline
-                className="w-full h-full object-cover group-hover:scale-102 transition-transform duration-700 opacity-90 group-hover:opacity-100"
-              />
-              <div className="absolute inset-0 bg-linear-to-t from-black/90 via-transparent to-transparent pointer-events-none" />
-
-              {/* Bottom HUD: Title & Controls Only */}
-              <div className="absolute bottom-0 left-0 w-full p-6 sm:p-8 flex items-end justify-between gap-4">
-                <h3 className="font-['BlauerNue',sans-serif] text-xl sm:text-3xl font-black uppercase tracking-tight text-white drop-shadow-[0_4px_20px_rgba(0,0,0,0.9)]">
-                  {premiereReel.title}
-                </h3>
-
-                <div
-                  className="flex items-center gap-3 shrink-0"
-                  onClick={(e) => e.stopPropagation()}
-                >
-                  <button
-                    type="button"
-                    onClick={() => setPremiereMuted(!premiereMuted)}
-                    className="px-4 py-2.5 rounded-xl bg-black/60 hover:bg-[#00c8ff] hover:text-black text-white font-mono text-xs uppercase tracking-wider backdrop-blur-md border border-white/15 transition-all cursor-pointer flex items-center gap-2"
-                  >
-                    <span>{premiereMuted ? "UNMUTE" : "MUTE"}</span>
-                    <span>{premiereMuted ? "🔇" : "🔊"}</span>
-                  </button>
-                  <button
-                    type="button"
-                    onClick={() => handleOpenLightbox(0)}
-                    className="px-5 py-2.5 rounded-xl bg-[#00c8ff] text-black font-['BlauerNue',sans-serif] font-bold text-xs uppercase tracking-wider hover:bg-white transition-all cursor-pointer"
-                  >
-                    EXPAND 4K THEATER ↗
-                  </button>
-                </div>
-              </div>
-            </div>
-          )}
-
-          {/* Grid of Video Reels — Clean 16:9 Presentation */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
+          {/* Grid of 20 Cinema Videos — 100% Pure Video Display */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
             {filteredReels.map((reel, idx) => (
               <div
                 key={reel.id}
                 onClick={() => handleOpenLightbox(idx)}
-                className="group relative rounded-2xl overflow-hidden border border-white/10 hover:border-[#00c8ff] bg-black transition-all duration-500 hover:-translate-y-1.5 cursor-pointer flex flex-col shadow-[0_20px_50px_rgba(0,0,0,0.6)]"
+                className="group relative rounded-none overflow-hidden border border-white/10 hover:border-white/40 bg-black transition-all duration-500 cursor-pointer flex flex-col aspect-video"
               >
-                {/* 16:9 Video Canvas */}
-                <div className="relative w-full aspect-video bg-black overflow-hidden">
-                  <video
-                    src={reel.url}
-                    autoPlay
-                    loop
-                    muted
-                    playsInline
-                    preload="metadata"
-                    className="w-full h-full object-cover group-hover:scale-106 transition-transform duration-700 opacity-85 group-hover:opacity-100"
-                  />
-                  <div className="absolute inset-0 bg-linear-to-t from-black/80 via-transparent to-transparent pointer-events-none" />
+                {/* 100% Full Video */}
+                <video
+                  src={reel.url}
+                  autoPlay
+                  loop
+                  muted
+                  playsInline
+                  preload="metadata"
+                  className="w-full h-full object-cover rounded-none group-hover:scale-104 transition-transform duration-700 ease-out pointer-events-none"
+                />
 
-                  {/* Play Button Icon */}
-                  <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-                    <div className="w-12 h-12 rounded-full bg-black/60 group-hover:bg-[#00c8ff] text-white group-hover:text-black border border-white/20 backdrop-blur-md flex items-center justify-center transition-all duration-300 transform scale-90 group-hover:scale-110">
-                      <span className="text-sm font-mono ml-0.5 font-bold">▶</span>
-                    </div>
-                  </div>
-                </div>
-
-                {/* Minimalist Title Footer — NO Descriptions, Pure Visual Polish */}
-                <div className="p-4 flex items-center justify-between border-t border-white/10 bg-black/80">
-                  <h4 className="font-['BlauerNue',sans-serif] text-sm sm:text-base font-bold uppercase text-white group-hover:text-[#00c8ff] transition-colors line-clamp-1">
+                {/* Minimal Hover Overlay — Project Name ONLY, Zero Play Icons */}
+                <div className="absolute inset-0 bg-black/50 backdrop-blur-[2px] opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center p-6 text-center pointer-events-none z-10">
+                  <span className="font-['BlauerNue',sans-serif] text-xl sm:text-2xl md:text-3xl font-black uppercase tracking-tight text-white drop-shadow-[0_4px_25px_rgba(0,0,0,0.95)] transform translate-y-2 group-hover:translate-y-0 transition-transform duration-300">
                     {reel.title}
-                  </h4>
-                  <span className="font-mono text-xs text-white/40 group-hover:text-[#00c8ff] transition-colors shrink-0 ml-2">
-                    ↗
                   </span>
                 </div>
               </div>
@@ -234,14 +176,14 @@ export const AnimationPage: React.FC<AnimationPageProps> = ({
           <div className="flex flex-col sm:flex-row items-center gap-4 mt-2">
             <Link
               href="/Contact?service=animation"
-              className="px-10 py-5 bg-[#00c8ff] text-black font-['BlauerNue',sans-serif] font-black text-sm uppercase tracking-widest hover:bg-white transition-colors rounded-xl shadow-2xl"
+              className="px-10 py-5 bg-[#00c8ff] text-black font-['BlauerNue',sans-serif] font-black text-sm uppercase tracking-widest hover:bg-white transition-colors rounded-none shadow-2xl"
             >
               REQUEST A PROPOSAL
             </Link>
 
             <Link
               href="/services"
-              className="px-8 py-5 border border-white/20 text-white font-mono text-xs uppercase tracking-widest hover:border-white/40 transition-colors rounded-xl"
+              className="px-8 py-5 border border-white/20 text-white font-mono text-xs uppercase tracking-widest hover:border-white/40 transition-colors rounded-none"
             >
               BROWSE ALL SERVICES
             </Link>
@@ -253,7 +195,7 @@ export const AnimationPage: React.FC<AnimationPageProps> = ({
           4. ADJACENT SERVICES NAVIGATION
           ===================================================================== */}
       <nav aria-label="Adjacent Services Navigation" className="w-full py-8 px-6 sm:px-12 md:px-16 lg:px-20 border-t border-white/10">
-        <div className="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-6">
+        <div className="max-w-[1700px] mx-auto flex flex-col sm:flex-row items-center justify-between gap-6">
           {prevService ? (
             <Link
               href={`/services/${prevService.slug}`}
