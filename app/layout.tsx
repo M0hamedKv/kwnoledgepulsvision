@@ -4,6 +4,10 @@ import "./globals.css";
 import { Navbar } from "@/components/layout/navbar/Navbar";
 import { Footer } from "@/components/layout/Footer";
 import { AmbientBackground } from "@/components/ui/AmbientBackground";
+import {
+  PageTransitionProvider,
+  TransitionOverlay,
+} from "@/components/transitions";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -28,13 +32,19 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}>
       <body className="min-h-full flex flex-col bg-black text-white relative">
-        {/* Global Ambient Dark Atmosphere with Professional Architectural Blue Glow Spots */}
-        <AmbientBackground />
-        <div className="relative z-10 flex-1 flex flex-col w-full bg-transparent">
-          <Navbar />
-          {children}
-          <Footer />
-        </div>
+        <PageTransitionProvider>
+          {/* Global Ambient Dark Atmosphere with Professional Architectural Blue Glow Spots */}
+          <AmbientBackground />
+          <div className="relative z-10 flex-1 flex flex-col w-full bg-transparent">
+            <Navbar />
+            <main id="main-page-wrapper" className="flex-1 flex flex-col w-full bg-transparent">
+              {children}
+            </main>
+            <Footer />
+          </div>
+          {/* Blue Architectural Page Transition Overlay */}
+          <TransitionOverlay />
+        </PageTransitionProvider>
       </body>
     </html>
   );
