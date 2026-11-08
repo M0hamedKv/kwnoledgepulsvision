@@ -25,8 +25,7 @@ export default function DesignServicesPage() {
       <section className="relative w-full min-h-screen flex flex-col justify-between pt-32 pb-12 px-6 sm:px-12 md:px-16 lg:px-20 overflow-hidden border-b border-white/10">
         {/* Full-bleed background image filling 100% of the Hero viewport */}
         <div className="absolute inset-0 z-0 pointer-events-none select-none overflow-hidden">
-          <img
-            src={heroImageSrc}
+          <img src={heroImageSrc}
             alt="Design Atelier & Architectural Engineering"
             className="w-full h-full object-cover scale-102"
           />
