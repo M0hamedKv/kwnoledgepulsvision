@@ -1,7 +1,7 @@
 import { Metadata } from "next";
 import Link from "next/link";
 import { getAllServices } from "@/components/services/servicesData";
-import { ServicesCatalogGrid } from "@/components/services";
+import { InteractiveCardsShowcase } from "@/components/services";
 import { ArrowRightIcon } from "@/svgs";
 
 export const metadata: Metadata = {
@@ -84,11 +84,9 @@ export default function InteractiveSolutionServicesPage() {
             </Link>
           </div>
 
-          {/* 3 Interactive Services Animated Grid */}
-          <ServicesCatalogGrid
+          {/* 3D Trading Cards Deck with Rotate-To-Video Expansion (Matching Reference) */}
+          <InteractiveCardsShowcase
             services={interactiveServices}
-            accentColor="#00c8ff"
-            gridCols="3"
           />
         </div>
       </section>
