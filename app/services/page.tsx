@@ -65,7 +65,6 @@ export default function ServicesPage() {
           {/* Expanding Horizontal Design Accordion Showcase */}
           <DesignAccordionShowcase
             services={designServices}
-            accentColor="#00c8ff"
           />
         </div>
       </section>
