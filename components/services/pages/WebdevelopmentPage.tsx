@@ -28,6 +28,27 @@ const ALL_WEB_PROJECTS = [
     category: "REAL ESTATE",
   },
   {
+    id: "rew-vid-3",
+    title: "ARCHITECTURAL DIGITAL SHOWCASE",
+    url: "https://res.cloudinary.com/hxytmocg/video/upload/v1794140108/11111.mp4",
+    type: "video" as const,
+    category: "REAL ESTATE",
+  },
+  {
+    id: "rew-vid-4",
+    title: "IMMERSIVE PROPERTY PORTFOLIO",
+    url: "https://res.cloudinary.com/hxytmocg/video/upload/v1794137198/2222222.mp4",
+    type: "video" as const,
+    category: "REAL ESTATE",
+  },
+  {
+    id: "rew-vid-5",
+    title: "HIGH-END RESIDENTIAL WEB EXPERIENCE",
+    url: "https://res.cloudinary.com/hxytmocg/video/upload/v1794143183/33333.mp4",
+    type: "video" as const,
+    category: "REAL ESTATE",
+  },
+  {
     id: "web-1",
     title: "EASTVILLE DIGITAL RESIDENCE",
     url: "/work/eastville-1.jpg",

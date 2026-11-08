@@ -25,6 +25,24 @@ const REAL_ESTATE_PROJECTS = [
     url: "https://res.cloudinary.com/hxytmocg/video/upload/v1794132166/4444444.mp4",
     type: "video" as const,
   },
+  {
+    id: "rew-vid-3",
+    title: "ARCHITECTURAL DIGITAL SHOWCASE",
+    url: "https://res.cloudinary.com/hxytmocg/video/upload/v1794140108/11111.mp4",
+    type: "video" as const,
+  },
+  {
+    id: "rew-vid-4",
+    title: "IMMERSIVE PROPERTY PORTFOLIO",
+    url: "https://res.cloudinary.com/hxytmocg/video/upload/v1794137198/2222222.mp4",
+    type: "video" as const,
+  },
+  {
+    id: "rew-vid-5",
+    title: "HIGH-END RESIDENTIAL WEB EXPERIENCE",
+    url: "https://res.cloudinary.com/hxytmocg/video/upload/v1794143183/33333.mp4",
+    type: "video" as const,
+  },
 ];
 
 export const RealEstateWebsitePage: React.FC<RealEstateWebsitePageProps> = ({
