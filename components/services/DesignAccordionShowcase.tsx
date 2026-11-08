@@ -29,7 +29,7 @@ export const DesignAccordionShowcase: React.FC<DesignAccordionShowcaseProps> = (
           - Hover: column expands, media scales up, ONLY service name fades gently upwards
           - Other columns: shrink in width & dim down
           ===================================================================== */}
-      <div className="hidden md:flex w-full h-[72vh] min-h-[540px] max-h-[760px] border border-white/10 bg-black overflow-hidden">
+      <div className="hidden md:flex w-full h-[72vh] min-h-135 max-h-190 border border-white/10 bg-black overflow-hidden">
         {services.map((service, index) => {
           const isActive = hoveredIndex === index;
           const isDimmed = isAnyHovered && !isActive;
@@ -139,7 +139,7 @@ export const DesignAccordionShowcase: React.FC<DesignAccordionShowcaseProps> = (
               key={service.id || service.slug}
               onClick={() => setHoveredIndex(isActive ? null : index)}
               className={`relative w-full transition-all duration-500 overflow-hidden cursor-pointer ${
-                isActive ? "h-[360px]" : "h-[180px]"
+                isActive ? "h-90" : "h-45"
               }`}
             >
               <Link href={`/services/${service.slug}`} className="block w-full h-full relative">

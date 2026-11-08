@@ -111,8 +111,8 @@ export const InteractiveCardsShowcase: React.FC<InteractiveCardsShowcaseProps> =
               key={service.id || service.slug}
               className={`shrink-0 transition-all duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] ${staggerClass} ${
                 isFlipped
-                  ? "w-[85vw] max-w-[780px] lg:max-w-[880px] z-30"
-                  : "w-[210px] sm:w-[230px] md:w-[250px] lg:w-[265px] z-10"
+                  ? "w-[85vw] max-w-195 lg:max-w-220 z-30"
+                  : "w-52.5 sm:w-57.5 md:w-62.5 lg:w-66.25 z-10"
               }`}
               style={{ perspective: "2200px" }}
             >
@@ -142,7 +142,7 @@ export const InteractiveCardsShowcase: React.FC<InteractiveCardsShowcaseProps> =
                   }}
                 >
                   {/* Beveled White Metallic Frame */}
-                  <div className="relative w-full aspect-[3/4.2] rounded-2xl p-[3.5px] bg-gradient-to-b from-white via-[#dcdde1] to-[#718096] shadow-[0_12px_40px_rgba(255,255,255,0.12)] hover:shadow-[0_18px_50px_rgba(255,255,255,0.28)] transition-all duration-500">
+                  <div className="relative w-full aspect-[3/4.2] rounded-2xl p-[3.5px] bg-linear-to-b from-white via-[#dcdde1] to-[#718096] shadow-[0_12px_40px_rgba(255,255,255,0.12)] hover:shadow-[0_18px_50px_rgba(255,255,255,0.28)] transition-all duration-500">
                     <div className="relative w-full h-full rounded-[13px] overflow-hidden bg-black flex items-center justify-center">
                       {videoSrc ? (
                         <video
