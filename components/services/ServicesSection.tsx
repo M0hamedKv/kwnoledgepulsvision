@@ -20,14 +20,14 @@ const DUAL_SHOWCASES: DualShowcaseItem[] = [
     id: "interactive-solution",
     title: "INTERACTIVE SOLUTION",
     video: "https://res.cloudinary.com/hxytmocg/video/upload/v1793558191/MVI_8622.mov",
-    href: "/services",
+    href: "/services/interactive-solution",
     accentColor: "#00c8ff",
   },
   {
     id: "design",
     title: "DESIGN",
     video: "https://res.cloudinary.com/hxytmocg/video/upload/v1793214871/reception.mp4",
-    href: "/services",
+    href: "/services/design",
     accentColor: "#0055ff",
   },
 ];
@@ -73,7 +73,7 @@ const DualPortalCard: React.FC<{ item: DualShowcaseItem }> = ({ item }) => {
           ref={cardRef}
           onMouseMove={handleMouseMove}
           onMouseLeave={handleMouseLeave}
-          className="relative w-full h-100 sm:h-125 lg:h-145 rounded-3xl overflow-hidden bg-black border border-white/10 hover:border-white/30 shadow-[0_20px_50px_rgba(0,0,0,0.85)] will-change-transform cursor-pointer transition-colors duration-500"
+          className="relative w-full h-100 sm:h-125 lg:h-145 rounded-none overflow-hidden bg-black border border-white/10 hover:border-white/30 shadow-[0_20px_50px_rgba(0,0,0,0.85)] will-change-transform cursor-pointer transition-colors duration-500"
           style={{ transformStyle: "preserve-3d" }}
         >
           {/* 100% Full-Bleed 4K Video Background (Strictly ZERO text by default) */}

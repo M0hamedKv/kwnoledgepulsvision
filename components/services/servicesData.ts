@@ -217,31 +217,103 @@ export const ALL_SERVICES: ServiceDetailItem[] = [
     tags: ["Touchscreen Kiosk", "Real-Time 3D", "Unreal Engine", "Digital Scale Model", "Sales Centers", "CRM Sync"],
     ctaHeading: "COMMISSION AN IMAQUETTE FOR YOUR NEXT DEVELOPMENT",
     ctaSubtext: "Transform your sales gallery with a bespoke interactive scale model tailored to your master plan.",
-    nextSlug: "webdevelopment",
+    nextSlug: "realestate-website",
     prevSlug: "interior",
   },
 
   // =========================================================================
-  // 2. WEBDEVELOPMENT (Interactive Solution)
+  // 2. REAL ESTATE WEBSITE (Interactive Solution)
   // =========================================================================
   {
-    id: "webdevelopment",
-    slug: "webdevelopment",
+    id: "realestate-website",
+    slug: "realestate-website",
     number: "02",
     discipline: "INTERACTIVE SOLUTION",
     disciplineSlug: "interactive-solution",
     disciplineTag: "DIGITAL EXPERIENCES & 3D SYSTEMS",
-    title: "WEB DEVELOPMENT",
+    title: "REAL ESTATE WEBSITE",
+    heroHeadline: "BESPOKE REAL ESTATE & PROPERTY DEVELOPMENT WEB PLATFORMS",
+    subtitle: "High-performance interactive web flagships for luxury residential developments, master plans, and property sales.",
+    manifesto:
+      "We engineer immersive real estate web applications combining interactive master plans, unit selectors, architectural storytelling, and fluid motion designed to convert high-net-worth buyers.",
+    accentColor: "#00c8ff",
+    badge: "PROPERTY TECH",
+    status: "active",
+    coverVideo: "https://res.cloudinary.com/hxytmocg/video/upload/v1794132541/66666.mp4",
+    coverImage: "/work/eastville-1.jpg",
+    mediaCountLabel: "2 FLAGSHIP PLATFORMS",
+    gallery: [
+      {
+        id: "rew-1",
+        title: "LUXURY REAL ESTATE FLAGSHIP PLATFORM",
+        category: "Real Estate Website",
+        url: "https://res.cloudinary.com/hxytmocg/video/upload/v1794132541/66666.mp4",
+        type: "video",
+        aspect: "16:9",
+        badge: "FLAGSHIP",
+      },
+      {
+        id: "rew-2",
+        title: "INTERACTIVE PROPERTY DEVELOPMENT PORTAL",
+        category: "Real Estate Website",
+        url: "https://res.cloudinary.com/hxytmocg/video/upload/v1794132166/4444444.mp4",
+        type: "video",
+        aspect: "16:9",
+        badge: "INTERACTIVE PORTAL",
+      },
+    ],
+    deliverables: [],
+    specifications: [],
+    process: [],
+    clientBenefits: [],
+    tags: ["Real Estate", "Next.js", "Masterplan UX", "Property Sales", "PropTech", "GSAP Motion"],
+    ctaHeading: "COMMISSION A REAL ESTATE WEB PLATFORM",
+    ctaSubtext: "Elevate your property development with an ultra-fast, photorealistic web experience.",
+    nextSlug: "webdevelopment",
+    prevSlug: "imaquette",
+  },
+
+  // =========================================================================
+  // 3. WEBSITE DEV (Interactive Solution)
+  // =========================================================================
+  {
+    id: "webdevelopment",
+    slug: "webdevelopment",
+    number: "03",
+    discipline: "INTERACTIVE SOLUTION",
+    disciplineSlug: "interactive-solution",
+    disciplineTag: "DIGITAL EXPERIENCES & 3D SYSTEMS",
+    title: "WEBSITE DEV",
     heroHeadline: "ARCHITECTURAL DIGITAL SPACES ENGINEERED FOR THE WEB",
     subtitle: "Ultra-fast bespoke digital platforms, WebGL 3D web applications, and choreographed kinetic experiences.",
     manifesto:
       "We design and code digital flagships for architectural studios, property conglomerates, and luxury brands. Combining Next.js 16, React 19, choreographed GSAP kinetic motion, and WebGL shaders, we build digital spaces as meticulously crafted as high-end architecture.",
     accentColor: "#00c8ff",
     badge: "CREATIVE ENGINEERING",
-    status: "coming-soon",
-    coverVideo: "https://res.cloudinary.com/hxytmocg/video/upload/v1793537718/Untitled-5.mp4",
-    mediaCountLabel: "COMING SOON",
-    gallery: [],
+    status: "active",
+    coverVideo: "https://res.cloudinary.com/hxytmocg/video/upload/v1794132541/66666.mp4",
+    coverImage: "/work/eastville-1.jpg",
+    mediaCountLabel: "FLAGSHIP PROJECTS",
+    gallery: [
+      {
+        id: "rew-1",
+        title: "LUXURY REAL ESTATE FLAGSHIP PLATFORM",
+        category: "Real Estate Website",
+        url: "https://res.cloudinary.com/hxytmocg/video/upload/v1794132541/66666.mp4",
+        type: "video",
+        aspect: "16:9",
+        badge: "FLAGSHIP",
+      },
+      {
+        id: "rew-2",
+        title: "INTERACTIVE PROPERTY DEVELOPMENT PORTAL",
+        category: "Real Estate Website",
+        url: "https://res.cloudinary.com/hxytmocg/video/upload/v1794132166/4444444.mp4",
+        type: "video",
+        aspect: "16:9",
+        badge: "INTERACTIVE PORTAL",
+      },
+    ],
     deliverables: [
       {
         title: "Custom Architectural Web Platforms",
@@ -286,16 +358,16 @@ export const ALL_SERVICES: ServiceDetailItem[] = [
     ctaHeading: "ARCHITECT YOUR NEXT DIGITAL FLAGSHIP",
     ctaSubtext: "Partner with our creative engineers to build a web experience that reflects the caliber of your architecture.",
     nextSlug: "animation",
-    prevSlug: "imaquette",
+    prevSlug: "realestate-website",
   },
 
   // =========================================================================
-  // 3. ANIMATION (Interactive Solution)
+  // 4. ANIMATION (Interactive Solution)
   // =========================================================================
   {
     id: "animation",
     slug: "animation",
-    number: "03",
+    number: "04",
     discipline: "INTERACTIVE SOLUTION",
     disciplineSlug: "interactive-solution",
     disciplineTag: "DIGITAL EXPERIENCES & 3D SYSTEMS",

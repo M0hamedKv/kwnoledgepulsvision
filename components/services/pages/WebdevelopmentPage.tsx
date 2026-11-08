@@ -12,30 +12,48 @@ interface WebdevelopmentPageProps {
   nextService?: ServiceDetailItem;
 }
 
-const WEB_PROJECTS = [
+const ALL_WEB_PROJECTS = [
+  {
+    id: "rew-vid-1",
+    title: "LUXURY REAL ESTATE FLAGSHIP PLATFORM",
+    url: "https://res.cloudinary.com/hxytmocg/video/upload/v1794132541/66666.mp4",
+    type: "video" as const,
+    category: "REAL ESTATE",
+  },
+  {
+    id: "rew-vid-2",
+    title: "INTERACTIVE PROPERTY DEVELOPMENT PORTAL",
+    url: "https://res.cloudinary.com/hxytmocg/video/upload/v1794132166/4444444.mp4",
+    type: "video" as const,
+    category: "REAL ESTATE",
+  },
   {
     id: "web-1",
     title: "EASTVILLE DIGITAL RESIDENCE",
     url: "/work/eastville-1.jpg",
     type: "image" as const,
+    category: "WEBSITE DEV",
   },
   {
     id: "web-2",
     title: "EASTVILLE INTERACTIVE PLATFORM",
     url: "/work/eastville-2.png",
     type: "image" as const,
+    category: "WEBSITE DEV",
   },
   {
     id: "web-3",
     title: "DIVA ARCHITECTURAL ATELIER",
     url: "/work/diva-1.png",
     type: "image" as const,
+    category: "WEBSITE DEV",
   },
   {
     id: "web-4",
     title: "DIVA DIGITAL SPATIAL SHOWCASE",
     url: "/work/diva-2.jpg",
     type: "image" as const,
+    category: "WEBSITE DEV",
   },
 ];
 
@@ -44,6 +62,7 @@ export const WebdevelopmentPage: React.FC<WebdevelopmentPageProps> = ({
   prevService,
   nextService,
 }) => {
+  const [activeCategory, setActiveCategory] = useState<string>("ALL");
   const [lightboxState, setLightboxState] = useState<{
     items: LightboxItem[];
     index: number;
@@ -51,13 +70,20 @@ export const WebdevelopmentPage: React.FC<WebdevelopmentPageProps> = ({
 
   const heroImageSrc = "/work/eastville-1.jpg";
 
+  const categories = ["ALL", "REAL ESTATE", "WEBSITE DEV"];
+
+  const filteredProjects =
+    activeCategory === "ALL"
+      ? ALL_WEB_PROJECTS
+      : ALL_WEB_PROJECTS.filter((p) => p.category === activeCategory);
+
   const handleOpenLightbox = (index: number) => {
     setLightboxState({
-      items: WEB_PROJECTS.map((p) => ({
+      items: filteredProjects.map((p) => ({
         id: p.id,
         title: p.title,
         url: p.url,
-        type: "image",
+        type: p.type,
       })),
       index,
     });
@@ -103,22 +129,51 @@ export const WebdevelopmentPage: React.FC<WebdevelopmentPageProps> = ({
       </section>
 
       {/* =====================================================================
-          2. PURE VISUAL EXHIBITION — SHARP CORNERS, ZERO CLUTTER
+          2. PURE VISUAL & VIDEO EXHIBITION — SHARP CORNERS, ZERO CLUTTER
           ===================================================================== */}
       <section id="web-exhibition" className="w-full py-12 sm:py-20 px-4 sm:px-8 md:px-12 lg:px-16 relative bg-black">
         <div className="max-w-[1700px] mx-auto flex flex-col gap-6 sm:gap-8">
+          {/* Category Tabs */}
+          <div className="flex flex-wrap items-center justify-center sm:justify-start gap-2 pb-6 border-b border-white/10">
+            {categories.map((cat) => (
+              <button
+                key={cat}
+                onClick={() => setActiveCategory(cat)}
+                className={`px-5 py-2.5 rounded-none font-mono text-xs uppercase tracking-wider transition-all cursor-pointer ${
+                  activeCategory === cat
+                    ? "bg-[#00c8ff] text-black font-bold shadow-[0_0_20px_rgba(0,200,255,0.4)]"
+                    : "bg-white/5 text-white/70 hover:text-white hover:bg-white/10 border border-white/10"
+                }`}
+              >
+                {cat}
+              </button>
+            ))}
+          </div>
+
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6">
-            {WEB_PROJECTS.map((project, idx) => (
+            {filteredProjects.map((project, idx) => (
               <div
                 key={project.id}
                 onClick={() => handleOpenLightbox(idx)}
                 className="group relative rounded-none overflow-hidden border border-white/10 hover:border-white/40 bg-black transition-all duration-500 cursor-pointer flex flex-col aspect-16/10"
               >
-                <img
-                  src={project.url}
-                  alt={project.title}
-                  className="w-full h-full object-cover rounded-none grayscale contrast-[1.05] brightness-[0.9] group-hover:grayscale-0 group-hover:brightness-100 group-hover:scale-104 transition-all duration-700 ease-out pointer-events-none"
-                />
+                {project.type === "video" ? (
+                  <video
+                    src={project.url}
+                    autoPlay
+                    loop
+                    muted
+                    playsInline
+                    preload="metadata"
+                    className="w-full h-full object-cover rounded-none group-hover:scale-104 transition-transform duration-700 ease-out pointer-events-none"
+                  />
+                ) : (
+                  <img
+                    src={project.url}
+                    alt={project.title}
+                    className="w-full h-full object-cover rounded-none grayscale contrast-[1.05] brightness-[0.9] group-hover:grayscale-0 group-hover:brightness-100 group-hover:scale-104 transition-all duration-700 ease-out pointer-events-none"
+                  />
+                )}
 
                 {/* Minimal Hover Overlay — Project Name ONLY */}
                 <div className="absolute inset-0 bg-black/50 backdrop-blur-[2px] opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center p-6 text-center pointer-events-none z-10">

@@ -4,6 +4,7 @@ import { getServiceBySlug, getAllServices } from "@/components/services/services
 import {
   AnimationPage,
   ImaquettePage,
+  RealEstateWebsitePage,
   WebdevelopmentPage,
   BimPage,
   MepPage,
@@ -65,6 +66,15 @@ export default async function ServiceDetailPage({ params }: ServiceDetailPagePro
     case "imaquette":
       return (
         <ImaquettePage
+          service={service}
+          prevService={prevService}
+          nextService={nextService}
+        />
+      );
+
+    case "realestate-website":
+      return (
+        <RealEstateWebsitePage
           service={service}
           prevService={prevService}
           nextService={nextService}

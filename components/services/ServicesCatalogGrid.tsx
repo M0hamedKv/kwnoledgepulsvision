@@ -61,7 +61,7 @@ const ServiceCard3D: React.FC<{
       className="catalog-card-wrapper w-full flex flex-col select-none will-change-[clip-path]"
       style={{ perspective: "1000px" }}
     >
-      <Link href={`/services/${service.slug}`} className="group relative block w-full h-115 sm:h-135 lg:h-155 rounded-3xl overflow-hidden bg-black border border-white/10 hover:border-white/30 shadow-[0_20px_50px_rgba(0,0,0,0.85)] transition-colors duration-500 cursor-pointer">
+      <Link href={`/services/${service.slug}`} className="group relative block w-full h-115 sm:h-135 lg:h-155 rounded-none overflow-hidden bg-black border border-white/10 hover:border-white/30 shadow-[0_20px_50px_rgba(0,0,0,0.85)] transition-colors duration-500 cursor-pointer">
         <div
           ref={cardRef}
           onMouseMove={handleMouseMove}
