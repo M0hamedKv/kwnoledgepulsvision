@@ -1,7 +1,7 @@
 import { Metadata } from "next";
 import Link from "next/link";
 import { getAllServices } from "@/components/services/servicesData";
-import { ServicesCatalogGrid } from "@/components/services";
+import { DesignAccordionShowcase } from "@/components/services";
 import { ArrowRightIcon } from "@/svgs";
 
 export const metadata: Metadata = {
@@ -82,11 +82,9 @@ export default function DesignServicesPage() {
             </Link>
           </div>
 
-          {/* 3 Design Services Animated Grid */}
-          <ServicesCatalogGrid
+          {/* Horizontal Expanding Accordion Showcase (Matching Editorial Reference) */}
+          <DesignAccordionShowcase
             services={designServices}
-            accentColor="#00c8ff"
-            gridCols="3"
           />
         </div>
       </section>

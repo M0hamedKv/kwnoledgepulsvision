@@ -626,143 +626,144 @@ export const ALL_SERVICES: ServiceDetailItem[] = [
     tags: ["4K Cinematic CGI", "Ray-Tracing", "Photorealism", "Camera Choreography", "Visual Direction", "Drone Matching"],
     ctaHeading: "COMMISSION A CINEMATIC 3D FILM",
     ctaSubtext: "Bring your architecture to life with cinematic visual direction and photorealistic CGI animation.",
-    nextSlug: "bim",
+    nextSlug: "vr",
     prevSlug: "webdevelopment",
   },
 
   // =========================================================================
   // 4. VR (Interactive Solution)
   // =========================================================================
-  // {
-  //   id: "vr",
-  //   slug: "vr",
-  //   number: "04",
-  //   discipline: "INTERACTIVE SOLUTION",
-  //   disciplineSlug: "interactive-solution",
-  //   disciplineTag: "DIGITAL EXPERIENCES & 3D SYSTEMS",
-  //   title: "VR",
-  //   heroHeadline: "6DOF ROOM-SCALE VIRTUAL REALITY WALKTHROUGHS",
-  //   subtitle: "Spatial computing, uncompromised 1:1 scale immersion, and interactive material customization.",
-  //   manifesto:
-  //     "Renderings allow clients to look at architecture; Virtual Reality places them inside it. By harnessing cutting-edge spatial computing, we allow developers, investors, and homeowners to walk through spaces, test materials, and experience ceiling heights before construction.",
-  //   accentColor: "#00c8ff",
-  //   badge: "SPATIAL COMPUTING",
-  //   status: "coming-soon",
-  //   mediaCountLabel: "COMING SOON",
-  //   gallery: [],
-  //   deliverables: [
-  //     {
-  //       title: "6DoF Room-scale VR Environments",
-  //       description: "Full six-degrees-of-freedom navigation allowing users to physically walk, lean, and inspect architectural details.",
-  //       metric: "90+ FPS Ultra-low Motion Sickness",
-  //     },
-  //     {
-  //       title: "Interactive Finishes & Lighting Configurator",
-  //       description: "Live real-time material swatches allowing buyers to toggle between marble, wood, and concrete textures instantly.",
-  //       metric: "Instant Real-time Swapping",
-  //     },
-  //     {
-  //       title: "Multi-User VIP Guided Tours",
-  //       description: "Synchronized multi-headset walkthroughs where architects guide clients through the space from anywhere in the world.",
-  //       metric: "Cross-continental Remote Tours",
-  //     },
-  //     {
-  //       title: "WebVR Browser-Based Access",
-  //       description: "Lightweight WebXR experiences accessible directly from modern browsers without requiring dedicated software.",
-  //       metric: "Universal WebXR Compatibility",
-  //     },
-  //   ],
-  //   specifications: [
-  //     { label: "Hardware Support", value: "Apple Vision Pro, Meta Quest 3, HTC Vive Pro" },
-  //     { label: "Engine", value: "Unreal Engine 5.4 Lumen & Nanite VR" },
-  //     { label: "Frame Rate", value: "Native 90 Hz / 120 Hz Stereoscopic" },
-  //     { label: "Tracking", value: "Inside-out Spatial Tracking & Hand Gestures" },
-  //     { label: "Distribution", value: "Dedicated Executable, Cloud Pixel Streaming, WebXR" },
-  //   ],
-  //   process: [
-  //     { number: "01", title: "Spatial Optimization", description: "Converting architectural CAD models into ultra-high framerate polygon topologies." },
-  //     { number: "02", title: "Scale & Ergonomics Check", description: "Verifying exact 1:1 architectural dimensions, door openings, and sightlines." },
-  //     { number: "03", title: "Interactivity Integration", description: "Coding physical grab interactions, lighting switches, and spatial sound nodes." },
-  //     { number: "04", title: "Hardware Testing & Deployment", description: "Comprehensive testing on target headsets and delivery to sales centers." },
-  //   ],
-  //   clientBenefits: [
-  //     "Eliminate spatial misunderstandings by letting clients physically feel room proportions and sightlines.",
-  //     "Conduct VIP sales presentations for international ultra-high-net-worth buyers without geographical limits.",
-  //     "Accelerate interior finish decisions by previewing multiple material options in real time.",
-  //   ],
-  //   tags: ["Virtual Reality", "Apple Vision Pro", "Meta Quest", "6DoF Immersion", "Spatial Computing", "WebXR"],
-  //   ctaHeading: "STEP INTO THE FUTURE OF SPATIAL IMMERSION",
-  //   ctaSubtext: "Experience your projects in true 1:1 scale virtual reality before breaking ground.",
-  //   nextSlug: "community-app",
-  //   prevSlug: "animation",
-  // },
+  {
+    id: "vr",
+    slug: "vr",
+    number: "04",
+    discipline: "INTERACTIVE SOLUTION",
+    disciplineSlug: "interactive-solution",
+    disciplineTag: "DIGITAL EXPERIENCES & 3D SYSTEMS",
+    title: "VR",
+    heroHeadline: "6DOF ROOM-SCALE VIRTUAL REALITY WALKTHROUGHS",
+    subtitle: "Spatial computing, uncompromised 1:1 scale immersion, and interactive material customization.",
+    manifesto:
+      "Renderings allow clients to look at architecture; Virtual Reality places them inside it. By harnessing cutting-edge spatial computing, we allow developers, investors, and homeowners to walk through spaces, test materials, and experience ceiling heights before construction.",
+    accentColor: "#00c8ff",
+    badge: "SPATIAL COMPUTING",
+    status: "coming-soon",
+    mediaCountLabel: "COMING SOON",
+    gallery: [],
+    deliverables: [
+      {
+        title: "6DoF Room-scale VR Environments",
+        description: "Full six-degrees-of-freedom navigation allowing users to physically walk, lean, and inspect architectural details.",
+        metric: "90+ FPS Ultra-low Motion Sickness",
+      },
+      {
+        title: "Interactive Finishes & Lighting Configurator",
+        description: "Live real-time material swatches allowing buyers to toggle between marble, wood, and concrete textures instantly.",
+        metric: "Instant Real-time Swapping",
+      },
+      {
+        title: "Multi-User VIP Guided Tours",
+        description: "Synchronized multi-headset walkthroughs where architects guide clients through the space from anywhere in the world.",
+        metric: "Cross-continental Remote Tours",
+      },
+      {
+        title: "WebVR Browser-Based Access",
+        description: "Lightweight WebXR experiences accessible directly from modern browsers without requiring dedicated software.",
+        metric: "Universal WebXR Compatibility",
+      },
+    ],
+    specifications: [
+      { label: "Hardware Support", value: "Apple Vision Pro, Meta Quest 3, HTC Vive Pro" },
+      { label: "Engine", value: "Unreal Engine 5.4 Lumen & Nanite VR" },
+      { label: "Frame Rate", value: "Native 90 Hz / 120 Hz Stereoscopic" },
+      { label: "Tracking", value: "Inside-out Spatial Tracking & Hand Gestures" },
+      { label: "Distribution", value: "Dedicated Executable, Cloud Pixel Streaming, WebXR" },
+    ],
+    process: [
+      { number: "01", title: "Spatial Optimization", description: "Converting architectural CAD models into ultra-high framerate polygon topologies." },
+      { number: "02", title: "Scale & Ergonomics Check", description: "Verifying exact 1:1 architectural dimensions, door openings, and sightlines." },
+      { number: "03", title: "Interactivity Integration", description: "Coding physical grab interactions, lighting switches, and spatial sound nodes." },
+      { number: "04", title: "Hardware Testing & Deployment", description: "Comprehensive testing on target headsets and delivery to sales centers." },
+    ],
+    clientBenefits: [
+      "Eliminate spatial misunderstandings by letting clients physically feel room proportions and sightlines.",
+      "Conduct VIP sales presentations for international ultra-high-net-worth buyers without geographical limits.",
+      "Accelerate interior finish decisions by previewing multiple material options in real time.",
+    ],
+    tags: ["Virtual Reality", "Apple Vision Pro", "Meta Quest", "6DoF Immersion", "Spatial Computing", "WebXR"],
+    ctaHeading: "STEP INTO THE FUTURE OF SPATIAL IMMERSION",
+    ctaSubtext: "Experience your projects in true 1:1 scale virtual reality before breaking ground.",
+    nextSlug: "community-app",
+    prevSlug: "animation",
+  },
 
   // =========================================================================
   // 5. COMMUNITY APP (Interactive Solution)
   // =========================================================================
-  // {
-  //   id: "community-app",
-  //   slug: "community-app",
-  //   number: "05",
-  //   discipline: "INTERACTIVE SOLUTION",
-  //   disciplineSlug: "interactive-solution",
-  //   disciplineTag: "DIGITAL EXPERIENCES & 3D SYSTEMS",
-  //   title: "COMMUNITY APP",
-  //   heroHeadline: "SMART PROPTECH PLATFORMS FOR LUXURY COMPOUNDS",
-  //   subtitle: "Mobile and web ecosystem connecting residents, building facilities, access controls, and concierge services.",
-  //   manifesto:
-  //     "Modern luxury developments are not just concrete and glass; they are living, breathing ecosystems. We engineer bespoke branded community applications that provide residents with seamless digital access, concierge bookings, smart home IoT automation, and direct facility management.",
-  //   accentColor: "#00c8ff",
-  //   badge: "PROPTECH & SMART LIVING",
-  //   status: "coming-soon",
-  //   mediaCountLabel: "COMING SOON",
-  //   gallery: [],
-  //   deliverables: [
-  //     {
-  //       title: "Digital Access Control & Guest QR Passes",
-  //       description: "Frictionless vehicle gate access, smart elevator calling, and temporary encrypted QR codes for invited guests.",
-  //       metric: "Instant Gate Clearance",
-  //     },
-  //     {
-  //       title: "Amenity & Clubhouse Reservation Engine",
-  //       description: "Real-time calendar booking for sports facilities, private dining suites, spa appointments, and pool cabanas.",
-  //       metric: "Automated Calendar Sync",
-  //     },
-  //     {
-  //       title: "IoT Smart Home & Facility Telemetry",
-  //       description: "Resident controls for HVAC temperatures, ambient lighting scenes, and consumption analytics.",
-  //       metric: "Zigbee / Matter Standard",
-  //     },
-  //     {
-  //       title: "Bilingual Resident Concierge & Billing",
-  //       description: "In-app maintenance ticket reporting with photo attachments, live status tracking, and digital maintenance fee payments.",
-  //       metric: "99.9% Operational Uptime",
-  //     },
-  //   ],
-  //   specifications: [
-  //     { label: "Platforms", value: "iOS (Native Swift), Android (Kotlin), Next.js Admin" },
-  //     { label: "Backend Architecture", value: "Cloud-native Node.js / PostgreSQL / Redis" },
-  //     { label: "Hardware Integration", value: "HID Access Control, Dahua / Hikvision Gateways" },
-  //     { label: "Security & Encryption", value: "AES-256 Bit Data Encryption, Biometric FaceID" },
-  //     { label: "Payment Gateways", value: "Stripe, Apple Pay, Local Direct Debit Gateways" },
-  //   ],
-  //   process: [
-  //     { number: "01", title: "Community Workflow Mapping", description: "Auditing compound security protocols, tenant personas, and facility access rules." },
-  //     { number: "02", title: "Luxury UI/UX Design", description: "Crafting a bespoke editorial interface branded specifically to the real estate development." },
-  //     { number: "03", title: "Hardware & IoT Integration", description: "Connecting APIs with on-site gates, smart meters, elevators, and security servers." },
-  //     { number: "04", title: "Onboarding & Management Handover", description: "App Store deployment, staff dashboard training, and tenant onboarding support." },
-  //   ],
-  //   clientBenefits: [
-  //     "Elevate real estate asset valuation by offering a world-class smart living digital amenity to buyers.",
-  //     "Reduce property management operational overhead through automated billing and ticket triage.",
-  //     "Strengthen community security with encrypted, trackable digital access records.",
-  //   ],
-  //   tags: ["PropTech", "iOS & Android", "Smart Community", "IoT Integration", "Tenant Experience", "Access Control"],
-  //   ctaHeading: "ELEVATE YOUR COMPOUND WITH A BESPOKE COMMUNITY APP",
-  //   ctaSubtext: "Connect your residents to a luxury smart living ecosystem with an app branded to your property.",
-  //   nextSlug: "bim",
-  //   prevSlug: "vr",
-  // },
+  
+  {
+    id: "community-app",
+    slug: "community-app",
+    number: "05",
+    discipline: "INTERACTIVE SOLUTION",
+    disciplineSlug: "interactive-solution",
+    disciplineTag: "DIGITAL EXPERIENCES & 3D SYSTEMS",
+    title: "COMMUNITY APP",
+    heroHeadline: "SMART PROPTECH PLATFORMS FOR LUXURY COMPOUNDS",
+    subtitle: "Mobile and web ecosystem connecting residents, building facilities, access controls, and concierge services.",
+    manifesto:
+      "Modern luxury developments are not just concrete and glass; they are living, breathing ecosystems. We engineer bespoke branded community applications that provide residents with seamless digital access, concierge bookings, smart home IoT automation, and direct facility management.",
+    accentColor: "#00c8ff",
+    badge: "PROPTECH & SMART LIVING",
+    status: "coming-soon",
+    mediaCountLabel: "COMING SOON",
+    gallery: [],
+    deliverables: [
+      {
+        title: "Digital Access Control & Guest QR Passes",
+        description: "Frictionless vehicle gate access, smart elevator calling, and temporary encrypted QR codes for invited guests.",
+        metric: "Instant Gate Clearance",
+      },
+      {
+        title: "Amenity & Clubhouse Reservation Engine",
+        description: "Real-time calendar booking for sports facilities, private dining suites, spa appointments, and pool cabanas.",
+        metric: "Automated Calendar Sync",
+      },
+      {
+        title: "IoT Smart Home & Facility Telemetry",
+        description: "Resident controls for HVAC temperatures, ambient lighting scenes, and consumption analytics.",
+        metric: "Zigbee / Matter Standard",
+      },
+      {
+        title: "Bilingual Resident Concierge & Billing",
+        description: "In-app maintenance ticket reporting with photo attachments, live status tracking, and digital maintenance fee payments.",
+        metric: "99.9% Operational Uptime",
+      },
+    ],
+    specifications: [
+      { label: "Platforms", value: "iOS (Native Swift), Android (Kotlin), Next.js Admin" },
+      { label: "Backend Architecture", value: "Cloud-native Node.js / PostgreSQL / Redis" },
+      { label: "Hardware Integration", value: "HID Access Control, Dahua / Hikvision Gateways" },
+      { label: "Security & Encryption", value: "AES-256 Bit Data Encryption, Biometric FaceID" },
+      { label: "Payment Gateways", value: "Stripe, Apple Pay, Local Direct Debit Gateways" },
+    ],
+    process: [
+      { number: "01", title: "Community Workflow Mapping", description: "Auditing compound security protocols, tenant personas, and facility access rules." },
+      { number: "02", title: "Luxury UI/UX Design", description: "Crafting a bespoke editorial interface branded specifically to the real estate development." },
+      { number: "03", title: "Hardware & IoT Integration", description: "Connecting APIs with on-site gates, smart meters, elevators, and security servers." },
+      { number: "04", title: "Onboarding & Management Handover", description: "App Store deployment, staff dashboard training, and tenant onboarding support." },
+    ],
+    clientBenefits: [
+      "Elevate real estate asset valuation by offering a world-class smart living digital amenity to buyers.",
+      "Reduce property management operational overhead through automated billing and ticket triage.",
+      "Strengthen community security with encrypted, trackable digital access records.",
+    ],
+    tags: ["PropTech", "iOS & Android", "Smart Community", "IoT Integration", "Tenant Experience", "Access Control"],
+    ctaHeading: "ELEVATE YOUR COMPOUND WITH A BESPOKE COMMUNITY APP",
+    ctaSubtext: "Connect your residents to a luxury smart living ecosystem with an app branded to your property.",
+    nextSlug: "bim",
+    prevSlug: "vr",
+  },
 
   // =========================================================================
   // 6. BIM (Design)
@@ -829,7 +830,7 @@ export const ALL_SERVICES: ServiceDetailItem[] = [
     ctaHeading: "COORDINATE YOUR PROJECT WITH BIM PRECISION",
     ctaSubtext: "Ensure flawless constructability and budget adherence with our BIM management specialists.",
     nextSlug: "mep",
-    prevSlug: "animation",
+    prevSlug: "community-app",
   },
 
   // =========================================================================
