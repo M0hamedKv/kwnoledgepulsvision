@@ -25,34 +25,46 @@ export const InteriorPage: React.FC<InteriorPageProps> = ({
   prevService,
   nextService,
 }) => {
+  const heroImageSrc =
+    service?.coverImage ||
+    "https://res.cloudinary.com/hxytmocg/image/upload/v1793521335/2_View02.webp";
+
   return (
     <div className="w-full min-h-screen bg-black text-white selection:bg-[#00c8ff] selection:text-black">
       {/* =====================================================================
-          1. CLEAN EDITORIAL HERO — ZERO ROUNDED CORNERS, ZERO CLUTTER
+          1. FULL-BLEED IMAGE HERO — PURE IMAGE, CENTERED TITLE ONLY
           ===================================================================== */}
-      <section className="relative w-full pt-36 sm:pt-44 pb-12 sm:pb-16 px-6 sm:px-12 md:px-16 lg:px-20 border-b border-white/10 overflow-hidden bg-black">
-        <div className="max-w-[1700px] mx-auto flex flex-col md:flex-row md:items-end justify-between gap-8">
-          <div>
-            <span className="font-mono text-xs uppercase tracking-[0.24em] text-[#00c8ff] font-bold">
-              06 // ARCHITECTURAL ATELIER
-            </span>
-            <h1 className="font-['BlauerNue',sans-serif] text-6xl sm:text-8xl md:text-9xl lg:text-[10rem] font-black uppercase tracking-tight leading-[0.85] text-white mt-3 select-none drop-shadow-[0_8px_40px_rgba(0,0,0,0.95)]">
-              INTERIOR
-            </h1>
-          </div>
+      <section className="relative w-full min-h-screen flex flex-col justify-between pt-32 pb-12 px-6 sm:px-12 md:px-16 lg:px-20 overflow-hidden border-b border-white/10">
+        {/* Full-bleed background image filling 100% of the Hero viewport */}
+        <div className="absolute inset-0 z-0 pointer-events-none select-none overflow-hidden">
+          <img
+            src={heroImageSrc}
+            alt="Interior Architecture & Design"
+            className="w-full h-full object-cover scale-102"
+          />
+          <div className="absolute inset-0 bg-black/45" />
+          <div className="absolute inset-x-0 top-0 h-40 bg-linear-to-b from-black/80 to-transparent" />
+          <div className="absolute inset-x-0 bottom-0 h-48 bg-linear-to-t from-black to-transparent" />
+        </div>
 
-          <div className="flex flex-col items-start md:items-end gap-3">
-            <span className="font-mono text-xs text-white/50 uppercase tracking-widest">
-              [ 08 CURATED PROJECTS // 143 RENDERS ]
-            </span>
-            <a
-              href="#projects-grid"
-              className="font-mono text-xs text-[#00c8ff] uppercase tracking-[0.2em] hover:text-white transition-colors flex items-center gap-1.5"
-            >
-              <span>EXPLORE EXHIBITION</span>
-              <span>↓</span>
-            </a>
-          </div>
+        <div className="relative z-10" />
+
+        {/* Hero Title — Pure, Clean, Bold, Exactly in Center */}
+        <div className="relative z-10 flex flex-col items-center justify-center text-center my-auto">
+          <h1 className="font-['BlauerNue',sans-serif] text-7xl sm:text-9xl md:text-[11rem] lg:text-[13rem] font-black uppercase tracking-tight leading-[0.8] text-white select-none drop-shadow-[0_10px_60px_rgba(0,0,0,0.95)]">
+            INTERIOR
+          </h1>
+        </div>
+
+        {/* Clean Scroll Indicator */}
+        <div className="relative z-10 flex items-center justify-center">
+          <a
+            href="#projects-grid"
+            className="font-mono text-xs uppercase tracking-[0.25em] text-white/60 hover:text-[#00c8ff] transition-colors flex items-center gap-2"
+          >
+            <span>EXPLORE EXHIBITION</span>
+            <span>↓</span>
+          </a>
         </div>
       </section>
 
@@ -72,7 +84,7 @@ export const InteriorPage: React.FC<InteriorPageProps> = ({
             return (
               <div
                 key={rowIndex}
-                className="w-full flex flex-col md:flex-row gap-4 sm:gap-5 md:gap-6"
+                className="w-full flex flex-col md:flex-row gap-4 sm:gap-5 md:gap-6 items-stretch"
               >
                 {/* First Project in Row */}
                 {firstProject && (
@@ -136,14 +148,10 @@ export const InteriorPage: React.FC<InteriorPageProps> = ({
       {/* =====================================================================
           3. CLEAN COMMISSION CTA — ZERO ROUNDED CORNERS
           ===================================================================== */}
-      <section className="w-full py-20 sm:py-28 px-6 sm:px-12 md:px-16 lg:px-20 border-t border-white/10 relative overflow-hidden bg-black text-center">
+      <section className="w-full py-20 px-6 sm:px-12 md:px-16 lg:px-20 border-t border-white/10 relative overflow-hidden bg-black text-center">
         <div className="max-w-4xl mx-auto flex flex-col items-center gap-6 relative z-10">
-          <span className="font-mono text-xs uppercase tracking-[0.24em] text-[#00c8ff] font-bold">
-            INTERIOR COMMISSIONS
-          </span>
-
           <h2 className="font-['BlauerNue',sans-serif] text-4xl sm:text-6xl md:text-7xl font-black uppercase tracking-tight text-white leading-tight">
-            COMMISSION AN INTERIOR ATELIER PROJECT
+            COMMISSION INTERIOR
           </h2>
 
           <div className="flex flex-col sm:flex-row items-center gap-4 mt-2">
@@ -151,7 +159,7 @@ export const InteriorPage: React.FC<InteriorPageProps> = ({
               href="/Contact?service=interior"
               className="px-10 py-5 bg-[#00c8ff] text-black font-['BlauerNue',sans-serif] font-black text-sm uppercase tracking-widest hover:bg-white transition-colors rounded-none shadow-2xl"
             >
-              REQUEST INTERIOR PROPOSAL
+              REQUEST A PROPOSAL
             </Link>
 
             <Link
@@ -176,7 +184,7 @@ export const InteriorPage: React.FC<InteriorPageProps> = ({
             >
               <ArrowLeftIcon className="w-4 h-4 stroke-current text-[#00c8ff]" />
               <div className="text-left font-mono text-xs">
-                <span className="block text-white/30 text-[10px]">PREVIOUS SERVICE</span>
+                <span className="block text-white/30 text-[10px]">PREVIOUS</span>
                 <span className="font-bold uppercase tracking-wider">{prevService.title}</span>
               </div>
             </Link>
@@ -188,7 +196,7 @@ export const InteriorPage: React.FC<InteriorPageProps> = ({
             href="/services"
             className="font-mono text-xs text-white/40 hover:text-[#00c8ff] uppercase tracking-widest transition-colors"
           >
-            SERVICES CATALOG [06]
+            SERVICES CATALOG
           </Link>
 
           {nextService ? (
@@ -197,7 +205,7 @@ export const InteriorPage: React.FC<InteriorPageProps> = ({
               className="group flex items-center gap-3 text-white/60 hover:text-white transition-colors"
             >
               <div className="text-right font-mono text-xs">
-                <span className="block text-white/30 text-[10px]">NEXT SERVICE</span>
+                <span className="block text-white/30 text-[10px]">NEXT</span>
                 <span className="font-bold uppercase tracking-wider">{nextService.title}</span>
               </div>
               <ArrowRightIcon className="w-4 h-4 stroke-current text-[#00c8ff]" />

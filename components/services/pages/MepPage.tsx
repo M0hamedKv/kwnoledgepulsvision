@@ -1,9 +1,10 @@
 "use client";
 
-import React from "react";
+import React, { useState } from "react";
 import Link from "next/link";
 import { ServiceDetailItem } from "../servicesData";
 import { ArrowRightIcon, ArrowLeftIcon } from "@/svgs";
+import { Lightbox, LightboxItem } from "../showcase";
 
 interface MepPageProps {
   service: ServiceDetailItem;
@@ -11,124 +12,121 @@ interface MepPageProps {
   nextService?: ServiceDetailItem;
 }
 
+const MEP_PROJECTS = [
+  {
+    id: "mep-1",
+    title: "SPATIAL AIRFLOW & MEP ROUTING",
+    url: "https://res.cloudinary.com/hxytmocg/image/upload/v1793521519/1_View050000.webp",
+    type: "image" as const,
+  },
+  {
+    id: "mep-2",
+    title: "ARCHITECTURAL LIGHTING & POWER",
+    url: "https://res.cloudinary.com/hxytmocg/image/upload/v1793521529/1_View080000.webp",
+    type: "image" as const,
+  },
+  {
+    id: "mep-3",
+    title: "SUSTAINABLE WATER & ACOUSTIC DESIGN",
+    url: "https://res.cloudinary.com/hxytmocg/image/upload/v1793521510/1_Interactive_LightMix_View03.webp",
+    type: "image" as const,
+  },
+  {
+    id: "mep-4",
+    title: "LIFE SAFETY & INTEGRATED SYSTEMS",
+    url: "https://res.cloudinary.com/hxytmocg/image/upload/v1793521516/1_Interactive_LightMix_View05.webp",
+    type: "image" as const,
+  },
+];
+
 export const MepPage: React.FC<MepPageProps> = ({
   service,
   prevService,
   nextService,
 }) => {
+  const [lightboxState, setLightboxState] = useState<{
+    items: LightboxItem[];
+    index: number;
+  } | null>(null);
+
+  const heroImageSrc =
+    "https://res.cloudinary.com/hxytmocg/image/upload/v1793521519/1_View050000.webp";
+
+  const handleOpenLightbox = (index: number) => {
+    setLightboxState({
+      items: MEP_PROJECTS.map((p) => ({
+        id: p.id,
+        title: p.title,
+        url: p.url,
+        type: "image",
+      })),
+      index,
+    });
+  };
+
   return (
     <div className="w-full min-h-screen bg-black text-white selection:bg-[#00c8ff] selection:text-black">
       {/* =====================================================================
-          1. MEP ENGINEERING HERO
+          1. FULL-BLEED IMAGE HERO — PURE IMAGE, CENTERED TITLE ONLY
           ===================================================================== */}
-      <section className="relative w-full min-h-[85vh] flex flex-col justify-between pt-32 sm:pt-36 pb-12 sm:pb-16 px-6 sm:px-12 md:px-16 lg:px-20 overflow-hidden border-b border-white/10">
-        <div className="relative z-10 max-w-7xl mx-auto w-full flex flex-col lg:flex-row lg:items-center justify-between gap-12 my-auto">
-          {/* Typography & Manifesto */}
-          <div className="flex flex-col gap-6 max-w-2xl">
-            <div className="flex items-center gap-3">
-              <span className="w-2.5 h-2.5 rounded-full bg-[#00c8ff] animate-pulse" />
-              <span className="font-mono text-xs sm:text-sm font-bold uppercase tracking-[0.24em] text-[#00c8ff]">
-                /05 // ARCHITECTURAL ATELIER
-              </span>
-            </div>
+      <section className="relative w-full min-h-screen flex flex-col justify-between pt-32 pb-12 px-6 sm:px-12 md:px-16 lg:px-20 overflow-hidden border-b border-white/10">
+        {/* Full-bleed background image filling 100% of the Hero viewport */}
+        <div className="absolute inset-0 z-0 pointer-events-none select-none overflow-hidden">
+          <img
+            src={heroImageSrc}
+            alt="MEP Mechanical, Electrical & Plumbing Engineering"
+            className="w-full h-full object-cover scale-102"
+          />
+          <div className="absolute inset-0 bg-black/45" />
+          <div className="absolute inset-x-0 top-0 h-40 bg-linear-to-b from-black/80 to-transparent" />
+          <div className="absolute inset-x-0 bottom-0 h-48 bg-linear-to-t from-black to-transparent" />
+        </div>
 
-            <h1 className="font-['BlauerNue',sans-serif] text-5xl sm:text-7xl md:text-8xl lg:text-9xl font-black uppercase tracking-tight leading-[0.9] text-white">
-              MEP
-            </h1>
+        <div className="relative z-10" />
 
-            <p className="font-['BlauerNue',sans-serif] text-xl sm:text-2xl font-bold uppercase tracking-wide text-white/95">
-              MECHANICAL, ELECTRICAL & PLUMBING ENGINEERING SYSTEMS
-            </p>
+        {/* Hero Title — Pure, Clean, Bold, Exactly in Center */}
+        <div className="relative z-10 flex flex-col items-center justify-center text-center my-auto">
+          <h1 className="font-['BlauerNue',sans-serif] text-7xl sm:text-9xl md:text-[11rem] lg:text-[13rem] font-black uppercase tracking-tight leading-[0.8] text-white select-none drop-shadow-[0_10px_60px_rgba(0,0,0,0.95)]">
+            MEP
+          </h1>
+        </div>
 
-            <p className="font-['Rubik',sans-serif] text-white/80 text-sm sm:text-base leading-relaxed">
-              We design energy-efficient HVAC, acoustic-treated airflow networks, high-voltage electrical infrastructure, and high-performance plumbing architectures integrated seamlessly within the building geometry.
-            </p>
-
-            {/* Engineering Metrics */}
-            <div className="grid grid-cols-2 sm:grid-cols-3 gap-4 pt-2">
-              <div className="p-4 rounded-xl bg-white/5 border border-white/10">
-                <span className="block font-['BlauerNue',sans-serif] text-2xl font-black text-[#00c8ff]">ASHRAE</span>
-                <span className="font-mono text-[11px] text-white/60 uppercase">STANDARDS</span>
-              </div>
-              <div className="p-4 rounded-xl bg-white/5 border border-white/10">
-                <span className="block font-['BlauerNue',sans-serif] text-2xl font-black text-[#00c8ff]">LEED GOLD</span>
-                <span className="font-mono text-[11px] text-white/60 uppercase">EFFICIENCY</span>
-              </div>
-              <div className="p-4 rounded-xl bg-white/5 border border-white/10">
-                <span className="block font-['BlauerNue',sans-serif] text-2xl font-black text-[#00c8ff]">100%</span>
-                <span className="font-mono text-[11px] text-white/60 uppercase">BIM INTEGRATED</span>
-              </div>
-            </div>
-
-            {/* CTA */}
-            <div className="flex flex-wrap items-center gap-4 pt-4">
-              <Link
-                href="/Contact?service=mep"
-                className="inline-flex items-center gap-3 px-8 py-4 rounded-xl bg-[#00c8ff] text-black font-['BlauerNue',sans-serif] font-black text-xs sm:text-sm uppercase tracking-widest hover:bg-white transition-all shadow-2xl"
-              >
-                <span>COMMISSION MEP ENGINEERING</span>
-                <ArrowRightIcon className="w-4 h-4 stroke-current" />
-              </Link>
-            </div>
-          </div>
-
-          {/* Right Video Showcase */}
-          <div className="w-full lg:max-w-lg aspect-16/10 rounded-3xl overflow-hidden border border-white/20 bg-black shadow-[0_30px_90px_rgba(0,0,0,0.9)] relative group">
-            <video
-              src="https://res.cloudinary.com/hxytmocg/video/upload/v1793538438/track_night.mp4"
-              autoPlay
-              loop
-              muted
-              playsInline
-              preload="metadata"
-              className="w-full h-full object-cover"
-            />
-            <div className="absolute inset-0 bg-linear-to-t from-black/80 via-transparent to-transparent pointer-events-none" />
-            <div className="absolute bottom-4 left-4 right-4 flex items-center justify-between font-mono text-xs text-white/80">
-              <span className="text-[#00c8ff] font-bold">HVAC & ELECTRICAL BIM</span>
-              <span>ENGINEERING COORDINATION</span>
-            </div>
-          </div>
+        {/* Clean Scroll Indicator */}
+        <div className="relative z-10 flex items-center justify-center">
+          <a
+            href="#mep-exhibition"
+            className="font-mono text-xs uppercase tracking-[0.25em] text-white/60 hover:text-[#00c8ff] transition-colors flex items-center gap-2"
+          >
+            <span>EXPLORE EXHIBITION</span>
+            <span>↓</span>
+          </a>
         </div>
       </section>
 
       {/* =====================================================================
-          2. DELIVERABLES & SYSTEMS
+          2. PURE VISUAL EXHIBITION — SHARP CORNERS, ZERO CLUTTER
           ===================================================================== */}
-      <section className="w-full py-20 px-6 sm:px-12 md:px-16 lg:px-20 relative bg-black">
-        <div className="max-w-7xl mx-auto flex flex-col gap-12">
-          <div>
-            <span className="font-mono text-xs uppercase tracking-[0.24em] text-[#00c8ff] font-bold">
-              MEP DELIVERABLES
-            </span>
-            <h2 className="font-['BlauerNue',sans-serif] text-3xl sm:text-5xl font-black uppercase tracking-tight text-white mt-2">
-              BUILDING METABOLISM & INFRASTRUCTURE
-            </h2>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8">
-            {service.deliverables.map((item, idx) => (
+      <section id="mep-exhibition" className="w-full py-12 sm:py-20 px-4 sm:px-8 md:px-12 lg:px-16 relative bg-black">
+        <div className="max-w-[1700px] mx-auto flex flex-col gap-6 sm:gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6">
+            {MEP_PROJECTS.map((project, idx) => (
               <div
-                key={idx}
-                className="p-8 rounded-2xl bg-white/5 border border-white/10 hover:border-[#00c8ff] transition-colors flex flex-col justify-between gap-6"
+                key={project.id}
+                onClick={() => handleOpenLightbox(idx)}
+                className="group relative rounded-none overflow-hidden border border-white/10 hover:border-white/40 bg-black transition-all duration-500 cursor-pointer flex flex-col aspect-16/10"
               >
-                <div className="flex flex-col gap-3">
-                  <span className="font-mono text-xs text-[#00c8ff] font-bold uppercase tracking-wider">
-                    SYSTEM // 0{idx + 1}
+                <img
+                  src={project.url}
+                  alt={project.title}
+                  className="w-full h-full object-cover rounded-none grayscale contrast-[1.05] brightness-[0.9] group-hover:grayscale-0 group-hover:brightness-100 group-hover:scale-104 transition-all duration-700 ease-out pointer-events-none"
+                />
+
+                {/* Minimal Hover Overlay — Project Name ONLY */}
+                <div className="absolute inset-0 bg-black/50 backdrop-blur-[2px] opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center p-6 text-center pointer-events-none z-10">
+                  <span className="font-['BlauerNue',sans-serif] text-xl sm:text-2xl md:text-3xl font-black uppercase tracking-tight text-white drop-shadow-[0_4px_25px_rgba(0,0,0,0.95)] transform translate-y-2 group-hover:translate-y-0 transition-transform duration-300">
+                    {project.title}
                   </span>
-                  <h3 className="font-['BlauerNue',sans-serif] text-2xl font-bold uppercase text-white">
-                    {item.title}
-                  </h3>
-                  <p className="font-['Rubik',sans-serif] text-sm text-white/70 leading-relaxed">
-                    {item.description}
-                  </p>
                 </div>
-                {item.metric && (
-                  <div className="pt-4 border-t border-white/10 flex items-center justify-between font-mono text-xs">
-                    <span className="text-white/40">COMPLIANCE</span>
-                    <span className="text-[#00c8ff] font-bold">{item.metric}</span>
-                  </div>
-                )}
               </div>
             ))}
           </div>
@@ -136,29 +134,25 @@ export const MepPage: React.FC<MepPageProps> = ({
       </section>
 
       {/* =====================================================================
-          3. COMMISSION CTA
+          3. CLEAN COMMISSION CTA — ZERO PARAGRAPHS
           ===================================================================== */}
-      <section className="w-full py-24 sm:py-32 px-6 sm:px-12 md:px-16 lg:px-20 border-t border-white/10 relative overflow-hidden bg-black">
-        <div className="max-w-5xl mx-auto flex flex-col items-center text-center gap-6 relative z-10">
-          <span className="font-mono text-xs uppercase tracking-[0.24em] text-[#00c8ff] font-bold">
-            COMMISSION MEP
-          </span>
-
+      <section className="w-full py-20 px-6 sm:px-12 md:px-16 lg:px-20 border-t border-white/10 relative overflow-hidden bg-black text-center">
+        <div className="max-w-4xl mx-auto flex flex-col items-center gap-6 relative z-10">
           <h2 className="font-['BlauerNue',sans-serif] text-4xl sm:text-6xl md:text-7xl font-black uppercase tracking-tight text-white leading-tight">
-            INTEGRATE HIGH-PERFORMANCE INFRASTRUCTURE
+            COMMISSION MEP
           </h2>
 
-          <div className="flex flex-col sm:flex-row items-center gap-4 mt-4">
+          <div className="flex flex-col sm:flex-row items-center gap-4 mt-2">
             <Link
               href="/Contact?service=mep"
-              className="px-8 py-4 bg-[#00c8ff] text-black font-['BlauerNue',sans-serif] font-black text-sm uppercase tracking-widest hover:bg-white transition-colors"
+              className="px-10 py-5 bg-[#00c8ff] text-black font-['BlauerNue',sans-serif] font-black text-sm uppercase tracking-widest hover:bg-white transition-colors rounded-none shadow-2xl"
             >
-              REQUEST AN MEP PROPOSAL
+              REQUEST A PROPOSAL
             </Link>
 
             <Link
               href="/services"
-              className="px-8 py-4 border border-white/15 text-white font-mono text-xs uppercase tracking-widest hover:border-white/40 transition-colors"
+              className="px-8 py-5 border border-white/20 text-white font-mono text-xs uppercase tracking-widest hover:border-white/40 transition-colors rounded-none"
             >
               BROWSE ALL SERVICES
             </Link>
@@ -167,10 +161,10 @@ export const MepPage: React.FC<MepPageProps> = ({
       </section>
 
       {/* =====================================================================
-          4. NAVIGATION
+          4. ADJACENT SERVICES NAVIGATION
           ===================================================================== */}
       <nav aria-label="Adjacent Services Navigation" className="w-full py-8 px-6 sm:px-12 md:px-16 lg:px-20 border-t border-white/10">
-        <div className="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-6">
+        <div className="max-w-[1700px] mx-auto flex flex-col sm:flex-row items-center justify-between gap-6">
           {prevService ? (
             <Link
               href={`/services/${prevService.slug}`}
@@ -178,7 +172,7 @@ export const MepPage: React.FC<MepPageProps> = ({
             >
               <ArrowLeftIcon className="w-4 h-4 stroke-current text-[#00c8ff]" />
               <div className="text-left font-mono text-xs">
-                <span className="block text-white/30 text-[10px]">PREVIOUS SERVICE</span>
+                <span className="block text-white/30 text-[10px]">PREVIOUS</span>
                 <span className="font-bold uppercase tracking-wider">{prevService.title}</span>
               </div>
             </Link>
@@ -190,7 +184,7 @@ export const MepPage: React.FC<MepPageProps> = ({
             href="/services"
             className="font-mono text-xs text-white/40 hover:text-[#00c8ff] uppercase tracking-widest transition-colors"
           >
-            ALL SERVICES CATALOG [06]
+            SERVICES CATALOG
           </Link>
 
           {nextService ? (
@@ -199,7 +193,7 @@ export const MepPage: React.FC<MepPageProps> = ({
               className="group flex items-center gap-3 text-white/60 hover:text-white transition-colors"
             >
               <div className="text-right font-mono text-xs">
-                <span className="block text-white/30 text-[10px]">NEXT SERVICE</span>
+                <span className="block text-white/30 text-[10px]">NEXT</span>
                 <span className="font-bold uppercase tracking-wider">{nextService.title}</span>
               </div>
               <ArrowRightIcon className="w-4 h-4 stroke-current text-[#00c8ff]" />
@@ -209,7 +203,33 @@ export const MepPage: React.FC<MepPageProps> = ({
           )}
         </div>
       </nav>
+
+      {/* Lightbox Modal */}
+      {lightboxState && (
+        <Lightbox
+          items={lightboxState.items}
+          currentIndex={lightboxState.index}
+          onClose={() => setLightboxState(null)}
+          onNext={() =>
+            setLightboxState((prev) =>
+              prev
+                ? { ...prev, index: (prev.index + 1) % prev.items.length }
+                : null
+            )
+          }
+          onPrev={() =>
+            setLightboxState((prev) =>
+              prev
+                ? {
+                    ...prev,
+                    index:
+                      (prev.index - 1 + prev.items.length) % prev.items.length,
+                  }
+                : null
+            )
+          }
+        />
+      )}
     </div>
   );
 };
-

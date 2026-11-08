@@ -19,6 +19,9 @@ interface TransitionContextType {
   isAnimating: boolean;
   navigateWithTransition: (href: string) => Promise<void>;
   registerOverlayControls: (controls: TransitionControls | null) => void;
+  transitionMode?: string;
+  setTransitionMode?: (mode: any) => void;
+  previewTransition?: () => void;
 }
 
 const TransitionContext = createContext<TransitionContextType | null>(null);
@@ -174,6 +177,9 @@ export const PageTransitionProvider: React.FC<{ children: React.ReactNode }> = (
         isAnimating,
         navigateWithTransition,
         registerOverlayControls,
+        transitionMode: "slats",
+        setTransitionMode: () => {},
+        previewTransition: () => {},
       }}
     >
       {children}
