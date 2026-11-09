@@ -502,11 +502,11 @@ export const ConstellationGalaxy: React.FC = () => {
         // 1. Light cone follows the mouse DIRECTLY (تتبع الضوء للماوس مباشرة)
         stateRef.current.targetMouseX = e.clientX;
 
-        // 2. Lamp body swings OPPOSITE (counterweight pendulum feel)
-        stateRef.current.targetLampOffset = -normX * 100;
+        // 2. Lamp body swings in direction of movement (يمين/يسار متوافق مع الماوس)
+        stateRef.current.targetLampOffset = normX * 90;
 
-        // 3. Shade tilts toward the light target (shows it's "directing" the beam)
-        stateRef.current.targetLampAngle = normX * 18;
+        // 3. Shade tilts toward the light target (في CSS الدوران يحتاج -normX ليميل المصباح باتجاه الماوس)
+        stateRef.current.targetLampAngle = -normX * 22;
 
         setCrosshairPos({ x: e.clientX, y: e.clientY });
         return;
@@ -622,8 +622,8 @@ export const ConstellationGalaxy: React.FC = () => {
 
       // Lamp Mouse Tracking Physics in Section 2
       // ── SPOTLIGHT PHYSICS ───────────────────────────────────────────────────
-      // • mouseX    → smoothly tracks mouse X (light cone center)
-      // • lampOffsetX → moves OPPOSITE to mouse (counterweight)
+      // • mouseX      → smoothly tracks mouse X (light cone center)
+      // • lampOffsetX → moves in direction of mouse
       // • lampAngle   → shade tilts toward the light target
       if (isLampOn) {
         // Smooth mouse X tracking for the light cone (ناعم ومرن)
@@ -646,14 +646,13 @@ export const ConstellationGalaxy: React.FC = () => {
 
         if (coneRef.current) {
           const rad = (ang * Math.PI) / 180;
-          // Bulb world position (pivot of the light cone)
-          const bulbX = width / 2 + offX + Math.sin(rad) * 70;
+          // Bulb world position (pivot of the light cone: in CSS rotation from top-center, bottom shifts by -sin(rad)*70)
+          const bulbX = width / 2 + offX - Math.sin(rad) * 70;
           const bulbY = Math.max(Math.cos(rad) * 70, 68);
 
           // ── LIGHT CONE ────────────────────────────────────────────────────
           // Apex  = bulb position (follows lamp)
           // Base  = centered on the MOUSE X (light follows mouse directly)
-          // This creates the spotlight effect: aim with mouse, lamp reacts opposite
           const spread = width * 0.36;
           const bLeft  = coneTargetX - spread;
           const bRight = coneTargetX + spread;
