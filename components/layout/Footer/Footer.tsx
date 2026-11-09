@@ -2,6 +2,7 @@
 
 import React from "react";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { DEFAULT_MENU_ITEMS, STUDIO_SOCIAL_LINKS } from "@/constant";
 import {
   InstagramIcon,
@@ -11,6 +12,10 @@ import {
 } from "@/svgs";
 
 export const Footer: React.FC = () => {
+  const pathname = usePathname();
+
+  // Hide global footer on full-screen 3D spatial experience
+  if (pathname === "/About") return null;
 
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: "smooth" });

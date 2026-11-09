@@ -218,12 +218,12 @@ export const IntroPreloader: React.FC<IntroPreloaderProps> = ({
   return (
     <div
       ref={overlayRef}
-      className="fixed inset-0 z-[10000] flex flex-col items-center justify-center bg-black pointer-events-auto select-none overflow-hidden will-change-transform"
+      className="fixed inset-0 z-10000 flex flex-col items-center justify-center bg-black pointer-events-auto select-none overflow-hidden will-change-transform"
       aria-hidden={isFinished}
     >
       {/* Subtle architectural atmosphere ambient blur */}
       <div
-        className="absolute w-[320px] sm:w-[420px] h-[320px] sm:h-[420px] rounded-full pointer-events-none blur-[70px] sm:blur-[90px]"
+        className="absolute w-[320px] sm:w-105 h-80 sm:h-105 rounded-full pointer-events-none blur-[70px] sm:blur-[90px]"
         style={{
           background: "radial-gradient(circle, rgba(0, 85, 255, 0.35) 0%, rgba(0, 60, 220, 0.15) 50%, transparent 70%)",
         }}
@@ -241,7 +241,7 @@ export const IntroPreloader: React.FC<IntroPreloaderProps> = ({
 
         {/* Minimalist Progress Bar (Strictly NO numbers, NO text) */}
         <div
-          className="mt-6 sm:mt-7 w-48 sm:w-60 md:w-68 h-[2px] sm:h-[2.5px] bg-white/12 rounded-full overflow-hidden relative backdrop-blur-xs"
+          className="mt-6 sm:mt-7 w-48 sm:w-60 md:w-68 h-0.5 sm:h-[2.5px] bg-white/12 rounded-full overflow-hidden relative backdrop-blur-xs"
           role="progressbar"
           aria-label="Loading progress"
           aria-valuenow={Math.round(displayProgress)}

@@ -53,7 +53,7 @@ export default function PortfolioPage() {
               START A PROJECT →
             </Link>
             <Link
-              href="/work"
+              href="/portfolio"
               className="px-8 py-4 rounded-xl font-mono tracking-wider uppercase text-xs sm:text-sm text-white/80 hover:text-white bg-white/5 hover:bg-white/10 border border-white/10 transition-colors"
             >
               EXPLORE CASE STUDIES
