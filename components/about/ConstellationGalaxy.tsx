@@ -222,12 +222,63 @@ export const ConstellationGalaxy: React.FC = () => {
   const [currentView, setCurrentView] = useState<"galaxy" | "lamp">("galaxy");
   const [isLampOn, setIsLampOn] = useState<boolean>(false);
   const [isTransitioning, setIsTransitioning] = useState<boolean>(false);
-  const [soundEnabled, setSoundEnabled] = useState<boolean>(false);
+  const [soundEnabled, setSoundEnabled] = useState<boolean>(true);
   const [hoveredNodeId, setHoveredNodeId] = useState<string | null>(null);
+
+  // Audio Context
+  const audioCtxRef = useRef<AudioContext | null>(null);
+  const droneOscRef = useRef<OscillatorNode | null>(null);
+  const droneGainRef = useRef<GainNode | null>(null);
+
+  // Auto-start ambient sound on first user interaction (browser policy requires user gesture)
+  const initSound = useCallback(() => {
+    if (audioCtxRef.current) return; // already initialised
+    try {
+      const AudioCtx =
+        window.AudioContext ||
+        (window as unknown as { webkitAudioContext: typeof AudioContext }).webkitAudioContext;
+      const ctx = new AudioCtx();
+      audioCtxRef.current = ctx;
+
+      const osc = ctx.createOscillator();
+      const gain = ctx.createGain();
+      osc.type = "sine";
+      osc.frequency.setValueAtTime(58.27, ctx.currentTime);
+      gain.gain.setValueAtTime(0.012, ctx.currentTime);
+
+      osc.connect(gain);
+      gain.connect(ctx.destination);
+      osc.start();
+
+      droneOscRef.current = osc;
+      droneGainRef.current = gain;
+      setSoundEnabled(true);
+    } catch {
+      setSoundEnabled(false);
+    }
+  }, []);
 
   useEffect(() => {
     setIsMounted(true);
-  }, []);
+
+    // Auto-init sound on ANY first user interaction anywhere on the page
+    const handleFirstInteraction = () => {
+      initSound();
+      window.removeEventListener("click", handleFirstInteraction);
+      window.removeEventListener("keydown", handleFirstInteraction);
+      window.removeEventListener("touchstart", handleFirstInteraction);
+    };
+
+    window.addEventListener("click", handleFirstInteraction, { once: true });
+    window.addEventListener("keydown", handleFirstInteraction, { once: true });
+    window.addEventListener("touchstart", handleFirstInteraction, { once: true });
+
+    return () => {
+      window.removeEventListener("click", handleFirstInteraction);
+      window.removeEventListener("keydown", handleFirstInteraction);
+      window.removeEventListener("touchstart", handleFirstInteraction);
+    };
+  }, [initSound]);
 
   // Crosshair coordinates inside the lamp cone
   const [crosshairPos, setCrosshairPos] = useState<{ x: number; y: number } | null>(null);
@@ -240,11 +291,6 @@ export const ConstellationGalaxy: React.FC = () => {
     targetY: number;
     progress: number;
   } | null>(null);
-
-  // Audio Context
-  const audioCtxRef = useRef<AudioContext | null>(null);
-  const droneOscRef = useRef<OscillatorNode | null>(null);
-  const droneGainRef = useRef<GainNode | null>(null);
 
   // Rotation, camera & lamp physics state
   const stateRef = useRef({
@@ -278,7 +324,7 @@ export const ConstellationGalaxy: React.FC = () => {
   // SOUND SYNTHESIS
   // ────────────────────────────────────────────────────────────────────────
   const playClickSound = useCallback(() => {
-    if (!soundEnabled || !audioCtxRef.current) return;
+    if (!audioCtxRef.current) return;
     try {
       const ctx = audioCtxRef.current;
       const osc = ctx.createOscillator();
@@ -297,10 +343,10 @@ export const ConstellationGalaxy: React.FC = () => {
     } catch {
       // Ignore
     }
-  }, [soundEnabled]);
+  }, []);
 
   const playBeamSound = useCallback(() => {
-    if (!soundEnabled || !audioCtxRef.current) return;
+    if (!audioCtxRef.current) return;
     try {
       const ctx = audioCtxRef.current;
       const osc = ctx.createOscillator();
@@ -319,45 +365,7 @@ export const ConstellationGalaxy: React.FC = () => {
     } catch {
       // Ignore
     }
-  }, [soundEnabled]);
-
-  const toggleSound = () => {
-    if (!soundEnabled) {
-      try {
-        const AudioCtx =
-          window.AudioContext ||
-          (window as unknown as { webkitAudioContext: typeof AudioContext }).webkitAudioContext;
-        const ctx = new AudioCtx();
-        audioCtxRef.current = ctx;
-
-        const osc = ctx.createOscillator();
-        const gain = ctx.createGain();
-        osc.type = "sine";
-        osc.frequency.setValueAtTime(58.27, ctx.currentTime);
-        gain.gain.setValueAtTime(0.012, ctx.currentTime);
-
-        osc.connect(gain);
-        gain.connect(ctx.destination);
-        osc.start();
-
-        droneOscRef.current = osc;
-        droneGainRef.current = gain;
-        setSoundEnabled(true);
-      } catch {
-        setSoundEnabled(false);
-      }
-    } else {
-      if (droneOscRef.current) {
-        try {
-          droneOscRef.current.stop();
-          droneOscRef.current.disconnect();
-        } catch {
-          // Ignore
-        }
-      }
-      setSoundEnabled(false);
-    }
-  };
+  }, []);
 
   // ────────────────────────────────────────────────────────────────────────
   // SCROLL DOWN TO LAMP WAITING BELOW
@@ -365,6 +373,7 @@ export const ConstellationGalaxy: React.FC = () => {
   // ────────────────────────────────────────────────────────────────────────
   const triggerLampSequence = useCallback(
     (sectionId: string) => {
+      initSound();
       if (isTransitioning || currentView === "lamp") return;
       setActiveSectionId(sectionId);
       setIsTransitioning(true);
@@ -870,27 +879,13 @@ export const ConstellationGalaxy: React.FC = () => {
             SECTION 1: PURE 3D CONSTELLATION GALAXY (100vh)
             ============================================================= */}
         <section className="relative w-full h-screen overflow-hidden flex flex-col justify-between">
-          {/* Canvas Engine */}
+          {/* Canvas Engine — click anywhere to init audio (browser policy) */}
           <canvas
             ref={canvasRef}
             className="absolute inset-0 w-full h-full block z-0"
             style={{ touchAction: "none" }}
+            onClick={initSound}
           />
-
-          {/* Sound Toggle (Discreetly at bottom-left) */}
-          <div className="absolute bottom-6 left-6 sm:left-10 z-30 pointer-events-auto">
-            <button
-              onClick={toggleSound}
-              aria-label="Toggle ambient sound"
-              className="flex items-center gap-1.5 px-3 py-1.5 border border-white/20 hover:border-white hover:text-white transition-all bg-black/60 backdrop-blur-md cursor-pointer text-[10px]"
-            >
-              <span>SOUND</span>
-              <span>—</span>
-              <span className={soundEnabled ? "text-white font-bold" : "text-white/40"}>
-                {soundEnabled ? "ON" : "OFF"}
-              </span>
-            </button>
-          </div>
 
           {/* Lateral Wing Links (< MAIN / PORTFOLIO >) */}
           <div className="absolute inset-y-0 left-6 sm:left-10 flex items-center z-20 pointer-events-none">
