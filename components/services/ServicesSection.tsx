@@ -6,6 +6,7 @@ import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { ServicesSectionProps } from "./types";
 import { ArrowUpRightIcon } from "@/svgs";
+import { getOptimizedVideoUrl, getVideoPosterUrl } from "@/lib/media";
 
 interface DualShowcaseItem {
   id: "interactive-solution" | "design";
@@ -114,6 +115,29 @@ export const ServicesSection: React.FC<ServicesSectionProps> = ({
             clearProps: "all",
           }
         );
+
+        // Lazy video play/pause: Only stream video when user scrolls near this section
+        ScrollTrigger.create({
+          trigger: portalStageRef.current,
+          start: "top 95%",
+          end: "bottom -20%",
+          onEnter: () => {
+            card1Ref.current?.querySelector("video")?.play().catch(() => {});
+            card2Ref.current?.querySelector("video")?.play().catch(() => {});
+          },
+          onLeave: () => {
+            card1Ref.current?.querySelector("video")?.pause();
+            card2Ref.current?.querySelector("video")?.pause();
+          },
+          onEnterBack: () => {
+            card1Ref.current?.querySelector("video")?.play().catch(() => {});
+            card2Ref.current?.querySelector("video")?.play().catch(() => {});
+          },
+          onLeaveBack: () => {
+            card1Ref.current?.querySelector("video")?.pause();
+            card2Ref.current?.querySelector("video")?.pause();
+          },
+        });
       }
     }, sectionRef);
 
@@ -375,6 +399,12 @@ export const ServicesSection: React.FC<ServicesSectionProps> = ({
   const card1 = DUAL_SHOWCASES[0];
   const card2 = DUAL_SHOWCASES[1];
 
+  const card1OptVideo = getOptimizedVideoUrl(card1.video, { width: 960, quality: "good" });
+  const card1Poster = getVideoPosterUrl(card1.video, 800);
+
+  const card2OptVideo = getOptimizedVideoUrl(card2.video, { width: 960, quality: "good" });
+  const card2Poster = getVideoPosterUrl(card2.video, 800);
+
   return (
     <section
       ref={sectionRef}
@@ -509,13 +539,13 @@ export const ServicesSection: React.FC<ServicesSectionProps> = ({
               className="block w-full h-full relative overflow-hidden bg-black rounded-none"
             >
               <video
-                src={card1.video}
-                autoPlay
+                src={card1OptVideo}
+                poster={card1Poster}
                 loop
                 muted
                 playsInline
                 preload="metadata"
-                className="w-full h-full object-cover rounded-none pointer-events-none"
+                className="w-full h-full object-cover rounded-none pointer-events-none will-change-transform"
               />
             </Link>
           </div>
@@ -536,13 +566,13 @@ export const ServicesSection: React.FC<ServicesSectionProps> = ({
               className="block w-full h-full relative overflow-hidden bg-black rounded-none"
             >
               <video
-                src={card2.video}
-                autoPlay
+                src={card2OptVideo}
+                poster={card2Poster}
                 loop
                 muted
                 playsInline
                 preload="metadata"
-                className="w-full h-full object-cover rounded-none pointer-events-none"
+                className="w-full h-full object-cover rounded-none pointer-events-none will-change-transform"
               />
             </Link>
           </div>

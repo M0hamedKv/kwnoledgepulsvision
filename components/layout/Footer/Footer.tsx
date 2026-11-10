@@ -133,6 +133,13 @@ export const Footer: React.FC = () => {
                   <span>Virtual Reality Tours</span>
                   <span className="text-white/30 text-[10px]">04</span>
                 </Link>
+                <Link
+                  href="/services/community-app"
+                  className="text-white/70 hover:text-[#00c8ff] transition-colors flex items-center justify-between"
+                >
+                  <span>PropTech Community App</span>
+                  <span className="text-white/30 text-[10px]">05</span>
+                </Link>
 
                 <span className="text-[10px] text-white/40 uppercase tracking-widest pt-3 border-t border-white/5">
                   DESIGN & ENGINEERING

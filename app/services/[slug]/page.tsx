@@ -9,6 +9,8 @@ import {
   BimPage,
   MepPage,
   InteriorPage,
+  VrPage,
+  CommunityAppPage,
 } from "@/components/services/pages";
 
 interface ServiceDetailPageProps {
@@ -111,6 +113,24 @@ export default async function ServiceDetailPage({ params }: ServiceDetailPagePro
     case "interior":
       return (
         <InteriorPage
+          service={service}
+          prevService={prevService}
+          nextService={nextService}
+        />
+      );
+
+    case "vr":
+      return (
+        <VrPage
+          service={service}
+          prevService={prevService}
+          nextService={nextService}
+        />
+      );
+
+    case "community-app":
+      return (
+        <CommunityAppPage
           service={service}
           prevService={prevService}
           nextService={nextService}

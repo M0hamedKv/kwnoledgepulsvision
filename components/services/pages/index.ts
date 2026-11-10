@@ -6,3 +6,5 @@ export { BimPage } from "./BimPage";
 export { MepPage } from "./MepPage";
 export { InteriorPage } from "./InteriorPage";
 export { InteriorProjectDetailPage } from "./InteriorProjectDetailPage";
+export { VrPage } from "./VrPage";
+export { CommunityAppPage } from "./CommunityAppPage";

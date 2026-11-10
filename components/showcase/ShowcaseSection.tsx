@@ -5,6 +5,7 @@ import Image from "next/image";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { ShowcaseSectionProps, ShowcaseItem } from "./types";
+import { getOptimizedVideoUrl, getVideoPosterUrl } from "@/lib/media";
 
 const DEFAULT_ITEMS: ShowcaseItem[] = [
   {
@@ -89,6 +90,27 @@ export const ShowcaseSection: React.FC<ShowcaseSectionProps> = ({
         scaleX: 0.025,
         opacity: 0,
         transformOrigin: "center center",
+      });
+
+      // Seamless video playback management: Videos start streaming smoothly upon entering section
+      // Eliminates timeline scrub interruptions, dropped frames, and decoder re-initialization lag
+      const showcaseVideos = stickyElem.querySelectorAll<HTMLVideoElement>("video");
+      ScrollTrigger.create({
+        trigger: containerRef.current,
+        start: "top 90%",
+        end: "bottom top",
+        onEnter: () => {
+          showcaseVideos.forEach((v) => v.play().catch(() => {}));
+        },
+        onLeave: () => {
+          showcaseVideos.forEach((v) => v.pause());
+        },
+        onEnterBack: () => {
+          showcaseVideos.forEach((v) => v.play().catch(() => {}));
+        },
+        onLeaveBack: () => {
+          showcaseVideos.forEach((v) => v.pause());
+        },
       });
 
       // 2. Query all dynamic card elements inside the sticky viewport
@@ -253,41 +275,48 @@ export const ShowcaseSection: React.FC<ShowcaseSectionProps> = ({
         />
 
         {/* 2. Dynamic Video & Media Cards Stack */}
-        {items.map((item, index) => (
-          <div
-            key={item.id || index}
-            style={{
-              width: "280px",
-              height: "280px",
-              maxWidth: "100vw",
-              maxHeight: "100vh",
-              opacity: 0,
-              zIndex: 30 + index,
-            }}
-            className="showcase-card absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 will-change-[width,height,opacity] pointer-events-none rounded-none overflow-hidden shadow-[0_30px_90px_rgba(0,0,0,0.85)] bg-black"
-          >
-            {item.video ? (
-              <video
-                src={item.video}
-                autoPlay
-                loop
-                muted
-                playsInline
-                preload="auto"
-                className="w-full h-full object-cover rounded-none"
-              />
-            ) : item.image ? (
-              <Image
-                src={item.image}
-                alt={item.alt || `Showcase ${index + 1}`}
-                fill
-                priority={index <= 1}
-                sizes="100vw"
-                className="object-cover rounded-none"
-              />
-            ) : null}
-          </div>
-        ))}
+        {items.map((item, index) => {
+          const optVideo = item.video
+            ? getOptimizedVideoUrl(item.video, { width: 1280, quality: "good" })
+            : undefined;
+          const poster = item.video ? getVideoPosterUrl(item.video, 800) : undefined;
+
+          return (
+            <div
+              key={item.id || index}
+              style={{
+                width: "280px",
+                height: "280px",
+                maxWidth: "100vw",
+                maxHeight: "100vh",
+                opacity: 0,
+                zIndex: 30 + index,
+              }}
+              className="showcase-card absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 will-change-[transform,opacity,width,height] pointer-events-none rounded-none overflow-hidden shadow-[0_30px_90px_rgba(0,0,0,0.85)] bg-black"
+            >
+              {optVideo ? (
+                <video
+                  src={optVideo}
+                  poster={poster}
+                  loop
+                  muted
+                  playsInline
+                  preload="metadata"
+                  className="w-full h-full object-cover rounded-none will-change-transform"
+                />
+              ) : item.image ? (
+                <Image
+                  src={item.image}
+                  alt={item.alt || `Showcase ${index + 1}`}
+                  fill
+                  priority={false}
+                  sizes="100vw"
+                  className="object-cover rounded-none"
+                />
+              ) : null}
+            </div>
+          );
+        })}
       </div>
     </div>
   );

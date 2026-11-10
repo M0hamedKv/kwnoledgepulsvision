@@ -5,6 +5,7 @@ import Link from "next/link";
 import gsap from "gsap";
 import { ServiceDetailItem } from "./servicesData";
 import { ArrowRightIcon, ArrowDownIcon } from "@/svgs";
+import { getOptimizedVideoUrl, getVideoPosterUrl } from "@/lib/media";
 
 interface ServiceDetailHeroProps {
   service: ServiceDetailItem;
@@ -159,7 +160,8 @@ export const ServiceDetailHero: React.FC<ServiceDetailHeroProps> = ({ service })
         {/* 1. 100% Full-Bleed 4K Background Playing Video */}
         <div className="absolute inset-0 z-0 pointer-events-none select-none overflow-hidden">
           <video
-            src={animationVideo}
+            src={getOptimizedVideoUrl(animationVideo, { width: 1920, quality: "good" })}
+            poster={getVideoPosterUrl(animationVideo, 1920)}
             autoPlay
             loop
             muted
@@ -436,12 +438,13 @@ export const ServiceDetailHero: React.FC<ServiceDetailHeroProps> = ({ service })
                   }}
                 >
                   <video
-                    src={service.coverVideo}
+                    src={getOptimizedVideoUrl(service.coverVideo, { width: 960, quality: "good" })}
+                    poster={getVideoPosterUrl(service.coverVideo, 960)}
                     autoPlay
                     loop
                     muted
                     playsInline
-                    preload="auto"
+                    preload="metadata"
                     className="w-full h-full object-cover pointer-events-none opacity-90 group-hover:opacity-100 transition-opacity duration-500"
                   />
 

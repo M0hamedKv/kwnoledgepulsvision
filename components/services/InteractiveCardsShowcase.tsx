@@ -4,6 +4,7 @@ import React, { useState, useRef } from "react";
 import Link from "next/link";
 import { ServiceDetailItem } from "./servicesData";
 import { ArrowUpRightIcon, ArrowLeftIcon, ArrowRightIcon } from "@/svgs";
+import { getOptimizedVideoUrl, getVideoPosterUrl } from "@/lib/media";
 
 interface InteractiveCardsShowcaseProps {
   services: ServiceDetailItem[];
@@ -146,12 +147,13 @@ export const InteractiveCardsShowcase: React.FC<InteractiveCardsShowcaseProps> =
                     <div className="relative w-full h-full rounded-[13px] overflow-hidden bg-black flex items-center justify-center">
                       {videoSrc ? (
                         <video
-                          src={videoSrc}
+                          src={getOptimizedVideoUrl(videoSrc, { width: 720, quality: "good" })}
+                          poster={getVideoPosterUrl(videoSrc, 720)}
                           autoPlay
                           loop
                           muted
                           playsInline
-                          preload="metadata"
+                          preload="none"
                           className="w-full h-full object-cover transition-transform duration-700 hover:scale-106 pointer-events-none"
                         />
                       ) : (
@@ -204,7 +206,8 @@ export const InteractiveCardsShowcase: React.FC<InteractiveCardsShowcaseProps> =
                     {/* 4K Video */}
                     {isFlipped && (
                       <video
-                        src={videoSrc}
+                        src={getOptimizedVideoUrl(videoSrc, { width: 1280, quality: "good" })}
+                        poster={getVideoPosterUrl(videoSrc, 1280)}
                         autoPlay
                         loop
                         controls

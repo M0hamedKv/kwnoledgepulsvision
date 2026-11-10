@@ -3,6 +3,7 @@
 import React, { useState } from "react";
 import Link from "next/link";
 import { ServiceDetailItem } from "./servicesData";
+import { getOptimizedVideoUrl, getVideoPosterUrl } from "@/lib/media";
 
 interface DesignAccordionShowcaseProps {
   services: ServiceDetailItem[];
@@ -61,12 +62,13 @@ export const DesignAccordionShowcase: React.FC<DesignAccordionShowcaseProps> = (
                 {/* 1. Pure Media: 4K Video or High-Res Image */}
                 {mediaVideo ? (
                   <video
-                    src={mediaVideo}
+                    src={getOptimizedVideoUrl(mediaVideo, { width: 960, quality: "good" })}
+                    poster={mediaImage || getVideoPosterUrl(mediaVideo, 960)}
                     autoPlay
                     loop
                     muted
                     playsInline
-                    preload="metadata"
+                    preload="none"
                     className={`absolute inset-0 w-full h-full object-cover transition-all duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] pointer-events-none ${
                       isActive
                         ? "scale-108 brightness-100 opacity-100"
@@ -145,11 +147,13 @@ export const DesignAccordionShowcase: React.FC<DesignAccordionShowcaseProps> = (
               <Link href={`/services/${service.slug}`} className="block w-full h-full relative">
                 {mediaVideo ? (
                   <video
-                    src={mediaVideo}
+                    src={getOptimizedVideoUrl(mediaVideo, { width: 720, quality: "good" })}
+                    poster={mediaImage || getVideoPosterUrl(mediaVideo, 720)}
                     autoPlay
                     loop
                     muted
                     playsInline
+                    preload="none"
                     className={`w-full h-full object-cover transition-transform duration-700 ${
                       isActive ? "scale-105 opacity-100" : "scale-100 opacity-60"
                     }`}

@@ -6,6 +6,7 @@ import { HeroSectionProps } from "./types";
 import { HeroBackground } from "./HeroBackground";
 import { HeroTagline } from "./HeroTagline";
 import { HeroHeadline } from "./HeroHeadline";
+import { getOptimizedVideoUrl } from "@/lib/media";
 
 /**
  * HeroSection
@@ -115,11 +116,11 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
 
     const checkVideoBufferReady = (): boolean => {
       if (!bgVid) return false;
-      // readyState 3 = HAVE_FUTURE_DATA, 4 = HAVE_ENOUGH_DATA
-      if (bgVid.readyState >= 3) return true;
+      // readyState 2 = HAVE_CURRENT_DATA, 3 = HAVE_FUTURE_DATA, 4 = HAVE_ENOUGH_DATA
+      if (bgVid.readyState >= 2) return true;
       if (bgVid.duration > 0 && bgVid.buffered.length > 0) {
         const bufferedEnd = bgVid.buffered.end(bgVid.buffered.length - 1);
-        if (bufferedEnd >= Math.min(bgVid.duration, 3.5)) return true;
+        if (bufferedEnd >= Math.min(bgVid.duration, 0.8)) return true;
       }
       return false;
     };
@@ -136,26 +137,17 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
       } else {
         bgVid.addEventListener("canplay", onVideoReady);
         bgVid.addEventListener("canplaythrough", onVideoReady);
+        bgVid.addEventListener("loadeddata", onVideoReady);
         bgVid.addEventListener("progress", () => {
           if (checkVideoBufferReady()) onVideoReady();
         });
       }
     }
 
-    // Preloader backup element to accelerate video fetch in browser cache
-    const testVideo = document.createElement("video");
-    testVideo.src = backgroundVideoUrl;
-    testVideo.preload = "auto";
-    testVideo.muted = true;
-    testVideo.playsInline = true;
-    testVideo.addEventListener("canplay", onVideoReady);
-    testVideo.addEventListener("canplaythrough", onVideoReady);
-    testVideo.load();
-
-    // Safety timeout (8s) only for completely offline/restricted networks so user is never stuck
+    // Safety timeout (2.8s) prevents user from ever getting stuck even on slow connections
     timeoutId = setTimeout(() => {
       if (isMounted) onVideoReady();
-    }, 8000);
+    }, 2800);
 
     // The Master Intro Sequence (Headline reveal -> Curtain sweeps left -> Tagline)
     const playOriginalIntro = () => {
@@ -326,9 +318,12 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
       clearTimeout(timeoutId);
       document.body.style.overflow = originalOverflow;
       if (navbar) gsap.set(navbar, { opacity: 1 });
-      testVideo.src = "";
     };
   }, [backgroundVideoUrl]);
+
+  const optimizedVideoUrl = backgroundVideoUrl
+    ? getOptimizedVideoUrl(backgroundVideoUrl, { width: 1920, quality: "good" })
+    : "";
 
   return (
     <section
@@ -336,7 +331,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
       className="relative w-full h-dvh flex flex-col justify-between overflow-hidden text-white"
     >
       {/* 1. Cinematic Background Visual Layer (z-0) */}
-      <HeroBackground imageUrl={backgroundImageUrl} videoUrl={backgroundVideoUrl} />
+      <HeroBackground imageUrl={backgroundImageUrl} videoUrl={optimizedVideoUrl} />
 
       {/* 2. Intro Black Curtain (z-10, covers entire section initially, then sweeps left) */}
       <div
@@ -351,7 +346,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
       >
         {/* Ambient atmospheric true blue glow */}
         <div
-          className="absolute w-[320px] sm:w-[420px] h-[320px] sm:h-[420px] rounded-full pointer-events-none blur-[70px] sm:blur-[90px]"
+          className="absolute w-[320px] sm:w-105 h-80 sm:h-105 rounded-full pointer-events-none blur-[70px] sm:blur-[90px]"
           style={{
             background: "radial-gradient(circle, rgba(0, 85, 255, 0.35) 0%, rgba(0, 60, 220, 0.15) 50%, transparent 70%)",
           }}

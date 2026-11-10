@@ -1,6 +1,7 @@
 import React from "react";
 import Image from "next/image";
 import { HeroBackgroundProps } from "./types";
+import { getOptimizedVideoUrl, getVideoPosterUrl } from "@/lib/media";
 
 /**
  * HeroBackground
@@ -12,12 +13,16 @@ export const HeroBackground: React.FC<HeroBackgroundProps> = ({
   alt = "KV Studio Architectural Visualization",
   priority = true,
 }) => {
+  const optimizedVideoUrl = videoUrl ? getOptimizedVideoUrl(videoUrl, { width: 1920, quality: "good" }) : "";
+  const posterUrl = videoUrl ? getVideoPosterUrl(videoUrl, 1920) : imageUrl;
+
   return (
     <div className="absolute inset-0 z-0 overflow-hidden select-none pointer-events-none">
       {/* Background Live Video / Fallback Image */}
       {videoUrl ? (
         <video
-          src={videoUrl}
+          src={optimizedVideoUrl}
+          poster={posterUrl}
           autoPlay
           loop
           muted

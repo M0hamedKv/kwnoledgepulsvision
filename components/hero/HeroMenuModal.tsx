@@ -188,6 +188,7 @@ export const HeroMenuModal: React.FC<HeroMenuModalProps> = ({
               >
                 <Link
                   href={item.href}
+                  prefetch={false}
                   onClick={() => {
                     onClose();
                     onNavigate?.(item.href);

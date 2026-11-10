@@ -5,6 +5,7 @@ import Link from "next/link";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { ServiceDetailItem } from "./servicesData";
+import { getOptimizedVideoUrl, getVideoPosterUrl } from "@/lib/media";
 
 interface ServicesCatalogGridProps {
   services: ServiceDetailItem[];
@@ -72,12 +73,13 @@ const ServiceCard3D: React.FC<{
           {/* 1. Full-Bleed Portrait Video or Image (Strictly ZERO text by default) */}
           {mediaVideo ? (
             <video
-              src={mediaVideo}
+              src={getOptimizedVideoUrl(mediaVideo, { width: 720, quality: "good" })}
+              poster={mediaImage || getVideoPosterUrl(mediaVideo, 720)}
               autoPlay
               loop
               muted
               playsInline
-              preload="metadata"
+              preload="none"
               className="absolute inset-0 w-full h-full object-cover group-hover:scale-106 transition-transform duration-700 ease-out pointer-events-none"
             />
           ) : (
