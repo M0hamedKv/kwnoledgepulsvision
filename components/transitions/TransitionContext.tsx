@@ -11,7 +11,7 @@ import React, {
 import { useRouter, usePathname } from "next/navigation";
 
 interface TransitionControls {
-  playIn: () => Promise<void>;
+  playIn: (href?: string) => Promise<void>;
   playOut: () => Promise<void>;
 }
 
@@ -67,7 +67,7 @@ export const PageTransitionProvider: React.FC<{ children: React.ReactNode }> = (
 
       try {
         if (overlayControlsRef.current) {
-          await overlayControlsRef.current.playIn();
+          await overlayControlsRef.current.playIn(href);
         }
         router.push(href);
 
