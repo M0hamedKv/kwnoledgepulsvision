@@ -4,7 +4,7 @@ import { getAllServices } from "@/components/services/servicesData";
 import { ServicesHero, ServicesCatalogGrid, DesignAccordionShowcase } from "@/components/services";
 
 export const metadata: Metadata = {
-  title: "Services & Core Disciplines — KV STUDIO",
+  title: "Services — KV STUDIO",
   description:
     "Explore KV Studio's specialized capabilities across Interactive Real-Time Solutions and Architectural Engineering Design.",
 };

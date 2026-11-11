@@ -7,4 +7,5 @@ export * from "./ComingSoonPanel";
 export * from "./InteriorProjectSection";
 export * from "./AnimationShowcase";
 export * from "./ImaquetteShowcase";
+export * from "./EditorialWebSlider";
 

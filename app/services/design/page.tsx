@@ -49,14 +49,14 @@ export default function DesignServicesPage() {
             href="#design-catalog"
             className="font-mono text-xs uppercase tracking-[0.25em] text-white/60 hover:text-[#00c8ff] transition-colors flex items-center gap-2"
           >
-            <span>EXPLORE DESIGN DISCIPLINES</span>
+            <span>EXPLORE DESIGN SERVICES</span>
             <span>↓</span>
           </a>
         </div>
       </section>
 
       {/* =====================================================================
-          2. DESIGN DISCIPLINES CATALOG (BIM, MEP, INTERIOR)
+          2. DESIGN SERVICES CATALOG (BIM, MEP, INTERIOR)
           ===================================================================== */}
       <section
         id="design-catalog"
@@ -70,7 +70,7 @@ export default function DesignServicesPage() {
                 02 // ARCHITECTURAL ATELIER
               </span>
               <h2 className="font-['BlauerNue',sans-serif] text-3xl sm:text-5xl font-black uppercase tracking-tight text-white mt-2">
-                CORE DISCIPLINES
+                CORE SERVICES
               </h2>
             </div>
             <Link

@@ -72,7 +72,7 @@ export default function InteractiveSolutionServicesPage() {
                 01 // DIGITAL EXPERIENCES & 3D SYSTEMS
               </span>
               <h2 className="font-['BlauerNue',sans-serif] text-3xl sm:text-5xl font-black uppercase tracking-tight text-white mt-2">
-                CORE DISCIPLINES
+                CORE SERVICES
               </h2>
             </div>
             <Link

@@ -53,7 +53,7 @@ export const ANIMATION_TIMINGS = {
 };
 
 export const ServicesSection: React.FC<ServicesSectionProps> = ({
-  headlineMain = "DISCIPLINES",
+  headlineMain = "SERVICES",
 }) => {
   const sectionRef = useRef<HTMLElement>(null);
   const headerRef = useRef<HTMLDivElement>(null);
@@ -420,7 +420,7 @@ export const ServicesSection: React.FC<ServicesSectionProps> = ({
         >
           <div className="flex flex-col gap-2">
             <span className="font-mono text-xs uppercase tracking-[0.24em] text-[#00c8ff] font-bold">
-              02 / CREATIVE DISCIPLINES
+              02 / SERVICES
             </span>
             <h2 className="font-['BlauerNue',sans-serif] text-5xl sm:text-7xl md:text-8xl font-black uppercase tracking-tight leading-none text-white">
               {headlineMain}

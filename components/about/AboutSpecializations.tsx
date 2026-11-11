@@ -121,7 +121,7 @@ export const AboutSpecializations: React.FC = () => {
           </div>
 
           <p className="font-['Rubik',sans-serif] text-white/60 text-sm sm:text-base max-w-md leading-relaxed">
-            Six cohesive disciplines operating under one collaborative roof to ensure uninterrupted fidelity from initial sketch to interactive deployment.
+            Six cohesive services operating under one collaborative roof to ensure uninterrupted fidelity from initial sketch to interactive deployment.
           </p>
         </div>
 

@@ -95,10 +95,10 @@ export const Footer: React.FC = () => {
               </nav>
             </div>
 
-            {/* Column 3: Core Disciplines & Services (3 cols) */}
+            {/* Column 3: Core Services (3 cols) */}
             <div className="lg:col-span-3 flex flex-col gap-5">
               <span className="font-mono text-xs font-bold uppercase tracking-[0.22em] text-[#00c8ff]">
-                DISCIPLINES
+                SERVICES
               </span>
 
               <div className="flex flex-col gap-2.5 font-mono text-xs">

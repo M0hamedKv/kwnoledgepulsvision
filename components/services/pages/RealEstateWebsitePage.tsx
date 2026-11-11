@@ -4,7 +4,7 @@ import React, { useState } from "react";
 import Link from "next/link";
 import { ServiceDetailItem } from "../servicesData";
 import { ArrowRightIcon, ArrowLeftIcon } from "@/svgs";
-import { Lightbox, LightboxItem } from "../showcase";
+import { Lightbox, LightboxItem, EditorialWebSlider, EditorialWebItem } from "../showcase";
 
 interface RealEstateWebsitePageProps {
   service: ServiceDetailItem;
@@ -12,36 +12,46 @@ interface RealEstateWebsitePageProps {
   nextService?: ServiceDetailItem;
 }
 
-const REAL_ESTATE_PROJECTS = [
+const REAL_ESTATE_PROJECTS: EditorialWebItem[] = [
   {
     id: "rew-vid-1",
-    title: "LUXURY REAL ESTATE FLAGSHIP PLATFORM",
+    title: "Luxury Real Estate Flagship Platform",
+    subtitle: "High-performance masterplan viewer, unit availability, and digital sales reservations.",
     url: "https://res.cloudinary.com/hxytmocg/video/upload/v1794132541/66666.mp4",
-    type: "video" as const,
+    type: "video",
+    category: "FLAGSHIP",
   },
   {
     id: "rew-vid-2",
-    title: "INTERACTIVE PROPERTY DEVELOPMENT PORTAL",
+    title: "Interactive Property Development Portal",
+    subtitle: "Bespoke architectural web application with real-time 3D interactive unit filtering.",
     url: "https://res.cloudinary.com/hxytmocg/video/upload/v1794132166/4444444.mp4",
-    type: "video" as const,
+    type: "video",
+    category: "PORTAL",
   },
   {
     id: "rew-vid-3",
-    title: "ARCHITECTURAL DIGITAL SHOWCASE",
+    title: "Architectural Digital Showcase & Cinema Narrative",
+    subtitle: "Bespoke editorial transitions, WebGL micro-interactions, and immersive storytelling.",
     url: "https://res.cloudinary.com/hxytmocg/video/upload/v1794140108/11111.mp4",
-    type: "video" as const,
+    type: "video",
+    category: "CINEMA WEB",
   },
   {
     id: "rew-vid-4",
-    title: "IMMERSIVE PROPERTY PORTFOLIO",
+    title: "Immersive Property Portfolio & Compound Explorer",
+    subtitle: "Ultra-fast Next.js architecture, interactive amenity map, and fluid smooth-scroll navigation.",
     url: "https://res.cloudinary.com/hxytmocg/video/upload/v1794137198/2222222.mp4",
-    type: "video" as const,
+    type: "video",
+    category: "PORTFOLIO",
   },
   {
     id: "rew-vid-5",
-    title: "HIGH-END RESIDENTIAL WEB EXPERIENCE",
+    title: "High-End Residential Web Experience",
+    subtitle: "Full-bleed architectural visuals, localized typography, and responsive interface.",
     url: "https://res.cloudinary.com/hxytmocg/video/upload/v1794143183/33333.mp4",
-    type: "video" as const,
+    type: "video",
+    category: "FLAGSHIP",
   },
 ];
 
@@ -63,7 +73,7 @@ export const RealEstateWebsitePage: React.FC<RealEstateWebsitePageProps> = ({
         id: p.id,
         title: p.title,
         url: p.url,
-        type: "video",
+        type: p.type,
       })),
       index,
     });
@@ -75,7 +85,6 @@ export const RealEstateWebsitePage: React.FC<RealEstateWebsitePageProps> = ({
           1. FULL-BLEED IMAGE HERO — PURE IMAGE, CENTERED TITLE ONLY
           ===================================================================== */}
       <section className="relative w-full min-h-screen flex flex-col justify-between pt-32 pb-12 px-6 sm:px-12 md:px-16 lg:px-20 overflow-hidden border-b border-white/10">
-        {/* Full-bleed background image filling 100% of the Hero viewport */}
         <div className="absolute inset-0 z-0 pointer-events-none select-none overflow-hidden">
           <img
             src={heroImageSrc}
@@ -89,7 +98,7 @@ export const RealEstateWebsitePage: React.FC<RealEstateWebsitePageProps> = ({
 
         <div className="relative z-10" />
 
-        {/* Hero Title — Pure, Clean, Bold, Exactly in Center */}
+        {/* Hero Title — Pure, Clean, Bold, Center */}
         <div className="relative z-10 flex flex-col items-center justify-center text-center my-auto">
           <h1 className="font-['BlauerNue',sans-serif] text-5xl sm:text-7xl md:text-8xl lg:text-[9.5rem] xl:text-[11rem] font-black uppercase tracking-tight leading-[0.85] text-white select-none drop-shadow-[0_10px_60px_rgba(0,0,0,0.95)]">
             REAL ESTATE WEB
@@ -99,7 +108,7 @@ export const RealEstateWebsitePage: React.FC<RealEstateWebsitePageProps> = ({
         {/* Clean Scroll Indicator */}
         <div className="relative z-10 flex items-center justify-center">
           <a
-            href="#realestate-exhibition"
+            href="#editorial-realestate-showcase"
             className="font-mono text-xs uppercase tracking-[0.25em] text-white/60 hover:text-[#00c8ff] transition-colors flex items-center gap-2"
           >
             <span>EXPLORE PLATFORMS</span>
@@ -109,42 +118,16 @@ export const RealEstateWebsitePage: React.FC<RealEstateWebsitePageProps> = ({
       </section>
 
       {/* =====================================================================
-          2. PURE VIDEO EXHIBITION — SHARP CORNERS, ZERO CLUTTER
+          2. ASYMMETRIC EDITORIAL SLIDER (EXACT REPLICA OF THE SCREENSHOTS)
           ===================================================================== */}
-      <section
-        id="realestate-exhibition"
-        className="w-full py-12 sm:py-20 px-4 sm:px-8 md:px-12 lg:px-16 relative bg-black"
-      >
-        <div className="max-w-[1700px] mx-auto flex flex-col gap-6 sm:gap-8">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8">
-            {REAL_ESTATE_PROJECTS.map((project, idx) => (
-              <div
-                key={project.id}
-                onClick={() => handleOpenLightbox(idx)}
-                className="group relative rounded-none overflow-hidden border border-white/10 hover:border-white/40 bg-black transition-all duration-500 cursor-pointer flex flex-col aspect-16/10"
-              >
-                {/* 100% Full Video Playing on Loop */}
-                <video
-                  src={project.url}
-                  autoPlay
-                  loop
-                  muted
-                  playsInline
-                  preload="metadata"
-                  className="w-full h-full object-cover rounded-none group-hover:scale-104 transition-transform duration-700 ease-out pointer-events-none"
-                />
-
-                {/* Minimal Hover Overlay — Project Name ONLY */}
-                <div className="absolute inset-0 bg-black/50 backdrop-blur-[2px] opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center p-6 text-center pointer-events-none z-10">
-                  <span className="font-['BlauerNue',sans-serif] text-xl sm:text-2xl md:text-3xl font-black uppercase tracking-tight text-white drop-shadow-[0_4px_25px_rgba(0,0,0,0.95)] transform translate-y-2 group-hover:translate-y-0 transition-transform duration-300">
-                    {project.title}
-                  </span>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
+      <div id="editorial-realestate-showcase" className="w-full">
+        <EditorialWebSlider
+          items={REAL_ESTATE_PROJECTS}
+          onOpenLightbox={handleOpenLightbox}
+          brandTag="/KV STUDIO — REAL ESTATE"
+          brandTitle="flagship portals."
+        />
+      </div>
 
       {/* =====================================================================
           3. CLEAN COMMISSION CTA — ZERO PARAGRAPHS
@@ -176,7 +159,7 @@ export const RealEstateWebsitePage: React.FC<RealEstateWebsitePageProps> = ({
       {/* =====================================================================
           4. ADJACENT SERVICES NAVIGATION
           ===================================================================== */}
-      <nav aria-label="Adjacent Services Navigation" className="w-full py-8 px-6 sm:px-12 md:px-16 lg:px-20 border-t border-white/10">
+      <nav aria-label="Adjacent Services Navigation" className="w-full py-8 px-6 sm:px-12 md:px-16 lg:px-20 border-t border-white/10 bg-black">
         <div className="max-w-[1700px] mx-auto flex flex-col sm:flex-row items-center justify-between gap-6">
           {prevService ? (
             <Link
@@ -225,9 +208,7 @@ export const RealEstateWebsitePage: React.FC<RealEstateWebsitePageProps> = ({
           onClose={() => setLightboxState(null)}
           onNext={() =>
             setLightboxState((prev) =>
-              prev
-                ? { ...prev, index: (prev.index + 1) % prev.items.length }
-                : null
+              prev ? { ...prev, index: (prev.index + 1) % prev.items.length } : null
             )
           }
           onPrev={() =>
@@ -246,4 +227,3 @@ export const RealEstateWebsitePage: React.FC<RealEstateWebsitePageProps> = ({
     </div>
   );
 };
-
