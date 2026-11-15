@@ -115,12 +115,12 @@ export const AboutSpecializations: React.FC = () => {
               </span>
             </div>
 
-            <h2 className="font-['BlauerNue',sans-serif] text-3xl sm:text-5xl md:text-6xl font-black uppercase tracking-tight text-white leading-tight">
+            <h2 className="text-3xl sm:text-5xl md:text-6xl font-black uppercase tracking-tight text-white leading-tight">
               CORE <span className="text-[#00c8ff]">SPECIALIZATIONS</span>
             </h2>
           </div>
 
-          <p className="font-['Rubik',sans-serif] text-white/60 text-sm sm:text-base max-w-md leading-relaxed">
+          <p className="text-white/60 text-sm sm:text-base max-w-md leading-relaxed">
             Six cohesive services operating under one collaborative roof to ensure uninterrupted fidelity from initial sketch to interactive deployment.
           </p>
         </div>
@@ -138,7 +138,7 @@ export const AboutSpecializations: React.FC = () => {
             >
               {/* Background Number Watermark */}
               <span
-                className="absolute -top-3 -right-2 font-['BlauerNue',sans-serif] text-8xl font-black text-white/2.5 select-none pointer-events-none group-hover:text-white/5 transition-colors"
+                className="absolute -top-3 -right-2 text-8xl font-black text-white/2.5 select-none pointer-events-none group-hover:text-white/5 transition-colors"
                 aria-hidden="true"
               >
                 {item.number}
@@ -148,23 +148,23 @@ export const AboutSpecializations: React.FC = () => {
                 {/* Number & Category Pill */}
                 <div className="flex items-center justify-between">
                   <span
-                    className="font-mono text-xs font-bold"
+                    className="text-xs font-bold"
                     style={{ color: item.accentColor }}
                   >
                     /{item.number}
                   </span>
-                  <span className="px-2.5 py-0.5 bg-white/5 border border-white/10 font-mono text-[10px] text-white/60 uppercase tracking-wider">
+                  <span className="px-2.5 py-0.5 bg-white/5 border border-white/10 text-[10px] text-white/60 uppercase tracking-wider font-semibold">
                     {item.tag}
                   </span>
                 </div>
 
                 {/* Title */}
-                <h3 className="font-['BlauerNue',sans-serif] text-xl sm:text-2xl font-black uppercase text-white tracking-tight leading-snug">
+                <h3 className="text-xl sm:text-2xl font-black uppercase text-white tracking-tight leading-snug">
                   {item.title}
                 </h3>
 
                 {/* Description */}
-                <p className="font-['Rubik',sans-serif] text-white/70 text-xs sm:text-sm leading-relaxed">
+                <p className="text-white/70 text-xs sm:text-sm leading-relaxed">
                   {item.description}
                 </p>
 
@@ -176,7 +176,7 @@ export const AboutSpecializations: React.FC = () => {
                         className="w-1.5 h-1.5 rounded-full shrink-0"
                         style={{ backgroundColor: item.accentColor }}
                       />
-                      <span className="font-['Rubik',sans-serif]">{del}</span>
+                      <span>{del}</span>
                     </div>
                   ))}
                 </div>

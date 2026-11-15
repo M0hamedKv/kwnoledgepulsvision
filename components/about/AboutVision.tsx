@@ -14,12 +14,12 @@ export const AboutVision: React.FC = () => {
         <div className="flex flex-col gap-3">
           <div className="flex items-center gap-3">
             <span className="w-2.5 h-2.5 rounded-full bg-[#00c8ff] animate-pulse" />
-            <span className="font-mono text-xs sm:text-sm font-bold uppercase tracking-[0.24em] text-[#00c8ff]">
+            <span className="text-xs sm:text-sm font-bold uppercase tracking-[0.24em] text-[#00c8ff]">
               02 / OUR VISION
             </span>
           </div>
 
-          <h2 className="font-['BlauerNue',sans-serif] text-4xl sm:text-6xl md:text-7xl font-black uppercase tracking-tight text-white leading-tight">
+          <h2 className="text-3xl sm:text-5xl md:text-6xl font-black uppercase tracking-tight text-white leading-tight">
             OUR <span className="text-[#00c8ff]">VISION</span>
           </h2>
         </div>
@@ -30,19 +30,19 @@ export const AboutVision: React.FC = () => {
           <div className="lg:col-span-7 flex flex-col gap-8">
             <div className="relative p-8 sm:p-12 rounded-2xl bg-white/3 border border-white/10 backdrop-blur-xl overflow-hidden shadow-[0_20px_50px_rgba(0,0,0,0.8)]">
               <div className="flex flex-col gap-6 relative z-10">
-                <span className="text-4xl sm:text-5xl text-[#00c8ff] font-serif leading-none select-none">
+                <span className="text-4xl sm:text-5xl text-[#00c8ff] leading-none select-none">
                   &ldquo;
                 </span>
 
-                <h3 className="font-['BlauerNue',sans-serif] text-2xl sm:text-3xl md:text-4xl font-extrabold uppercase tracking-tight text-white leading-snug">
+                <h3 className="text-xl sm:text-2xl font-black uppercase tracking-tight text-white leading-snug">
                   SETTING NEW BENCHMARKS IN REAL-TIME ARCHITECTURAL VISUALIZATION.
                 </h3>
 
-                <p className="font-mono text-xs sm:text-sm text-white/70 uppercase tracking-widest">
+                <p className="text-xs sm:text-sm text-white/70 uppercase tracking-widest font-semibold">
                   PRECISION ENGINEERING • IMMERSIVE SPATIAL ENGINES • UNCOMPROMISED AESTHETICS
                 </p>
 
-                <div className="pt-4 flex flex-wrap items-center gap-4 sm:gap-6 border-t border-white/10 text-xs font-mono text-white/40">
+                <div className="pt-4 flex flex-wrap items-center gap-4 sm:gap-6 border-t border-white/10 text-xs text-white/40">
                   <span className="text-[#00c8ff] font-bold">KV STUDIO VISION</span>
                   <span>•</span>
                   <span>DESIGN EXCELLENCE</span>

@@ -50,12 +50,12 @@ export const AboutStory: React.FC = () => {
         <div className="flex flex-col gap-3">
           <div className="flex items-center gap-3">
             <span className="w-2.5 h-2.5 rounded-full bg-[#00c8ff] animate-pulse" />
-            <span className="font-mono text-xs sm:text-sm font-bold uppercase tracking-[0.24em] text-[#00c8ff]">
+            <span className="text-xs sm:text-sm font-bold uppercase tracking-[0.24em] text-[#00c8ff]">
               01 / OUR STORY
             </span>
           </div>
 
-          <h2 className="font-['BlauerNue',sans-serif] text-4xl sm:text-6xl md:text-7xl font-black uppercase tracking-tight text-white leading-tight">
+          <h2 className="text-3xl sm:text-5xl md:text-6xl font-black uppercase tracking-tight text-white leading-tight">
             OUR <span className="text-[#00c8ff]">STORY</span>
           </h2>
         </div>
@@ -64,14 +64,14 @@ export const AboutStory: React.FC = () => {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
           {/* Left Narrative Column */}
           <div className="lg:col-span-7 flex flex-col gap-8">
-            <div className="flex flex-col gap-5 text-base sm:text-lg md:text-xl text-white/80 font-['Rubik',sans-serif] leading-relaxed">
+            <div className="flex flex-col gap-5 text-base sm:text-lg md:text-xl text-white/80 leading-relaxed">
               <p className="text-white font-normal leading-relaxed">
                 <strong className="text-[#00c8ff] font-bold">KV Studio</strong> is a creative architecture and visualization practice dedicated to turning ideas into reality. We specialize in architectural, interior, and landscape design, complemented by cutting-edge visualization, lighting design, and interactive solutions.
               </p>
 
               {/* Highlight Quote */}
               <div className="p-6 sm:p-8 rounded-xl bg-white/3 border-l-4 border-[#00c8ff] border backdrop-blur-md">
-                <p className="font-['BlauerNue',sans-serif] text-lg sm:text-2xl font-bold uppercase tracking-wide text-white leading-snug">
+                <p className="text-lg sm:text-2xl font-bold uppercase tracking-wide text-white leading-snug">
                   &ldquo;Driven by innovation, guided by design, and powered by technology, Knowledge Plus Vision is not just a visualization studio – it’s a partner in shaping the future of spaces.&rdquo;
                 </p>
               </div>
@@ -81,7 +81,7 @@ export const AboutStory: React.FC = () => {
             <div className="pt-2 flex items-center gap-4">
               <Link
                 href="/portfolio"
-                className="group inline-flex items-center gap-3 px-8 py-4 rounded-xl bg-[#00c8ff] text-black font-['BlauerNue',sans-serif] font-black uppercase text-xs sm:text-sm tracking-[0.16em] hover:bg-white hover:shadow-[0_0_30px_rgba(0,200,255,0.4)] transition-all duration-300"
+                className="group inline-flex items-center gap-3 px-8 sm:px-10 py-4 sm:py-5 bg-[#00c8ff] text-black font-black uppercase text-xs sm:text-sm tracking-widest hover:bg-white hover:shadow-[0_0_30px_rgba(0,200,255,0.4)] transition-all duration-300 rounded-none shadow-2xl"
               >
                 <span>VIEW OUR PROJECTS</span>
                 <ArrowRightIcon className="w-4 h-4 stroke-current transform transition-transform duration-300 group-hover:translate-x-1" />

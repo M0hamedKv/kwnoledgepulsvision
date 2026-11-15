@@ -46,14 +46,14 @@ export const Footer: React.FC = () => {
                 />
               </Link>
 
-              <p className="font-['Rubik',sans-serif] text-white/60 text-xs sm:text-sm leading-relaxed max-w-sm">
+              <p className="text-white/60 text-xs sm:text-sm leading-relaxed max-w-sm">
                 Creative architecture, computational design, and cutting-edge visualization practice dedicated to transforming spatial ideas into kinetic realities.
               </p>
 
               {/* Direct Contacts */}
-              <div className="flex flex-col gap-2 pt-4 border-t border-white/10 font-mono text-xs">
+              <div className="flex flex-col gap-2 pt-4 border-t border-white/10 text-xs">
                 <div className="flex items-center gap-2">
-                  <span className="text-white/40 uppercase">EMAIL:</span>
+                  <span className="text-white/40 uppercase font-bold">EMAIL:</span>
                   <a
                     href="mailto:info@knowledgeplusvision.in"
                     className="text-white hover:text-[#00c8ff] transition-colors"
@@ -63,7 +63,7 @@ export const Footer: React.FC = () => {
                 </div>
 
                 <div className="flex items-center gap-2">
-                  <span className="text-white/40 uppercase">TEL:</span>
+                  <span className="text-white/40 uppercase font-bold">TEL:</span>
                   <div className="flex items-center gap-1.5 text-white">
                     <a href="tel:+201024865713" className="hover:text-[#00c8ff] transition-colors">
                       01024865713
@@ -75,8 +75,8 @@ export const Footer: React.FC = () => {
                   </div>
                 </div>
 
-                <div className="flex items-start gap-2 pt-1 text-white/60 font-sans text-xs">
-                  <span className="font-mono text-white/40 uppercase shrink-0">STUDIO:</span>
+                <div className="flex items-start gap-2 pt-1 text-white/60 text-xs">
+                  <span className="text-white/40 uppercase font-bold shrink-0">STUDIO:</span>
                   <span>South Academy 5TH Settlement, Cairo, Egypt</span>
                 </div>
               </div>
@@ -84,7 +84,7 @@ export const Footer: React.FC = () => {
 
             {/* Column 2: Navigation Directory (2 cols) */}
             <div className="lg:col-span-2 flex flex-col gap-5">
-              <span className="font-mono text-xs font-bold uppercase tracking-[0.22em] text-[#00c8ff]">
+              <span className="text-xs font-bold uppercase tracking-[0.22em] text-[#00c8ff]">
                 DIRECTORY
               </span>
 
@@ -93,7 +93,7 @@ export const Footer: React.FC = () => {
                   <Link
                     key={item.id}
                     href={item.href}
-                    className="font-['BlauerNue',sans-serif] text-sm uppercase tracking-wider text-white/70 hover:text-[#00c8ff] transition-colors flex items-center justify-between group">
+                    className="text-xs sm:text-sm font-bold uppercase tracking-wider text-white/70 hover:text-[#00c8ff] transition-colors flex items-center justify-between group">
                     <span>{item.label}</span>
                   </Link>
                 ))}
@@ -102,12 +102,12 @@ export const Footer: React.FC = () => {
 
             {/* Column 3: Core Services (3 cols) */}
             <div className="lg:col-span-3 flex flex-col gap-5">
-              <span className="font-mono text-xs font-bold uppercase tracking-[0.22em] text-[#00c8ff]">
+              <span className="text-xs font-bold uppercase tracking-[0.22em] text-[#00c8ff]">
                 SERVICES
               </span>
 
-              <div className="flex flex-col gap-2.5 font-mono text-xs">
-                <span className="text-[10px] text-white/40 uppercase tracking-widest pt-1">
+              <div className="flex flex-col gap-2.5 text-xs sm:text-sm font-bold">
+                <span className="text-[10px] text-white/40 uppercase tracking-widest pt-1 font-semibold">
                   INTERACTIVE SYSTEMS
                 </span>
                 <Link
@@ -139,7 +139,7 @@ export const Footer: React.FC = () => {
                   <span className="text-white/30 text-[10px]">04</span>
                 </Link>
 
-                <span className="text-[10px] text-white/40 uppercase tracking-widest pt-3 border-t border-white/5">
+                <span className="text-[10px] text-white/40 uppercase tracking-widest pt-3 border-t border-white/5 font-semibold">
                   DESIGN & ENGINEERING
                 </span>
                 <Link
@@ -168,11 +168,11 @@ export const Footer: React.FC = () => {
 
             {/* Column 4: Official Social Channels (3 cols) */}
             <div className="lg:col-span-3 flex flex-col gap-5">
-              <span className="font-mono text-xs font-bold uppercase tracking-[0.22em] text-[#00c8ff]">
+              <span className="text-xs font-bold uppercase tracking-[0.22em] text-[#00c8ff]">
                 SOCIAL PRESENCE
               </span>
 
-              <p className="font-['Rubik',sans-serif] text-xs text-white/60 leading-relaxed">
+              <p className="text-xs sm:text-sm text-white/60 leading-relaxed">
                 Follow our behind-the-scenes architectural renders, real-time walkthroughs, and studio announcements:
               </p>
 
@@ -199,10 +199,10 @@ export const Footer: React.FC = () => {
                           <Icon className="w-4 h-4 transition-transform duration-300 group-hover:scale-110" />
                         </div>
                         <div className="flex flex-col">
-                          <span className="font-['BlauerNue',sans-serif] font-bold text-xs text-white group-hover:text-[#00c8ff] transition-colors">
+                          <span className="font-bold text-xs text-white group-hover:text-[#00c8ff] transition-colors">
                             {social.label}
                           </span>
-                          <span className="font-mono text-[10px] text-white/40 group-hover:text-white/70 transition-colors">
+                          <span className="text-[10px] text-white/40 group-hover:text-white/70 transition-colors">
                             {social.handle}
                           </span>
                         </div>
@@ -230,7 +230,7 @@ export const Footer: React.FC = () => {
       </div> */}
 
       {/* 4. COLOPHON BOTTOM BAR */}
-      <div className="max-w-7xl mx-auto px-6 sm:px-12 md:px-16 lg:px-20 py-8 flex flex-col sm:flex-row items-center justify-between gap-4 font-mono text-xs text-white/40">
+      <div className="max-w-7xl mx-auto px-6 sm:px-12 md:px-16 lg:px-20 py-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-white/40">
         <div className="flex flex-wrap items-center gap-2 text-center sm:text-left">
           <span>© {currentYear} KV STUDIO.</span>
           <span className="hidden sm:inline">•</span>
@@ -243,7 +243,7 @@ export const Footer: React.FC = () => {
         <button
           type="button"
           onClick={scrollToTop}
-          className="group inline-flex items-center gap-2 text-white/50 hover:text-[#00c8ff] transition-colors cursor-pointer uppercase tracking-wider text-[11px]"
+          className="group inline-flex items-center gap-2 text-white/50 hover:text-[#00c8ff] transition-colors cursor-pointer uppercase tracking-wider text-xs font-bold"
           aria-label="Scroll to top of page"
         >
           <span>BACK TO TOP</span>
