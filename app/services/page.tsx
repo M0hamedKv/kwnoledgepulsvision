@@ -26,10 +26,10 @@ export default function ServicesPage() {
           {/* Discipline Category Header */}
           <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-6 pb-6 border-b border-white/10">
             <div>
-              <span className="font-mono text-xs uppercase tracking-[0.24em] text-[#00c8ff] font-bold">
+              <span className="text-xs uppercase tracking-[0.24em] text-[#00c8ff] font-bold">
                 01 / INTERACTIVE PRACTICE
               </span>
-              <h2 className="font-['BlauerNue',sans-serif] text-4xl sm:text-6xl md:text-7xl font-black uppercase tracking-tight text-white mt-3">
+              <h2 className="text-3xl sm:text-5xl md:text-6xl font-black uppercase tracking-tight text-white mt-3">
                 INTERACTIVE SOLUTION
               </h2>
             </div>
@@ -53,10 +53,10 @@ export default function ServicesPage() {
           {/* Discipline Category Header */}
           <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-6 pb-6 border-b border-white/10">
             <div>
-              <span className="font-mono text-xs uppercase tracking-[0.24em] text-[#00c8ff] font-bold">
+              <span className="text-xs uppercase tracking-[0.24em] text-[#00c8ff] font-bold">
                 02 / ARCHITECTURAL ATELIER
               </span>
-              <h2 className="font-['BlauerNue',sans-serif] text-4xl sm:text-6xl md:text-7xl font-black uppercase tracking-tight text-white mt-3">
+              <h2 className="text-3xl sm:text-5xl md:text-6xl font-black uppercase tracking-tight text-white mt-3">
                 DESIGN
               </h2>
             </div>
@@ -72,23 +72,26 @@ export default function ServicesPage() {
       {/* MASTER CONSULTATION CTA */}
       <section className="w-full py-24 sm:py-32 px-6 sm:px-12 md:px-16 lg:px-20 relative overflow-hidden">
         <div className="max-w-5xl mx-auto flex flex-col items-center text-center gap-6 relative z-10">
-          <span className="font-mono text-xs uppercase tracking-[0.24em] text-[#00c8ff] font-bold">
+          <span className="text-xs uppercase tracking-[0.24em] text-[#00c8ff] font-bold">
             COMMISSION YOUR PROJECT
           </span>
 
-          <h2 className="font-['BlauerNue',sans-serif] text-4xl sm:text-6xl md:text-7xl font-black uppercase tracking-tight text-white leading-tight">
+          <h2 className="text-3xl sm:text-5xl md:text-6xl font-black uppercase tracking-tight text-white leading-tight">
             SHAPE YOUR NEXT LANDMARK WITH KV STUDIO
           </h2>
 
           <div className="flex flex-col sm:flex-row items-center gap-4 mt-6">
             <Link
               href="/Contact"
-              className="px-8 py-4 bg-[#00c8ff] text-black font-['BlauerNue',sans-serif] font-black text-sm uppercase tracking-widest hover:bg-white transition-colors"
+              className="px-8 sm:px-10 py-4 sm:py-5 bg-[#00c8ff] text-black font-black text-xs sm:text-sm uppercase tracking-widest hover:bg-white transition-colors rounded-none shadow-2xl inline-flex items-center justify-center"
             >
               DISCUSS YOUR PROJECT
             </Link>
 
-            <Link href="/" className="px-8 py-4 border border-white/15 text-white font-mono text-xs uppercase tracking-widest hover:border-white/40 transition-colors" >
+            <Link
+              href="/"
+              className="px-8 sm:px-10 py-4 sm:py-5 border border-white/20 text-white font-black text-xs sm:text-sm uppercase tracking-widest hover:border-white/40 hover:text-white transition-colors rounded-none inline-flex items-center justify-center"
+            >
               BACK TO HOME
             </Link>
           </div>

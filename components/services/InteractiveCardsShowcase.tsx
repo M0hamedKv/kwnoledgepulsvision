@@ -63,9 +63,6 @@ export const InteractiveCardsShowcase: React.FC<InteractiveCardsShowcaseProps> =
           2. TRACK HEADER & SCROLL CONTROLS
           ───────────────────────────────────────────────────────────── */}
       <div className="max-w-[1700px] w-full mx-auto px-6 sm:px-12 flex items-center justify-between mb-4 z-20">
-        <span className="font-mono text-xs uppercase tracking-[0.24em] text-[#00c8ff] font-bold">
-          INTERACTIVE DECK // CLICK TO 3D ROTATE & PLAY
-        </span>
         <div className="flex items-center gap-2">
           <button
             onClick={() => scroll("left")}
@@ -159,13 +156,6 @@ export const InteractiveCardsShowcase: React.FC<InteractiveCardsShowcaseProps> =
                       ) : (
                         <div className="w-full h-full bg-neutral-900" />
                       )}
-
-                      {/* Play Action Badge */}
-                      <div className="absolute inset-0 bg-black/25 hover:bg-black/10 transition-colors flex items-center justify-center">
-                        <div className="w-12 h-12 rounded-full bg-black/80 border border-white/80 text-white flex items-center justify-center shadow-xl hover:scale-115 hover:bg-white hover:text-black transition-all duration-300">
-                          <span className="text-lg ml-0.5">▶</span>
-                        </div>
-                      </div>
 
                       {/* Card Stamp Badge */}
                       <div className="absolute top-2.5 inset-x-2.5 flex items-center justify-between pointer-events-none">

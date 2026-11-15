@@ -10,8 +10,8 @@ import {
   MepPage,
   InteriorPage,
   VrPage,
-  CommunityAppPage,
 } from "@/components/services/pages";
+import PortfolioPage from "@/app/portfolio/page";
 
 interface ServiceDetailPageProps {
   params: Promise<{ slug: string }>;
@@ -76,11 +76,12 @@ export default async function ServiceDetailPage({ params }: ServiceDetailPagePro
 
     case "realestate-website":
       return (
-        <RealEstateWebsitePage
-          service={service}
-          prevService={prevService}
-          nextService={nextService}
-        />
+        <PortfolioPage />
+        // <RealEstateWebsitePage
+        //   service={service}
+        //   prevService={prevService}
+        //   nextService={nextService}
+        // />
       );
 
     case "webdevelopment":
@@ -122,15 +123,6 @@ export default async function ServiceDetailPage({ params }: ServiceDetailPagePro
     case "vr":
       return (
         <VrPage
-          service={service}
-          prevService={prevService}
-          nextService={nextService}
-        />
-      );
-
-    case "community-app":
-      return (
-        <CommunityAppPage
           service={service}
           prevService={prevService}
           nextService={nextService}

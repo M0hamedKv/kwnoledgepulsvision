@@ -24,7 +24,6 @@ export function getPageTitle(href: string): string {
     "services/webdevelopment": "WEB DEVELOPMENT",
     "services/animation": "ANIMATION",
     "services/vr": "VR",
-    "services/community-app": "COMMUNITY APP",
     "services/bim": "BIM & SCAN TO BIM",
     "services/mep": "MEP ENGINEERING",
     "services/interior": "INTERIOR",

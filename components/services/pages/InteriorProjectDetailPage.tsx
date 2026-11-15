@@ -79,14 +79,14 @@ export const InteriorProjectDetailPage: React.FC<InteriorProjectDetailPageProps>
             </span>
           </div>
 
-          <h1 className="font-['BlauerNue',sans-serif] text-5xl sm:text-7xl md:text-8xl lg:text-9xl font-black uppercase tracking-tight leading-[0.88] text-white select-none drop-shadow-[0_6px_30px_rgba(0,0,0,0.95)]">
+          <h1 className="font-['BlauerNue',sans-serif] text-5xl sm:text-7xl md:text-8xl lg:text-9xl font-black uppercase tracking-tight leading-[0.85] text-white select-none drop-shadow-[0_10px_60px_rgba(0,0,0,0.95)]">
             {project.title}
           </h1>
 
           <div className="pt-2 flex items-center gap-4">
             <a
               href="#project-gallery"
-              className="inline-flex items-center gap-2 font-mono text-xs uppercase tracking-widest text-[#00c8ff] hover:text-white transition-colors"
+              className="inline-flex items-center gap-2 text-xs uppercase tracking-widest font-bold text-[#00c8ff] hover:text-white transition-colors"
             >
               <span>VIEW FULL GALLERY ({project.images.length} RENDERS)</span>
               <span>↓</span>

@@ -256,20 +256,20 @@ export const EditorialWebSlider: React.FC<EditorialWebSliderProps> = ({
                   className={`pt-3 sm:pt-4 border-t ${lineClass} flex items-start gap-5 sm:gap-8`}
                 >
                   <span
-                    className={`font-mono text-xs sm:text-sm font-medium tracking-wider shrink-0 pt-0.5 ${numColor}`}
+                    className={`font-['BlauerNue',sans-serif] text-xs sm:text-sm font-bold tracking-wider shrink-0 pt-0.5 ${numColor}`}
                   >
                     {String(index + 1).padStart(2, "0")} /{" "}
                     {String(total).padStart(2, "0")}
                   </span>
                   <div className="flex flex-col gap-1 min-w-0">
                     <h3
-                      className={`font-serif text-sm sm:text-base lg:text-lg font-normal leading-snug tracking-tight truncate sm:whitespace-normal ${titleColor}`}
+                      className={`font-['BlauerNue',sans-serif] text-sm sm:text-base font-bold uppercase leading-snug tracking-tight truncate sm:whitespace-normal ${titleColor}`}
                     >
                       {item.title}
                     </h3>
                     {item.subtitle && (
                       <p
-                        className={`font-serif italic text-xs sm:text-sm leading-relaxed line-clamp-1 sm:line-clamp-2 ${subtextColor}`}
+                        className={`font-['BlauerNue',sans-serif] text-xs sm:text-sm leading-relaxed line-clamp-1 sm:line-clamp-2 ${subtextColor}`}
                       >
                         {item.subtitle}
                       </p>

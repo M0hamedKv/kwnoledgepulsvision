@@ -747,78 +747,10 @@ export const ALL_SERVICES: ServiceDetailItem[] = [
     tags: ["Virtual Reality", "Apple Vision Pro", "Meta Quest", "6DoF Immersion", "Spatial Computing", "WebXR"],
     ctaHeading: "STEP INTO THE FUTURE OF SPATIAL IMMERSION",
     ctaSubtext: "Experience your projects in true 1:1 scale virtual reality before breaking ground.",
-    nextSlug: "community-app",
+    nextSlug: "bim",
     prevSlug: "animation",
   },
-
-  // =========================================================================
-  // 5. COMMUNITY APP (Interactive Solution)
-  // =========================================================================
   
-  {
-    id: "community-app",
-    slug: "community-app",
-    number: "05",
-    discipline: "INTERACTIVE SOLUTION",
-    disciplineSlug: "interactive-solution",
-    disciplineTag: "DIGITAL EXPERIENCES & 3D SYSTEMS",
-    title: "COMMUNITY APP",
-    heroHeadline: "SMART PROPTECH PLATFORMS FOR LUXURY COMPOUNDS",
-    subtitle: "Mobile and web ecosystem connecting residents, building facilities, access controls, and concierge services.",
-    manifesto:
-      "Modern luxury developments are not just concrete and glass; they are living, breathing ecosystems. We engineer bespoke branded community applications that provide residents with seamless digital access, concierge bookings, smart home IoT automation, and direct facility management.",
-    accentColor: "#00c8ff",
-    badge: "PROPTECH & SMART LIVING",
-    status: "coming-soon",
-    mediaCountLabel: "COMING SOON",
-    gallery: [],
-    deliverables: [
-      {
-        title: "Digital Access Control & Guest QR Passes",
-        description: "Frictionless vehicle gate access, smart elevator calling, and temporary encrypted QR codes for invited guests.",
-        metric: "Instant Gate Clearance",
-      },
-      {
-        title: "Amenity & Clubhouse Reservation Engine",
-        description: "Real-time calendar booking for sports facilities, private dining suites, spa appointments, and pool cabanas.",
-        metric: "Automated Calendar Sync",
-      },
-      {
-        title: "IoT Smart Home & Facility Telemetry",
-        description: "Resident controls for HVAC temperatures, ambient lighting scenes, and consumption analytics.",
-        metric: "Zigbee / Matter Standard",
-      },
-      {
-        title: "Bilingual Resident Concierge & Billing",
-        description: "In-app maintenance ticket reporting with photo attachments, live status tracking, and digital maintenance fee payments.",
-        metric: "99.9% Operational Uptime",
-      },
-    ],
-    specifications: [
-      { label: "Platforms", value: "iOS (Native Swift), Android (Kotlin), Next.js Admin" },
-      { label: "Backend Architecture", value: "Cloud-native Node.js / PostgreSQL / Redis" },
-      { label: "Hardware Integration", value: "HID Access Control, Dahua / Hikvision Gateways" },
-      { label: "Security & Encryption", value: "AES-256 Bit Data Encryption, Biometric FaceID" },
-      { label: "Payment Gateways", value: "Stripe, Apple Pay, Local Direct Debit Gateways" },
-    ],
-    process: [
-      { number: "01", title: "Community Workflow Mapping", description: "Auditing compound security protocols, tenant personas, and facility access rules." },
-      { number: "02", title: "Luxury UI/UX Design", description: "Crafting a bespoke editorial interface branded specifically to the real estate development." },
-      { number: "03", title: "Hardware & IoT Integration", description: "Connecting APIs with on-site gates, smart meters, elevators, and security servers." },
-      { number: "04", title: "Onboarding & Management Handover", description: "App Store deployment, staff dashboard training, and tenant onboarding support." },
-    ],
-    clientBenefits: [
-      "Elevate real estate asset valuation by offering a world-class smart living digital amenity to buyers.",
-      "Reduce property management operational overhead through automated billing and ticket triage.",
-      "Strengthen community security with encrypted, trackable digital access records.",
-    ],
-    tags: ["PropTech", "iOS & Android", "Smart Community", "IoT Integration", "Tenant Experience", "Access Control"],
-    ctaHeading: "ELEVATE YOUR COMPOUND WITH A BESPOKE COMMUNITY APP",
-    ctaSubtext: "Connect your residents to a luxury smart living ecosystem with an app branded to your property.",
-    nextSlug: "bim",
-    prevSlug: "vr",
-  },
-
   // =========================================================================
   // 6. BIM (Design)
   // =========================================================================
@@ -884,7 +816,7 @@ export const ALL_SERVICES: ServiceDetailItem[] = [
     ctaHeading: "COORDINATE YOUR PROJECT WITH BIM PRECISION",
     ctaSubtext: "Ensure flawless constructability and budget adherence with our BIM management specialists.",
     nextSlug: "mep",
-    prevSlug: "community-app",
+    prevSlug: "vr",
   },
 
   // =========================================================================

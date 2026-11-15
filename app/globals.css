@@ -38,9 +38,39 @@
   --color-brand-accent: var(--brand-accent);
   --color-brand-dark: var(--brand-dark);
   --color-brand-card: var(--brand-card-bg);
-  --font-sans: "BlauerNue", var(--font-geist-sans), Arial, sans-serif;
+
+  /* Unified Font Family Across All Types — Zero Disparity */
+  --font-sans: "BlauerNue", Arial, sans-serif;
   --font-display: "BlauerNue", Arial, sans-serif;
-  --font-body: "Rubik", Arial, sans-serif;
+  --font-body: "BlauerNue", Arial, sans-serif;
+  --font-mono: "BlauerNue", Arial, sans-serif;
+  --font-serif: "BlauerNue", Arial, sans-serif;
+}
+
+/* ==========================================================================
+   Universal Font Enforcement:
+   Every single element across the entire website shares the exact same font family!
+   ========================================================================== */
+*,
+*::before,
+*::after,
+html,
+body,
+button,
+input,
+textarea,
+select,
+a,
+p,
+span,
+div,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: "BlauerNue", Arial, sans-serif !important;
 }
 
 /* Global Selection Style: Unified brand accent across all text on all pages */
@@ -67,7 +97,7 @@ body {
   background-attachment: fixed;
   background-repeat: no-repeat;
   color: var(--foreground);
-  font-family: var(--font-sans);
+  font-family: "BlauerNue", Arial, sans-serif !important;
   overflow-x: clip;
   margin: 0;
   padding: 0;

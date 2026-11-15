@@ -60,7 +60,7 @@ export const ImaquettePage: React.FC<ImaquettePageProps> = ({
 
         {/* Hero Title — Pure, Clean, Bold, Exactly in Center */}
         <div className="relative z-10 flex flex-col items-center justify-center text-center my-auto">
-          <h1 className="font-['BlauerNue',sans-serif] text-7xl sm:text-9xl md:text-[11rem] lg:text-[13rem] font-black uppercase tracking-tight leading-[0.8] text-white select-none drop-shadow-[0_10px_60px_rgba(0,0,0,0.95)]">
+          <h1 className="font-['BlauerNue',sans-serif] text-5xl sm:text-7xl md:text-8xl lg:text-9xl font-black uppercase tracking-tight leading-[0.85] text-white select-none drop-shadow-[0_10px_60px_rgba(0,0,0,0.95)]">
             IMAQUETTE
           </h1>
         </div>
@@ -69,7 +69,7 @@ export const ImaquettePage: React.FC<ImaquettePageProps> = ({
         <div className="relative z-10 flex items-center justify-center">
           <a
             href="#interactive-demo"
-            className="font-mono text-xs uppercase tracking-[0.25em] text-white/60 hover:text-[#00c8ff] transition-colors flex items-center gap-2"
+            className="text-xs uppercase tracking-[0.25em] font-bold text-white/60 hover:text-[#00c8ff] transition-colors flex items-center gap-2"
           >
             <span>EXPLORE EXHIBITION</span>
             <span>↓</span>
@@ -96,21 +96,21 @@ export const ImaquettePage: React.FC<ImaquettePageProps> = ({
       <section className="w-full py-24 sm:py-32 px-6 sm:px-12 md:px-16 lg:px-20 border-t border-white/10 relative overflow-hidden bg-black">
         <div className="max-w-5xl mx-auto flex flex-col items-center text-center gap-6 relative z-10">
 
-          <h2 className="font-['BlauerNue',sans-serif] text-4xl sm:text-6xl md:text-7xl font-black uppercase tracking-tight text-white leading-tight">
+          <h2 className="font-['BlauerNue',sans-serif] text-3xl sm:text-5xl md:text-6xl font-black uppercase tracking-tight text-white leading-tight">
             COMMISSION AN IMAQUETTE FOR YOUR NEXT DEVELOPMENT
           </h2>
 
           <div className="flex flex-col sm:flex-row items-center gap-4 mt-4">
             <Link
               href="/Contact?service=imaquette"
-              className="px-8 py-4 bg-[#00c8ff] text-black font-['BlauerNue',sans-serif] font-black text-sm uppercase tracking-widest hover:bg-white transition-colors"
+              className="px-8 sm:px-10 py-4 sm:py-5 bg-[#00c8ff] text-black font-['BlauerNue',sans-serif] font-black text-xs sm:text-sm uppercase tracking-widest hover:bg-white transition-colors rounded-none shadow-2xl inline-flex items-center justify-center"
             >
               REQUEST A CUSTOM PROPOSAL
             </Link>
 
             <Link
               href="/services"
-              className="px-8 py-4 border border-white/15 text-white font-mono text-xs uppercase tracking-widest hover:border-white/40 transition-colors"
+              className="px-8 sm:px-10 py-4 sm:py-5 border border-white/20 text-white font-['BlauerNue',sans-serif] font-black text-xs sm:text-sm uppercase tracking-widest hover:border-white/40 hover:text-white transition-colors rounded-none inline-flex items-center justify-center"
             >
               BROWSE ALL SERVICES
             </Link>
@@ -129,9 +129,9 @@ export const ImaquettePage: React.FC<ImaquettePageProps> = ({
               className="group flex items-center gap-3 text-white/60 hover:text-white transition-colors"
             >
               <ArrowLeftIcon className="w-4 h-4 stroke-current text-[#00c8ff]" />
-              <div className="text-left font-mono text-xs">
-                <span className="block text-white/30 text-[10px]">PREVIOUS SERVICE</span>
-                <span className="font-bold uppercase tracking-wider">{prevService.title}</span>
+              <div className="text-left text-xs uppercase tracking-wider">
+                <span className="block text-white/40 text-xs font-semibold">PREVIOUS SERVICE</span>
+                <span className="font-bold uppercase tracking-wider text-white text-xs sm:text-sm">{prevService.title}</span>
               </div>
             </Link>
           ) : (
@@ -140,7 +140,7 @@ export const ImaquettePage: React.FC<ImaquettePageProps> = ({
 
           <Link
             href="/services"
-            className="font-mono text-xs text-white/40 hover:text-[#00c8ff] uppercase tracking-widest transition-colors"
+            className="text-xs sm:text-sm font-bold text-white/60 hover:text-[#00c8ff] uppercase tracking-widest transition-colors"
           >
             ALL SERVICES CATALOG [06]
           </Link>
@@ -150,9 +150,9 @@ export const ImaquettePage: React.FC<ImaquettePageProps> = ({
               href={`/services/${nextService.slug}`}
               className="group flex items-center gap-3 text-white/60 hover:text-white transition-colors"
             >
-              <div className="text-right font-mono text-xs">
-                <span className="block text-white/30 text-[10px]">NEXT SERVICE</span>
-                <span className="font-bold uppercase tracking-wider">{nextService.title}</span>
+              <div className="text-right text-xs uppercase tracking-wider">
+                <span className="block text-white/40 text-xs font-semibold">NEXT SERVICE</span>
+                <span className="font-bold uppercase tracking-wider text-white text-xs sm:text-sm">{nextService.title}</span>
               </div>
               <ArrowRightIcon className="w-4 h-4 stroke-current text-[#00c8ff]" />
             </Link>

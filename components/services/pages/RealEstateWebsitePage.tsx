@@ -100,7 +100,7 @@ export const RealEstateWebsitePage: React.FC<RealEstateWebsitePageProps> = ({
 
         {/* Hero Title — Pure, Clean, Bold, Center */}
         <div className="relative z-10 flex flex-col items-center justify-center text-center my-auto">
-          <h1 className="font-['BlauerNue',sans-serif] text-5xl sm:text-7xl md:text-8xl lg:text-[9.5rem] xl:text-[11rem] font-black uppercase tracking-tight leading-[0.85] text-white select-none drop-shadow-[0_10px_60px_rgba(0,0,0,0.95)]">
+          <h1 className="font-['BlauerNue',sans-serif] text-5xl sm:text-7xl md:text-8xl lg:text-9xl font-black uppercase tracking-tight leading-[0.85] text-white select-none drop-shadow-[0_10px_60px_rgba(0,0,0,0.95)]">
             REAL ESTATE WEB
           </h1>
         </div>
@@ -109,7 +109,7 @@ export const RealEstateWebsitePage: React.FC<RealEstateWebsitePageProps> = ({
         <div className="relative z-10 flex items-center justify-center">
           <a
             href="#editorial-realestate-showcase"
-            className="font-mono text-xs uppercase tracking-[0.25em] text-white/60 hover:text-[#00c8ff] transition-colors flex items-center gap-2"
+            className="text-xs uppercase tracking-[0.25em] font-bold text-white/60 hover:text-[#00c8ff] transition-colors flex items-center gap-2"
           >
             <span>EXPLORE PLATFORMS</span>
             <span>↓</span>
@@ -137,14 +137,14 @@ export const RealEstateWebsitePage: React.FC<RealEstateWebsitePageProps> = ({
           <div className="flex flex-col sm:flex-row items-center gap-4 mt-2">
             <Link
               href="/Contact?service=realestate-website"
-              className="px-10 py-5 bg-[#00c8ff] text-black font-['BlauerNue',sans-serif] font-black text-sm uppercase tracking-widest hover:bg-white transition-colors rounded-none shadow-2xl"
+              className="px-8 sm:px-10 py-4 sm:py-5 bg-[#00c8ff] text-black font-['BlauerNue',sans-serif] font-black text-xs sm:text-sm uppercase tracking-widest hover:bg-white transition-colors rounded-none shadow-2xl inline-flex items-center justify-center"
             >
               REQUEST A PROPOSAL
             </Link>
 
             <Link
               href="/services"
-              className="px-8 py-5 border border-white/20 text-white font-mono text-xs uppercase tracking-widest hover:border-white/40 transition-colors rounded-none"
+              className="px-8 sm:px-10 py-4 sm:py-5 border border-white/20 text-white font-['BlauerNue',sans-serif] font-black text-xs sm:text-sm uppercase tracking-widest hover:border-white/40 hover:text-white transition-colors rounded-none inline-flex items-center justify-center"
             >
               BROWSE ALL SERVICES
             </Link>
@@ -163,9 +163,9 @@ export const RealEstateWebsitePage: React.FC<RealEstateWebsitePageProps> = ({
               className="group flex items-center gap-3 text-white/60 hover:text-white transition-colors"
             >
               <ArrowLeftIcon className="w-4 h-4 stroke-current text-[#00c8ff]" />
-              <div className="text-left font-mono text-xs">
-                <span className="block text-white/30 text-[10px]">PREVIOUS</span>
-                <span className="font-bold uppercase tracking-wider">{prevService.title}</span>
+              <div className="text-left text-xs uppercase tracking-wider">
+                <span className="block text-white/40 text-xs font-semibold">PREVIOUS</span>
+                <span className="font-bold uppercase tracking-wider text-white text-xs sm:text-sm">{prevService.title}</span>
               </div>
             </Link>
           ) : (
@@ -174,7 +174,7 @@ export const RealEstateWebsitePage: React.FC<RealEstateWebsitePageProps> = ({
 
           <Link
             href="/services"
-            className="font-mono text-xs text-white/40 hover:text-[#00c8ff] uppercase tracking-widest transition-colors"
+            className="text-xs sm:text-sm font-bold text-white/60 hover:text-[#00c8ff] uppercase tracking-widest transition-colors"
           >
             SERVICES CATALOG
           </Link>
@@ -184,9 +184,9 @@ export const RealEstateWebsitePage: React.FC<RealEstateWebsitePageProps> = ({
               href={`/services/${nextService.slug}`}
               className="group flex items-center gap-3 text-white/60 hover:text-white transition-colors"
             >
-              <div className="text-right font-mono text-xs">
-                <span className="block text-white/30 text-[10px]">NEXT</span>
-                <span className="font-bold uppercase tracking-wider">{nextService.title}</span>
+              <div className="text-right text-xs uppercase tracking-wider">
+                <span className="block text-white/40 text-xs font-semibold">NEXT</span>
+                <span className="font-bold uppercase tracking-wider text-white text-xs sm:text-sm">{nextService.title}</span>
               </div>
               <ArrowRightIcon className="w-4 h-4 stroke-current text-[#00c8ff]" />
             </Link>

@@ -2,7 +2,7 @@ import { MenuItem } from "@/components/hero";
 
 export const DEFAULT_MENU_ITEMS: MenuItem[] = [
   { id: "home", label: "HOME", href: "/" },
-  { id: "portfolio", label: "PORTFOLIO", href: "/portfolio" },
+  // { id: "portfolio", label: "PORTFOLIO", href: "/portfolio" },
   { id: "services", label: "SERVICES", href: "/services" },
   { id: "about", label: "ABOUT US", href: "/About" },
   { id: "join", label: "JOIN US", href: "/JoinUs" },
