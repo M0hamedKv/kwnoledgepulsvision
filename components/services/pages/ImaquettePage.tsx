@@ -95,9 +95,6 @@ export const ImaquettePage: React.FC<ImaquettePageProps> = ({
           ===================================================================== */}
       <section className="w-full py-24 sm:py-32 px-6 sm:px-12 md:px-16 lg:px-20 border-t border-white/10 relative overflow-hidden bg-black">
         <div className="max-w-5xl mx-auto flex flex-col items-center text-center gap-6 relative z-10">
-          <span className="font-mono text-xs uppercase tracking-[0.24em] text-[#00c8ff] font-bold">
-            COMMISSION IMAQUETTE
-          </span>
 
           <h2 className="font-['BlauerNue',sans-serif] text-4xl sm:text-6xl md:text-7xl font-black uppercase tracking-tight text-white leading-tight">
             COMMISSION AN IMAQUETTE FOR YOUR NEXT DEVELOPMENT

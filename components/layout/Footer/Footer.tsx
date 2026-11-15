@@ -2,6 +2,7 @@
 
 import React from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { DEFAULT_MENU_ITEMS, STUDIO_SOCIAL_LINKS } from "@/constant";
 import {
@@ -35,10 +36,14 @@ export const Footer: React.FC = () => {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-12 lg:gap-8">
             {/* Column 1: Brand & Studio Info (4 cols) */}
             <div className="lg:col-span-4 flex flex-col gap-6">
-              <Link href="/" className="group inline-block">
-                <span className="font-['BlauerNue',sans-serif] text-2xl sm:text-3xl font-black uppercase tracking-tight text-white group-hover:text-[#00c8ff] transition-colors">
-                  KV STUDIO
-                </span>
+              <Link href="/" className="group inline-flex items-center">
+                <Image
+                  src="/kv-logo-transparent.png"
+                  alt="KV STUDIO"
+                  width={184}
+                  height={100}
+                  className="h-10 sm:h-12 w-auto object-contain transition-all duration-300 group-hover:opacity-85 group-hover:scale-[1.02]"
+                />
               </Link>
 
               <p className="font-['Rubik',sans-serif] text-white/60 text-xs sm:text-sm leading-relaxed max-w-sm">
