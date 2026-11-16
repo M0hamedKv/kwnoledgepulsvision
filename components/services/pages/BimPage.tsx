@@ -15,26 +15,26 @@ interface BimPageProps {
 
 const BIM_PROJECTS = [
   {
-    id: "bim-1",
-    title: "LOD 500 DIGITAL TWIN COORDINATION",
+    id: "amazon-warehouse-1",
+    title: "AMAZON WAREHOUSE — LOD 500 DIGITAL TWIN COORDINATION",
     url: "https://res.cloudinary.com/hxytmocg/image/upload/v1793521506/1_View020000.webp",
     type: "image" as const,
   },
   {
-    id: "bim-2",
-    title: "STRUCTURAL CLASH MATRIX",
+    id: "amazon-warehouse-2",
+    title: "AMAZON WAREHOUSE — STRUCTURAL CLASH MATRIX",
     url: "https://res.cloudinary.com/hxytmocg/image/upload/v1793521515/1_View030000.webp",
     type: "image" as const,
   },
   {
-    id: "bim-3",
-    title: "PARAMETRIC REVIT ARCHITECTURE",
+    id: "amazon-warehouse-3",
+    title: "AMAZON WAREHOUSE — PARAMETRIC STEEL & CONVEYOR MODEL",
     url: "https://res.cloudinary.com/hxytmocg/image/upload/v1793521519/1_View050000.webp",
     type: "image" as const,
   },
   {
-    id: "bim-4",
-    title: "AS-BUILT MULTI-DISCIPLINE AUDIT",
+    id: "amazon-warehouse-4",
+    title: "AMAZON WAREHOUSE — AS-BUILT LOGISTICS AUDIT",
     url: "https://res.cloudinary.com/hxytmocg/image/upload/v1793521526/1_View060000.webp",
     type: "image" as const,
   },
@@ -87,9 +87,15 @@ export const BimPage: React.FC<BimPageProps> = ({
 
         {/* Hero Title — Pure, Clean, Bold, Exactly in Center */}
         <div className="relative z-10 flex flex-col items-center justify-center text-center my-auto">
+          <span className="font-mono text-xs uppercase tracking-[0.28em] text-[#00c8ff] font-bold mb-3">
+            ARCHITECTURE // SUB-DISCIPLINE
+          </span>
           <h1 className="font-['BlauerNue',sans-serif] text-5xl sm:text-7xl md:text-8xl lg:text-9xl font-black uppercase tracking-tight leading-[0.85] text-white select-none drop-shadow-[0_10px_60px_rgba(0,0,0,0.95)]">
             BIM
           </h1>
+          <p className="mt-4 text-xs sm:text-sm font-semibold uppercase tracking-widest text-white/60">
+            AMAZON WAREHOUSE • LOD 500 DIGITAL TWIN
+          </p>
         </div>
 
         {/* Clean Scroll Indicator */}

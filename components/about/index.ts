@@ -1,4 +1,4 @@
 export * from "./AboutStory";
-export * from "./AboutSpecializations";
 export * from "./AboutVision";
+export * from "./AboutMission";
 export * from "./ConstellationGalaxy";

@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState, useEffect, useRef } from "react";
+import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { HeroMenuModal } from "@/components/hero/HeroMenuModal";
 import { DEFAULT_MENU_ITEMS } from "@/constant";
@@ -72,56 +73,87 @@ export const Navbar: React.FC = () => {
           {/* Brand Logo with Letter Completion Animation */}
           <BrandLogo />
 
-          {/* Right Navigation & Morphing Hamburger Button */}
-          <div className="flex items-center gap-6 sm:gap-8">
-            {/* Quick Links on Desktop */}
-            {/* <div className="hidden md:flex items-center gap-6 font-mono text-xs uppercase tracking-widest text-white/70">
-              <Link
-                href="/About"
-                className={`hover:text-white transition-colors ${
-                  pathname === "/About" ? "text-[#00c8ff] font-bold" : ""
-                }`}
-              >
-                ABOUT
-              </Link>
-            </div> */}
+          {/* Desktop Navigation Links (Visible on desktop, hidden on mobile) */}
+          <nav
+            aria-label="Desktop Navigation"
+            className="hidden md:flex items-center gap-4 lg:gap-7 xl:gap-8"
+          >
+            {DEFAULT_MENU_ITEMS.map((item) => {
+              const isExact = pathname === item.href;
+              const isChild = item.href !== "/" && pathname.startsWith(item.href);
+              const isActive = isExact || isChild;
 
-            {/* Morphing Hamburger-to-X Button */}
-            <button
-              type="button"
-              onClick={() => setIsMenuOpen((prev) => !prev)}
-              aria-label={isMenuOpen ? "Close navigation menu" : "Open navigation menu"}
-              aria-expanded={isMenuOpen}
-              className="group relative flex flex-col justify-center items-center gap-1.5 w-11 h-11 p-1.5 cursor-pointer transition-opacity hover:opacity-85 focus:outline-none pointer-events-auto"
-            >
-              {/* Top bar */}
-              <span
-                className={`h-0.5 bg-white rounded-full transition-all duration-300 ease-out origin-center ${
-                  isMenuOpen
-                    ? "w-7 translate-y-2 rotate-45 bg-[#00c8ff]"
-                    : "w-8 group-hover:w-8"
-                }`}
-              />
+              if (item.id === "contact") {
+                return (
+                  <Link
+                    key={item.id}
+                    href={item.href}
+                    className={`px-4 py-2 border text-[11px] lg:text-xs font-bold uppercase tracking-wider lg:tracking-widest transition-all duration-300 rounded-none cursor-pointer flex items-center gap-2 ${
+                      isActive
+                        ? "bg-[#00c8ff] text-black border-[#00c8ff] shadow-[0_0_20px_rgba(0,200,255,0.4)]"
+                        : "border-white/20 text-white hover:border-[#00c8ff] hover:text-[#00c8ff] hover:bg-white/5"
+                    }`}
+                  >
+                    <span>{item.label}</span>
+                    <span className="text-[10px]">→</span>
+                  </Link>
+                );
+              }
 
-              {/* Middle bar */}
-              <span
-                className={`h-0.5 bg-white rounded-full transition-all duration-200 ease-out ${
-                  isMenuOpen
-                    ? "w-0 opacity-0 scale-x-0"
-                    : "w-6 group-hover:w-8 opacity-100"
-                }`}
-              />
+              return (
+                <Link
+                  key={item.id}
+                  href={item.href}
+                  className={`relative group text-[11px] lg:text-xs font-bold uppercase tracking-wider lg:tracking-widest transition-colors duration-200 py-1 ${
+                    isActive ? "text-[#00c8ff]" : "text-white/70 hover:text-white"
+                  }`}
+                >
+                  <span>{item.label}</span>
+                  <span
+                    className={`absolute bottom-0 left-0 h-0.5 bg-[#00c8ff] transition-all duration-300 ${
+                      isActive ? "w-full" : "w-0 group-hover:w-full"
+                    }`}
+                  />
+                </Link>
+              );
+            })}
+          </nav>
 
-              {/* Bottom bar */}
-              <span
-                className={`h-0.5 bg-white rounded-full transition-all duration-300 ease-out origin-center ${
-                  isMenuOpen
-                    ? "w-7 -translate-y-2 -rotate-45 bg-[#00c8ff]"
-                    : "w-4 group-hover:w-8"
-                }`}
-              />
-            </button>
-          </div>
+          {/* Morphing Hamburger-to-X Button (Visible on mobile, hidden on md+) */}
+          <button
+            type="button"
+            onClick={() => setIsMenuOpen((prev) => !prev)}
+            aria-label={isMenuOpen ? "Close navigation menu" : "Open navigation menu"}
+            aria-expanded={isMenuOpen}
+            className="md:hidden group relative flex flex-col justify-center items-center gap-1.5 w-11 h-11 p-1.5 cursor-pointer transition-opacity hover:opacity-85 focus:outline-none pointer-events-auto"
+          >
+            {/* Top bar */}
+            <span
+              className={`h-0.5 bg-white rounded-full transition-all duration-300 ease-out origin-center ${
+                isMenuOpen
+                  ? "w-7 translate-y-2 rotate-45 bg-[#00c8ff]"
+                  : "w-8 group-hover:w-8"
+              }`}
+            />
+
+            {/* Middle bar */}
+            <span
+              className={`h-0.5 bg-white rounded-full transition-all duration-200 ease-out ${
+                isMenuOpen
+                  ? "w-0 opacity-0 scale-x-0"
+                  : "w-6 group-hover:w-8 opacity-100"
+              }`}
+            />
+
+            {/* Bottom bar */}
+            <span
+              className={`h-0.5 bg-white rounded-full transition-all duration-300 ease-out origin-center ${
+                isMenuOpen
+                  ? "w-7 -translate-y-2 -rotate-45 bg-[#00c8ff]"
+                  : "w-4 group-hover:w-8"
+              }`}
+            />
+          </button>
         </div>
       </header>
 

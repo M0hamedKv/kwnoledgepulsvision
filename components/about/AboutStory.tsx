@@ -1,57 +1,24 @@
 "use client";
 
-import React, { useRef } from "react";
-import Image from "next/image";
-import Link from "next/link";
-import gsap from "gsap";
-import { ArrowRightIcon } from "@/svgs";
+import React from "react";
+import { AmbientSpotlights } from "@/components/ui";
 
 export const AboutStory: React.FC = () => {
-  const cardRef = useRef<HTMLDivElement>(null);
-
-  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
-    if (!cardRef.current) return;
-    const rect = cardRef.current.getBoundingClientRect();
-    const x = e.clientX - rect.left;
-    const y = e.clientY - rect.top;
-
-    const centerX = rect.width / 2;
-    const centerY = rect.height / 2;
-
-    const rotateX = ((y - centerY) / centerY) * -8;
-    const rotateY = ((x - centerX) / centerX) * 8;
-
-    gsap.to(cardRef.current, {
-      duration: 0.4,
-      rotateX,
-      rotateY,
-      transformPerspective: 900,
-      ease: "power2.out",
-    });
-  };
-
-  const handleMouseLeave = () => {
-    if (!cardRef.current) return;
-    gsap.to(cardRef.current, {
-      duration: 0.6,
-      rotateX: 0,
-      rotateY: 0,
-      ease: "power2.out",
-    });
-  };
-
   return (
     <section
       id="our-story"
-      className="relative w-full py-20 sm:py-28 px-6 sm:px-12 md:px-16 lg:px-20 border-b border-white/10 scroll-mt-28"
+      className="relative w-full py-20 sm:py-28 px-6 sm:px-12 md:px-16 lg:px-20 border-b border-white/10 bg-transparent overflow-hidden scroll-mt-28"
     >
-      <div className="max-w-7xl mx-auto flex flex-col gap-12 lg:gap-16">
+      {/* Signature Architectural Dual Blue Spotlights */}
+      <AmbientSpotlights />
+
+      <div className="max-w-7xl mx-auto flex flex-col gap-10 lg:gap-14 relative z-10">
         {/* Section Header */}
         <div className="flex flex-col gap-3">
           <div className="flex items-center gap-3">
             <span className="w-2.5 h-2.5 rounded-full bg-[#00c8ff] animate-pulse" />
             <span className="text-xs sm:text-sm font-bold uppercase tracking-[0.24em] text-[#00c8ff]">
-              01 / OUR STORY
+              03 / OUR STORY
             </span>
           </div>
 
@@ -60,79 +27,38 @@ export const AboutStory: React.FC = () => {
           </h2>
         </div>
 
-        {/* 2-Column Split: Narrative & Interactive 3D Card */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
-          {/* Left Narrative Column */}
-          <div className="lg:col-span-7 flex flex-col gap-8">
-            <div className="flex flex-col gap-5 text-base sm:text-lg md:text-xl text-white/80 leading-relaxed">
-              <p className="text-white font-normal leading-relaxed">
-                <strong className="text-[#00c8ff] font-bold">KV Studio</strong> is a creative architecture and visualization practice dedicated to turning ideas into reality. We specialize in architectural, interior, and landscape design, complemented by cutting-edge visualization, lighting design, and interactive solutions.
+        {/* Story Narrative Card */}
+        <div className="relative p-8 sm:p-12 md:p-16 rounded-none bg-black/60 border border-white/15 backdrop-blur-xl overflow-hidden shadow-[0_20px_50px_rgba(0,0,0,0.8)]">
+          <div className="flex flex-col gap-8 max-w-4xl">
+            {/* Story Headline */}
+            <h3 className="font-['BlauerNue',sans-serif] text-xl sm:text-2xl md:text-3xl font-black uppercase text-white tracking-tight">
+              Our Story – KV Studio
+            </h3>
+
+            {/* Paragraphs */}
+            <div className="flex flex-col gap-5 text-base sm:text-lg text-white/80 leading-relaxed font-normal">
+              <p>
+                <strong className="text-[#00c8ff] font-bold">KV Studio – Knowledge Plus Vision</strong> was founded on a simple belief: design should go beyond what we see; it should create what we experience.
               </p>
-
-              {/* Highlight Quote */}
-              <div className="p-6 sm:p-8 rounded-xl bg-white/3 border-l-4 border-[#00c8ff] border backdrop-blur-md">
-                <p className="text-lg sm:text-2xl font-bold uppercase tracking-wide text-white leading-snug">
-                  &ldquo;Driven by innovation, guided by design, and powered by technology, Knowledge Plus Vision is not just a visualization studio – it’s a partner in shaping the future of spaces.&rdquo;
-                </p>
-              </div>
+              <p>
+                What started as a passion for architecture and creativity evolved into a multidisciplinary studio bringing together architecture, interior design, digital innovation, and immersive technologies.
+              </p>
+              <p>
+                Founded by <strong className="text-white font-bold">Eng. Khaled Emad</strong> and <strong className="text-white font-bold">Eng. Heba Emad</strong>, KV Studio combines creative thinking, technical expertise, and a vision for the future to transform traditional design approaches into innovative experiences.
+              </p>
+              <p>
+                Today, we work across different markets, collaborating with clients and partners to deliver solutions that connect physical spaces with digital possibilities.
+              </p>
+              <p>
+                Our journey is driven by curiosity, collaboration, and the constant pursuit of what comes next.
+              </p>
             </div>
 
-            {/* Requested Action Link: View Our Projects */}
-            <div className="pt-2 flex items-center gap-4">
-              <Link
-                href="/portfolio"
-                className="group inline-flex items-center gap-3 px-8 sm:px-10 py-4 sm:py-5 bg-[#00c8ff] text-black font-black uppercase text-xs sm:text-sm tracking-widest hover:bg-white hover:shadow-[0_0_30px_rgba(0,200,255,0.4)] transition-all duration-300 rounded-none shadow-2xl"
-              >
-                <span>VIEW OUR PROJECTS</span>
-                <ArrowRightIcon className="w-4 h-4 stroke-current transform transition-transform duration-300 group-hover:translate-x-1" />
-              </Link>
-            </div>
-          </div>
-
-          {/* Right Interactive 3D Showcase Card */}
-          <div className="lg:col-span-5 flex justify-center">
-            <div
-              ref={cardRef}
-              onMouseMove={handleMouseMove}
-              onMouseLeave={handleMouseLeave}
-              className="relative w-full max-w-md h-105 sm:h-120 rounded-2xl overflow-hidden border border-white/20 bg-black/90 shadow-[0_25px_60px_rgba(0,0,0,0.9)] cursor-pointer group will-change-transform select-none"
-              style={{ transformStyle: "preserve-3d" }}
-            >
-              {/* Background Showcase Render */}
-              <Image
-                src="/showcase-1.jpg"
-                alt="KV Studio Architectural Atelier Project"
-                fill
-                sizes="(max-width: 1024px) 100vw, 40vw"
-                className="object-cover group-hover:scale-105 transition-transform duration-700 ease-out"
-              />
-
-              {/* Ambient Vignette Overlay */}
-              <div className="absolute inset-0 bg-linear-to-t from-black/90 via-black/30 to-black/30 pointer-events-none" />
-
-              {/* Architectural HUD Overlay */}
-              <div className="absolute top-4 left-4 right-4 flex items-center justify-between text-xs font-mono z-10 pointer-events-none">
-                <span className="px-3 py-1 rounded-full bg-black/75 backdrop-blur-md border border-[#00c8ff]/40 text-white flex items-center gap-2">
-                  <span className="w-1.5 h-1.5 rounded-full bg-[#00c8ff] animate-pulse" />
-                  KV ATELIER // ARCHITECTURE
-                </span>
-                <span className="px-2.5 py-1 rounded-full bg-black/75 backdrop-blur-md border border-white/20 text-white/60 text-[10px]">
-                  LOD 500
-                </span>
-              </div>
-
-              {/* Bottom Caption Overlay */}
-              <div className="absolute bottom-5 left-5 right-5 flex flex-col gap-2 z-10 pointer-events-none">
-                <span className="font-mono text-[10px] uppercase tracking-widest text-[#00c8ff] font-bold">
-                  KNOWLEDGE PLUS VISION
-                </span>
-                <h3 className="font-['BlauerNue',sans-serif] text-xl font-bold uppercase text-white leading-tight">
-                  TURNING IDEAS INTO REALITY
-                </h3>
-                <span className="text-xs font-mono text-white/50">
-                  Architectural, Interior & Visualization
-                </span>
-              </div>
+            {/* Closing Motto Highlight Box */}
+            <div className="p-6 sm:p-8 bg-white/3 border-l-4 border-[#00c8ff] backdrop-blur-md">
+              <p className="font-['BlauerNue',sans-serif] text-sm sm:text-lg md:text-xl font-bold uppercase tracking-wider text-white leading-snug">
+                &ldquo;We are KV Studio. Where Knowledge Meets Vision, and Ideas Become Experiences.&rdquo;
+              </p>
             </div>
           </div>
         </div>

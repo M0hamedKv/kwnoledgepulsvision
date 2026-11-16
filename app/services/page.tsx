@@ -48,7 +48,7 @@ export default function ServicesPage() {
         </div>
       </section>
 
-      {/* DISCIPLINE 2: DESIGN (3 SERVICES) */}
+      {/* DISCIPLINE 2: DESIGN (ARCHITECTURE, INTERIOR) */}
       <section
         id="design-discipline"
         className="w-full py-20 sm:py-28 px-6 sm:px-12 md:px-16 lg:px-20 border-b border-white/10 relative bg-transparent overflow-hidden scroll-mt-28"

@@ -8,7 +8,7 @@ import { AmbientSpotlights } from "@/components/ui";
 export const metadata: Metadata = {
   title: "DESIGN — Architectural Atelier & Engineering | KV STUDIO",
   description:
-    "Explore KV Studio's specialized Design capabilities across BIM digital twins, MEP engineering systems, and Haute Interior Architecture.",
+    "Explore KV Studio's specialized Design capabilities across Architecture design, BIM systems, and Bespoke Interior Architecture.",
 };
 
 export default function DesignServicesPage() {
@@ -57,7 +57,7 @@ export default function DesignServicesPage() {
       </section>
 
       {/* =====================================================================
-          2. DESIGN SERVICES CATALOG (BIM, MEP, INTERIOR)
+          2. DESIGN SERVICES CATALOG (ARCHITECTURE, INTERIOR)
           ===================================================================== */}
       <section
         id="design-catalog"

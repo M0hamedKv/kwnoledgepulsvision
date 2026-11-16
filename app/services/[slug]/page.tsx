@@ -10,6 +10,7 @@ import {
   MepPage,
   InteriorPage,
   VrPage,
+  ArchitecturePage,
 } from "@/components/services/pages";
 import PortfolioPage from "@/app/portfolio/page";
 
@@ -87,6 +88,16 @@ export default async function ServiceDetailPage({ params }: ServiceDetailPagePro
     case "webdevelopment":
       return (
         <WebdevelopmentPage
+          service={service}
+          prevService={prevService}
+          nextService={nextService}
+        />
+      );
+
+    case "architecture":
+    case "architecture-design":
+      return (
+        <ArchitecturePage
           service={service}
           prevService={prevService}
           nextService={nextService}

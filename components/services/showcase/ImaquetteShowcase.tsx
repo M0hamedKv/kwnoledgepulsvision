@@ -5,15 +5,15 @@ import { ServiceDetailItem, ServiceMediaItem } from "../servicesData";
 import { Story } from "@/components/ui/story";
 
 const IMAQUETTE_HEADLINES: Record<string, string> = {
-  "m-vid-1": "DIVA <br/> SCALE MODEL",
-  "m-vid-2": "MAGHAMIS <br/> MASTERPLAN 3D",
-  "m-vid-3": "EXPLODED <br/> DIAGRAM",
-  "m-vid-4": "DRONE <br/> ORBIT MODE",
+  "m-vid-1": "EXPLODED <br/> DIAGRAM",
+  "m-vid-2": "3D <br/> SECTION ",
+  "m-vid-3": "DIVA <br/> SCALE MODEL",
+  "m-vid-4": "DRONE <br/> MODE",
   "m-vid-5": "MATERIAL <br/> CUSTOMIZER",
   "m-vid-6": "DAY TO NIGHT <br/> SIMULATION",
   "m-vid-7": "WEATHER & <br/> SEASONS",
-  "m-vid-8": "VEHICLE <br/> DRIVE-THROUGH",
-  "m-vid-9": "PEDESTRIAN <br/> WALKTHROUGH",
+  "m-vid-8": "CAR <br/> GAMEPLAY",
+  "m-vid-9": "THIRDPERSON <br/> GAMEPLAY",
   "m-vid-10": "REGIONAL <br/> WAYFINDING",
 };
 

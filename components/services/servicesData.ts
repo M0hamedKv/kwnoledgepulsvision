@@ -20,7 +20,7 @@ export interface ServiceDetailItem {
   slug: string;
   number: string;
   discipline: "INTERACTIVE SOLUTION" | "DESIGN";
-  disciplineSlug: "interactive-solution" | "design";
+  disciplineSlug: "interactive-solution" | "design" | "architecture-sub";
   disciplineTag: string;
   title: string;
   heroHeadline: string;
@@ -75,17 +75,17 @@ export const ALL_SERVICES: ServiceDetailItem[] = [
     gallery: [
       {
         id: "m-vid-1",
-        title: "Diva Interactive Sales Gallery Scale Model",
+        title: "EXPLODED DIAGRAM",
         category: "Full Scale Model",
         url: "https://res.cloudinary.com/hxytmocg/video/upload/v1793204898/Diva.mp4",
         type: "video",
         aspect: "16:9",
         badge: "FLAGSHIP MAQUETTE",
-        description: "Full production capture of the Diva touch-table scale model with real-time unit filtering and daylight simulation.",
+        description: "Explore and separate building layers and floors through an interactive 3D experience, revealing the project's design and structure.",
       },
       {
         id: "m-vid-2",
-        title: "Maghamis Masterplan 3D Maquette",
+        title: "3D SECTION",
         category: "Full Scale Model",
         url: "https://res.cloudinary.com/hxytmocg/video/upload/v1793208052/MAGHAMIS_2026.10.28_-_13.58.56.05.mp4",
         type: "video",
@@ -105,7 +105,7 @@ export const ALL_SERVICES: ServiceDetailItem[] = [
       },
       {
         id: "m-vid-4",
-        title: "Cinematic Drone Aerial Orbit Mode",
+        title: "Drone Mode",
         category: "Feature Module",
         url: "https://res.cloudinary.com/hxytmocg/video/upload/v1793206972/DroneMode.mp4",
         type: "video",
@@ -145,13 +145,13 @@ export const ALL_SERVICES: ServiceDetailItem[] = [
       },
       {
         id: "m-vid-8",
-        title: "Interactive Vehicle Compound Drive-Through",
+        title: "CAR DRIVEN",
         category: "Feature Module",
         url: "https://res.cloudinary.com/hxytmocg/video/upload/v1793207922/Car_gameplay.mp4",
         type: "video",
         aspect: "16:9",
         badge: "DRIVE SIMULATION",
-        description: "Real-time vehicle physics allowing visitors to drive through compound streets, check parking entries, and inspect avenues.",
+        description: "Explore the project from a driving perspective, allowing users to navigate roads, discover entrances, and experience the surrounding development in an immersive 3D environment.",
       },
       {
         id: "m-vid-9",
@@ -752,30 +752,91 @@ export const ALL_SERVICES: ServiceDetailItem[] = [
   },
   
   // =========================================================================
-  // 6. BIM (Design)
+  // 6. ARCHITECTURE (Design)
+  // =========================================================================
+  {
+    id: "architecture",
+    slug: "architecture",
+    number: "06",
+    discipline: "DESIGN",
+    disciplineSlug: "design",
+    disciplineTag: "ARCHITECTURAL ATELIER",
+    title: "ARCHITECTURE",
+    heroHeadline: "ARCHITECTURE DESIGN & BIM",
+    subtitle: "Architecture Design (HOMEX, ORIN, COMPETITIONS) and BIM management (AMAZON WAREHOUSE).",
+    manifesto:
+      "Architecture at KV Studio bridges form, technology, and execution. From sculptural residential complexes and bespoke pavilions to precision LOD 500 BIM logistics digital twins, we shape spaces that inspire and perform.",
+    accentColor: "#00c8ff",
+    badge: "ARCHITECTURE & BIM",
+    status: "active",
+    coverImage: "/HOMEX/01.webp",
+    mediaCountLabel: "3 PROJECTS + BIM",
+    gallery: [
+      { id: "arch-1", title: "HOMEX", url: "/HOMEX/01.webp", type: "image" },
+      { id: "arch-2", title: "ORIN", url: "/ORIN/3.webp", type: "image" },
+      { id: "arch-3", title: "COMPETITIONS", url: "/work/diva-1.webp", type: "image" },
+      { id: "arch-4", title: "AMAZON WAREHOUSE", url: "https://res.cloudinary.com/hxytmocg/image/upload/v1793521506/1_View020000.webp", type: "image" },
+    ],
+    deliverables: [
+      {
+        title: "Architecture Design (HOMEX, ORIN, COMPETITIONS)",
+        description: "Comprehensive architectural design from concept to high-fidelity visualization and detail development.",
+        metric: "Award-Caliber Design",
+      },
+      {
+        title: "BIM Management (AMAZON WAREHOUSE)",
+        description: "LOD 500 digital twins, automated clash detection, and construction coordination.",
+        metric: "LOD 500 As-Built Fidelity",
+      },
+    ],
+    specifications: [
+      { label: "Design Disciplines", value: "Architecture Design, BIM, Masterplanning" },
+      { label: "Software Stack", value: "Rhino, Revit, 3ds Max, Corona, Unreal Engine" },
+      { label: "Standards", value: "ISO 19650, AIA Standards" },
+    ],
+    process: [
+      { number: "01", title: "Concept & Volumetric Study", description: "Form generation, climate analysis, and spatial programming." },
+      { number: "02", title: "Detailed Architectural Design", description: "Facade detailing, material selection, and 8K visual studies." },
+      { number: "03", title: "BIM Coordination", description: "Multi-discipline clash matrix, fabrication detailing, and digital twin delivery." },
+    ],
+    clientBenefits: [
+      "Seamless integration between architectural aesthetics and constructible engineering.",
+      "High-impact visual narratives that accelerate investor buy-in.",
+      "Flawless BIM coordination eliminating site clashes.",
+    ],
+    tags: ["Architecture", "HOMEX", "ORIN", "Competitions", "BIM", "Amazon Warehouse"],
+    ctaHeading: "DESIGN YOUR AMBITIOUS ARCHITECTURAL COMMISSION",
+    ctaSubtext: "Partner with KV Studio for architecture design and BIM precision.",
+    nextSlug: "interior",
+    prevSlug: "vr",
+  },
+
+  // =========================================================================
+  // BIM (Architecture Sub-Discipline - AMAZON WAREHOUSE)
   // =========================================================================
   {
     id: "bim",
     slug: "bim",
-    number: "06",
+    number: "06-B",
     discipline: "DESIGN",
-    disciplineSlug: "design",
-    disciplineTag: "ARCHITECTURAL & ENGINEERING SYSTEMS",
+    disciplineSlug: "architecture-sub",
+    disciplineTag: "ARCHITECTURE // BIM",
     title: "BIM",
     heroHeadline: "BUILDING INFORMATION MODELING & DIGITAL TWINS",
-    subtitle: "LOD 300-500 digital twin authoring, automated clash detection, and construction coordination.",
+    subtitle: "AMAZON WAREHOUSE — LOD 500 digital twin authoring, automated clash detection, and construction coordination.",
     manifesto:
-      "BIM is the single source of truth that turns ambitious architectural designs into error-free construction realities. We author, audit, and coordinate multi-disciplinary models up to LOD 500, resolving costly clashes in the computer rather than on the job site.",
+      "BIM is the single source of truth that turns ambitious architectural designs into error-free construction realities. Featuring AMAZON WAREHOUSE, we author, audit, and coordinate multi-disciplinary models up to LOD 500, resolving costly clashes in the computer rather than on the job site.",
     accentColor: "#00c8ff",
-    badge: "DIGITAL TWIN & COORDINATION",
-    status: "coming-soon",
+    badge: "AMAZON WAREHOUSE",
+    status: "active",
     coverVideo: "https://res.cloudinary.com/hxytmocg/video/upload/v1793529386/close_to_building.mp4",
-    mediaCountLabel: "COMING SOON",
+    coverImage: "https://res.cloudinary.com/hxytmocg/image/upload/v1793521506/1_View020000.webp",
+    mediaCountLabel: "AMAZON WAREHOUSE",
     gallery: [],
     deliverables: [
       {
-        title: "LOD 300 to LOD 500 Multi-Discipline Modeling",
-        description: "Detailed intelligent digital modeling for architectural, structural, and civil components with exact manufacturer specs.",
+        title: "AMAZON WAREHOUSE LOD 500 Modeling",
+        description: "Detailed intelligent digital modeling for logistics, structural, and civil components with exact manufacturer specs.",
         metric: "LOD 500 As-Built Fidelity",
       },
       {
@@ -812,79 +873,11 @@ export const ALL_SERVICES: ServiceDetailItem[] = [
       "Accurate material quantity forecasting that prevents contractor overbilling and procurement waste.",
       "Comprehensive digital twin handover ensuring effortless building maintenance for decades.",
     ],
-    tags: ["Revit", "Navisworks", "LOD 500", "Clash Detection", "Digital Twins", "BIM 360", "ISO 19650"],
+    tags: ["Revit", "Navisworks", "LOD 500", "Clash Detection", "Digital Twins", "Amazon Warehouse", "ISO 19650"],
     ctaHeading: "COORDINATE YOUR PROJECT WITH BIM PRECISION",
     ctaSubtext: "Ensure flawless constructability and budget adherence with our BIM management specialists.",
-    nextSlug: "mep",
-    prevSlug: "vr",
-  },
-
-  // =========================================================================
-  // 7. MEP (Design)
-  // =========================================================================
-  {
-    id: "mep",
-    slug: "mep",
-    number: "07",
-    discipline: "DESIGN",
-    disciplineSlug: "design",
-    disciplineTag: "ARCHITECTURAL & ENGINEERING SYSTEMS",
-    title: "MEP",
-    heroHeadline: "MECHANICAL, ELECTRICAL & PLUMBING ENGINEERING",
-    subtitle: "High-performance building services engineered to disappear invisibly into architectural spaces.",
-    manifesto:
-      "Great engineering is felt, not seen. Our MEP engineering specialists design high-efficiency HVAC networks, sustainable electrical systems, and optimized plumbing layouts that operate at peak performance without compromising architectural ceiling heights or visual purity.",
-    accentColor: "#00c8ff",
-    badge: "ENGINEERING SYSTEMS",
-    status: "coming-soon",
-    coverVideo: "https://res.cloudinary.com/hxytmocg/video/upload/v1793538438/track_night.mp4",
-    mediaCountLabel: "COMING SOON",
-    gallery: [],
-    deliverables: [
-      {
-        title: "HVAC Spatial Routing & Energy Simulation",
-        description: "Thermal comfort calculations, VRF and chilled water design, and acoustic duct attenuation for whisper-quiet environments.",
-        metric: "35% Energy Reduction vs Standard",
-      },
-      {
-        title: "Architectural Lighting & Power Distribution",
-        description: "High-voltage distribution, emergency backup power, and architectural lighting circuit engineering.",
-        metric: "100% Redundant Power Reserves",
-      },
-      {
-        title: "Sustainable Water & Drainage Networks",
-        description: "Greywater recycling, rainwater collection engineering, and acoustic low-noise drainage piping systems.",
-        metric: "LEED Water Conservation Certified",
-      },
-      {
-        title: "Fire Protection & Life Safety Integration",
-        description: "Clean-agent suppression, smoke evacuation CFD modeling, and fully code-compliant sprinkler distribution.",
-        metric: "NFPA Code Compliant",
-      },
-    ],
-    specifications: [
-      { label: "Engineering Disciplines", value: "Mechanical (HVAC), Electrical, Plumbing, Fire Life Safety" },
-      { label: "Calculations & Simulation", value: "Carrier HAP, DIALux Evo, Trace 700, CFD Airflow" },
-      { label: "BIM Integration", value: "Revit MEP, Fabrication CADmep, Navisworks" },
-      { label: "Compliance Standards", value: "ASHRAE 90.1, NFPA 13/72, CIBSE Guides, LEED" },
-      { label: "Deliverables", value: "Engineering Calculations, Schematics, Riser Diagrams, Specs" },
-    ],
-    process: [
-      { number: "01", title: "Load Calculations & System Selection", description: "Simulating peak cooling/heating demands and determining central plant configurations." },
-      { number: "02", title: "Spatial Routing & BIM Integration", description: "Routing conduits, risers, and ductwork within ceiling voids in direct coordination with architecture." },
-      { number: "03", title: "Energy & LEED Optimization", description: "Refining equipment efficiencies to qualify for international green building certifications." },
-      { number: "04", title: "Tender Documentation & Review", description: "Issuing complete engineering drawing packages, schedules of equipment, and specification books." },
-    ],
-    clientBenefits: [
-      "Maximum ceiling heights and aesthetic clean lines through ultra-compact MEP spatial routing.",
-      "Significantly reduced lifetime operational energy costs through high-efficiency system design.",
-      "Peace of mind with fully compliant life safety systems meeting all regulatory authority codes.",
-    ],
-    tags: ["HVAC Engineering", "Electrical Systems", "Plumbing Design", "Energy Simulation", "LEED Protocols", "Fire Safety"],
-    ctaHeading: "ENGINEER YOUR BUILDING SERVICES WITH EXPERT CARE",
-    ctaSubtext: "Integrate high-efficiency MEP engineering seamlessly into your architectural vision.",
     nextSlug: "interior",
-    prevSlug: "bim",
+    prevSlug: "architecture",
   },
 
   // =========================================================================
@@ -953,7 +946,7 @@ export const ALL_SERVICES: ServiceDetailItem[] = [
     ctaHeading: "CRAFT A BESPOKE INTERIOR IDENTITY",
     ctaSubtext: "Collaborate with our interior architects to shape timeless spaces of tactile luxury.",
     nextSlug: "imaquette",
-    prevSlug: "mep",
+    prevSlug: "architecture",
   },
 ];
 

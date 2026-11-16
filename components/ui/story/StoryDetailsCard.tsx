@@ -39,14 +39,7 @@ export const StoryDetailsCard: React.FC<StoryDetailsCardProps> = ({
         <h4 className="font-['BlauerNue',sans-serif] text-lg sm:text-xl font-bold uppercase text-white tracking-tight">
           {fullTitle}
         </h4>
-
-        {/* Crisp HUD Spec Tags instead of text paragraph */}
-        <div className="flex items-center gap-2 font-mono text-[10px] text-white/60 uppercase">
-          <span className="px-2 py-0.5 rounded bg-white/5 border border-white/10">UE5.4 ENGINE</span>
-          <span className="px-2 py-0.5 rounded bg-white/5 border border-white/10">60 FPS REAL-TIME</span>
-          <span className="px-2 py-0.5 rounded bg-white/5 border border-white/10" style={{ color: accentColor }}>4K REEL</span>
-        </div>
-
+        
         <div className="pt-3 flex items-center justify-between border-t border-white/10 mt-1 w-full">
           {onOpenTheater ? (
             <button

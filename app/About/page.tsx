@@ -1,17 +1,31 @@
 import type { Metadata } from "next";
-import { ConstellationGalaxy } from "@/components/about";
+import {
+  ConstellationGalaxy,
+  AboutVision,
+  AboutMission,
+  AboutStory,
+} from "@/components/about";
 
 export const metadata: Metadata = {
-  title: "Spatial Constellation · About Us 3D | KV Studio",
+  title: "About Us · Creative Architecture & Visualization Practice | KV Studio",
   description:
-    "Explore KV Studio's architectural DNA, track record, background, and vision inside an interactive 3D particle constellation inspired by award-winning spatial web experiences.",
+    "KV Studio (Knowledge Plus Vision) is a creative architecture and visualization practice dedicated to turning ideas into reality. Driven by innovation, guided by design, and powered by technology.",
 };
 
-export default function About3DPage() {
+export default function AboutPage() {
   return (
-    <main className="w-full h-screen bg-[#050508] overflow-hidden select-none">
+    <main className="relative min-h-screen bg-transparent text-white selection:bg-[#00c8ff] selection:text-black">
+      {/* 1. Spatial Constellation Galaxy Hero (Restored) */}
       <ConstellationGalaxy />
+
+      {/* 2. Vision Section */}
+      <AboutVision />
+
+      {/* 3. Mission Section */}
+      <AboutMission />
+
+      {/* 4. Our Story Section */}
+      <AboutStory />
     </main>
   );
 }
-
