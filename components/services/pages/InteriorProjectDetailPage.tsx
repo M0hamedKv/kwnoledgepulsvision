@@ -4,6 +4,7 @@ import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import { InteriorProject } from "../interiorData";
 import { ArrowLeftIcon, ArrowRightIcon } from "@/svgs";
+import { AmbientSpotlights } from "@/components/ui";
 
 interface InteriorProjectDetailPageProps {
   project: InteriorProject;
@@ -98,8 +99,11 @@ export const InteriorProjectDetailPage: React.FC<InteriorProjectDetailPageProps>
       {/* =====================================================================
           3. FULL ARCHITECTURAL RENDERS GALLERY (Rhythmic Editorial Masonry)
           ===================================================================== */}
-      <section id="project-gallery" className="w-full py-16 sm:py-24 px-4 sm:px-8 md:px-12 lg:px-16 bg-black">
-        <div className="max-w-[1600px] mx-auto flex flex-col gap-10">
+      <section id="project-gallery" className="w-full py-16 sm:py-24 px-4 sm:px-8 md:px-12 lg:px-16 bg-black relative overflow-hidden">
+        {/* Signature Architectural Dual Blue Spotlights */}
+        <AmbientSpotlights />
+
+        <div className="max-w-[1600px] mx-auto flex flex-col gap-10 relative z-10">
           <div className="flex items-center justify-between pb-4 border-b border-white/10">
             <span className="font-mono text-xs uppercase tracking-[0.24em] text-[#00c8ff] font-bold">
               CURATED PRODUCTION RENDERS // 8K ARCHITECTURAL GALLERY
@@ -187,8 +191,11 @@ export const InteriorProjectDetailPage: React.FC<InteriorProjectDetailPageProps>
       {/* =====================================================================
           4. ADJACENT PROJECT NAVIGATION
           ===================================================================== */}
-      <section className="w-full py-16 px-6 sm:px-12 md:px-16 lg:px-20 border-t border-white/10 bg-black">
-        <div className="max-w-[1600px] mx-auto flex flex-col sm:flex-row items-center justify-between gap-8">
+      <section className="w-full py-16 px-6 sm:px-12 md:px-16 lg:px-20 border-t border-white/10 bg-black relative overflow-hidden">
+        {/* Signature Architectural Dual Blue Spotlights */}
+        <AmbientSpotlights variant="alternate" />
+
+        <div className="max-w-[1600px] mx-auto flex flex-col sm:flex-row items-center justify-between gap-8 relative z-10">
           {prevProject ? (
             <Link
               href={`/services/interior/${prevProject.id}`}

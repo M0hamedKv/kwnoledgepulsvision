@@ -5,6 +5,7 @@ import Link from "next/link";
 import { ServiceDetailItem } from "../servicesData";
 import { ArrowRightIcon, ArrowLeftIcon } from "@/svgs";
 import { ImaquetteShowcase, Lightbox, LightboxItem } from "../showcase";
+import { AmbientSpotlights } from "@/components/ui";
 
 interface ImaquettePageProps {
   service: ServiceDetailItem;
@@ -80,8 +81,11 @@ export const ImaquettePage: React.FC<ImaquettePageProps> = ({
       {/* =====================================================================
           2. 10-CHAPTER DEEP DIVE INTO IMAQUETTE FEATURES
           ===================================================================== */}
-      <section id="interactive-demo" className="w-full py-20 px-6 sm:px-12 md:px-16 lg:px-20 relative bg-black">
-        <div className="max-w-7xl mx-auto flex flex-col gap-12">
+      <section id="interactive-demo" className="w-full py-20 px-6 sm:px-12 md:px-16 lg:px-20 relative bg-black overflow-hidden">
+        {/* Signature Architectural Dual Blue Spotlights */}
+        <AmbientSpotlights />
+
+        <div className="max-w-7xl mx-auto flex flex-col gap-12 relative z-10">
           <ImaquetteShowcase
             service={service}
             serviceVideos={serviceVideos}
@@ -94,6 +98,9 @@ export const ImaquettePage: React.FC<ImaquettePageProps> = ({
           3. COMMISSION CTA
           ===================================================================== */}
       <section className="w-full py-24 sm:py-32 px-6 sm:px-12 md:px-16 lg:px-20 border-t border-white/10 relative overflow-hidden bg-black">
+        {/* Signature Architectural Dual Blue Spotlights */}
+        <AmbientSpotlights variant="alternate" />
+
         <div className="max-w-5xl mx-auto flex flex-col items-center text-center gap-6 relative z-10">
 
           <h2 className="font-['BlauerNue',sans-serif] text-3xl sm:text-5xl md:text-6xl font-black uppercase tracking-tight text-white leading-tight">

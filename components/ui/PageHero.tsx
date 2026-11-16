@@ -203,23 +203,23 @@ export const PageHero: React.FC<PageHeroProps> = ({
       ref={heroRef}
       className={`relative w-full pt-32 sm:pt-40 md:pt-44 pb-14 sm:pb-20 px-6 sm:px-12 md:px-16 lg:px-20 border-b border-white/10 overflow-hidden ${className}`}
     >
-      {/* Blueprint Grid Overlay */}
-      {/* <div
-        className="page-hero-grid absolute inset-0 pointer-events-none"
+      {/* Signature Architectural Dual Blue Spotlights */}
+      <div
+        className="page-hero-glow pointer-events-none absolute -top-12 sm:-top-20 -right-12 sm:-right-20 w-[320px] sm:w-[420px] md:w-[480px] h-[320px] sm:h-[420px] md:h-[480px] rounded-full blur-[70px] sm:blur-[90px] will-change-transform z-0"
         style={{
-          backgroundImage:
-            "linear-gradient(rgba(255,255,255,0.2) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.2) 1px, transparent 1px)",
-          backgroundSize: "64px 64px",
+          background:
+            "radial-gradient(circle, rgba(0, 85, 255, 0.44) 0%, rgba(0, 70, 240, 0.20) 45%, rgba(0, 50, 200, 0.05) 65%, transparent 72%)",
         }}
-      /> */}
-
-      {/* Blueprint Laser Sweep Line */}
-      {/* <div
-        className="page-hero-laser absolute top-0 left-0 right-0 h-px origin-left pointer-events-none"
+        aria-hidden="true"
+      />
+      <div
+        className="page-hero-glow pointer-events-none absolute -bottom-12 sm:-bottom-20 -left-12 sm:-left-20 w-[320px] sm:w-[420px] md:w-[480px] h-[320px] sm:h-[420px] md:h-[480px] rounded-full blur-[70px] sm:blur-[90px] will-change-transform z-0"
         style={{
-          background: `linear-gradient(90deg, transparent, ${accentHex}, transparent)`,
+          background:
+            "radial-gradient(circle, rgba(0, 85, 255, 0.44) 0%, rgba(0, 70, 240, 0.20) 45%, rgba(0, 50, 200, 0.05) 65%, transparent 72%)",
         }}
-      /> */}
+        aria-hidden="true"
+      />
 
       <div className="max-w-7xl mx-auto flex flex-col gap-6 relative z-10">
         {/* ================= TOP STATUS & EYEBROW ROW ================= */}

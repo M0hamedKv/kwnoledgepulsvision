@@ -1,8 +1,9 @@
 import { Metadata } from "next";
 import Link from "next/link";
 import { getAllServices } from "@/components/services/servicesData";
-import { InteractiveCardsShowcase } from "@/components/services";
+import { InteractiveCardsShowcase, InteractiveSolutionHero } from "@/components/services";
 import { ArrowRightIcon } from "@/svgs";
+import { AmbientSpotlights } from "@/components/ui";
 
 export const metadata: Metadata = {
   title: "INTERACTIVE SOLUTION — Real-Time 3D & Digital Flagships | KV STUDIO",
@@ -16,57 +17,23 @@ export default function InteractiveSolutionServicesPage() {
     (s) => s.disciplineSlug === "interactive-solution"
   );
 
-  const heroImageSrc = "/work/diva-1.png";
-
   return (
     <main className="w-full min-h-screen bg-black text-white selection:bg-[#00c8ff] selection:text-black">
       {/* =====================================================================
-          1. FULL-BLEED IMAGE HERO — PURE IMAGE, CENTERED TITLE ONLY
+          1. REAL-TIME INTERACTIVE HERO — LIVE 3D CANVAS & HUMAN INTERACTION VIDEO
           ===================================================================== */}
-      <section className="relative w-full min-h-screen flex flex-col justify-between pt-32 pb-12 px-6 sm:px-12 md:px-16 lg:px-20 overflow-hidden border-b border-white/10">
-        {/* Full-bleed background image filling 100% of the Hero viewport */}
-        <div className="absolute inset-0 z-0 pointer-events-none select-none overflow-hidden">
-          <img
-            src={heroImageSrc}
-            alt="Interactive Solutions & Real-Time Experiences"
-            className="w-full h-full object-cover scale-102"
-          />
-          <div className="absolute inset-0 bg-black/50" />
-          <div className="absolute inset-x-0 top-0 h-40 bg-linear-to-b from-black/80 to-transparent" />
-          <div className="absolute inset-x-0 bottom-0 h-48 bg-linear-to-t from-black to-transparent" />
-        </div>
-
-        <div className="relative z-10" />
-
-        {/* Hero Title — Pure, Clean, Bold, Exactly in Center */}
-        <div className="relative z-10 flex flex-col items-center justify-center text-center my-auto">
-          <h1 className="font-['BlauerNue',sans-serif] text-5xl sm:text-7xl md:text-8xl lg:text-[9.5rem] xl:text-[11rem] font-black uppercase tracking-tight leading-[0.85] text-white select-none drop-shadow-[0_10px_60px_rgba(0,0,0,0.95)]">
-            INTERACTIVE SOLUTION
-          </h1>
-        </div>
-
-        {/* Clean Scroll Indicator */}
-        <div className="relative z-10 flex items-center justify-center">
-          <a
-            href="#interactive-catalog"
-            className="font-mono text-xs uppercase tracking-[0.25em] text-white/60 hover:text-[#00c8ff] transition-colors flex items-center gap-2"
-          >
-            <span>EXPLORE INTERACTIVE PRACTICE</span>
-            <span>↓</span>
-          </a>
-        </div>
-      </section>
+      <InteractiveSolutionHero />
 
       {/* =====================================================================
           2. INTERACTIVE PRACTICE CATALOG (IMAQUETTE, WEB DEV, ANIMATION)
           ===================================================================== */}
       <section
         id="interactive-catalog"
-        className="w-full py-16 sm:py-24 px-6 sm:px-12 md:px-16 lg:px-20 border-b border-white/10 relative bg-black scroll-mt-28"
+        className="w-full pt-16 relative bg-black scroll-mt-28"
       >
-        <div className="max-w-[1700px] mx-auto flex flex-col gap-10">
+        <div className=" mx-auto flex flex-col gap-10">
           {/* Header */}
-          <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 pb-6 border-b border-white/10">
+          <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 pb-6 px-12">
             <div>
               <span className="font-mono text-xs uppercase tracking-[0.24em] text-[#00c8ff] font-bold">
                 01 // DIGITAL EXPERIENCES & 3D SYSTEMS
@@ -95,6 +62,9 @@ export default function InteractiveSolutionServicesPage() {
           3. CLEAN COMMISSION CTA — ZERO PARAGRAPHS
           ===================================================================== */}
       <section className="w-full py-20 px-6 sm:px-12 md:px-16 lg:px-20 relative overflow-hidden bg-black text-center">
+        {/* Signature Architectural Dual Blue Spotlights */}
+        <AmbientSpotlights />
+
         <div className="max-w-4xl mx-auto flex flex-col items-center gap-6 relative z-10">
           <div className="flex flex-col sm:flex-row items-center gap-4 mt-2">
             <Link

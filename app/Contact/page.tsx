@@ -2,6 +2,7 @@ import React from "react";
 import type { Metadata } from "next";
 import { ContactForm } from "@/components/contact/ContactForm";
 import { PageHero } from "@/components/ui/PageHero";
+import { AmbientSpotlights } from "@/components/ui";
 import { STUDIO_SOCIAL_LINKS } from "@/constant";
 import {
   InstagramIcon,
@@ -42,8 +43,11 @@ export default function ContactPage() {
       />
 
       {/* 2-Column Split: Studio Info (5 cols) & Form (7 cols) */}
-      <div className="max-w-7xl mx-auto px-6 sm:px-12 md:px-16 lg:px-20 py-16 sm:py-24">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
+      <div className="max-w-7xl mx-auto px-6 sm:px-12 md:px-16 lg:px-20 py-16 sm:py-24 relative overflow-hidden">
+        {/* Signature Architectural Dual Blue Spotlights */}
+        <AmbientSpotlights variant="alternate" />
+
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start relative z-10">
           {/* Studio Contact Information */}
           <aside className="lg:col-span-5 flex flex-col gap-8">
             {/* Direct Email */}

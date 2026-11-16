@@ -7,6 +7,7 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { ServicesSectionProps } from "./types";
 import { ArrowUpRightIcon } from "@/svgs";
 import { getOptimizedVideoUrl, getVideoPosterUrl } from "@/lib/media";
+import { AmbientSpotlights } from "@/components/ui";
 
 interface DualShowcaseItem {
   id: "interactive-solution" | "design";
@@ -412,6 +413,9 @@ export const ServicesSection: React.FC<ServicesSectionProps> = ({
       aria-label="Services Section: Interactive Solution and Design"
       className="relative z-50 w-full min-h-[90vh] bg-black text-white pt-20 sm:pt-28 pb-28 sm:pb-36 px-4 sm:px-8 md:px-12 lg:px-16 overflow-x-clip border-t border-white/10 select-none flex flex-col justify-between"
     >
+      {/* Signature Architectural Dual Blue Spotlights */}
+      <AmbientSpotlights />
+
       <div className="max-w-[1700px] w-full mx-auto flex flex-col gap-8 sm:gap-12 relative z-10">
         {/* Architectural Section Header */}
         <div

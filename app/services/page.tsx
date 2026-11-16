@@ -2,6 +2,7 @@ import { Metadata } from "next";
 import Link from "next/link";
 import { getAllServices } from "@/components/services/servicesData";
 import { ServicesHero, ServicesCatalogGrid, DesignAccordionShowcase } from "@/components/services";
+import { AmbientSpotlights } from "@/components/ui";
 
 export const metadata: Metadata = {
   title: "Services — KV STUDIO",
@@ -21,8 +22,11 @@ export default function ServicesPage() {
 
       {/* DISCIPLINE 1: INTERACTIVE SOLUTION (5 SERVICES) */}
       <section id="interactive-solutions"
-        className="w-full py-20 sm:py-28 px-6 sm:px-12 md:px-16 lg:px-20 border-b border-white/10 relative scroll-mt-28">
-        <div className="max-w-7xl mx-auto flex flex-col gap-12">
+        className="w-full py-20 sm:py-28 px-6 sm:px-12 md:px-16 lg:px-20 border-b border-white/10 relative overflow-hidden scroll-mt-28">
+        {/* Signature Architectural Dual Blue Spotlights */}
+        <AmbientSpotlights />
+
+        <div className="max-w-7xl mx-auto flex flex-col gap-12 relative z-10">
           {/* Discipline Category Header */}
           <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-6 pb-6 border-b border-white/10">
             <div>
@@ -47,9 +51,12 @@ export default function ServicesPage() {
       {/* DISCIPLINE 2: DESIGN (3 SERVICES) */}
       <section
         id="design-discipline"
-        className="w-full py-20 sm:py-28 px-6 sm:px-12 md:px-16 lg:px-20 border-b border-white/10 relative bg-transparent scroll-mt-28"
+        className="w-full py-20 sm:py-28 px-6 sm:px-12 md:px-16 lg:px-20 border-b border-white/10 relative bg-transparent overflow-hidden scroll-mt-28"
       >
-        <div className="max-w-7xl mx-auto flex flex-col gap-12">
+        {/* Signature Architectural Dual Blue Spotlights (Alternating Corners) */}
+        <AmbientSpotlights variant="alternate" />
+
+        <div className="max-w-7xl mx-auto flex flex-col gap-12 relative z-10">
           {/* Discipline Category Header */}
           <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-6 pb-6 border-b border-white/10">
             <div>
@@ -71,6 +78,9 @@ export default function ServicesPage() {
 
       {/* MASTER CONSULTATION CTA */}
       <section className="w-full py-24 sm:py-32 px-6 sm:px-12 md:px-16 lg:px-20 relative overflow-hidden">
+        {/* Signature Architectural Dual Blue Spotlights */}
+        <AmbientSpotlights />
+
         <div className="max-w-5xl mx-auto flex flex-col items-center text-center gap-6 relative z-10">
           <span className="text-xs uppercase tracking-[0.24em] text-[#00c8ff] font-bold">
             COMMISSION YOUR PROJECT

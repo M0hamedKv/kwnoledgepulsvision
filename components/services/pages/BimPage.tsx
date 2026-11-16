@@ -5,6 +5,7 @@ import Link from "next/link";
 import { ServiceDetailItem } from "../servicesData";
 import { ArrowRightIcon, ArrowLeftIcon } from "@/svgs";
 import { Lightbox, LightboxItem } from "../showcase";
+import { AmbientSpotlights } from "@/components/ui";
 
 interface BimPageProps {
   service: ServiceDetailItem;
@@ -106,8 +107,11 @@ export const BimPage: React.FC<BimPageProps> = ({
       {/* =====================================================================
           2. PURE VISUAL EXHIBITION — SHARP CORNERS, ZERO CLUTTER
           ===================================================================== */}
-      <section id="bim-exhibition" className="w-full py-12 sm:py-20 px-4 sm:px-8 md:px-12 lg:px-16 relative bg-black">
-        <div className="max-w-[1700px] mx-auto flex flex-col gap-6 sm:gap-8">
+      <section id="bim-exhibition" className="w-full py-12 sm:py-20 px-4 sm:px-8 md:px-12 lg:px-16 relative bg-black overflow-hidden">
+        {/* Signature Architectural Dual Blue Spotlights */}
+        <AmbientSpotlights />
+
+        <div className="max-w-[1700px] mx-auto flex flex-col gap-6 sm:gap-8 relative z-10">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6">
             {BIM_PROJECTS.map((project, idx) => (
               <div
@@ -137,6 +141,9 @@ export const BimPage: React.FC<BimPageProps> = ({
           3. CLEAN COMMISSION CTA — ZERO PARAGRAPHS
           ===================================================================== */}
       <section className="w-full py-20 px-6 sm:px-12 md:px-16 lg:px-20 border-t border-white/10 relative overflow-hidden bg-black text-center">
+        {/* Signature Architectural Dual Blue Spotlights */}
+        <AmbientSpotlights variant="alternate" />
+
         <div className="max-w-4xl mx-auto flex flex-col items-center gap-6 relative z-10">
 
           <div className="flex flex-col sm:flex-row items-center gap-4 mt-2">

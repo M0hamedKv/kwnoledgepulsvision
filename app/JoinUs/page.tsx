@@ -2,6 +2,7 @@ import React from "react";
 import type { Metadata } from "next";
 import { JoinForm } from "@/components/join/JoinForm";
 import { PageHero } from "@/components/ui/PageHero";
+import { AmbientSpotlights } from "@/components/ui";
 
 export const metadata: Metadata = {
   title: "Join Us | KV Studio",
@@ -50,8 +51,11 @@ export default function JoinUsPage() {
         scrollCueText="SCROLL TO APPLY"
       />
 
-      <div className="max-w-7xl mx-auto px-6 sm:px-12 md:px-16 lg:px-20 py-16 sm:py-24">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
+      <div className="max-w-7xl mx-auto px-6 sm:px-12 md:px-16 lg:px-20 py-16 sm:py-24 relative overflow-hidden">
+        {/* Signature Architectural Dual Blue Spotlights */}
+        <AmbientSpotlights variant="alternate" />
+
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start relative z-10">
           <aside className="lg:col-span-5 flex flex-col gap-8">
             <div className="flex flex-col gap-4">
               <span className="font-mono text-xs uppercase tracking-wider text-white/40">

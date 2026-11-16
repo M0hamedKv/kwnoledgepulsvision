@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect, useCallback, useRef } from "react";
 import { ArrowLeftIcon, ArrowRightIcon } from "@/svgs";
+import { AmbientSpotlights } from "@/components/ui";
 
 export interface EditorialWebItem {
   id: string;
@@ -157,11 +158,14 @@ export const EditorialWebSlider: React.FC<EditorialWebSliderProps> = ({
 
   return (
     <section
-      className={`w-full py-8 sm:py-14 md:py-20 px-4 sm:px-8 md:px-12 lg:px-20 transition-colors duration-500 overflow-hidden ${bgClass}`}
+      className={`relative w-full py-8 sm:py-14 md:py-20 px-4 sm:px-8 md:px-12 lg:px-20 transition-colors duration-500 overflow-hidden ${bgClass}`}
       onTouchStart={handleTouchStart}
       onTouchEnd={handleTouchEnd}
     >
-      <div className="max-w-[1700px] mx-auto flex flex-col gap-8 sm:gap-12">
+      {/* Signature Architectural Dual Blue Spotlights */}
+      <AmbientSpotlights />
+
+      <div className="max-w-[1700px] mx-auto flex flex-col gap-8 sm:gap-12 relative z-10">
         {/* =====================================================================
             1. TOP EDITORIAL BAR (Matching the top header in the screenshot)
             ===================================================================== */}

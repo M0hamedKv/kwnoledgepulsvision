@@ -5,6 +5,7 @@ import Link from "next/link";
 import { ServiceDetailItem } from "../servicesData";
 import { ArrowRightIcon, ArrowLeftIcon } from "@/svgs";
 import { Lightbox, LightboxItem, EditorialWebSlider, EditorialWebItem } from "../showcase";
+import { AmbientSpotlights } from "@/components/ui";
 
 interface RealEstateWebsitePageProps {
   service: ServiceDetailItem;
@@ -133,6 +134,9 @@ export const RealEstateWebsitePage: React.FC<RealEstateWebsitePageProps> = ({
           3. CLEAN COMMISSION CTA — ZERO PARAGRAPHS
           ===================================================================== */}
       <section className="w-full py-20 px-6 sm:px-12 md:px-16 lg:px-20 border-t border-white/10 relative overflow-hidden bg-black text-center">
+        {/* Signature Architectural Dual Blue Spotlights */}
+        <AmbientSpotlights variant="alternate" />
+
         <div className="max-w-4xl mx-auto flex flex-col items-center gap-6 relative z-10">
           <div className="flex flex-col sm:flex-row items-center gap-4 mt-2">
             <Link

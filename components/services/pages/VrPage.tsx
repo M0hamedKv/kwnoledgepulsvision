@@ -5,6 +5,7 @@ import Link from "next/link";
 import { ServiceDetailItem } from "../servicesData";
 import { ArrowRightIcon, ArrowLeftIcon } from "@/svgs";
 import { Lightbox, LightboxItem } from "../showcase";
+import { AmbientSpotlights } from "@/components/ui";
 
 interface VrPageProps {
   service: ServiceDetailItem;
@@ -188,9 +189,12 @@ export const VrPage: React.FC<VrPageProps> = ({
           ===================================================================== */}
       <section
         id="vr-exhibition"
-        className="w-full py-12 sm:py-20 px-4 sm:px-8 md:px-12 lg:px-16 relative bg-black"
+        className="w-full py-12 sm:py-20 px-4 sm:px-8 md:px-12 lg:px-16 relative bg-black overflow-hidden"
       >
-        <div className="max-w-[1700px] mx-auto flex flex-col gap-8">
+        {/* Signature Architectural Dual Blue Spotlights */}
+        <AmbientSpotlights />
+
+        <div className="max-w-[1700px] mx-auto flex flex-col gap-8 relative z-10">
           {/* Category Filter Tabs */}
           <div className="flex flex-wrap items-center justify-center sm:justify-start gap-2 pb-6 border-b border-white/10">
             {categories.map((cat) => (
@@ -251,6 +255,9 @@ export const VrPage: React.FC<VrPageProps> = ({
           3. CLEAN COMMISSION CTA — ZERO PARAGRAPHS
           ===================================================================== */}
       <section className="w-full py-20 px-6 sm:px-12 md:px-16 lg:px-20 border-t border-white/10 relative overflow-hidden bg-black text-center">
+        {/* Signature Architectural Dual Blue Spotlights */}
+        <AmbientSpotlights variant="alternate" />
+
         <div className="max-w-4xl mx-auto flex flex-col items-center gap-6 relative z-10">
 
           <div className="flex flex-col sm:flex-row items-center gap-4 mt-2">

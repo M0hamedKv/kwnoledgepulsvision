@@ -3,6 +3,7 @@ import Link from "next/link";
 import { getAllServices } from "@/components/services/servicesData";
 import { DesignAccordionShowcase } from "@/components/services";
 import { ArrowRightIcon } from "@/svgs";
+import { AmbientSpotlights } from "@/components/ui";
 
 export const metadata: Metadata = {
   title: "DESIGN — Architectural Atelier & Engineering | KV STUDIO",
@@ -60,9 +61,12 @@ export default function DesignServicesPage() {
           ===================================================================== */}
       <section
         id="design-catalog"
-        className="w-full py-16 sm:py-24 px-6 sm:px-12 md:px-16 lg:px-20 border-b border-white/10 relative bg-black scroll-mt-28"
+        className="w-full py-16 sm:py-24 px-6 sm:px-12 md:px-16 lg:px-20 border-b border-white/10 relative bg-black scroll-mt-28 overflow-hidden"
       >
-        <div className="max-w-[1700px] mx-auto flex flex-col gap-10">
+        {/* Signature Architectural Dual Blue Spotlights */}
+        <AmbientSpotlights />
+
+        <div className="max-w-[1700px] mx-auto flex flex-col gap-10 relative z-10">
           {/* Header */}
           <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 pb-6 border-b border-white/10">
             <div>
@@ -93,6 +97,9 @@ export default function DesignServicesPage() {
           3. CLEAN COMMISSION CTA — ZERO PARAGRAPHS
           ===================================================================== */}
       <section className="w-full py-20 px-6 sm:px-12 md:px-16 lg:px-20 relative overflow-hidden bg-black text-center">
+        {/* Signature Architectural Dual Blue Spotlights */}
+        <AmbientSpotlights />
+
         <div className="max-w-4xl mx-auto flex flex-col items-center gap-6 relative z-10">
           <h2 className="font-['BlauerNue',sans-serif] text-4xl sm:text-6xl md:text-7xl font-black uppercase tracking-tight text-white leading-tight">
             COMMISSION DESIGN

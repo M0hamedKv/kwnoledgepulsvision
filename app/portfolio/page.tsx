@@ -6,6 +6,7 @@ import {
   PortfolioItem,
   PORTFOLIO_SHOWCASE_ITEMS,
 } from "@/components/portfolio";
+import { AmbientSpotlights } from "@/components/ui";
 
 export const metadata: Metadata = {
   title: "Portfolio · Interactive 3D Real Estate Platforms | KV Studio",
@@ -31,8 +32,11 @@ export default function PortfolioPage() {
       </section>
 
       {/* 3. Bottom Call To Action Banner */}
-      <section className="relative w-full py-20 sm:py-28 px-6 sm:px-12 md:px-16 lg:px-20 border-t border-white/10 bg-transparent">
-        <div className="max-w-4xl mx-auto flex flex-col items-center text-center gap-6">
+      <section className="relative w-full py-20 sm:py-28 px-6 sm:px-12 md:px-16 lg:px-20 border-t border-white/10 bg-transparent overflow-hidden">
+        {/* Signature Architectural Dual Blue Spotlights */}
+        <AmbientSpotlights />
+
+        <div className="max-w-4xl mx-auto flex flex-col items-center text-center gap-6 relative z-10">
           <span className="font-mono text-xs font-bold uppercase tracking-[0.25em] text-[#00c8ff] px-3.5 py-1.5 bg-[#00c8ff]/10 border border-[#00c8ff]/30">
             NEXT GENERATION PROPTECH
           </span>

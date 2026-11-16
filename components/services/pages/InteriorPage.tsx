@@ -5,6 +5,7 @@ import Link from "next/link";
 import { ServiceDetailItem } from "../servicesData";
 import { INTERIOR_PROJECTS } from "../interiorData";
 import { ArrowRightIcon, ArrowLeftIcon } from "@/svgs";
+import { AmbientSpotlights } from "@/components/ui";
 
 interface InteriorPageProps {
   service?: ServiceDetailItem;
@@ -75,8 +76,11 @@ export const InteriorPage: React.FC<InteriorPageProps> = ({
              - Only on hover: smooth color transition + Project Name ONLY
              - Matching vertical height in each row, 100% full coverage
           ===================================================================== */}
-      <section id="projects-grid" className="w-full py-10 sm:py-16 px-4 sm:px-8 md:px-12 lg:px-16 bg-black">
-        <div className="max-w-[1700px] mx-auto flex flex-col gap-4 sm:gap-5 md:gap-6">
+      <section id="projects-grid" className="w-full py-10 sm:py-16 px-4 sm:px-8 md:px-12 lg:px-16 bg-black relative overflow-hidden">
+        {/* Signature Architectural Dual Blue Spotlights */}
+        <AmbientSpotlights />
+
+        <div className="max-w-[1700px] mx-auto flex flex-col gap-4 sm:gap-5 md:gap-6 relative z-10">
           {PROJECT_PAIRS.map((pair, rowIndex) => {
             const firstProject = INTERIOR_PROJECTS[rowIndex * 2];
             const secondProject = INTERIOR_PROJECTS[rowIndex * 2 + 1];
@@ -149,6 +153,9 @@ export const InteriorPage: React.FC<InteriorPageProps> = ({
           3. CLEAN COMMISSION CTA — ZERO ROUNDED CORNERS
           ===================================================================== */}
       <section className="w-full py-20 px-6 sm:px-12 md:px-16 lg:px-20 border-t border-white/10 relative overflow-hidden bg-black text-center">
+        {/* Signature Architectural Dual Blue Spotlights */}
+        <AmbientSpotlights variant="alternate" />
+
         <div className="max-w-4xl mx-auto flex flex-col items-center gap-6 relative z-10">
 
           <div className="flex flex-col sm:flex-row items-center gap-4 mt-2">
