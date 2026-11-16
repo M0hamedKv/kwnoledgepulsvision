@@ -101,9 +101,6 @@ export default function DesignServicesPage() {
         <AmbientSpotlights />
 
         <div className="max-w-4xl mx-auto flex flex-col items-center gap-6 relative z-10">
-          <h2 className="font-['BlauerNue',sans-serif] text-4xl sm:text-6xl md:text-7xl font-black uppercase tracking-tight text-white leading-tight">
-            COMMISSION DESIGN
-          </h2>
 
           <div className="flex flex-col sm:flex-row items-center gap-4 mt-2">
             <Link
