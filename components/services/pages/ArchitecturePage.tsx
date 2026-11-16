@@ -1,15 +1,13 @@
 "use client";
 
-import React, { useState } from "react";
+import React from "react";
 import Link from "next/link";
 import { ServiceDetailItem } from "../servicesData";
 import {
   ARCHITECTURE_DESIGN_PROJECTS,
   BIM_PROJECTS_DATA,
-  ArchitectureProject,
 } from "../architectureData";
 import { ArrowRightIcon, ArrowLeftIcon } from "@/svgs";
-import { Lightbox, LightboxItem } from "../showcase";
 import { AmbientSpotlights } from "@/components/ui";
 
 interface ArchitecturePageProps {
@@ -23,36 +21,25 @@ export const ArchitecturePage: React.FC<ArchitecturePageProps> = ({
   prevService,
   nextService,
 }) => {
-  const [lightboxState, setLightboxState] = useState<{
-    items: LightboxItem[];
-    index: number;
-  } | null>(null);
+  // Primary cover image is ORIN SHOPPING MALL
+  const heroImageSrc = "/ORIN/3.webp";
 
-  const heroImageSrc = "/HOMEX/01.webp";
-
-  const handleOpenProjectGallery = (project: ArchitectureProject, startIndex: number = 0) => {
-    setLightboxState({
-      items: project.images.map((img, i) => ({
-        id: `${project.id}-${i}`,
-        title: img.caption || project.title,
-        url: img.url,
-        type: "image",
-      })),
-      index: startIndex,
-    });
-  };
+  const orinProject = ARCHITECTURE_DESIGN_PROJECTS.find((p) => p.id === "orin");
+  const homexProject = ARCHITECTURE_DESIGN_PROJECTS.find((p) => p.id === "homex");
+  const competitionsProject = ARCHITECTURE_DESIGN_PROJECTS.find((p) => p.id === "competitions");
 
   return (
     <div className="w-full min-h-screen bg-black text-white selection:bg-[#00c8ff] selection:text-black">
       {/* =====================================================================
           1. FULL-BLEED IMAGE HERO — PURE IMAGE, CENTERED TITLE ONLY
+             Featured Facade: ORIN SHOPPING MALL
           ===================================================================== */}
       <section className="relative w-full min-h-screen flex flex-col justify-between pt-32 pb-12 px-6 sm:px-12 md:px-16 lg:px-20 overflow-hidden border-b border-white/10">
         {/* Full-bleed background image filling 100% of the Hero viewport */}
         <div className="absolute inset-0 z-0 pointer-events-none select-none overflow-hidden">
           <img
             src={heroImageSrc}
-            alt="Architecture Atelier & Design"
+            alt="ORIN Shopping Mall — Architecture Atelier & Design"
             className="w-full h-full object-cover scale-102"
           />
           <div className="absolute inset-0 bg-black/45" />
@@ -71,99 +58,138 @@ export const ArchitecturePage: React.FC<ArchitecturePageProps> = ({
             ARCHITECTURE
           </h1>
           <p className="mt-4 text-xs sm:text-sm font-semibold uppercase tracking-widest text-white/60">
-            ARCHITECTURE DESIGN • BIM
+            ORIN SHOPPING MALL • ARCHITECTURE DESIGN • BIM
           </p>
         </div>
 
         {/* Clean Scroll Indicator */}
         <div className="relative z-10 flex items-center justify-center">
           <a
-            href="#architecture-design-section"
+            href="#projects-grid"
             className="text-xs uppercase tracking-[0.25em] font-bold text-white/60 hover:text-[#00c8ff] transition-colors flex items-center gap-2"
           >
-            <span>EXPLORE PROJECTS</span>
+            <span>EXPLORE EXHIBITION</span>
             <span>↓</span>
           </a>
         </div>
       </section>
 
       {/* =====================================================================
-          2. SUB-DISCIPLINE 1: ARCHITECTURE DESIGN (HOMEX, ORIN, COMPETITIONS)
+          2. ASYMMETRIC EDITORIAL GRID (EXACT INTERIOR STYLE)
+             - Only Architecture Design projects: ORIN (The Mall - Focus), HOMEX, COMPETITIONS
+             - ZERO rounded corners (rounded-none)
+             - Grayscale by default, smooth hover color transition + zoom
+             - Minimal hover overlay with Project Name in BlauerNue
+             - Matching vertical height in each row
           ===================================================================== */}
-      <section
-        id="architecture-design-section"
-        className="w-full py-16 sm:py-24 px-4 sm:px-8 md:px-12 lg:px-16 bg-black relative overflow-hidden border-b border-white/10 scroll-mt-28"
-      >
+      <section id="projects-grid" className="w-full py-10 sm:py-16 px-4 sm:px-8 md:px-12 lg:px-16 bg-black relative overflow-hidden border-b border-white/10">
         {/* Signature Architectural Dual Blue Spotlights */}
         <AmbientSpotlights />
 
-        <div className="max-w-[1700px] mx-auto flex flex-col gap-10 sm:gap-14 relative z-10">
-          {/* Header */}
-          <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 pb-6 border-b border-white/10">
+        <div className="max-w-[1700px] mx-auto flex flex-col gap-4 sm:gap-5 md:gap-6 relative z-10">
+          <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 pb-4 border-b border-white/10">
             <div>
               <span className="font-mono text-xs uppercase tracking-[0.24em] text-[#00c8ff] font-bold">
                 01 // SUB-DISCIPLINE
               </span>
-              <h2 className="font-['BlauerNue',sans-serif] text-3xl sm:text-5xl font-black uppercase tracking-tight text-white mt-2">
-                ARCHITECTURE DESIGN
+              <h2 className="font-['BlauerNue',sans-serif] text-2xl sm:text-4xl font-black uppercase tracking-tight text-white mt-1">
+                FEATURED ARCHITECTURAL COMMISSIONS
               </h2>
             </div>
-            <div className="flex items-center gap-2 text-xs font-mono text-white/50 uppercase tracking-widest">
-              <span>HOMEX • ORIN • COMPETITIONS</span>
-            </div>
+            <span className="font-mono text-xs text-white/40 uppercase tracking-widest">
+              SELECT A COMMISSION TO EXPLORE PRODUCTION RENDERS
+            </span>
           </div>
 
-          {/* 3 Featured Projects: HOMEX, ORIN, COMPETITIONS */}
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 sm:gap-8">
-            {ARCHITECTURE_DESIGN_PROJECTS.map((project) => (
-              <div
-                key={project.id}
-                onClick={() => handleOpenProjectGallery(project, 0)}
-                className="group relative rounded-none overflow-hidden border border-white/10 hover:border-white/40 bg-black transition-all duration-500 cursor-pointer flex flex-col aspect-4/5"
+          {/* Row 1: Asymmetric Pair — ORIN SHOPPING MALL (62% Primary Focus) & HOMEX ATELIER (38%) */}
+          <div className="w-full flex flex-col md:flex-row gap-4 sm:gap-5 md:gap-6 items-stretch">
+            {/* 1. ORIN SHOPPING MALL (The Primary Focus) */}
+            {orinProject && (
+              <div className="w-full md:w-[62%] h-85 sm:h-110 lg:h-135 rounded-none overflow-hidden relative group border border-white/10 hover:border-white/35 transition-colors bg-black">
+                <Link
+                  href={`/services/architecture/${orinProject.id}`}
+                  className="block w-full h-full relative cursor-pointer"
+                >
+                  <img
+                    src={orinProject.coverImage}
+                    alt={orinProject.title}
+                    loading="lazy"
+                    className="w-full h-full object-cover rounded-none transition-all duration-700 ease-out grayscale contrast-[1.05] brightness-[0.88] group-hover:grayscale-0 group-hover:brightness-100 group-hover:scale-104 pointer-events-none"
+                  />
+
+                  {/* Minimal Hover Overlay — Matching Interior */}
+                  <div className="absolute inset-0 bg-black/45 backdrop-blur-[2px] opacity-0 group-hover:opacity-100 transition-all duration-400 flex flex-col items-center justify-center p-6 text-center pointer-events-none z-10">
+                    <span className="font-['BlauerNue',sans-serif] text-2xl sm:text-4xl md:text-5xl font-black uppercase tracking-tight text-white drop-shadow-[0_4px_30px_rgba(0,0,0,0.95)] transform translate-y-3 group-hover:translate-y-0 transition-transform duration-400">
+                      {orinProject.title}
+                    </span>
+                    <span className="mt-2 font-mono text-xs text-[#00c8ff] uppercase tracking-widest font-bold">
+                      {orinProject.badge} • EXPLORE PROJECT →
+                    </span>
+                  </div>
+                </Link>
+              </div>
+            )}
+
+            {/* 2. HOMEX ATELIER */}
+            {homexProject && (
+              <div className="w-full md:w-[38%] h-85 sm:h-110 lg:h-135 rounded-none overflow-hidden relative group border border-white/10 hover:border-white/35 transition-colors bg-black">
+                <Link
+                  href={`/services/architecture/${homexProject.id}`}
+                  className="block w-full h-full relative cursor-pointer"
+                >
+                  <img
+                    src={homexProject.coverImage}
+                    alt={homexProject.title}
+                    loading="lazy"
+                    className="w-full h-full object-cover rounded-none transition-all duration-700 ease-out grayscale contrast-[1.05] brightness-[0.88] group-hover:grayscale-0 group-hover:brightness-100 group-hover:scale-104 pointer-events-none"
+                  />
+
+                  {/* Minimal Hover Overlay — Matching Interior */}
+                  <div className="absolute inset-0 bg-black/45 backdrop-blur-[2px] opacity-0 group-hover:opacity-100 transition-all duration-400 flex flex-col items-center justify-center p-6 text-center pointer-events-none z-10">
+                    <span className="font-['BlauerNue',sans-serif] text-2xl sm:text-4xl md:text-5xl font-black uppercase tracking-tight text-white drop-shadow-[0_4px_30px_rgba(0,0,0,0.95)] transform translate-y-3 group-hover:translate-y-0 transition-transform duration-400">
+                      {homexProject.title}
+                    </span>
+                    <span className="mt-2 font-mono text-xs text-[#00c8ff] uppercase tracking-widest font-bold">
+                      {homexProject.badge} • EXPLORE PROJECT →
+                    </span>
+                  </div>
+                </Link>
+              </div>
+            )}
+          </div>
+
+          {/* Row 2: INTERNATIONAL COMPETITIONS (Panoramic Full-Width Card) */}
+          {competitionsProject && (
+            <div className="w-full h-72 sm:h-96 lg:h-110 rounded-none overflow-hidden relative group border border-white/10 hover:border-white/35 transition-colors bg-black">
+              <Link
+                href={`/services/architecture/${competitionsProject.id}`}
+                className="block w-full h-full relative cursor-pointer"
               >
                 <img
-                  src={project.coverImage}
-                  alt={project.title}
-                  className="w-full h-full object-cover rounded-none grayscale contrast-[1.05] brightness-[0.9] group-hover:grayscale-0 group-hover:brightness-100 group-hover:scale-104 transition-all duration-700 ease-out pointer-events-none"
+                  src={competitionsProject.coverImage}
+                  alt={competitionsProject.title}
+                  loading="lazy"
+                  className="w-full h-full object-cover rounded-none transition-all duration-700 ease-out grayscale contrast-[1.05] brightness-[0.88] group-hover:grayscale-0 group-hover:brightness-100 group-hover:scale-104 pointer-events-none"
                 />
 
-                {/* Ambient Bottom Gradient Overlay */}
-                <div className="absolute inset-0 bg-linear-to-t from-black/90 via-black/30 to-transparent pointer-events-none" />
-
-                {/* HUD Top Tag */}
-                <div className="absolute top-4 left-4 right-4 flex items-center justify-between text-[11px] font-mono z-10 pointer-events-none">
-                  <span className="px-2.5 py-1 bg-black/75 backdrop-blur-md border border-white/20 text-white/80 uppercase tracking-wider">
-                    {project.subdisciplineLabel}
+                {/* Minimal Hover Overlay — Matching Interior */}
+                <div className="absolute inset-0 bg-black/45 backdrop-blur-[2px] opacity-0 group-hover:opacity-100 transition-all duration-400 flex flex-col items-center justify-center p-6 text-center pointer-events-none z-10">
+                  <span className="font-['BlauerNue',sans-serif] text-2xl sm:text-4xl md:text-5xl font-black uppercase tracking-tight text-white drop-shadow-[0_4px_30px_rgba(0,0,0,0.95)] transform translate-y-3 group-hover:translate-y-0 transition-transform duration-400">
+                    {competitionsProject.title}
                   </span>
-                  <span className="px-2 py-0.5 bg-black/75 backdrop-blur-md border border-[#00c8ff]/40 text-[#00c8ff] font-bold text-[10px]">
-                    {project.images.length} RENDERS
+                  <span className="mt-2 font-mono text-xs text-[#00c8ff] uppercase tracking-widest font-bold">
+                    {competitionsProject.badge} • EXPLORE PROJECT →
                   </span>
                 </div>
-
-                {/* Bottom Overlay Info */}
-                <div className="absolute bottom-6 left-6 right-6 flex flex-col gap-2 z-10 pointer-events-none">
-                  <span className="font-mono text-[10px] uppercase tracking-widest text-[#00c8ff] font-bold">
-                    {project.category}
-                  </span>
-                  <h3 className="font-['BlauerNue',sans-serif] text-2xl sm:text-3xl font-black uppercase tracking-tight text-white group-hover:text-[#00c8ff] transition-colors leading-tight">
-                    {project.title}
-                  </h3>
-                  <p className="text-xs text-white/70 line-clamp-2 leading-relaxed">
-                    {project.description}
-                  </p>
-                  <div className="pt-2 flex items-center gap-2 text-xs font-mono uppercase tracking-widest text-[#00c8ff]">
-                    <span>VIEW GALLERY</span>
-                    <span>→</span>
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
+              </Link>
+            </div>
+          )}
         </div>
       </section>
 
       {/* =====================================================================
           3. SUB-DISCIPLINE 2: BIM (AMAZON WAREHOUSE)
+             Preserved strictly in its own dedicated BIM section
           ===================================================================== */}
       <section
         id="bim-section"
@@ -198,21 +224,22 @@ export const ArchitecturePage: React.FC<ArchitecturePageProps> = ({
               <React.Fragment key={project.id}>
                 {/* Visual Showcase Card */}
                 <div
-                  onClick={() => handleOpenProjectGallery(project, 0)}
-                  className="lg:col-span-8 group relative rounded-none overflow-hidden border border-white/10 hover:border-white/40 bg-black transition-all duration-500 cursor-pointer aspect-16/10"
+                  className="lg:col-span-8 group relative rounded-none overflow-hidden border border-white/10 hover:border-white/40 bg-black transition-all duration-500 aspect-16/10"
                 >
-                  <img
-                    src={project.coverImage}
-                    alt={project.title}
-                    className="w-full h-full object-cover rounded-none grayscale contrast-[1.05] brightness-[0.9] group-hover:grayscale-0 group-hover:brightness-100 group-hover:scale-104 transition-all duration-700 ease-out pointer-events-none"
-                  />
+                  <Link href="/services/bim" className="block w-full h-full relative cursor-pointer">
+                    <img
+                      src={project.coverImage}
+                      alt={project.title}
+                      className="w-full h-full object-cover rounded-none grayscale contrast-[1.05] brightness-[0.9] group-hover:grayscale-0 group-hover:brightness-100 group-hover:scale-104 transition-all duration-700 ease-out pointer-events-none"
+                    />
 
-                  {/* Minimal Hover Overlay */}
-                  <div className="absolute inset-0 bg-black/50 backdrop-blur-[2px] opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center p-6 text-center pointer-events-none z-10">
-                    <span className="font-['BlauerNue',sans-serif] text-2xl sm:text-3xl md:text-4xl font-black uppercase tracking-tight text-white drop-shadow-[0_4px_25px_rgba(0,0,0,0.95)] transform translate-y-2 group-hover:translate-y-0 transition-transform duration-300">
-                      {project.title}
-                    </span>
-                  </div>
+                    {/* Minimal Hover Overlay */}
+                    <div className="absolute inset-0 bg-black/50 backdrop-blur-[2px] opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center p-6 text-center pointer-events-none z-10">
+                      <span className="font-['BlauerNue',sans-serif] text-2xl sm:text-3xl md:text-4xl font-black uppercase tracking-tight text-white drop-shadow-[0_4px_25px_rgba(0,0,0,0.95)] transform translate-y-2 group-hover:translate-y-0 transition-transform duration-300">
+                        {project.title}
+                      </span>
+                    </div>
+                  </Link>
                 </div>
 
                 {/* Details Narrative Column */}
@@ -227,17 +254,11 @@ export const ArchitecturePage: React.FC<ArchitecturePageProps> = ({
                     {project.description}
                   </p>
                   <div className="pt-2 flex items-center gap-4">
-                    <button
-                      onClick={() => handleOpenProjectGallery(project, 0)}
-                      className="px-6 py-3 bg-[#00c8ff] text-black font-['BlauerNue',sans-serif] text-xs font-black uppercase tracking-widest hover:bg-white transition-colors cursor-pointer"
-                    >
-                      VIEW BIM MODELS ({project.images.length})
-                    </button>
                     <Link
                       href="/services/bim"
-                      className="px-6 py-3 border border-white/20 text-white font-['BlauerNue',sans-serif] text-xs font-black uppercase tracking-widest hover:border-white/40 hover:text-white transition-colors"
+                      className="px-6 py-3 bg-[#00c8ff] text-black font-['BlauerNue',sans-serif] text-xs font-black uppercase tracking-widest hover:bg-white transition-colors"
                     >
-                      BIM PAGE →
+                      EXPLORE BIM MODELS ({project.images.length})
                     </Link>
                   </div>
                 </div>
@@ -282,33 +303,6 @@ export const ArchitecturePage: React.FC<ArchitecturePageProps> = ({
           </Link>
         </div>
       </nav>
-
-      {/* Lightbox Modal */}
-      {lightboxState && (
-        <Lightbox
-          items={lightboxState.items}
-          currentIndex={lightboxState.index}
-          onClose={() => setLightboxState(null)}
-          onNext={() =>
-            setLightboxState((prev) =>
-              prev
-                ? { ...prev, index: (prev.index + 1) % prev.items.length }
-                : null
-            )
-          }
-          onPrev={() =>
-            setLightboxState((prev) =>
-              prev
-                ? {
-                    ...prev,
-                    index:
-                      (prev.index - 1 + prev.items.length) % prev.items.length,
-                  }
-                : null
-            )
-          }
-        />
-      )}
     </div>
   );
 };

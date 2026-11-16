@@ -1,6 +1,7 @@
 import { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { getServiceBySlug, getAllServices } from "@/components/services/servicesData";
+import { getArchitectureProjectById } from "@/components/services/architectureData";
 import {
   AnimationPage,
   ImaquettePage,
@@ -11,6 +12,7 @@ import {
   InteriorPage,
   VrPage,
   ArchitecturePage,
+  ArchitectureProjectDetailPage,
 } from "@/components/services/pages";
 import PortfolioPage from "@/app/portfolio/page";
 
@@ -23,6 +25,13 @@ export async function generateMetadata({ params }: ServiceDetailPageProps): Prom
   const service = getServiceBySlug(slug);
 
   if (!service) {
+    const archProject = getArchitectureProjectById(slug);
+    if (archProject) {
+      return {
+        title: `${archProject.title} — ${archProject.typology} | KV STUDIO`,
+        description: archProject.description,
+      };
+    }
     return {
       title: "Service Not Found — KV STUDIO",
       description: "Architectural and interactive services by KV Studio.",
@@ -38,7 +47,7 @@ export async function generateMetadata({ params }: ServiceDetailPageProps): Prom
 export async function generateStaticParams() {
   const services = getAllServices();
   return services
-    .filter((s) => s.slug !== "interior")
+    .filter((s) => s.slug !== "interior" && s.slug !== "architecture")
     .map((s) => ({
       slug: s.slug,
     }));
@@ -49,6 +58,14 @@ export default async function ServiceDetailPage({ params }: ServiceDetailPagePro
   const service = getServiceBySlug(slug);
 
   if (!service) {
+    const archProject = getArchitectureProjectById(slug);
+    if (archProject) {
+      return (
+        <ArchitectureProjectDetailPage
+          project={archProject}
+        />
+      );
+    }
     notFound();
   }
 

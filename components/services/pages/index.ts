@@ -8,3 +8,4 @@ export { InteriorPage } from "./InteriorPage";
 export { InteriorProjectDetailPage } from "./InteriorProjectDetailPage";
 export { VrPage } from "./VrPage";
 export { ArchitecturePage } from "./ArchitecturePage";
+export { ArchitectureProjectDetailPage } from "./ArchitectureProjectDetailPage";
