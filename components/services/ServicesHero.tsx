@@ -11,11 +11,6 @@ export const ServicesHero: React.FC = () => {
         tag: "ARCHITECTURAL & INTERACTIVE SERVICES",
         statusColor: "#00c8ff",
       }}
-      metaBadge={{
-        primaryText: "8 SPECIALIZED SERVICES",
-        secondaryText: "DUAL-CORE ARCHITECTURE",
-        dotColor: "bg-[#00c8ff]",
-      }}
       headline={{
         line1: "STUDIO",
         line2: "SERVICES",

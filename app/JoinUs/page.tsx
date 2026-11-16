@@ -23,15 +23,9 @@ export default function JoinUsPage() {
         theme="cyan"
         eyebrow={{
           tag: "CAREERS / JOIN THE STUDIO",
-          subtitle: "OPEN APPLICATIONS • CAIRO & REMOTE",
           statusColor: "#00c8ff",
         }}
-        metaBadge={{
-          primaryText: "TALENT NETWORK",
-          secondaryText: "ACCEPTING PORTFOLIOS",
-          metricText: "CAIRO // REMOTE",
-          dotColor: "bg-[#00c8ff]",
-        }}
+      
         headline={{
           line1: "BUILD THE",
           line2: "FUTURE WITH US",

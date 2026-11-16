@@ -8,13 +8,13 @@ const IMAQUETTE_HEADLINES: Record<string, string> = {
   "m-vid-1": "EXPLODED <br/> DIAGRAM",
   "m-vid-2": "3D <br/> SECTION ",
   "m-vid-3": "DIVA <br/> SCALE MODEL",
-  "m-vid-4": "DRONE <br/> MODE",
-  "m-vid-5": "MATERIAL <br/> CUSTOMIZER",
-  "m-vid-6": "DAY TO NIGHT <br/> SIMULATION",
-  "m-vid-7": "WEATHER & <br/> SEASONS",
-  "m-vid-8": "CAR <br/> GAMEPLAY",
+  "m-vid-4": "EXTERNAL <br/> PERSPECTIVE",
+  "m-vid-5": "MATERIAL <br/> CUSTOMIZATION",
+  "m-vid-6": "DAY & <br/> NIGHT",
+  "m-vid-7": "WEATHER <br/> CHANGE",
+  "m-vid-8": "CAR <br/> DRIVEN",
   "m-vid-9": "THIRDPERSON <br/> GAMEPLAY",
-  "m-vid-10": "REGIONAL <br/> WAYFINDING",
+  "m-vid-10": "SURROUNDINGS",
 };
 
 export interface ImaquetteShowcaseProps {

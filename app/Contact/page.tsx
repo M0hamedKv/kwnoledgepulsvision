@@ -25,14 +25,7 @@ export default function ContactPage() {
         theme="cyan"
         eyebrow={{
           tag: "CONTACT / GET IN TOUCH",
-          subtitle: "GLOBAL COMMISSIONS & INQUIRIES",
           statusColor: "#00c8ff",
-        }}
-        metaBadge={{
-          primaryText: "STUDIO ATELIER",
-          secondaryText: "OPEN FOR COMMISSIONS",
-          metricText: "NEW CAIRO // CAPE TOWN",
-          dotColor: "bg-[#00c8ff]",
         }}
         headline={{
           line1: "LET’S WORK",

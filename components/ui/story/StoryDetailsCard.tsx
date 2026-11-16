@@ -39,6 +39,12 @@ export const StoryDetailsCard: React.FC<StoryDetailsCardProps> = ({
         <h4 className="font-['BlauerNue',sans-serif] text-lg sm:text-xl font-bold uppercase text-white tracking-tight">
           {fullTitle}
         </h4>
+
+        {description && (
+          <p className="font-['BlauerNue',sans-serif] text-xs sm:text-sm text-white/70 leading-relaxed font-normal">
+            {description}
+          </p>
+        )}
         
         <div className="pt-3 flex items-center justify-between border-t border-white/10 mt-1 w-full">
           {onOpenTheater ? (
