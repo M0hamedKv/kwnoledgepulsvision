@@ -17,7 +17,6 @@ export const AnimationShowcase: React.FC<AnimationShowcaseProps> = ({
   onOpenTheater,
 }) => {
   const premiereFilm = serviceVideos.length > 0 ? serviceVideos[0] : null;
-  const [premiereMuted, setPremiereMuted] = useState(true);
 
   // Group Animation videos by category
   const animationCategories: Record<string, ServiceMediaItem[]> = {};
@@ -50,7 +49,6 @@ export const AnimationShowcase: React.FC<AnimationShowcaseProps> = ({
           >
             <InViewVideo
               src={premiereFilm.url}
-              isMuted={premiereMuted}
               className="w-full h-full object-cover group-hover:scale-102 transition-transform duration-700 opacity-90 group-hover:opacity-100"
             />
 
@@ -62,20 +60,6 @@ export const AnimationShowcase: React.FC<AnimationShowcaseProps> = ({
               <h3 className="font-['BlauerNue',sans-serif] text-xl sm:text-3xl font-black uppercase tracking-tight text-white">
                 {premiereFilm.title}
               </h3>
-
-              <div
-                className="flex items-center gap-3 shrink-0"
-                onClick={(e) => e.stopPropagation()}
-              >
-                <button
-                  type="button"
-                  onClick={() => setPremiereMuted(!premiereMuted)}
-                  className="px-4 py-2.5 rounded-none bg-white/10 hover:bg-[#00c8ff] hover:text-black text-white font-mono text-xs uppercase tracking-wider backdrop-blur-md border border-white/15 transition-all cursor-pointer flex items-center gap-2"
-                >
-                  <span>{premiereMuted ? "UNMUTE" : "MUTE"}</span>
-                  <span>{premiereMuted ? "🔇" : "🔊"}</span>
-                </button>
-              </div>
             </div>
           </div>
         </div>

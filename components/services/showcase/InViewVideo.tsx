@@ -6,19 +6,25 @@ import { getOptimizedVideoUrl, getVideoPosterUrl } from "@/lib/media";
 export interface InViewVideoProps {
   src: string;
   className?: string;
-  isMuted?: boolean;
   poster?: string;
+  isMuted?: boolean;
 }
 
 export const InViewVideo: React.FC<InViewVideoProps> = ({
   src,
   className = "",
-  isMuted = true,
   poster,
+  isMuted = true,
 }) => {
   const videoRef = useRef<HTMLVideoElement>(null);
   const optimizedSrc = getOptimizedVideoUrl(src, { width: 1280, quality: "good" });
   const effectivePoster = poster || getVideoPosterUrl(src, 800);
+
+  useEffect(() => {
+    if (videoRef.current) {
+      videoRef.current.muted = isMuted;
+    }
+  }, [isMuted]);
 
   useEffect(() => {
     const video = videoRef.current;
@@ -46,8 +52,8 @@ export const InViewVideo: React.FC<InViewVideoProps> = ({
       ref={videoRef}
       src={optimizedSrc}
       poster={effectivePoster}
-      muted={isMuted}
       loop
+      muted={isMuted}
       playsInline
       preload="none"
       className={className}

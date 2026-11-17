@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useRef } from "react";
+import React, { useRef } from "react";
 import gsap from "gsap";
 import { ServiceMediaItem } from "../servicesData";
 import { InViewVideo } from "./InViewVideo";
@@ -16,7 +16,6 @@ export const GrandCinemaPavilion: React.FC<GrandCinemaPavilionProps> = ({
   accentColor,
   onOpenTheater,
 }) => {
-  const [isMuted, setIsMuted] = useState(true);
   const cardRef = useRef<HTMLDivElement>(null);
 
   const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
@@ -93,12 +92,11 @@ export const GrandCinemaPavilion: React.FC<GrandCinemaPavilionProps> = ({
         >
           <InViewVideo
             src={video.url}
-            isMuted={isMuted}
             className="w-full h-full object-cover group-hover:scale-103 transition-transform duration-700 opacity-90 group-hover:opacity-100"
           />
 
           {/* Ambient Overlay */}
-          <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-black/30 pointer-events-none" />
+          <div className="absolute inset-0 bg-linear-to-t from-black/80 via-transparent to-black/30 pointer-events-none" />
 
           {/* Center Hover Action */}
           <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
@@ -110,19 +108,6 @@ export const GrandCinemaPavilion: React.FC<GrandCinemaPavilionProps> = ({
             </div>
           </div>
 
-          {/* Audio Toggle on Canvas */}
-          <div
-            className="absolute bottom-4 right-4 z-20"
-            onClick={(e) => e.stopPropagation()}
-          >
-            <button
-              type="button"
-              onClick={() => setIsMuted(!isMuted)}
-              className="px-3 py-1.5 rounded-lg bg-black/80 hover:bg-white hover:text-black text-white font-mono text-xs uppercase tracking-wider border border-white/15 backdrop-blur-md transition-all cursor-pointer flex items-center gap-1.5"
-            >
-              <span>{isMuted ? "🔇 UNMUTE" : "🔊 MUTE"}</span>
-            </button>
-          </div>
         </div>
 
         {/* Pavilion Bottom Content */}

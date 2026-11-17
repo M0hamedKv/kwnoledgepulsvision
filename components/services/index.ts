@@ -6,5 +6,6 @@ export * from "./ServiceMediaShowcase";
 export * from "./DesignAccordionShowcase";
 export * from "./InteractiveCardsShowcase";
 export * from "./InteractiveSolutionHero";
+export * from "./ImaquetteHero";
 export * from "./showcase";
 export * from "./types";

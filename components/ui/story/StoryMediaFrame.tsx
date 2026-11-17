@@ -148,33 +148,11 @@ export const StoryMediaFrame: React.FC<StoryMediaFrameProps> = ({
               style={{ borderColor: `${accentColor}60` }}
             >
               <span className="text-sm" style={{ color: accentColor }}>⛶</span>
-              <span>WATCH FULLSCREEN 4K</span>
+              <span>WATCH FULLSCREEN</span>
               <span style={{ color: accentColor }}>↗</span>
             </div>
           </div>
 
-          {/* Audio Mute/Unmute Toggle */}
-          {encodedVideoSrc && (
-            <div
-              className={`absolute bottom-5 z-30 ${isReversed ? "right-5" : "left-5"}`}
-              onClick={(e) => e.stopPropagation()}
-            >
-              <button
-                type="button"
-                onClick={() => {
-                  const vid = videoRef.current;
-                  if (vid) {
-                    vid.muted = !vid.muted;
-                    setIsMuted(vid.muted);
-                  }
-                }}
-                className="px-3.5 py-1.5 rounded-full bg-black/80 hover:bg-white hover:text-black text-white font-mono text-[10px] uppercase tracking-wider border border-white/20 backdrop-blur-md transition-all cursor-pointer flex items-center gap-1.5 shadow-xl"
-                aria-label={isMuted ? "Unmute video" : "Mute video"}
-              >
-                <span>{isMuted ? "🔇 UNMUTE" : "🔊 MUTE"}</span>
-              </button>
-            </div>
-          )}
 
           {/* Resolution Badge */}
           <div

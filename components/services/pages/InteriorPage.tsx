@@ -28,7 +28,7 @@ export const InteriorPage: React.FC<InteriorPageProps> = ({
 }) => {
   const heroImageSrc =
     service?.coverImage ||
-    "https://res.cloudinary.com/hxytmocg/image/upload/v1793521335/2_View02.webp";
+    "https://res.cloudinary.com/hxytmocg/image/upload/v1793522343/11_1.webp";
 
   return (
     <div className="w-full min-h-screen bg-black text-white selection:bg-[#00c8ff] selection:text-black">

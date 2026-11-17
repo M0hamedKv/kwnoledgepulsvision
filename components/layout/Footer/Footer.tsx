@@ -114,21 +114,21 @@ export const Footer: React.FC = () => {
                   href="/services/imaquette"
                   className="text-white/70 hover:text-[#00c8ff] transition-colors flex items-center justify-between"
                 >
-                  <span>iMaquette 3D Kiosk</span>
+                  <span>iMaquette</span>
                   <span className="text-white/30 text-[10px]">01</span>
                 </Link>
                 <Link
                   href="/services/webdevelopment"
                   className="text-white/70 hover:text-[#00c8ff] transition-colors flex items-center justify-between"
                 >
-                  <span>Kinetic Web Architecture</span>
+                  <span>Web Architecture</span>
                   <span className="text-white/30 text-[10px]">02</span>
                 </Link>
                 <Link
                   href="/services/animation"
                   className="text-white/70 hover:text-[#00c8ff] transition-colors flex items-center justify-between"
                 >
-                  <span>Cinematic 3D Animation</span>
+                  <span>Animation</span>
                   <span className="text-white/30 text-[10px]">03</span>
                 </Link>
                 <Link

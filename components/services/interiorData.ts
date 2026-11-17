@@ -198,7 +198,7 @@ export const INTERIOR_PROJECTS: InteriorProject[] = [
     typology: 'PALATIAL RESIDENCE',
     badge: '30 RENDERS',
     description: 'Grand contemporary Saudi residential estate blending palatial volumes, private majlis suites, and custom bronze fixtures.',
-    coverImage: 'https://res.cloudinary.com/hxytmocg/image/upload/v1793522302/0.webp',
+    coverImage: 'https://res.cloudinary.com/hxytmocg/image/upload/v1793522343/11_1.webp',
     images: [
       'https://res.cloudinary.com/hxytmocg/image/upload/v1793522302/0.webp',
       'https://res.cloudinary.com/hxytmocg/image/upload/v1793522343/11_1.webp',

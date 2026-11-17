@@ -6,6 +6,7 @@ import { ServiceDetailItem } from "../servicesData";
 import { ArrowRightIcon, ArrowLeftIcon } from "@/svgs";
 import { ImaquetteShowcase, Lightbox, LightboxItem } from "../showcase";
 import { AmbientSpotlights } from "@/components/ui";
+import { ImaquetteHero } from "../ImaquetteHero";
 
 interface ImaquettePageProps {
   service: ServiceDetailItem;
@@ -42,41 +43,9 @@ export const ImaquettePage: React.FC<ImaquettePageProps> = ({
   return (
     <div className="w-full min-h-screen bg-black text-white selection:bg-[#00c8ff] selection:text-black">
       {/* =====================================================================
-          1. FULL-BLEED IMAGE HERO — PURE IMAGE, CENTERED TITLE ONLY
+          1. REAL-TIME DIGITAL MAQUETTE HERO — LIVE 3D CANVAS & HUMAN INTERACTION VIDEO
           ===================================================================== */}
-      <section className="relative w-full min-h-screen flex flex-col justify-between pt-32 pb-12 px-6 sm:px-12 md:px-16 lg:px-20 overflow-hidden border-b border-white/10">
-        {/* Full-bleed background image filling 100% of the Hero viewport */}
-        <div className="absolute inset-0 z-0 pointer-events-none select-none overflow-hidden">
-          <img
-            src="/work/diva-1.png"
-            alt="iMaquette Interactive Scale Models"
-            className="w-full h-full object-cover scale-102"
-          />
-          <div className="absolute inset-0 bg-black/45" />
-          <div className="absolute inset-x-0 top-0 h-40 bg-linear-to-b from-black/80 to-transparent" />
-          <div className="absolute inset-x-0 bottom-0 h-48 bg-linear-to-t from-black to-transparent" />
-        </div>
-
-        <div className="relative z-10" />
-
-        {/* Hero Title — Pure, Clean, Bold, Exactly in Center */}
-        <div className="relative z-10 flex flex-col items-center justify-center text-center my-auto">
-          <h1 className="font-['BlauerNue',sans-serif] text-5xl sm:text-7xl md:text-8xl lg:text-9xl font-black uppercase tracking-tight leading-[0.85] text-white select-none drop-shadow-[0_10px_60px_rgba(0,0,0,0.95)]">
-            IMAQUETTE
-          </h1>
-        </div>
-
-        {/* Clean Scroll Indicator */}
-        <div className="relative z-10 flex items-center justify-center">
-          <a
-            href="#interactive-demo"
-            className="text-xs uppercase tracking-[0.25em] font-bold text-white/60 hover:text-[#00c8ff] transition-colors flex items-center gap-2"
-          >
-            <span>EXPLORE EXHIBITION</span>
-            <span>↓</span>
-          </a>
-        </div>
-      </section>
+      <ImaquetteHero />
 
       {/* =====================================================================
           2. 10-CHAPTER DEEP DIVE INTO IMAQUETTE FEATURES

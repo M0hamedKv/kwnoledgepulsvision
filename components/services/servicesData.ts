@@ -898,8 +898,7 @@ export const ALL_SERVICES: ServiceDetailItem[] = [
     accentColor: "#00c8ff",
     badge: "SPATIAL ATELIER",
     status: "active",
-    coverVideo: "https://res.cloudinary.com/hxytmocg/video/upload/v1793214871/reception.mp4",
-    coverImage: "https://res.cloudinary.com/hxytmocg/image/upload/v1793521335/2_View02.webp",
+    coverImage: "https://res.cloudinary.com/hxytmocg/image/upload/v1793522343/11_1.webp",
     mediaCountLabel: "146 8K RENDERS",
     gallery: [],
     deliverables: [

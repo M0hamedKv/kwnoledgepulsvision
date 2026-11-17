@@ -16,7 +16,7 @@ export default function DesignServicesPage() {
   const designServices = allServices.filter((s) => s.disciplineSlug === "design");
 
   const heroImageSrc =
-    "https://res.cloudinary.com/hxytmocg/image/upload/v1793521335/2_View02.webp";
+    "https://res.cloudinary.com/hxytmocg/image/upload/v1793522343/11_1.webp";
 
   return (
     <main className="w-full min-h-screen bg-black text-white selection:bg-[#00c8ff] selection:text-black">
