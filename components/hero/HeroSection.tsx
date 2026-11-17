@@ -19,6 +19,10 @@ import { getOptimizedVideoUrl } from "@/lib/media";
  * 6. The black curtain collapses / sweeps to the LEFT edge, revealing the live playing video.
  * 7. Taglines slide in dynamically from the right, and navbar fades in.
  */
+// Session module-level cache: intro plays on first page load and on page reload (refresh),
+// but is skipped when navigating client-side back to Home.
+let hasPlayedInitialHeroIntro = false;
+
 export const HeroSection: React.FC<HeroSectionProps> = ({
   backgroundImageUrl = "/hero-bg.webp",
   backgroundVideoUrl = "https://res.cloudinary.com/hxytmocg/video/upload/v1793529386/close_to_building.mp4",
@@ -30,15 +34,10 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
   const progressFillRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    if (!sectionRef.current || !curtainRef.current) return;
-
-    // Lock body scrolling during the initial intro
-    const originalOverflow = document.body.style.overflow;
-    document.body.style.overflow = "hidden";
+    if (!sectionRef.current) return;
 
     const navbar = document.querySelector("header");
-    if (navbar) gsap.set(navbar, { opacity: 0 });
-
+    const bgVid = sectionRef.current.querySelector<HTMLVideoElement>("video");
     const sectorLine = sectionRef.current.querySelector(".sector-pointer-line line");
     const tagline1 = sectionRef.current.querySelector(".tagline-line-1");
     const tagline2 = sectionRef.current.querySelector(".tagline-line-2");
@@ -46,6 +45,52 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
     const taglineScribble = sectionRef.current.querySelector(".tagline-scribble");
     const chars1 = sectionRef.current.querySelectorAll(".headline-line-1 .headline-char");
     const loaderChars = loaderRef.current?.querySelectorAll(".loader-char");
+
+    // Case A: Intro has ALREADY played in this session (e.g. returning to Home from another page)
+    if (hasPlayedInitialHeroIntro) {
+      if (curtainRef.current) {
+        gsap.set(curtainRef.current, { scaleX: 0, display: "none" });
+      }
+      if (loaderRef.current) {
+        gsap.set(loaderRef.current, { display: "none" });
+      }
+      if (navbar) {
+        gsap.set(navbar, { opacity: 1 });
+      }
+      if (chars1.length > 0) {
+        chars1.forEach((el) => el.classList.remove("opacity-0"));
+        gsap.set(chars1, { opacity: 1, x: 0, scale: 1, filter: "none" });
+      }
+      if (tagline1) {
+        tagline1.classList.remove("opacity-0");
+        gsap.set(tagline1, { opacity: 1, x: 0, filter: "none" });
+      }
+      if (tagline2) {
+        tagline2.classList.remove("opacity-0");
+        gsap.set(tagline2, { opacity: 1, x: 0, filter: "none" });
+      }
+      if (sectorLine) {
+        gsap.set(sectorLine, { strokeDashoffset: 0, opacity: 1 });
+      }
+      if (taglineUnderlinePath) {
+        gsap.set(taglineUnderlinePath, { strokeDashoffset: 0, opacity: 1 });
+      }
+      if (taglineScribble) {
+        gsap.set(taglineScribble, { opacity: 0.6 });
+      }
+      if (bgVid) {
+        bgVid.play().catch(() => {});
+      }
+      return;
+    }
+
+    const mountTime = performance.now();
+
+    // Case B: First load or reload — Play the full cinematic intro
+    const originalOverflow = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+
+    if (navbar) gsap.set(navbar, { opacity: 0 });
 
     // 1. Initial State: Curtain covers background, taglines and headline primed
     gsap.set(curtainRef.current, {
@@ -112,7 +157,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
     let lastTime = performance.now();
 
     // Query the actual background video in the DOM
-    const bgVid = sectionRef.current.querySelector<HTMLVideoElement>("video");
+    // const bgVid = sectionRef.current.querySelector<HTMLVideoElement>("video");
 
     const checkVideoBufferReady = (): boolean => {
       if (!bgVid) return false;
@@ -153,6 +198,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
     const playOriginalIntro = () => {
       if (hasTriggeredIntro) return;
       hasTriggeredIntro = true;
+      hasPlayedInitialHeroIntro = true;
 
       // Unlock body scrolling
       document.body.style.overflow = originalOverflow;
@@ -314,6 +360,12 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
 
     return () => {
       isMounted = false;
+      const elapsed = performance.now() - mountTime;
+      // Only mark as played if unmounted after real interaction/navigation (> 500ms),
+      // preventing React StrictMode initial mount/unmount cycle from prematurely skipping the intro.
+      if (elapsed > 500) {
+        hasPlayedInitialHeroIntro = true;
+      }
       cancelAnimationFrame(animationFrameId);
       clearTimeout(timeoutId);
       document.body.style.overflow = originalOverflow;
@@ -336,12 +388,14 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
       {/* 2. Intro Black Curtain (z-10, covers entire section initially, then sweeps left) */}
       <div
         ref={curtainRef}
+        style={hasPlayedInitialHeroIntro ? { display: "none" } : undefined}
         className="absolute inset-0 bg-black z-10 origin-left will-change-transform pointer-events-none"
       />
 
       {/* 3. Dead-Center Loader: Company Name + Minimalist Loading Bar (z-25) */}
       <div
         ref={loaderRef}
+        style={hasPlayedInitialHeroIntro ? { display: "none" } : undefined}
         className="absolute inset-0 z-25 flex flex-col items-center justify-center text-center px-6 pointer-events-none select-none"
       >
         {/* Ambient atmospheric true blue glow */}
