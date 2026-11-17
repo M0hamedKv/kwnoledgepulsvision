@@ -5,16 +5,16 @@ import { ServiceDetailItem, ServiceMediaItem } from "../servicesData";
 import { Story } from "@/components/ui/story";
 
 const IMAQUETTE_HEADLINES: Record<string, string> = {
-  "m-vid-1": "EXPLODED <br/> DIAGRAM",
-  "m-vid-2": "3D <br/> SECTION ",
-  "m-vid-3": "DIVA <br/> SCALE MODEL",
-  "m-vid-4": "EXTERNAL <br/> PERSPECTIVE",
-  "m-vid-5": "MATERIAL <br/> CUSTOMIZATION",
-  "m-vid-6": "DAY & <br/> NIGHT",
-  "m-vid-7": "WEATHER <br/> CHANGE",
-  "m-vid-8": "CAR <br/> DRIVEN",
-  "m-vid-9": "THIRDPERSON <br/> GAMEPLAY",
-  "m-vid-10": "SURROUNDINGS",
+  "3D SECTION": "3D <br/> SECTION",
+  "EXPLODED DIAGRAM": "EXPLODED <br/> DIAGRAM",
+  "CAR DRIVEN": "CAR <br/> DRIVEN",
+  "MATERIAL CUSTOMIZATION": "MATERIAL <br/> CUSTOMIZATION",
+  "SURROUNDINGS": "SURROUNDINGS",
+  "DAY & NIGHT": "DAY & <br/> NIGHT",
+  "WEATHER CHANGE": "WEATHER <br/> CHANGE",
+  "DRONE VIEW": "DRONE <br/> VIEW",
+  "THIRD PERSON GAMEPLAY": "THIRD PERSON <br/> GAMEPLAY",
+  "THIRDPERSON GAMEPLAY": "THIRD PERSON <br/> GAMEPLAY",
 };
 
 export interface ImaquetteShowcaseProps {
@@ -30,8 +30,7 @@ export const ImaquetteShowcase: React.FC<ImaquetteShowcaseProps> = ({
 }) => {
   return (
     <div className="flex flex-col w-full">
-
-      {/* All 10 iMaquette Videos Presented Sequentially via Alternating Story Component */}
+      {/* 9 Exclusive iMaquette Videos Presented Sequentially via Alternating Story Component */}
       <div className="flex flex-col w-full">
         {serviceVideos.map((video, idx) => (
           <Story
@@ -40,7 +39,7 @@ export const ImaquetteShowcase: React.FC<ImaquetteShowcaseProps> = ({
             index={idx}
             total={serviceVideos.length}
             video={video.url}
-            headline={IMAQUETTE_HEADLINES[video.id] || video.title}
+            headline={IMAQUETTE_HEADLINES[video.title.trim().toUpperCase()] || video.title}
             title={video.title}
             subtitle={video.category}
             category={video.category}
