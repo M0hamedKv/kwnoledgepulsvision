@@ -9,14 +9,7 @@ export const PortfolioHero: React.FC = () => {
       theme="cyan"
       eyebrow={{
         tag: "PORTFOLIO / 3D PROPTECH SHOWCASE",
-        subtitle: "KV-GRADE KINETIC ARCHITECTURE",
         statusColor: "#00c8ff",
-      }}
-      metaBadge={{
-        primaryText: "KV ARCHITECTURE",
-        secondaryText: "SYS: LIVE",
-        metricText: "FPS: 60 REAL-TIME",
-        dotColor: "bg-[#00c8ff]",
       }}
       headline={{
         line1: "INTERACTIVE",
