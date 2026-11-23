@@ -16,43 +16,27 @@ interface RealEstateWebsitePageProps {
 const REAL_ESTATE_PROJECTS: EditorialWebItem[] = [
   {
     id: "rew-vid-1",
-    title: "Luxury Real Estate Flagship Platform",
-    subtitle: "High-performance masterplan viewer, unit availability, and digital sales reservations.",
-    url: "https://res.cloudinary.com/hxytmocg/video/upload/v1794132541/66666.mp4",
+    title: "Diva Residence — 3D Masterplan & Floor Selector",
+    subtitle: "Explore the building form and navigate through floor-by-floor layouts in real time, engineered to match premier real estate platforms.",
+    url: "/interactive web/diva-masterplan.mp4",
     type: "video",
-    category: "FLAGSHIP",
+    category: "PROPTECH 3D",
   },
   {
     id: "rew-vid-2",
-    title: "Interactive Property Development Portal",
-    subtitle: "Bespoke architectural web application with real-time 3D interactive unit filtering.",
-    url: "https://res.cloudinary.com/hxytmocg/video/upload/v1794132166/4444444.mp4",
+    title: "Diva Residence — 360° Virtual Building Panorama",
+    subtitle: "Immersive virtual showcase offering full 360-degree panoramic spatial navigation and photorealistic architectural vistas.",
+    url: "/interactive web/diva_panoramaview.mp4",
     type: "video",
-    category: "PORTAL",
+    category: "VIRTUAL TOUR",
   },
   {
     id: "rew-vid-3",
-    title: "Architectural Digital Showcase & Cinema Narrative",
-    subtitle: "Bespoke editorial transitions, WebGL micro-interactions, and immersive storytelling.",
-    url: "https://res.cloudinary.com/hxytmocg/video/upload/v1794140108/11111.mp4",
+    title: "Eastville — 3D Compound Navigator & CRM",
+    subtitle: "A comprehensive real-time 3D compound masterplan featuring orbital camera navigation, daylight sun studies, and live CRM inventory.",
+    url: "/interactive web/EastVille.mp4",
     type: "video",
-    category: "CINEMA WEB",
-  },
-  {
-    id: "rew-vid-4",
-    title: "Immersive Property Portfolio & Compound Explorer",
-    subtitle: "Ultra-fast Next.js architecture, interactive amenity map, and fluid smooth-scroll navigation.",
-    url: "https://res.cloudinary.com/hxytmocg/video/upload/v1794137198/2222222.mp4",
-    type: "video",
-    category: "PORTFOLIO",
-  },
-  {
-    id: "rew-vid-5",
-    title: "High-End Residential Web Experience",
-    subtitle: "Full-bleed architectural visuals, localized typography, and responsive interface.",
-    url: "https://res.cloudinary.com/hxytmocg/video/upload/v1794143183/33333.mp4",
-    type: "video",
-    category: "FLAGSHIP",
+    category: "COMPOUND 3D",
   },
 ];
 
@@ -66,7 +50,7 @@ export const RealEstateWebsitePage: React.FC<RealEstateWebsitePageProps> = ({
     index: number;
   } | null>(null);
 
-  const heroImageSrc = "/work/eastville-1.jpg";
+  const heroImageSrc = "/work/diva-1.webp";
 
   const handleOpenLightbox = (index: number) => {
     setLightboxState({

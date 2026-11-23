@@ -9,6 +9,7 @@ export interface PortfolioFeatureItem {
   highlights: string[];
   imageUrl: string;
   imageAlt: string;
+  videoUrl?: string;
   activeFilter?: {
     availableCount: number;
     soldCount: number;

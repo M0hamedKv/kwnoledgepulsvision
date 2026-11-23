@@ -8,25 +8,24 @@ export const PortfolioHero: React.FC = () => {
     <PageHero
       theme="cyan"
       eyebrow={{
-        tag: "PORTFOLIO / 3D PROPTECH SHOWCASE",
+        tag: "REAL ESTATE WEB / 3D PROPTECH SHOWCASE",
         statusColor: "#00c8ff",
       }}
       headline={{
         line1: "INTERACTIVE",
-        line2: "REAL ESTATE PLATFORMS",
+        line2: "REAL ESTATE WEBSITES",
         highlightWord: "REAL ESTATE",
         gradientText: true,
       }}
-      description="From live CRM unit inventory synchronization to 360° orbital compound masterplans and dynamic facade visualizers. Scroll through our production features built for market-leading luxury developers."
-      anchorsLabel="CORE CAPABILITIES:"
+      description="From live 3D masterplans with floor-by-floor navigation and unit stacking to 360° virtual building panoramas and compound navigators."
+      anchorsLabel="PROPTECH PLATFORMS:"
       anchors={[
-        { label: "CRM Integration", targetId: "crm-integration", icon: "📊" },
-        { label: "3D Masterplan", targetId: "interactive-masterplan", icon: "🗺️" },
-        { label: "Dynamic Facades", targetId: "architectural-elevations", icon: "🏢" },
-        { label: "Smart Search", targetId: "smart-unit-search", icon: "🔍" },
-        { label: "360° Walkthrough", targetId: "360-virtual-tours", icon: "🌐" },
+        { label: "Diva Masterplan", targetId: "diva-masterplan", icon: "🗺️" },
+        { label: "360° Panorama", targetId: "diva-panoramaview", icon: "🌐" },
+        { label: "EastVille 3D", targetId: "eastville-masterplan", icon: "🏙️" },
+        { label: "EastVille Tour", targetId: "eastville-tour", icon: "🚶" },
       ]}
-      scrollCueText="SCROLL TO EXPLORE PRODUCTION ARCHITECTURE"
+      scrollCueText="SCROLL TO EXPLORE PROPTECH SHOWCASE"
     />
   );
 };

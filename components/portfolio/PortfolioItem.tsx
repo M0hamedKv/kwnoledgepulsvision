@@ -261,15 +261,27 @@ export const PortfolioItem: React.FC<PortfolioItemProps> = ({
                 isReversed ? "right-0" : "left-0"
               }`}
             >
-              {/* Showcase 3D Render Image */}
-              <Image
-                src={item.imageUrl}
-                alt={item.imageAlt}
-                fill
-                sizes="(max-width: 1024px) 100vw, 60vw"
-                className="object-cover"
-                priority={item.stepNumber === "01"}
-              />
+              {/* Showcase 3D Render Video or Image */}
+              {item.videoUrl ? (
+                <video
+                  src={item.videoUrl}
+                  autoPlay
+                  loop
+                  muted
+                  playsInline
+                  preload="metadata"
+                  className="w-full h-full object-cover"
+                />
+              ) : (
+                <Image
+                  src={item.imageUrl}
+                  alt={item.imageAlt}
+                  fill
+                  sizes="(max-width: 1024px) 100vw, 60vw"
+                  className="object-cover"
+                  priority={item.stepNumber === "01"}
+                />
+              )}
 
               {/* Ambient Vignette Overlay */}
               <div className="absolute inset-0 bg-linear-to-t from-black/60 via-transparent to-black/30 pointer-events-none" />

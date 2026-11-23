@@ -15,23 +15,31 @@ interface WebdevelopmentPageProps {
 
 const ALL_WEB_PROJECTS: EditorialWebItem[] = [
   {
-    id: "web-1",
-    title: "Luxury Real Estate Flagship Platform & Interactive Portal",
+    id: "web-seen",
+    title: "Seen — Architecture Academy & Student Workshops",
+    subtitle: "An interactive educational web platform enabling architecture and engineering students to attend live courses, workshops, and events.",
+    category: "ACADEMY HUB",
+    url: "/interactive web/seenintro.mp4",
+    type: "video",
+  },
+  {
+    id: "web-diva-intro",
+    title: "Diva Residence — Bespoke Flagship Web Platform",
+    subtitle: "A bespoke digital flagship designed with architectural precision, fluid typography, and luxury property storytelling.",
+    category: "DIGITAL FLAGSHIP",
+    url: "/interactive web/divaintro.mp4",
+    type: "video",
+  },
+  {
+    id: "web-3",
+    title: "Luxury Flagship Platform & Interactive Portal",
     subtitle: "Full-scale custom real-time architectural web application with 3D unit filtering.",
     category: "FLAGSHIP WEB",
     url: "https://res.cloudinary.com/hxytmocg/video/upload/v1794132541/66666.mp4",
     type: "video",
   },
   {
-    id: "web-2",
-    title: "Interactive Property Development Portal & Booking Engine",
-    subtitle: "High-performance masterplan viewer, unit availability, and digital sales reservations.",
-    category: "PORTAL DEV",
-    url: "https://res.cloudinary.com/hxytmocg/video/upload/v1794132166/4444444.mp4",
-    type: "video",
-  },
-  {
-    id: "web-3",
+    id: "web-4",
     title: "Architectural Digital Showcase & Cinema Narrative",
     subtitle: "Bespoke editorial transitions, WebGL micro-interactions, and immersive storytelling.",
     category: "EDITORIAL WEB",
@@ -39,44 +47,12 @@ const ALL_WEB_PROJECTS: EditorialWebItem[] = [
     type: "video",
   },
   {
-    id: "web-4",
+    id: "web-5",
     title: "Immersive Property Portfolio & Compound Explorer",
     subtitle: "Ultra-fast Next.js architecture, interactive amenity map, and fluid smooth-scroll navigation.",
     category: "PORTFOLIO",
     url: "https://res.cloudinary.com/hxytmocg/video/upload/v1794137198/2222222.mp4",
     type: "video",
-  },
-  {
-    id: "web-5",
-    title: "High-End Residential Web Experience & Spatial Design",
-    subtitle: "Full-bleed architectural visuals, localized typography, and responsive interface.",
-    category: "FLAGSHIP WEB",
-    url: "https://res.cloudinary.com/hxytmocg/video/upload/v1794143183/33333.mp4",
-    type: "video",
-  },
-  {
-    id: "web-6",
-    title: "Eastville Digital Residence & Virtual Sales Pavilion",
-    subtitle: "Turnkey digital platform integrating 3D maquette renders and buyer inquiry management.",
-    category: "RESIDENCE",
-    url: "/work/eastville-1.jpg",
-    type: "image",
-  },
-  {
-    id: "web-7",
-    title: "Eastville Interactive Web Suite",
-    subtitle: "Interactive spatial map, daylight controls, and sales gallery touch integration.",
-    category: "INTERACTIVE",
-    url: "/work/eastville-2.png",
-    type: "image",
-  },
-  {
-    id: "web-8",
-    title: "Diva Architectural Atelier & Digital Flagship",
-    subtitle: "Kinetic UI design, high-contrast typography, and fluid project galleries.",
-    category: "ATELIER",
-    url: "/work/diva-1.png",
-    type: "image",
   },
 ];
 
@@ -90,7 +66,7 @@ export const WebdevelopmentPage: React.FC<WebdevelopmentPageProps> = ({
     index: number;
   } | null>(null);
 
-  const heroImageSrc = "/work/eastville-1.jpg";
+  const heroImageSrc = "/work/diva-1.webp";
 
   const handleOpenLightbox = (index: number) => {
     setLightboxState({
