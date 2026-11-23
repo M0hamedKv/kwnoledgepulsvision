@@ -231,7 +231,7 @@ export const ALL_SERVICES: ServiceDetailItem[] = [
     status: "active",
     coverVideo: "/interactive web/diva-masterplan.mp4",
     coverImage: "/work/diva-1.webp",
-    mediaCountLabel: "3 PROPTECH PLATFORMS",
+    mediaCountLabel: "4 PROPTECH PLATFORMS",
     gallery: [
       {
         id: "rew-1",
@@ -262,6 +262,16 @@ export const ALL_SERVICES: ServiceDetailItem[] = [
         aspect: "16:9",
         badge: "COMPOUND 3D",
         description: "A comprehensive real-time 3D compound masterplan featuring orbital camera navigation, daylight sun studies, unit filtering, and live CRM inventory sync.",
+      },
+      {
+        id: "rew-4",
+        title: "EASTVILLE — VIRTUAL COMPOUND TOUR",
+        category: "Virtual Compound Walkthrough",
+        url: "/interactive web/EastVille-tour.mp4",
+        type: "video",
+        aspect: "16:9",
+        badge: "VIRTUAL TOUR",
+        description: "Cinematic real estate walkthrough showcasing pedestrian pathways, green landscapes, and residential architecture in motion.",
       },
     ],
     deliverables: [],

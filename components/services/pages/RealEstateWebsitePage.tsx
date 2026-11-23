@@ -38,6 +38,14 @@ const REAL_ESTATE_PROJECTS: EditorialWebItem[] = [
     type: "video",
     category: "COMPOUND 3D",
   },
+  {
+    id: "rew-vid-4",
+    title: "Eastville — Virtual Compound Walkthrough",
+    subtitle: "Cinematic real estate walkthrough showcasing pedestrian pathways, green landscapes, and residential architecture in motion.",
+    url: "/interactive web/EastVille-tour.mp4",
+    type: "video",
+    category: "VIRTUAL TOUR",
+  },
 ];
 
 export const RealEstateWebsitePage: React.FC<RealEstateWebsitePageProps> = ({
