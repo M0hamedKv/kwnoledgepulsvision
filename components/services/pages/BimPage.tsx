@@ -17,25 +17,25 @@ const BIM_PROJECTS = [
   {
     id: "amazon-warehouse-1",
     title: "AMAZON WAREHOUSE — LOD 500 DIGITAL TWIN COORDINATION",
-    url: "https://res.cloudinary.com/hxytmocg/image/upload/v1793521506/1_View020000.webp",
+    url: "/design/interior/fox hills/1_View020000.webp",
     type: "image" as const,
   },
   {
     id: "amazon-warehouse-2",
     title: "AMAZON WAREHOUSE — STRUCTURAL CLASH MATRIX",
-    url: "https://res.cloudinary.com/hxytmocg/image/upload/v1793521515/1_View030000.webp",
+    url: "/design/interior/fox hills/1_View030000.webp",
     type: "image" as const,
   },
   {
     id: "amazon-warehouse-3",
     title: "AMAZON WAREHOUSE — PARAMETRIC STEEL & CONVEYOR MODEL",
-    url: "https://res.cloudinary.com/hxytmocg/image/upload/v1793521519/1_View050000.webp",
+    url: "/design/interior/fox hills/1_View050000.webp",
     type: "image" as const,
   },
   {
     id: "amazon-warehouse-4",
     title: "AMAZON WAREHOUSE — AS-BUILT LOGISTICS AUDIT",
-    url: "https://res.cloudinary.com/hxytmocg/image/upload/v1793521526/1_View060000.webp",
+    url: "/design/interior/fox hills/1_View060000.webp",
     type: "image" as const,
   },
 ];
@@ -51,7 +51,7 @@ export const BimPage: React.FC<BimPageProps> = ({
   } | null>(null);
 
   const heroImageSrc =
-    "https://res.cloudinary.com/hxytmocg/image/upload/v1793521506/1_View020000.webp";
+    "/design/interior/fox hills/1_View020000.webp";
 
   const handleOpenLightbox = (index: number) => {
     setLightboxState({

@@ -19,7 +19,7 @@ const ALL_WEB_PROJECTS: EditorialWebItem[] = [
     title: "Seen — Architecture Academy & Student Workshops",
     subtitle: "An interactive educational web platform enabling architecture and engineering students to attend live courses, workshops, and events.",
     category: "ACADEMY HUB",
-    url: "/interactive web/seenintro.mp4",
+    url: "/interactive/webdevelopment/seenintro.mp4",
     type: "video",
   },
   {
@@ -27,7 +27,7 @@ const ALL_WEB_PROJECTS: EditorialWebItem[] = [
     title: "Diva Residence — Bespoke Flagship Web Platform",
     subtitle: "A bespoke digital flagship designed with architectural precision, fluid typography, and luxury property storytelling.",
     category: "DIGITAL FLAGSHIP",
-    url: "/interactive web/divaintro.mp4",
+    url: "/interactive/webdevelopment/divaintro.mp4",
     type: "video",
   },
   {

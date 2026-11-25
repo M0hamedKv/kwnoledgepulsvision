@@ -41,7 +41,7 @@ export const DesignAccordionShowcase: React.FC<DesignAccordionShowcaseProps> = (
           const mediaImage =
             service.coverImage ||
             (service.gallery && service.gallery.find((g) => g.type === "image")?.url) ||
-            "https://res.cloudinary.com/hxytmocg/image/upload/v1793522343/11_1.webp";
+            "/design/interior/villa ksa/11_1.webp";
 
           return (
             <div
@@ -134,7 +134,7 @@ export const DesignAccordionShowcase: React.FC<DesignAccordionShowcaseProps> = (
           const mediaImage =
             service.coverImage ||
             (service.gallery && service.gallery.find((g) => g.type === "image")?.url) ||
-            "https://res.cloudinary.com/hxytmocg/image/upload/v1793522343/11_1.webp";
+            "/design/interior/villa ksa/11_1.webp";
 
           return (
             <div

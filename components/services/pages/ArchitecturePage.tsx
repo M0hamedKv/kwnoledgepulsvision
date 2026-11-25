@@ -22,7 +22,7 @@ export const ArchitecturePage: React.FC<ArchitecturePageProps> = ({
   nextService,
 }) => {
   // Primary cover image is ORIN SHOPPING MALL
-  const heroImageSrc = "/ORIN/3.webp";
+  const heroImageSrc = "/design/architecture/ORIN/3.webp";
 
   const orinProject = ARCHITECTURE_DESIGN_PROJECTS.find((p) => p.id === "orin");
   const homexProject = ARCHITECTURE_DESIGN_PROJECTS.find((p) => p.id === "homex");

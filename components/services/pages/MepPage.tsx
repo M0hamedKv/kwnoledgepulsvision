@@ -17,25 +17,25 @@ const MEP_PROJECTS = [
   {
     id: "mep-1",
     title: "SPATIAL AIRFLOW & MEP ROUTING",
-    url: "https://res.cloudinary.com/hxytmocg/image/upload/v1793521519/1_View050000.webp",
+    url: "/design/interior/fox hills/1_View050000.webp",
     type: "image" as const,
   },
   {
     id: "mep-2",
     title: "ARCHITECTURAL LIGHTING & POWER",
-    url: "https://res.cloudinary.com/hxytmocg/image/upload/v1793521529/1_View080000.webp",
+    url: "/design/interior/fox hills/1_View080000.webp",
     type: "image" as const,
   },
   {
     id: "mep-3",
     title: "SUSTAINABLE WATER & ACOUSTIC DESIGN",
-    url: "https://res.cloudinary.com/hxytmocg/image/upload/v1793521510/1_Interactive_LightMix_View03.webp",
+    url: "/design/interior/fox hills/1_Interactive_LightMix_View03.webp",
     type: "image" as const,
   },
   {
     id: "mep-4",
     title: "LIFE SAFETY & INTEGRATED SYSTEMS",
-    url: "https://res.cloudinary.com/hxytmocg/image/upload/v1793521516/1_Interactive_LightMix_View05.webp",
+    url: "/design/interior/fox hills/1_Interactive_LightMix_View05.webp",
     type: "image" as const,
   },
 ];
@@ -51,7 +51,7 @@ export const MepPage: React.FC<MepPageProps> = ({
   } | null>(null);
 
   const heroImageSrc =
-    "https://res.cloudinary.com/hxytmocg/image/upload/v1793521519/1_View050000.webp";
+    "/design/interior/fox hills/1_View050000.webp";
 
   const handleOpenLightbox = (index: number) => {
     setLightboxState({
