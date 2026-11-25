@@ -38,7 +38,7 @@ const VR_MEDIA = [
   {
     id: "vr-vid-2",
     title: "REAL-TIME INTERIOR SPATIAL NAVIGATION",
-    url: "https://res.cloudinary.com/hxytmocg/video/upload/v1793537718/Untitled-5.mp4",
+    url: "https://res.cloudinary.com/fbq1bvni/video/upload/v1795615017/Untitled-5.mp4",
     type: "video" as const,
     category: "VIDEOS",
   },
@@ -80,7 +80,7 @@ const VR_MEDIA = [
   {
     id: "vr-vid-4",
     title: "DYNAMIC LIGHTMIX REAL-TIME SIMULATION",
-    url: "https://res.cloudinary.com/hxytmocg/video/upload/v1793529065/CAM-PADEL_Interactive_LightMix_FINALmp4.mp4",
+    url: "https://res.cloudinary.com/fbq1bvni/video/upload/v1795613600/CAM-PADEL_Interactive_LightMix_FINALmp4.mp4",
     type: "video" as const,
     category: "VIDEOS",
   },

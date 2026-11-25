@@ -20,17 +20,17 @@ const DEFAULT_ITEMS: ShowcaseItem[] = [
   },
   {
     id: "hero-vid-3",
-    video: "https://res.cloudinary.com/hxytmocg/video/upload/v1793529065/CAM-PADEL_Interactive_LightMix_FINALmp4.mp4",
+    video: "https://res.cloudinary.com/fbq1bvni/video/upload/v1795613600/CAM-PADEL_Interactive_LightMix_FINALmp4.mp4",
     alt: "Structural Glass Padel Pavilion",
   },
   {
     id: "hero-vid-4",
-    video: "https://res.cloudinary.com/hxytmocg/video/upload/v1793538438/track_night.mp4",
+    video: "https://res.cloudinary.com/fbq1bvni/video/upload/v1795614960/track_night.mp4",
     alt: "Night Atmospheric Illumination Master Track",
   },
   {
     id: "hero-vid-5",
-    video: "https://res.cloudinary.com/hxytmocg/video/upload/v1793537718/Untitled-5.mp4",
+    video: "https://res.cloudinary.com/fbq1bvni/video/upload/v1795615017/Untitled-5.mp4",
     alt: "Cinematic Modern Architectural Visualization",
   },
 ];
