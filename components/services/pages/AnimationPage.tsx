@@ -1,11 +1,14 @@
 "use client";
 
-import React, { useState, useRef, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import Link from "next/link";
-import { ServiceDetailItem } from "../servicesData";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { ServiceDetailItem, ServiceMediaItem } from "../servicesData";
 import { ArrowRightIcon, ArrowLeftIcon } from "@/svgs";
-import { Lightbox, LightboxItem } from "../showcase";
+import { InViewVideo, Lightbox, LightboxItem } from "../showcase";
 import { AmbientSpotlights } from "@/components/ui";
+import { AnimationHero } from "../AnimationHero";
 
 interface AnimationPageProps {
   service: ServiceDetailItem;
@@ -13,158 +16,302 @@ interface AnimationPageProps {
   nextService?: ServiceDetailItem;
 }
 
+interface CinemaReelTileProps {
+  reel: ServiceMediaItem;
+  index: number;
+  className?: string;
+  showDescription?: boolean;
+  onSelect: () => void;
+}
+
+const CinemaReelTile: React.FC<CinemaReelTileProps> = ({
+  reel,
+  index,
+  className = "aspect-video",
+  showDescription = false,
+  onSelect,
+}) => (
+  <div
+    onClick={onSelect}
+    className={`group relative rounded-none overflow-hidden border border-white/10 hover:border-[#00c8ff]/70 bg-black transition-colors duration-500 cursor-pointer shadow-[0_20px_50px_rgba(0,0,0,0.85)] ${className}`}
+  >
+    <InViewVideo
+      src={reel.url}
+      className="w-full h-full object-cover rounded-none brightness-90 group-hover:brightness-105 group-hover:scale-104 transition-all duration-700 ease-out pointer-events-none"
+    />
+
+    {/* Minimal index tag */}
+    <div className="absolute top-3 left-3 z-10 pointer-events-none">
+      <span className="px-2 py-0.5 bg-black/65 backdrop-blur-sm border border-white/10 text-[10px] tracking-[0.2em] text-white/55 group-hover:text-[#00c8ff] group-hover:border-[#00c8ff]/40 transition-colors">
+        {String(index + 1).padStart(2, "0")}
+      </span>
+    </div>
+
+    {/* Editorial Hover Reveal */}
+    <div className="absolute inset-0 bg-linear-to-t from-black/90 via-black/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-400 flex flex-col justify-end p-5 sm:p-7 pointer-events-none z-10">
+      <div className="flex items-end justify-between gap-4 transform translate-y-2 group-hover:translate-y-0 transition-transform duration-400">
+        <div className="flex flex-col gap-1 max-w-2xl">
+          {reel.category && (
+            <span className="text-[10px] sm:text-xs font-bold uppercase tracking-[0.22em] text-[#00c8ff]">
+              {reel.category}
+              {reel.badge ? ` // ${reel.badge}` : ""}
+            </span>
+          )}
+          <h3 className="font-['BlauerNue',sans-serif] text-lg sm:text-2xl lg:text-3xl font-black uppercase tracking-tight text-white leading-tight drop-shadow-[0_4px_20px_rgba(0,0,0,0.95)]">
+            {reel.title}
+          </h3>
+          {showDescription && reel.description && (
+            <p className="text-xs sm:text-sm text-white/70 line-clamp-2 mt-0.5">
+              {reel.description}
+            </p>
+          )}
+        </div>
+
+        <span className="shrink-0 px-3 py-1.5 border border-white/25 bg-black/70 text-[10px] font-bold uppercase tracking-widest text-white group-hover:border-[#00c8ff] group-hover:text-[#00c8ff] transition-colors hidden sm:inline-flex items-center gap-1">
+          <span>THEATER</span>
+          <span>↗</span>
+        </span>
+      </div>
+    </div>
+  </div>
+);
+
 export const AnimationPage: React.FC<AnimationPageProps> = ({
   service,
   prevService,
   nextService,
 }) => {
-  const videoRef = useRef<HTMLVideoElement>(null);
-  const [activeCategory, setActiveCategory] = useState<string>("ALL");
+  const galleryRef = useRef<HTMLDivElement>(null);
   const [lightboxState, setLightboxState] = useState<{
     items: LightboxItem[];
     index: number;
   } | null>(null);
 
-  // Guarantee the hero video autoplays across all browsers
-  useEffect(() => {
-    if (videoRef.current) {
-      videoRef.current.muted = true;
-      videoRef.current.play().catch(() => {});
-    }
-  }, []);
-
   const heroVideoSrc =
     service.coverVideo ||
-    "https://res.cloudinary.com/fbq1bvni/video/upload/v1793216262/NIGHT_SPINE.mp4";
+    "https://res.cloudinary.com/fbq1bvni/video/upload/v1795629475/CAM_01_GATE.mp4";
 
-  // Filter video reels
   const videoReels = service.gallery.filter((g) => g.type === "video");
 
-  const categories = [
-    "ALL",
-    ...Array.from(new Set(videoReels.map((r) => r.category).filter(Boolean))),
-  ];
+  useEffect(() => {
+    if (typeof window === "undefined" || !galleryRef.current) return;
+    gsap.registerPlugin(ScrollTrigger);
 
-  const filteredReels =
-    activeCategory === "ALL"
-      ? videoReels
-      : videoReels.filter((r) => r.category === activeCategory);
+    const ctx = gsap.context(() => {
+      const rows = galleryRef.current?.querySelectorAll(".cinema-row");
+      rows?.forEach((row) => {
+        gsap.fromTo(
+          row,
+          { y: 36, opacity: 0 },
+          {
+            y: 0,
+            opacity: 1,
+            duration: 0.75,
+            ease: "power3.out",
+            scrollTrigger: {
+              trigger: row,
+              start: "top 88%",
+              once: true,
+            },
+            clearProps: "transform",
+          }
+        );
+      });
+    }, galleryRef);
+
+    return () => ctx.revert();
+  }, [videoReels.length]);
 
   const handleOpenLightbox = (index: number) => {
     setLightboxState({
-      items: filteredReels.map((r) => ({
+      items: videoReels.map((r) => ({
         id: r.id,
         title: r.title,
         url: r.url,
         type: "video",
         badge: r.badge,
         category: r.category,
+        description: r.description,
       })),
       index,
     });
   };
 
+  // Partition into rhythmic exhibition tiers: 1 + 2 + 3 + 1 + 2 + 3 + 2 (+ overflow fallback)
+  const tier1Premiere = videoReels.slice(0, 1);
+  const tier2Asym = videoReels.slice(1, 3);
+  const tier3Trio = videoReels.slice(3, 6);
+  const tier4Panoramic = videoReels.slice(6, 7);
+  const tier5AsymRev = videoReels.slice(7, 9);
+  const tier6Trio = videoReels.slice(9, 12);
+  const tier7FinaleDuo = videoReels.slice(12, 14);
+  const tierOverflow = videoReels.slice(14);
+
   return (
     <div className="w-full min-h-screen bg-black text-white selection:bg-[#00c8ff] selection:text-black">
       {/* =====================================================================
-          1. FULL-BLEED 4K VIDEO HERO — PURE VIDEO, ZERO TEXT CLUTTER
+          1. INTERACTIVE CINEMA HERO — PARALLAX + BOKEH/ANAMORPHIC CANVAS + GSAP
           ===================================================================== */}
-      <section className="relative w-full min-h-screen flex flex-col justify-between pt-32 pb-12 px-6 sm:px-12 md:px-16 lg:px-20 overflow-hidden border-b border-white/10">
-        {/* Full-bleed background video filling 100% of the Hero viewport */}
-        <div className="absolute inset-0 z-0 pointer-events-none select-none overflow-hidden">
-          <video
-            ref={videoRef}
-            src={heroVideoSrc}
-            autoPlay
-            loop
-            muted
-            playsInline
-            preload="auto"
-            className="w-full h-full object-cover scale-102"
-          />
-          <div className="absolute inset-0 bg-black/35" />
-          <div className="absolute inset-x-0 top-0 h-40 bg-linear-to-b from-black/80 to-transparent" />
-          <div className="absolute inset-x-0 bottom-0 h-48 bg-linear-to-t from-black to-transparent" />
-        </div>
-
-        <div className="relative z-10" />
-
-        {/* Hero Title — Pure, Clean, Bold */}
-        <div className="relative z-10 flex flex-col items-center justify-center text-center my-auto">
-          <h1 className="font-['BlauerNue',sans-serif] text-5xl sm:text-7xl md:text-8xl lg:text-9xl font-black uppercase tracking-tight leading-[0.85] text-white select-none drop-shadow-[0_10px_60px_rgba(0,0,0,0.95)]">
-            ANIMATION
-          </h1>
-        </div>
-
-        {/* Clean Scroll Indicator */}
-        <div className="relative z-10 flex items-center justify-center">
-          <a
-            href="#cinema-reels"
-            className="text-xs uppercase tracking-[0.25em] font-bold text-white/60 hover:text-white transition-colors flex items-center gap-2"
-          >
-            <span>DISCOVER CINEMA</span>
-            <span>↓</span>
-          </a>
-        </div>
-      </section>
+      <AnimationHero videoSrc={heroVideoSrc} />
 
       {/* =====================================================================
-          2. PURE VIDEO EXHIBITION — ZERO PLAY ICONS, ZERO CLUTTER
-             - Pure video display on every card
-             - Sharp edges (rounded-none)
-             - Only on hover: gentle overlay with title ONLY
-             - Zero play buttons, zero badges, zero text by default
+          2. CURATED RHYTHMIC CINEMA EXHIBITION (NO FILTERS — EDITORIAL MASONRY)
           ===================================================================== */}
-      <section id="cinema-reels" className="w-full py-12 sm:py-20 px-4 sm:px-8 md:px-12 lg:px-16 relative bg-black overflow-hidden">
+      <section
+        id="cinema-reels"
+        className="w-full py-14 sm:py-20 px-4 sm:px-8 md:px-12 lg:px-16 relative bg-black overflow-hidden scroll-mt-24"
+      >
         {/* Signature Architectural Dual Blue Spotlights */}
         <AmbientSpotlights />
 
-        <div className="max-w-[1700px] mx-auto flex flex-col gap-8 relative z-10">
-          {/* Category Filter Tabs */}
-          <div className="flex flex-wrap items-center justify-center sm:justify-start gap-2 pb-6 border-b border-white/10">
-            {categories.map((cat: any) => (
-              <button
-                key={cat}
-                onClick={() => setActiveCategory(cat)}
-                className={`px-5 py-2.5 rounded-none font-mono text-xs uppercase tracking-wider transition-all cursor-pointer ${
-                  activeCategory === cat
-                    ? "bg-[#00c8ff] text-black font-bold shadow-[0_0_20px_rgba(0,200,255,0.4)]"
-                    : "bg-white/5 text-white/70 hover:text-white hover:bg-white/10 border border-white/10"
-                }`}
-              >
-                {cat}
-              </button>
-            ))}
+        <div ref={galleryRef} className="max-w-[1700px] mx-auto flex flex-col gap-5 sm:gap-6 relative z-10">
+          {/* Editorial Archive Header */}
+          <div className="cinema-row flex flex-col sm:flex-row sm:items-end justify-between gap-4 pb-6 border-b border-white/10">
+            <div>
+              <span className="text-xs uppercase tracking-[0.24em] text-[#00c8ff] font-bold">
+                01 // ARCHITECTURAL CINEMA ARCHIVE
+              </span>
+              <h2 className="font-['BlauerNue',sans-serif] text-2xl sm:text-4xl lg:text-5xl font-black uppercase tracking-tight text-white mt-1.5">
+                MOTION EXHIBITION
+              </h2>
+            </div>
+            <span className="text-xs text-white/50 uppercase tracking-[0.2em]">
+              {videoReels.length} PRODUCTION FILMS • CLICK FOR THEATER
+            </span>
           </div>
 
-          {/* Grid of 20 Cinema Videos — 100% Pure Video Display */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
-            {filteredReels.map((reel, idx) => (
-              <div
-                key={reel.id}
-                onClick={() => handleOpenLightbox(idx)}
-                className="group relative rounded-none overflow-hidden border border-white/10 hover:border-white/40 bg-black transition-all duration-500 cursor-pointer flex flex-col aspect-video"
-              >
-                {/* 100% Full Video */}
-                <video
-                  src={reel.url}
-                  autoPlay
-                  loop
-                  muted
-                  playsInline
-                  preload="metadata"
-                  className="w-full h-full object-cover rounded-none group-hover:scale-104 transition-transform duration-700 ease-out pointer-events-none"
+          {/* Tier 1: Full-Bleed Premiere Film Stage */}
+          {tier1Premiere.length > 0 && (
+            <div className="cinema-row w-full">
+              <CinemaReelTile
+                reel={tier1Premiere[0]}
+                index={0}
+                showDescription
+                className="w-full aspect-video sm:aspect-21/9 min-h-65 sm:min-h-96 lg:min-h-130"
+                onSelect={() => handleOpenLightbox(0)}
+              />
+            </div>
+          )}
+
+          {/* Tier 2: Asymmetric Editorial Duo (62% / 38%) */}
+          {tier2Asym.length > 0 && (
+            <div className="cinema-row w-full flex flex-col md:flex-row gap-5 sm:gap-6 items-stretch">
+              {tier2Asym[0] && (
+                <CinemaReelTile
+                  reel={tier2Asym[0]}
+                  index={1}
+                  showDescription
+                  className="w-full md:w-[62%] h-72 sm:h-96 lg:h-125"
+                  onSelect={() => handleOpenLightbox(1)}
                 />
+              )}
+              {tier2Asym[1] && (
+                <CinemaReelTile
+                  reel={tier2Asym[1]}
+                  index={2}
+                  className="w-full md:w-[38%] h-72 sm:h-96 lg:h-125"
+                  onSelect={() => handleOpenLightbox(2)}
+                />
+              )}
+            </div>
+          )}
 
-                {/* Minimal Hover Overlay — Project Name ONLY, Zero Play Icons */}
-                <div className="absolute inset-0 bg-black/50 backdrop-blur-[2px] opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center p-6 text-center pointer-events-none z-10">
-                  <span className="font-['BlauerNue',sans-serif] text-xl sm:text-2xl md:text-3xl font-black uppercase tracking-tight text-white drop-shadow-[0_4px_25px_rgba(0,0,0,0.95)] transform translate-y-2 group-hover:translate-y-0 transition-transform duration-300">
-                    {reel.title}
-                  </span>
-                </div>
-              </div>
-            ))}
-          </div>
+          {/* Tier 3: Architectural Cinema Trio */}
+          {tier3Trio.length > 0 && (
+            <div className="cinema-row grid grid-cols-1 md:grid-cols-3 gap-5 sm:gap-6">
+              {tier3Trio.map((reel, offset) => (
+                <CinemaReelTile
+                  key={reel.id}
+                  reel={reel}
+                  index={3 + offset}
+                  className="aspect-video"
+                  onSelect={() => handleOpenLightbox(3 + offset)}
+                />
+              ))}
+            </div>
+          )}
+
+          {/* Tier 4: Widescreen Panoramic Commercial Showcase */}
+          {tier4Panoramic.length > 0 && (
+            <div className="cinema-row w-full">
+              <CinemaReelTile
+                reel={tier4Panoramic[0]}
+                index={6}
+                showDescription
+                className="w-full aspect-video sm:aspect-21/9 min-h-65 sm:min-h-96 lg:min-h-120"
+                onSelect={() => handleOpenLightbox(6)}
+              />
+            </div>
+          )}
+
+          {/* Tier 5: Reversed Asymmetric Duo (38% / 62%) */}
+          {tier5AsymRev.length > 0 && (
+            <div className="cinema-row w-full flex flex-col md:flex-row gap-5 sm:gap-6 items-stretch">
+              {tier5AsymRev[0] && (
+                <CinemaReelTile
+                  reel={tier5AsymRev[0]}
+                  index={7}
+                  className="w-full md:w-[38%] h-72 sm:h-96 lg:h-125"
+                  onSelect={() => handleOpenLightbox(7)}
+                />
+              )}
+              {tier5AsymRev[1] && (
+                <CinemaReelTile
+                  reel={tier5AsymRev[1]}
+                  index={8}
+                  showDescription
+                  className="w-full md:w-[62%] h-72 sm:h-96 lg:h-125"
+                  onSelect={() => handleOpenLightbox(8)}
+                />
+              )}
+            </div>
+          )}
+
+          {/* Tier 6: Prototypes & Hospitality Trio */}
+          {tier6Trio.length > 0 && (
+            <div className="cinema-row grid grid-cols-1 md:grid-cols-3 gap-5 sm:gap-6">
+              {tier6Trio.map((reel, offset) => (
+                <CinemaReelTile
+                  key={reel.id}
+                  reel={reel}
+                  index={9 + offset}
+                  className="aspect-video"
+                  onSelect={() => handleOpenLightbox(9 + offset)}
+                />
+              ))}
+            </div>
+          )}
+
+          {/* Tier 7: Finale Balanced Duo */}
+          {tier7FinaleDuo.length > 0 && (
+            <div className="cinema-row grid grid-cols-1 md:grid-cols-2 gap-5 sm:gap-6">
+              {tier7FinaleDuo.map((reel, offset) => (
+                <CinemaReelTile
+                  key={reel.id}
+                  reel={reel}
+                  index={12 + offset}
+                  showDescription
+                  className="aspect-16/10"
+                  onSelect={() => handleOpenLightbox(12 + offset)}
+                />
+              ))}
+            </div>
+          )}
+
+          {/* Future Expansion Fallback */}
+          {tierOverflow.length > 0 && (
+            <div className="cinema-row grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-6">
+              {tierOverflow.map((reel, offset) => (
+                <CinemaReelTile
+                  key={reel.id}
+                  reel={reel}
+                  index={14 + offset}
+                  className="aspect-video"
+                  onSelect={() => handleOpenLightbox(14 + offset)}
+                />
+              ))}
+            </div>
+          )}
         </div>
       </section>
 
@@ -176,7 +323,6 @@ export const AnimationPage: React.FC<AnimationPageProps> = ({
         <AmbientSpotlights variant="alternate" />
 
         <div className="max-w-4xl mx-auto flex flex-col items-center gap-6 relative z-10">
-
           <div className="flex flex-col sm:flex-row items-center gap-4 mt-2">
             <Link
               href="/Contact?service=animation"
