@@ -2,6 +2,7 @@
 
 import React, { useEffect, useRef } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { ServicesSectionProps } from "./types";
@@ -404,11 +405,12 @@ export const ServicesSection: React.FC<ServicesSectionProps> = ({
   const renderCardMedia = (item: DualShowcaseItem) => {
     if (item.image) {
       return (
-        <img
+        <Image
           src={item.image}
           alt={item.title}
-          loading="lazy"
-          className="w-full h-full object-cover rounded-none pointer-events-none will-change-transform"
+          fill
+          sizes="(max-width: 640px) 165px, (max-width: 768px) 220px, (max-width: 1280px) 300px, 340px"
+          className="object-cover rounded-none pointer-events-none will-change-transform"
         />
       );
     }
