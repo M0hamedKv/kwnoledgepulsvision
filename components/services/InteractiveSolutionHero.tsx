@@ -32,7 +32,7 @@ export const InteractiveSolutionHero: React.FC = () => {
 
   // Real video showing actual human hands interacting with proptech touch table in showroom
   const backgroundVideoUrl =
-    "https://res.cloudinary.com/hxytmocg/video/upload/v1793558191/MVI_8622.mov";
+    "https://res.cloudinary.com/fbq1bvni/video/upload/v1793558191/MVI_8622.mov";
 
   // Ensure video autoplays smoothly across all browsers
   useEffect(() => {

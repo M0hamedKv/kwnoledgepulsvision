@@ -35,7 +35,7 @@ const ALL_WEB_PROJECTS: EditorialWebItem[] = [
     title: "Luxury Flagship Platform & Interactive Portal",
     subtitle: "Full-scale custom real-time architectural web application with 3D unit filtering.",
     category: "FLAGSHIP WEB",
-    url: "https://res.cloudinary.com/hxytmocg/video/upload/v1794132541/66666.mp4",
+    url: "https://res.cloudinary.com/fbq1bvni/video/upload/v1794132541/66666.mp4",
     type: "video",
   },
   {
@@ -43,7 +43,7 @@ const ALL_WEB_PROJECTS: EditorialWebItem[] = [
     title: "Architectural Digital Showcase & Cinema Narrative",
     subtitle: "Bespoke editorial transitions, WebGL micro-interactions, and immersive storytelling.",
     category: "EDITORIAL WEB",
-    url: "https://res.cloudinary.com/hxytmocg/video/upload/v1794140108/11111.mp4",
+    url: "https://res.cloudinary.com/fbq1bvni/video/upload/v1794140108/11111.mp4",
     type: "video",
   },
   {
@@ -51,7 +51,7 @@ const ALL_WEB_PROJECTS: EditorialWebItem[] = [
     title: "Immersive Property Portfolio & Compound Explorer",
     subtitle: "Ultra-fast Next.js architecture, interactive amenity map, and fluid smooth-scroll navigation.",
     category: "PORTFOLIO",
-    url: "https://res.cloudinary.com/hxytmocg/video/upload/v1794137198/2222222.mp4",
+    url: "https://res.cloudinary.com/fbq1bvni/video/upload/v1794137198/2222222.mp4",
     type: "video",
   },
 ];

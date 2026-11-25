@@ -12,8 +12,8 @@ export interface IntroPreloaderProps {
 }
 
 const DEFAULT_VIDEO_URLS = [
-  "https://res.cloudinary.com/hxytmocg/video/upload/v1793529386/close_to_building.mp4",
-  "https://res.cloudinary.com/hxytmocg/video/upload/v1793538889/street_2.mp4",
+  "https://res.cloudinary.com/fbq1bvni/video/upload/v1793529386/close_to_building.mp4",
+  "https://res.cloudinary.com/fbq1bvni/video/upload/v1793538889/street_2.mp4",
 ];
 
 /**

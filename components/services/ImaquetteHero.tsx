@@ -33,7 +33,7 @@ export const ImaquetteHero: React.FC = () => {
 
   // Cinematic video showing real hands interacting with proptech multi-touch table
   const backgroundVideoUrl =
-    "https://res.cloudinary.com/hxytmocg/video/upload/v1793558191/MVI_8622.mov";
+    "https://res.cloudinary.com/fbq1bvni/video/upload/v1793558191/MVI_8622.mov";
 
   // Ensure autoplay across all devices & browsers
   useEffect(() => {

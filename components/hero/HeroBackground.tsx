@@ -9,7 +9,7 @@ import { getOptimizedVideoUrl, getVideoPosterUrl } from "@/lib/media";
  */
 export const HeroBackground: React.FC<HeroBackgroundProps> = ({
   imageUrl = "/hero-bg.webp",
-  videoUrl = "https://res.cloudinary.com/hxytmocg/video/upload/v1793529386/close_to_building.mp4",
+  videoUrl = "https://res.cloudinary.com/fbq1bvni/video/upload/v1793529386/close_to_building.mp4",
   alt = "KV Studio Architectural Visualization",
   priority = true,
 }) => {

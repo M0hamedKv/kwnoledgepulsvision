@@ -35,7 +35,7 @@ export const AnimationPage: React.FC<AnimationPageProps> = ({
 
   const heroVideoSrc =
     service.coverVideo ||
-    "https://res.cloudinary.com/hxytmocg/video/upload/v1793216262/NIGHT_SPINE.mp4";
+    "https://res.cloudinary.com/fbq1bvni/video/upload/v1793216262/NIGHT_SPINE.mp4";
 
   // Filter video reels
   const videoReels = service.gallery.filter((g) => g.type === "video");

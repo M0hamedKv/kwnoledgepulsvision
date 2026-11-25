@@ -25,7 +25,7 @@ let hasPlayedInitialHeroIntro = false;
 
 export const HeroSection: React.FC<HeroSectionProps> = ({
   backgroundImageUrl = "/hero-bg.webp",
-  backgroundVideoUrl = "https://res.cloudinary.com/hxytmocg/video/upload/v1793529386/close_to_building.mp4",
+  backgroundVideoUrl = "https://res.cloudinary.com/fbq1bvni/video/upload/v1795615564/close_to_building.mp4",
 }) => {
   const sectionRef = useRef<HTMLElement>(null);
   const curtainRef = useRef<HTMLDivElement>(null);

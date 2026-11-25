@@ -150,7 +150,7 @@ export const ServiceDetailHero: React.FC<ServiceDetailHeroProps> = ({ service })
   if (service.slug === "animation") {
     const animationVideo =
       service.coverVideo ||
-      "https://res.cloudinary.com/hxytmocg/video/upload/v1793216262/NIGHT_SPINE.mp4";
+      "https://res.cloudinary.com/fbq1bvni/video/upload/v1793216262/NIGHT_SPINE.mp4";
 
     return (
       <section

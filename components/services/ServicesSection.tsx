@@ -20,13 +20,13 @@ const DUAL_SHOWCASES: DualShowcaseItem[] = [
   {
     id: "interactive-solution",
     title: "INTERACTIVE",
-    video: "https://res.cloudinary.com/hxytmocg/video/upload/v1793558191/MVI_8622.mov",
+    video: "https://res.cloudinary.com/fbq1bvni/video/upload/v1793558191/MVI_8622.mov",
     href: "/services/interactive-solution",
   },
   {
     id: "design",
     title: "DESIGN",
-    video: "https://res.cloudinary.com/hxytmocg/video/upload/v1793214871/reception.mp4",
+    video: "https://res.cloudinary.com/fbq1bvni/video/upload/v1793214871/reception.mp4",
     href: "/services/design",
   },
 ];

@@ -10,12 +10,12 @@ import { getOptimizedVideoUrl, getVideoPosterUrl } from "@/lib/media";
 const DEFAULT_ITEMS: ShowcaseItem[] = [
   {
     id: "hero-vid-1",
-    video: "https://res.cloudinary.com/hxytmocg/video/upload/v1793529386/close_to_building.mp4",
+    video: "https://res.cloudinary.com/fbq1bvni/video/upload/v1793529386/close_to_building.mp4",
     alt: "Architectural Exterior Facade Perspective",
   },
   {
     id: "hero-vid-2",
-    video: "https://res.cloudinary.com/hxytmocg/video/upload/v1793538889/street_2.mp4",
+    video: "https://res.cloudinary.com/fbq1bvni/video/upload/v1793538889/street_2.mp4",
     alt: "Urban Streetscape & Compound Promenade",
   },
   {

@@ -17,7 +17,7 @@ const VR_MEDIA = [
   {
     id: "vr-vid-1",
     title: "SPATIAL WALKTHROUGH & 6DOF INTERACTIVE EXPERIENCE",
-    url: "https://res.cloudinary.com/hxytmocg/video/upload/v1793206916/ThirdPerson_gameplay.mp4",
+    url: "https://res.cloudinary.com/fbq1bvni/video/upload/v1793206916/ThirdPerson_gameplay.mp4",
     type: "video" as const,
     category: "VIDEOS",
   },
@@ -59,7 +59,7 @@ const VR_MEDIA = [
   {
     id: "vr-vid-3",
     title: "360° DRONE AERIAL MASTERPLAN ORBIT",
-    url: "https://res.cloudinary.com/hxytmocg/video/upload/v1793206972/DroneMode.mp4",
+    url: "https://res.cloudinary.com/fbq1bvni/video/upload/v1793206972/DroneMode.mp4",
     type: "video" as const,
     category: "VIDEOS",
   },
@@ -120,7 +120,7 @@ export const VrPage: React.FC<VrPageProps> = ({
   }, []);
 
   const heroVideoSrc =
-    "https://res.cloudinary.com/hxytmocg/video/upload/v1793206916/ThirdPerson_gameplay.mp4";
+    "https://res.cloudinary.com/fbq1bvni/video/upload/v1793206916/ThirdPerson_gameplay.mp4";
 
   const categories = ["ALL", "VIDEOS", "360 PANORAMAS"];
 
