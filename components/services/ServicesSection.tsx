@@ -12,7 +12,8 @@ import { AmbientSpotlights } from "@/components/ui";
 interface DualShowcaseItem {
   id: "interactive-solution" | "design";
   title: string;
-  video: string;
+  video?: string;
+  image?: string;
   href: string;
 }
 
@@ -20,13 +21,13 @@ const DUAL_SHOWCASES: DualShowcaseItem[] = [
   {
     id: "interactive-solution",
     title: "INTERACTIVE",
-    video: "https://res.cloudinary.com/fbq1bvni/video/upload/v1793558191/MVI_8622.mov",
+    video: "https://res.cloudinary.com/fbq1bvni/video/upload/v1795639911/imaquette.mov",
     href: "/services/interactive-solution",
   },
   {
     id: "design",
     title: "DESIGN",
-    video: "https://res.cloudinary.com/fbq1bvni/video/upload/v1793214871/reception.mp4",
+    image: "/design/interior/villa ksa/11_1.webp",
     href: "/services/design",
   },
 ];
@@ -400,11 +401,33 @@ export const ServicesSection: React.FC<ServicesSectionProps> = ({
   const card1 = DUAL_SHOWCASES[0];
   const card2 = DUAL_SHOWCASES[1];
 
-  const card1OptVideo = getOptimizedVideoUrl(card1.video, { width: 960, quality: "good" });
-  const card1Poster = getVideoPosterUrl(card1.video, 800);
+  const renderCardMedia = (item: DualShowcaseItem) => {
+    if (item.image) {
+      return (
+        <img
+          src={item.image}
+          alt={item.title}
+          loading="lazy"
+          className="w-full h-full object-cover rounded-none pointer-events-none will-change-transform"
+        />
+      );
+    }
 
-  const card2OptVideo = getOptimizedVideoUrl(card2.video, { width: 960, quality: "good" });
-  const card2Poster = getVideoPosterUrl(card2.video, 800);
+    const optVideo = getOptimizedVideoUrl(item.video, { width: 960, quality: "good" });
+    const poster = getVideoPosterUrl(item.video, 800);
+
+    return (
+      <video
+        src={optVideo}
+        poster={poster}
+        loop
+        muted
+        playsInline
+        preload="metadata"
+        className="w-full h-full object-cover rounded-none pointer-events-none will-change-transform"
+      />
+    );
+  };
 
   return (
     <section
@@ -542,15 +565,7 @@ export const ServicesSection: React.FC<ServicesSectionProps> = ({
               href={card1.href}
               className="block w-full h-full relative overflow-hidden bg-black rounded-none"
             >
-              <video
-                src={card1OptVideo}
-                poster={card1Poster}
-                loop
-                muted
-                playsInline
-                preload="metadata"
-                className="w-full h-full object-cover rounded-none pointer-events-none will-change-transform"
-              />
+              {renderCardMedia(card1)}
             </Link>
           </div>
 
@@ -569,15 +584,7 @@ export const ServicesSection: React.FC<ServicesSectionProps> = ({
               href={card2.href}
               className="block w-full h-full relative overflow-hidden bg-black rounded-none"
             >
-              <video
-                src={card2OptVideo}
-                poster={card2Poster}
-                loop
-                muted
-                playsInline
-                preload="metadata"
-                className="w-full h-full object-cover rounded-none pointer-events-none will-change-transform"
-              />
+              {renderCardMedia(card2)}
             </Link>
           </div>
         </div>
