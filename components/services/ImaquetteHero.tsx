@@ -26,14 +26,19 @@ interface PulseRipple {
   alpha: number;
 }
 
-export const ImaquetteHero: React.FC = () => {
+interface ImaquetteHeroProps {
+  coverVideo?: string;
+}
+
+export const ImaquetteHero: React.FC<ImaquetteHeroProps> = ({ coverVideo }) => {
   const containerRef = useRef<HTMLElement>(null);
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const videoRef = useRef<HTMLVideoElement>(null);
 
   // Cinematic video showing real hands interacting with proptech multi-touch table
   const backgroundVideoUrl =
-    "https://res.cloudinary.com/fbq1bvni/video/upload/v1793558191/MVI_8622.mov";
+    coverVideo ||
+    "https://res.cloudinary.com/fbq1bvni/video/upload/v1795639911/imaquette.mov";
 
   // Ensure autoplay across all devices & browsers
   useEffect(() => {

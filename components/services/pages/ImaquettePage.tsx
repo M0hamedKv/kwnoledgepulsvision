@@ -45,7 +45,7 @@ export const ImaquettePage: React.FC<ImaquettePageProps> = ({
       {/* =====================================================================
           1. REAL-TIME DIGITAL MAQUETTE HERO — LIVE 3D CANVAS & HUMAN INTERACTION VIDEO
           ===================================================================== */}
-      <ImaquetteHero />
+      <ImaquetteHero coverVideo={service.coverVideo} />
 
       {/* =====================================================================
           2. 10-CHAPTER DEEP DIVE INTO IMAQUETTE FEATURES
